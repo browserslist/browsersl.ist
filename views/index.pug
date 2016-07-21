@@ -1,7 +1,20 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  form(method="get" url="/")
-    input(name="q")
+  div(class="center")
+    h1(class="h1 m0")
+      a(href="/") browserl.ist
+    p(class="m0 mt2") A page to display compatible browsers from a browserslist string.
+    form(method="get" url="/" class="sm-flex my4 h4")
+      input(class="h4 p2 border monospace block full rounded mx-auto border-box" style="width:100%" name="q" value= query)
+      button(type=submit class="h4") Search String
+  div(class="md-flex justify-around")
+    each browsers, platform in compatible
+      div
+        h2(class="h4 m0 mb3") #{platform}
+        ul(class="m0")
+          each browser in browsers
+            li(class="browser m0 mb2")
+              img(src="/images/#{browser.id}.png" class="align-middle mr1 browser__image")
+              span(class="browser__name mr1") #{browser.name}
+              span(class="browser__version") #{browser.version}
