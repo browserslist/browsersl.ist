@@ -15,6 +15,6 @@ block content
         ul(class="m0")
           each browser in browsers
             li(class="browser m0 mb2")
-              img(src="/images/#{browser.id}.png" class="align-middle mr1 browser__image")
+              img(src=browser.logo class="align-middle mr1 browser__image" height="24" width="24")
               span(class="browser__name mr1") #{browser.name}
               span(class="browser__version") #{browser.version}

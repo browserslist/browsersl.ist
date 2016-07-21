@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "cp -f node_modules/basscss/css/basscss.min.css public/stylesheets/"
+    "styles": "cp -f node_modules/basscss/css/basscss.min.css public/stylesheets/",
+    "postinstall": "npm run styles"
   },
   "dependencies": {
     "basscss": "^8.0.1",
@@ -13,6 +14,8 @@
     "caniuse-db": "^1.0.30000506",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
+    "eslint": "^3.1.1",
+    "eslint-plugin-github": "^0.5.0",
     "express": "~4.13.4",
     "morgan": "~1.7.0",
     "pug": "^2.0.0-beta4",
