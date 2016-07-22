@@ -1,20 +1,22 @@
 extends layout
 
 block content
-  div(class="center")
-    h1(class="h1 m0")
+  div(class="tc bg-white bb pa5")
+    h1(class="f2 f1-ns fw6 mid-gray")
       a(href="/") browserl.ist
-    p(class="m0 mt2") A page to display compatible browsers from a browserslist string.
-    form(method="get" url="/" class="sm-flex my4 h4")
-      input(class="h4 p2 border monospace block full rounded mx-auto border-box" style="width:100%" name="q" value= query)
-      button(type=submit class="h4") Search String
-  div(class="md-flex justify-around")
+    p(class="ma0 mv4") A page to display compatible browsers from a browserslist string.
+    form(method="get" url="/" class="cf my4 f5 f4-ns")
+      div(class="fl w-100 w-80-ns mb2 mb0-ns pr2-ns")
+        input(class="pa2 ba b--black-30 code br1 border-box w-100" name="q" value= query)
+      div(class="fl w-100 w-20-ns")
+        button(type=submit class="pa2 db w-100") Find
+  div(class="md-flex justify-around pa5")
     each browsers, platform in compatible
       div
-        h2(class="h4 m0 mb3") #{platform}
-        ul(class="m0")
+        h2(class="f3 ma0 mt4 mb2 tc ttc") #{platform} browsers
+        ul(class="ma0")
           each browser in browsers
-            li(class="browser m0 mb2")
-              img(src=browser.logo class="align-middle mr1 browser__image" height="24" width="24")
+            li(class="browser ma0 mb3")
+              img(src=browser.logo class="v-mid mr2 browser__image" height="34" width="34")
               span(class="browser__name mr1") #{browser.name}
               span(class="browser__version") #{browser.version}
