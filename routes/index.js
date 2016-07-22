@@ -4,6 +4,7 @@ const express = require('express')
 const router = express.Router()
 const browserslist = require('browserslist')
 const caniuse = require('caniuse-db/data.json').agents
+const GA_ID = process.env.GA_ID
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -35,7 +36,7 @@ router.get('/', function(req, res) {
     })
   }
 
-  res.render('index', { compatible: compatible, query: query })
+  res.render('index', { compatible: compatible, query: query, GA_ID: GA_ID})
 })
 
 module.exports = router
