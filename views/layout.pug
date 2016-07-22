@@ -1,15 +1,20 @@
 doctype html
 html
   head
-    title browserl.ist: A page to display compatible browsers from a browserslist string.
+    title browserl.ist: #{description}
+    meta(name="description" content=description)
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=Edge")
+    meta(name="author" content="@jonrohan")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel='stylesheet', href='/stylesheets/tachyons.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body(class="sans-serif f4")
     block content
     div(class="bt b--black-10 mt4 pa5 f6 lh-copy")
-      span(class="mr4") Made by #[a(href="https://twitter.com/jonrohan") jonrohan]
-      a(href="https://github.com/jonrohan/browserl.ist" class="mr4") GitHub
-      span(class="mr4") Data provided by #[a(href="https://github.com/ai/browserslist") browserslist]
+      span(class="mr4 db di-ns mb2 mb0-ns") Made by #[a(href="https://twitter.com/jonrohan") jonrohan]
+      span(class="mr4 db di-ns mb2 mb0-ns") Code on #[a(href="https://github.com/jonrohan/browserl.ist") GitHub]
+      span(class="mr4 db di-ns mb2 mb0-ns") Data provided by #[a(href="https://github.com/ai/browserslist") browserslist]
 
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

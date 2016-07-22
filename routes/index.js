@@ -36,7 +36,12 @@ router.get('/', function(req, res) {
     })
   }
 
-  res.render('index', { compatible: compatible, query: query, GA_ID: GA_ID})
+  res.render('index', {
+    compatible: compatible,
+    query: query,
+    GA_ID: GA_ID,
+    description: "A page to display compatible browsers from a browserslist string."
+  })
 })
 
 module.exports = router

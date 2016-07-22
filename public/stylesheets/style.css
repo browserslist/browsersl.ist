@@ -2,3 +2,12 @@
   color: #25202e;
   background-color: #f8db34;
 }*/
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
