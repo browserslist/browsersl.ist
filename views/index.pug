@@ -2,17 +2,17 @@ extends layout
 
 block content
   div(class="tc bg-white bb b--black-10 pa5")
-    h1(class="f2 f1-ns fw6 mid-gray")
+    h1(class="f2 f1-ns fw6 mid-gray ma0")
       a(href="/") browserl.ist
-    p(class="ma0 mv4") A page to display compatible browsers from a browserslist query.
-    form(method="get" url="/" class="cf my4 f5 f4-ns")
-      div(class="fl w-100 w-80-ns mb2 mb0-ns pr2-ns")
+    p(class="ma0 mt2 mb5") A page to display compatible browsers from a browserslist query.
+    form(method="get" url="/" class="cf dt-ns w-100 my4 f5 f4-l")
+      div(class="fl dtc-ns w-100 w-80-ns mb2 mb0-ns pr2-ns")
         input(class="pa2 ba b--black-30 code br1 border-box w-100 lh-title" name="q" value= query)
-      div(class="fl w-100 w-20-ns")
-        button(type=submit class="pa2 ba b--black-30 br1 db w-100 lh-title border-box pointer") Find
-  div(class="dt-ns w-100")
+      div(class="fl dtc-ns w-100 w-20-ns")
+        button(type=submit class="pa2 ba b--black-30 br1 db w-100 lh-title border-box pointer") Show #[span(class="dn-m") Browsers]
+  div(class="dt-ns w-100 mw8 center")
     each browsers, platform in compatible
-      div(class="dtc-ns pa3 w-50-ns border-box")
+      div(class="dtc-ns pa2 w-50-ns border-box")
         h2(class="f4 f3-ns ma0 mt4 mb4 tc ttc") #{platform} browsers
         ul(class="ma0")
           each browser in browsers
