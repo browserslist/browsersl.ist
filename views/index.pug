@@ -7,16 +7,16 @@ block content
     p(class="ma0 mv4") A page to display compatible browsers from a browserslist string.
     form(method="get" url="/" class="cf my4 f5 f4-ns")
       div(class="fl w-100 w-80-ns mb2 mb0-ns pr2-ns")
-        input(class="pa2 ba b--black-30 code br1 border-box w-100" name="q" value= query)
+        input(class="pa2 ba b--black-30 code br1 border-box w-100 lh-title" name="q" value= query)
       div(class="fl w-100 w-20-ns")
-        button(type=submit class="pa2 db w-100") Find
+        button(type=submit class="pa2 ba b--black-30 br1 db w-100 lh-title border-box") Find
   div(class="md-flex justify-around pa5")
     each browsers, platform in compatible
       div
         h2(class="f3 ma0 mt4 mb2 tc ttc") #{platform} browsers
         ul(class="ma0")
           each browser in browsers
-            li(class="browser ma0 mb3")
-              img(src=browser.logo class="v-mid mr2 browser__image" height="34" width="34")
-              span(class="browser__name mr1") #{browser.name}
-              span(class="browser__version") #{browser.version}
+            li(class="ma0 mb3 lh-copy")
+              img(src=browser.logo class="v-mid mr2" alt=browser.name height="34" width="34")
+              span(class="mr1 v-mid") #{browser.name}
+              span(class="v-mid") #{browser.version}
