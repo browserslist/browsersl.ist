@@ -3,12 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "styles": "cp -f node_modules/basscss/css/basscss.min.css public/stylesheets/",
-    "postinstall": "npm run styles"
+    "start": "node ./bin/www"
   },
   "dependencies": {
-    "basscss": "^8.0.1",
     "body-parser": "~1.15.1",
     "browserslist": "^1.3.5",
     "caniuse-db": "^1.0.30000506",
