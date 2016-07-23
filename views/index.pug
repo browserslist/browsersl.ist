@@ -1,15 +1,15 @@
 extends layout
 
 block content
-  div(class="tc bg-white bb b--black-10 pa5")
-    h1(class="f2 f1-ns fw6 mid-gray ma0")
+  div(class="tc bg-neon-carrot plum bb b--black-10 pa5")
+    h1(class="f2 f-headline-l f1-ns fw6 mid-gray ma0")
       a(href="/") browserl.ist
     p(class="ma0 mt2 mb5") #{description}
     form(method="get" url="/" class="cf dt-ns w-100 my4 f5 f4-l")
       div(class="fl dtc-ns w-100 w-80-ns mb2 mb0-ns pr2-ns")
         input(class="pa2 ba b--black-30 code br1 border-box w-100 lh-title" name="q" value= query)
       div(class="fl dtc-ns w-100 w-20-ns")
-        button(type=submit class="pa2 ba b--black-30 br1 db w-100 lh-title border-box pointer") Show #[span(class="dn-m") Browsers]
+        button(type=submit class="bg-plum neon-carrot b bg-plum--hover pa2 ba b--black-30 br1 db w-100 lh-title border-box pointer") Show #[span(class="dn-m") Browsers]
   div(class="dt-ns w-100 mw8 center")
     each browsers, platform in compatible
       div(class="dtc-ns pa2 w-50-ns border-box")
