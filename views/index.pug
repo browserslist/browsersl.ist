@@ -11,12 +11,15 @@ block content
       div(class="fl dtc-ns w-100 w-20-ns")
         button(type=submit class="bg-plum neon-carrot b bg-plum--hover pa2 ba b--black-30 br1 db w-100 lh-title border-box pointer") Show #[span(class="dn-m") Browsers]
   div(class="dt-ns w-100 mw8 center")
-    each browsers, platform in compatible
-      div(class="dtc-ns pa2 w-50-ns border-box")
-        h2(class="f4 f3-ns ma0 mt4 mb4 tc ttc") #{platform} browsers
-        ul(class="ma0")
-          each browser in browsers
-            li(class="ma0 mb3 lh-copy")
-              img(src=browser.logo class="v-mid mr2" alt=browser.name height="34" width="34")
-              span(class="mr1 v-mid") #{browser.name}
-              span(class="v-mid") #{browser.version}
+    if compatible
+      each browsers, platform in compatible
+        div(class="dtc-ns pa2 w-50-ns border-box")
+          h2(class="f4 f3-ns ma0 mt4 mb4 tc ttc") #{platform} browsers
+          ul(class="ma0")
+            each browser in browsers
+              li(class="ma0 mb3 lh-copy")
+                img(src=browser.logo class="v-mid mr2" alt=browser.name height="34" width="34")
+                span(class="mr1 v-mid") #{browser.name}
+                span(class="v-mid") #{browser.version}
+    else if error != null
+      h2(class="f4 f3-ns ma0 mv5 tc ttc") #{error}
