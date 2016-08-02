@@ -8,7 +8,7 @@ const GA_ID = process.env.GA_ID
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  const query = req.query.q || "> 5%"
+  const query = req.query.q || browserslist.defaults.join(", ")
   let bl = null
   try {
     bl = browserslist(query)
