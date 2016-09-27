@@ -5,6 +5,7 @@ const router = express.Router()
 const browserslist = require('browserslist')
 const caniuse = require('caniuse-db/data.json').agents
 const GA_ID = process.env.GA_ID
+const pkg = require('../package.json')
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -47,6 +48,7 @@ router.get('/', function(req, res) {
     compatible: compatible,
     query: query,
     GA_ID: GA_ID,
+    blversion: pkg.dependencies["browserslist"],
     description: "A page to display compatible browsers from a browserslist string."
   })
 })
