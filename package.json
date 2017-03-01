@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "body-parser": "~1.16.1",
+    "body-parser": "~1.17.0",
     "browserslist": "~1.7.5",
     "caniuse-db": "~1.0.30000506",
     "cookie-parser": "~1.4.3",
