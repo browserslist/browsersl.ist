@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "body-parser": "~1.16.1",
-    "browserslist": "~1.7.5",
+    "browserslist": "~2.0.0",
     "caniuse-db": "~1.0.30000506",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
