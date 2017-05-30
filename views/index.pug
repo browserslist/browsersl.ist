@@ -1,10 +1,10 @@
 extends layout
 
 block content
-  div(class="tc bg-neon-carrot plum bb b--black-10 pa5")
+  div(class="tc bg-neon-carrot plum bb b--black-10 pa4 pa5-ns")
     h1(class="f2 f-headline-l f1-ns fw6 mid-gray ma0")
       a(href="/") browserl.ist
-    p(class="ma0 mt2 mb5") #{description}
+    p(class="ma0 mt2 mb4 mb5-ns") #{description}
     form(method="get" url="/" class="cf dt-ns w-100 my4 f5 f4-l")
       div(class="fl dtc-ns w-100 w-80-ns mb2 mb0-ns pr2-ns")
         input(class="pa2 ba b--black-30 code br1 border-box w-100 lh-title" name="q" value= query)
@@ -18,7 +18,7 @@ block content
           ul(class="ma0")
             each browser in browsers
               li(class="ma0 mb3 lh-copy")
-                img(src=browser.logo class="v-mid mr2" alt=browser.name height="34" width="34")
+                img(src=browser.logo class="v-mid mr2" alt="" height="34" width="34")
                 span(class="mr1 v-mid") #{browser.name}
                 span(class="v-mid") #{browser.version}
     else if error != null
