@@ -39,6 +39,7 @@ router.get('/', function(req, res) {
         "version": b[1],
         "id": b[0],
         "name": db.browser,
+        "coverage": db.usage_global[b[1]],
         "logo": "/images/" + b[0] + ".png"
       })
     })
@@ -49,6 +50,7 @@ router.get('/', function(req, res) {
     query: query,
     GA_ID: GA_ID,
     blversion: pkg.dependencies["browserslist"],
+    coverage: browserslist.coverage(bl),
     description: "A page to display compatible browsers from a browserslist string."
   })
 })
