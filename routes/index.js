@@ -6,10 +6,16 @@ const browserslist = require('browserslist')
 const caniuse = require('caniuse-db/data.json').agents
 const GA_ID = process.env.GA_ID
 const pkg = require('../package.json')
+const countries = require('../countries.json')
 
 /* GET home page. */
 router.get('/', function(req, res) {
   const query = req.query.q || "defaults"
+  const countryCode = req.query.c || "global"
+  const country = (countryCode === "global")
+    ? {code: "global", name: "Global"}
+    : countries.find(e => e.code === countryCode)
+
   let bl = null
   try {
     bl = browserslist(query)
@@ -39,7 +45,7 @@ router.get('/', function(req, res) {
         "version": b[1],
         "id": b[0],
         "name": db.browser,
-        "coverage": db.usage_global[b[1]],
+        "coverage": browserslist.coverage([b.join(' ')], country.code),
         "logo": "/images/" + b[0] + ".png"
       })
     })
@@ -50,7 +56,9 @@ router.get('/', function(req, res) {
     query: query,
     GA_ID: GA_ID,
     blversion: pkg.dependencies["browserslist"],
-    coverage: browserslist.coverage(bl),
+    coverage: browserslist.coverage(bl, country.code),
+    countries,
+    country,
     description: "A page to display compatible browsers from a browserslist string."
   })
 })

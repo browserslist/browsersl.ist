@@ -6,8 +6,13 @@ block content
       a(href="/") browserl.ist
     p(class="ma0 mt2 mb4 mb5-ns") #{description}
     form(method="get" url="/" class="cf dt-ns w-100 my4 f5 f4-l")
-      div(class="fl dtc-ns w-100 w-80-ns mb2 mb0-ns pr2-ns")
+      div(class="fl dtc-ns w-100 w-60-ns mb2 mb0-ns pr2-ns")
         input(class="pa2 ba b--black-30 code br1 border-box w-100 lh-title" name="q" value= query)
+      div(class="fl dtc-ns w-100 w-20-ns mb2 mb0-ns pr2-ns")
+        select(class="pa2 ba b--black-30 code br1 border-box w-100 lh-title" name="c" value= query)
+          option(value="global") Global coverage
+          each c in countries
+            option(value=c.code selected=(country.code === c.code)) #{c.name}
       div(class="fl dtc-ns w-100 w-20-ns")
         button(type=submit class="bg-plum neon-carrot b bg-plum--hover pa2 ba b--black-30 br1 db w-100 lh-title border-box pointer") Show #[span(class="dn-m") Browsers]
   div(class="dt-ns w-100 mw8 center")
@@ -25,5 +30,8 @@ block content
                   small(alt="Global coverage") #{Math.round(browser.coverage * 100) / 100}%
     else if error != null
       h2(class="f4 f3-ns ma0 mv5 tc ttc") #{error}
-  div(class="tc bg-neon-carrot plum bb b--black-10 pa2 pa3-ns mt4") Global coverage:
+  div(class="tc bg-neon-carrot plum bb b--black-10 pa2 pa3-ns mt4")
+    | #{country.code === 'global' ? "Global coverage:" : `Coverage in ${country.name}:`}
     strong(class="ml1") #{Math.round(coverage * 100) / 100}%
+
+
