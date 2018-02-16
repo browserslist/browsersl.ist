@@ -22,8 +22,12 @@ block content
                 span(class="mr1 v-mid") #{browser.name}
                 span(class="mr1 v-mid") #{browser.version}
                 span(class="v-mid fr")
-                  small(alt="Global coverage") #{Math.round(browser.coverage * 100) / 100}%
+                  small(alt="Coverage") #{Math.round(browser.coverage * 100) / 100}%
     else if error != null
       h2(class="f4 f3-ns ma0 mv5 tc ttc") #{error}
-  div(class="tc bg-neon-carrot plum bb b--black-10 pa2 pa3-ns mt4") Global coverage:
-    strong(class="ml1") #{Math.round(coverage * 100) / 100}%
+  div(class="tc bg-neon-carrot plum bb b--black-10 pa2 pa3-ns mt4")
+    if compatible
+      | #{region} coverage:
+      strong(class="ml1") #{Math.round(coverage * 100) / 100}%
+    else
+      | Unknown coverage
