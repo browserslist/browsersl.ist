@@ -10,8 +10,9 @@ const pkg = require('../package.json')
 let caniuseRegion
 
 function getCoverage(data, version) {
+  const lastVersion = Object.keys(data).sort(function(a, b) { return parseInt(b) - parseInt(a); })[0]
   // If specific version coverage is missing, fall back to "version zero"
-  return data[version] !== undefined ? data[version] : data[0]
+  return data[version] !== undefined ? data[version] : data[lastVersion]
 }
 
 function getRegionCoverage(region, id, version) {
