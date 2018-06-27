@@ -6,16 +6,16 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "body-parser": "1.17.0",
-    "browserslist": "4.0.0",
-    "caniuse-db": "1.0.30000506",
-    "cookie-parser": "1.4.3",
-    "debug": "2.6.0",
-    "eslint": "4.5.0",
-    "eslint-plugin-github": "0.21.0",
-    "express": "4.14.0",
-    "morgan": "1.8.1",
-    "pug": "2.0.0-beta4",
-    "serve-favicon": "2.4.1"
+    "body-parser": "^1.17.0",
+    "browserslist": "*",
+    "caniuse-db": "*",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.0",
+    "eslint": "^4.5.0",
+    "eslint-plugin-github": "^0.21.0",
+    "express": "^4.14.0",
+    "morgan": "^1.8.1",
+    "pug": "^2.0.0-beta4",
+    "serve-favicon": "^2.4.1"
   }
 }
