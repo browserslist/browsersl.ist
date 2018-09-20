@@ -12,9 +12,14 @@ block content
         button(type=submit class="bg-plum neon-carrot b bg-plum--hover pa2 ba b--black-30 br1 db w-100 lh-title border-box pointer") Show #[span(class="dn-m") Browsers]
   div(class="dt-ns w-100 mw8 center")
     if compatible
+      - const columns = Object.keys(compatible).length
       each browsers, platform in compatible
-        div(class="dtc-l pa2 w-50-l border-box")
-          h2(class="f4 f3-ns ma0 mt4 mb4 tc ttc") #{platform} browsers
+        div(class=`dtc-l pa2 ${columns === 3 ? 'w-third' : 'w-50-l'} border-box`)
+          h2(class="f4 f3-ns ma0 mt4 mb4 tc ttc")
+            if platform === 'server'
+              | NodeJS #{platform}s
+            else
+              | #{platform} browsers
           ul(class="ma0 list pa3")
             each browser in browsers
               li(class="ma0 mb3 lh-copy")
@@ -22,7 +27,11 @@ block content
                 span(class="mr1 v-mid") #{browser.name}
                 span(class="mr1 v-mid") #{browser.version}
                 span(class="v-mid fr")
-                  small(alt="Coverage") #{Math.round(browser.coverage * 100) / 100}%
+                  small(alt="Coverage")
+                    if isFinite(browser.coverage)
+                      | #{Math.round(browser.coverage * 100) / 100}%
+                    else
+                      | Unknown coverage
     else if error != null
       h2(class="f4 f3-ns ma0 mv5 tc ttc") #{error}
   div(class="tc bg-neon-carrot plum bb b--black-10 pa2 pa3-ns mt4")
