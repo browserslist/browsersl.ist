@@ -1,4 +1,5 @@
 {
+  "name": "browserlist",
   "env": {
     "GA_ID": "UA-543420-21"
   }
