@@ -7,7 +7,6 @@ const bv = require('browserslist/package.json').version
 const cv = require('caniuse-db/package.json').version
 const caniuse = require('caniuse-db/data.json').agents
 const GA_ID = process.env.GA_ID
-const pkg = require('../package.json')
 
 let caniuseRegion
 
@@ -55,20 +54,30 @@ router.get('/', function(req, res) {
       const id = b[0]
       const version = b[1]
 
-      const db = caniuse[id]
+      let coverage, type, name
 
-      const coverage = region ? getRegionCoverage(region, id, version) : getCoverage(db.usage_global, version)
+      // "Can I use" doesn't have stats for Node
+      if (id === 'node') {
+        type = 'server'
+        name = 'Node'
+      } else {
+        const db = caniuse[id]
 
-      if(!compatible[db.type]) {
-        compatible[db.type] = []
+        coverage = region ? getRegionCoverage(region, id, version) : getCoverage(db.usage_global, version)
+        type = db.type
+        name = db.browser
       }
 
-      compatible[db.type].push({
-        "version": version,
-        "id": id,
-        "name": db.browser,
-        "coverage": coverage,
-        "logo": "/images/" + id + ".png"
+      if(!compatible[type]) {
+        compatible[type] = []
+      }
+
+      compatible[type].push({
+        version: version,
+        id: id,
+        name: name,
+        coverage: coverage,
+        logo: "/images/" + id + ".png"
       })
     })
   }
