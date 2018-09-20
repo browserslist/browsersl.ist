@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+now rm -y browserlist
+now --public
+now alias browserl.ist
+now alias browsersl.ist
