@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "deploy": "now --public && now alias",
     "start": "node ./bin/www"
   },
   "engines": {
