@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "body-parser": "^1.17.0",
-    "browserslist": "*",
-    "caniuse-db": "*",
+    "browserslist": "latest",
+    "caniuse-db": "latest",
     "cookie-parser": "^1.4.3",
     "debug": "^2.6.0",
     "eslint": "^4.5.0",
