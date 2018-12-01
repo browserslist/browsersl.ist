@@ -1,7 +1,5 @@
 # Browserl.ist
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/jonrohan/browserl.ist.svg)](https://greenkeeper.io/)
-
 > A website that shows what browsers supported by a browserslist string
 
 This website uses [browserslist][] and [caniuse][] to display the compatible browsers for a [browserslist search query](https://github.com/ai/browserslist#queries).
