@@ -16,7 +16,7 @@
     "caniuse-db": "1.0.30000988",
     "cookie-parser": "^1.4.3",
     "debug": "^4.1.1",
-    "eslint": "^4.5.0",
+    "eslint": "^6.2.2",
     "eslint-plugin-github": "^0.21.0",
     "express": "^4.14.0",
     "morgan": "^1.8.1",
