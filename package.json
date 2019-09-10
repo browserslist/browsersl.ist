@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "",
+    "lint": " eslint bin/www .",
     "deploy": "script/deploy",
     "start": "node ./bin/www",
-    "build": ""
+    "test": "npm run lint"
   },
   "engines": {
     "node": "^9.3.0",
