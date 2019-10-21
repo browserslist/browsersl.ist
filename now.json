@@ -4,7 +4,6 @@
     "browserl.ist",
     "browsersl.ist"
   ],
-  "type": "npm",
   "env": {
     "GA_ID": "UA-543420-21"
   }
