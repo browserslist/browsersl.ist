@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "deploy": "script/deploy",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "build": ""
   },
   "engines": {
     "node": "^9.3.0",
