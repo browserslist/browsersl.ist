@@ -8,8 +8,7 @@
     "build": ""
   },
   "engines": {
-    "node": "^9.3.0",
-    "npm": "^6.0.0"
+    "node": "10.x"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
