@@ -1,4 +1,4 @@
-# Browserl.ist
+# Browserl.ist [![Build Status](https://github.com/jonrohan/browserl.ist/workflows/Tests/badge.svg)](https://github.com/jonrohan/browserl.ist/actions?workflow=Tests)
 
 > A website that shows what browsers supported by a browserslist string
 
@@ -6,7 +6,7 @@ This website uses [browserslist][] and [caniuse][] to display the compatible bro
 
 ## Development
 
-This website runs on [expressjs](https://expressjs.com). To run locally, after `npm install` to install the dependencies, `npm start` to run the server.
+This website runs on [expressjs](https://expressjs.com/). To run locally, after `npm install` to install the dependencies, `npm start` to run the server.
 
 ## Contributing
 
