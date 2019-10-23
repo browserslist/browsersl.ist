@@ -5,7 +5,7 @@ block content
     h1(class="f2 f-headline-l f1-ns fw6 mid-gray ma0")
       a(href="/") browserl.ist
     p(class="ma0 mt2 mb4 mb5-ns") #{description}
-    form(method="get" url="/" class="cf dt-ns w-100 my4 f5 f4-l")
+    form(method="get" action="/" class="cf dt-ns w-100 my4 f5 f4-l")
       div(class="fl dtc-ns w-100 w-80-ns mb2 mb0-ns pr2-ns")
         input(class="pa2 ba b--black-30 code br1 border-box w-100 lh-title" name="q" value= query)
       div(class="fl dtc-ns w-100 w-20-ns")
@@ -27,7 +27,7 @@ block content
                 span(class="mr1 v-mid") #{browser.name}
                 span(class="mr1 v-mid") #{browser.version}
                 span(class="v-mid fr")
-                  small(alt="Coverage")
+                  small
                     if isFinite(browser.coverage)
                       | #{Math.round(browser.coverage * 100) / 100}%
                     else
