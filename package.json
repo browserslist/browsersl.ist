@@ -3,24 +3,28 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "",
+    "lint": " eslint bin/www .",
     "deploy": "script/deploy",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "npm run lint"
   },
   "engines": {
     "node": "^9.3.0",
     "npm": "^6.0.0"
   },
   "dependencies": {
-    "body-parser": "^1.17.0",
-    "browserslist": "4.6.6",
-    "caniuse-db": "1.0.30000988",
-    "cookie-parser": "^1.4.3",
+    "body-parser": "^1.19.0",
+    "browserslist": "4.7.1",
+    "caniuse-db": "1.0.30001002",
+    "cookie-parser": "^1.4.4",
     "debug": "^4.1.1",
-    "eslint": "^4.5.0",
-    "eslint-plugin-github": "^0.21.0",
-    "express": "^4.14.0",
-    "morgan": "^1.8.1",
-    "pug": "^2.0.0-beta4",
-    "serve-favicon": "^2.4.1"
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-github": "^0.21.2"
   }
 }
