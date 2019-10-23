@@ -10,7 +10,7 @@
     "test": "npm run lint"
   },
   "engines": {
-    "node": "10.x"
+    "node": "^12.1.0"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
