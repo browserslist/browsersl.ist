@@ -35,7 +35,10 @@ router.get("/", (req, res) => {
 
   let bl = null;
   try {
-    bl = browserslist(query);
+    // Remove quotes to allow users to copy multiline strings,
+    // e.g., from their package.json file.
+    const queryWithoutQuotes = query.replace(/"/g, "");
+    bl = browserslist(queryWithoutQuotes);
   } catch (e) {
     // Error
     return res.render("index", {
