@@ -9,9 +9,6 @@
     "start": "node ./bin/www",
     "test": "npm run lint"
   },
-  "engines": {
-    "node": "^10.13.0"
-  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "browserslist": "4.7.1",
