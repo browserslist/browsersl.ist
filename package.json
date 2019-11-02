@@ -20,7 +20,7 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
-    "eslint": "^6.5.1",
-    "eslint-plugin-github": "^0.21.2"
+    "eslint": "^6.6.0",
+    "eslint-plugin-github": "^3.2.1"
   }
 }
