@@ -17,7 +17,7 @@ block content
         div(class=`dtc-l pa2 ${columns === 3 ? 'w-third' : 'w-50-l'} border-box`)
           h2(class="f4 f3-ns ma0 mt4 mb4 tc ttc")
             if platform === 'server'
-              | NodeJS #{platform}s
+              | Node.js #{platform}s
             else
               | #{platform} browsers
           ul(class="ma0 list pa3")
