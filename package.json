@@ -6,7 +6,6 @@
     "build": "",
     "lint": " eslint bin/www .",
     "deploy": "script/deploy",
-    "start": "node ./bin/www",
     "test": "npm run lint"
   },
   "dependencies": {
