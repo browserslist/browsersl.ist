@@ -24,9 +24,10 @@ block content
             each browser in browsers
               li(class="ma0 mb3 lh-copy")
                 if browser.name === 'Edge' && browser.version <= 18
-                  img(src='/images/' + browser.id + '-legacy.png' class="v-mid mr2" alt="" height="34" width="34")
+                  - var icon = browser.id + "-legacy"
                 else
-                  img(src='/images/' + browser.id + '.png' class="v-mid mr2" alt="" height="34" width="34")
+                  - var icon = browser.id
+                img(src='/images/' + icon + '.png' class="v-mid mr2" alt="" height="34" width="34")
                 span(class="mr1 v-mid")
                   if browser.name === 'Edge'
                     if browser.version <= 18
