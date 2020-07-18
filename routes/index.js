@@ -86,8 +86,7 @@ router.get("/", (req, res) => {
         version,
         id,
         name,
-        coverage,
-        logo: `/images/${id}.png`
+        coverage
       });
     });
   }

@@ -23,7 +23,10 @@ block content
           ul(class="ma0 list pa3")
             each browser in browsers
               li(class="ma0 mb3 lh-copy")
-                img(src=browser.logo class="v-mid mr2" alt="" height="34" width="34")
+                if browser.name === 'Edge' && browser.version <= 18
+                  img(src='/images/' + browser.id + '-legacy.png' class="v-mid mr2" alt="" height="34" width="34")
+                else
+                  img(src='/images/' + browser.id + '.png' class="v-mid mr2" alt="" height="34" width="34")
                 span(class="mr1 v-mid")
                   if browser.name === 'Edge'
                     if browser.version <= 18
