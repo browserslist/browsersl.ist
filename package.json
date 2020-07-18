@@ -13,7 +13,7 @@
     "body-parser": "^1.19.0",
     "browserslist": "4.13.0",
     "caniuse-db": "1.0.30001102",
-    "cookie-parser": "^1.4.4",
+    "cookie-parser": "^1.4.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
