@@ -24,7 +24,14 @@ block content
             each browser in browsers
               li(class="ma0 mb3 lh-copy")
                 img(src=browser.logo class="v-mid mr2" alt="" height="34" width="34")
-                span(class="mr1 v-mid") #{browser.name}
+                span(class="mr1 v-mid")
+                  if browser.name === 'Edge'
+                    if browser.version <= 18
+                      | Edge Legacy
+                    else
+                      | Edge
+                  else
+                    | #{browser.name}
                 span(class="mr1 v-mid") #{browser.version}
                 span(class="v-mid fr")
                   small
