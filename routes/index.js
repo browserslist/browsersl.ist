@@ -47,14 +47,14 @@ router.get("/", (req, res) => {
       GA_ID,
       description:
         "A page to display compatible browsers from a browserslist string.",
-      error: e
+      error: e,
     });
   }
 
   const compatible = {};
 
   if (bl) {
-    bl.map(b => {
+    bl.map((b) => {
       b = b.split(" ");
 
       const id = b[0];
@@ -86,7 +86,7 @@ router.get("/", (req, res) => {
         version,
         id,
         name,
-        coverage
+        coverage,
       });
     });
   }
@@ -100,7 +100,7 @@ router.get("/", (req, res) => {
     coverage: browserslist.coverage(bl, region),
     description:
       "A page to display compatible browsers from a browserslist string.",
-    region: region || "Global"
+    region: region || "Global",
   });
 });
 
