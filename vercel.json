@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "env": {
+    "GA_ID": "UA-543420-21"
+  },
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/server" }]
+}
