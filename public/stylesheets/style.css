@@ -21,15 +21,3 @@ a:hover {
 .bg-plum--hover:hover {
   background-color: #260024;
 }
-
-.carbon-wrap {
-  max-width: 34rem;
-  display: table;
-}
-
-.carbon-wrap a {
-  display: table-cell;
-  font-weight: normal;
-  padding-right: 10px;
-  vertical-align: top;
-}
