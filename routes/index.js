@@ -6,7 +6,6 @@ const browserslist = require("browserslist");
 const bv = require("browserslist/package.json").version;
 const cv = require("caniuse-db/package.json").version;
 const caniuse = require("caniuse-db/data.json").agents;
-const GA_ID = process.env.GA_ID;
 
 let caniuseRegion;
 
@@ -44,7 +43,6 @@ router.get("/", (req, res) => {
     return res.render("index", {
       compatible: null,
       query,
-      GA_ID,
       description:
         "A page to display compatible browsers from a browserslist string.",
       error: e,
@@ -95,7 +93,6 @@ router.get("/", (req, res) => {
   res.render("index", {
     compatible,
     query,
-    GA_ID,
     bv,
     cv,
     coverage: browserslist.coverage(bl, region),
