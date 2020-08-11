@@ -6,7 +6,6 @@ const browserslist = require("browserslist");
 const bv = require("browserslist/package.json").version;
 const cv = require("caniuse-db/package.json").version;
 const caniuse = require("caniuse-db/data.json").agents;
-const GA_ID = process.env.GA_ID;
 
 let caniuseRegion;
 
@@ -44,17 +43,16 @@ router.get("/", (req, res) => {
     return res.render("index", {
       compatible: null,
       query,
-      GA_ID,
       description:
         "A page to display compatible browsers from a browserslist string.",
-      error: e
+      error: e,
     });
   }
 
   const compatible = {};
 
   if (bl) {
-    bl.map(b => {
+    bl.map((b) => {
       b = b.split(" ");
 
       const id = b[0];
@@ -87,7 +85,7 @@ router.get("/", (req, res) => {
         id,
         name,
         coverage,
-        logo: `/images/${id}.png`
+        logo: `/images/${id}.png`,
       });
     });
   }
@@ -95,13 +93,12 @@ router.get("/", (req, res) => {
   res.render("index", {
     compatible,
     query,
-    GA_ID,
     bv,
     cv,
     coverage: browserslist.coverage(bl, region),
     description:
       "A page to display compatible browsers from a browserslist string.",
-    region: region || "Global"
+    region: region || "Global",
   });
 });
 

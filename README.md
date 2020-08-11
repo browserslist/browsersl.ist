@@ -1,4 +1,4 @@
-# Browserl.ist [![Build Status](https://github.com/jonrohan/browserl.ist/workflows/Tests/badge.svg)](https://github.com/jonrohan/browserl.ist/actions?workflow=Tests)
+# Browserl.ist [![Build Status](https://github.com/browserslist/browserl.ist/workflows/Tests/badge.svg)](https://github.com/browserslist/browserl.ist/actions?workflow=Tests)
 
 > A website that shows what browsers supported by a browserslist string
 
@@ -14,7 +14,7 @@ I'm open to any pull requests or bug reports. Anything that has to do with the d
 
 ## License
 
-[MIT](./LICENSE) &copy; [Jon Rohan](https://github.com/jonrohan)
+[MIT](./LICENSE) &copy; [Browserslist](https://github.com/browserslist)
 
 [browserslist]: https://github.com/ai/browserslist
 [caniuse]: https://github.com/Fyrd/caniuse
