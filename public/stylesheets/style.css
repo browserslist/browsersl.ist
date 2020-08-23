@@ -17,6 +17,8 @@ a:hover {
 .plum { color: #490245; }
 .bg-neon-carrot { background-color: #fda34f; }
 .bg-plum { background-color: #490245; }
+.dt-ns ::selection { background: #ffcc00; }
+.lh-copy ::selection { background: #ffcc00; }
 
 .bg-plum--hover:hover {
   background-color: #260024;
