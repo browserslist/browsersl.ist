@@ -1,20 +1,28 @@
-# Browserl.ist [![Build Status](https://github.com/browserslist/browserl.ist/workflows/Tests/badge.svg)](https://github.com/browserslist/browserl.ist/actions?workflow=Tests)
+# Browserslist Website
 
-> A website that shows what browsers supported by a browserslist string
+This website uses [Browserslist] and [Can I Use] to display the compatible browsers for a browsers query.
 
-This website uses [browserslist][] and [caniuse][] to display the compatible browsers for a [browserslist search query](https://github.com/ai/browserslist#queries).
+[browserslist]: https://github.com/browserslist/browserslist
+[caniuse]: https://github.com/Fyrd/caniuse
+
 
 ## Development
 
-This website runs on [expressjs](https://expressjs.com/). To run locally, after `npm install` to install the dependencies, `npm start` to run the server.
+To run a local copy for development:
+1. Install correct versions of `Node.js` and `pnpm`. There are two ways:
+	1. With `asdf` version manager:
+		1. Install [`asdf`](https://github.com/asdf-vm/asdf) and asdf plugins for `Node.js` and `pnpm`
+		2. Run `asdf install`
+	2. Manually (check needed versions in `.tool-versions`)
 
-## Contributing
+2. Install dependencies:
 
-I'm open to any pull requests or bug reports. Anything that has to do with the data that is presented should be opened with [browserslist][] or [caniuse][].
+   ```sh
+   pnpm install
+   ```
 
-## License
+3. Run local server:
 
-[MIT](./LICENSE) &copy; [Browserslist](https://github.com/browserslist)
-
-[browserslist]: https://github.com/ai/browserslist
-[caniuse]: https://github.com/Fyrd/caniuse
+   ```sh
+   pnpm start
+   ```
