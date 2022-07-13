@@ -9,6 +9,7 @@ This website uses [Browserslist] and [Can I Use] to display the compatible brows
 ## Development
 
 To run a local copy for development:
+
 1. Install correct versions of `Node.js` and `pnpm`. There are two ways:
 	1. With `asdf` version manager:
 		1. Install [`asdf`](https://github.com/asdf-vm/asdf) and asdf plugins for `Node.js` and `pnpm`
@@ -26,3 +27,5 @@ To run a local copy for development:
    ```sh
    pnpm start
    ```
+
+We recommend to install Prettier and EditorConfig plugins to your text editor.
