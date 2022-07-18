@@ -1,0 +1,8 @@
+{
+  "name": "browserl.ist-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": ""
+  }
+}
