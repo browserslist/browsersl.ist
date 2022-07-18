@@ -1,0 +1,35 @@
+{
+  "name": "browserl.ist-client",
+  "private": true,
+  "homepage": "https://browserl.ist/",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "vite build -m production",
+    "test": "pnpm build && size-limit"
+  },
+  "dependencies": {
+    "@csstools/postcss-oklab-function": "^1.1.1",
+    "autoprefixer": "^10.4.7",
+    "jstransformer-markdown-it": "^2.1.0",
+    "postcss": "^8.4.14",
+    "postcss-media-minmax": "^5.0.0",
+    "postcss-nesting": "^10.1.10",
+    "postcss-opacity-percentage": "^1.1.2",
+    "vite": "^3.0.0",
+    "vite-plugin-pug-transformer": "^1.0.2"
+  },
+  "devDependencies": {
+    "@size-limit/file": "^7.0.8",
+    "size-limit": "^7.0.8"
+  },
+  "pnpm": {
+    "overrides": {
+      "markdown-it@<12.3.2": ">=12.3.2"
+    }
+  }
+}
