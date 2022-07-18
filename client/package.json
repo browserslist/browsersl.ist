@@ -1,12 +1,7 @@
 {
   "name": "browserl.ist-client",
   "private": true,
-  "homepage": "https://browserl.ist/",
   "type": "module",
-  "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
   "scripts": {
     "start": "vite",
     "build": "vite build -m production",
@@ -26,10 +21,5 @@
   "devDependencies": {
     "@size-limit/file": "^7.0.8",
     "size-limit": "^7.0.8"
-  },
-  "pnpm": {
-    "overrides": {
-      "markdown-it@<12.3.2": ">=12.3.2"
-    }
   }
 }
