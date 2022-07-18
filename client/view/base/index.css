@@ -1,5 +1,3 @@
-@import "./reset.css";
-
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
