@@ -32,7 +32,11 @@ jobs:
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
-      - name: Run tests
+      - name: Run core tests
         run: pnpm test
+        env:
+          FORCE_COLOR: 2
+      - name: Run projects tests
+        run: pnpm -r test
         env:
           FORCE_COLOR: 2
