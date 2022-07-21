@@ -1,0 +1,292 @@
+{
+  "query": "defaults",
+  "browserslistVersion": "4.21.2",
+  "caniuseVersion": "1.0.30001367",
+  "browsers": [
+    {
+      "id": "and_chr",
+      "name": "Chrome for Android",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "103",
+          "coverage": 42.3898,
+          "inQuery": true
+        },
+        {
+          "version": "42",
+          "coverage": 0.1,
+          "inQuery": false
+        }
+      ]
+    },
+    {
+      "id": "and_ff",
+      "name": "Firefox for Android",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "101",
+          "coverage": 0.30995,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "and_qq",
+      "name": "QQ Browser",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "10.4",
+          "coverage": 0.142577,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "and_uc",
+      "name": "UC Browser for Android",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "12.12",
+          "coverage": 0.712885,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "android",
+      "name": "Android Browser",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "103",
+          "coverage": 0,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "chrome",
+      "name": "Chrome",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "103",
+          "coverage": 1.61923,
+          "inQuery": true
+        },
+        {
+          "version": "102",
+          "coverage": 17.8077,
+          "inQuery": true
+        },
+        {
+          "version": "101",
+          "coverage": 1.47099,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "edge",
+      "name": "Edge",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "103",
+          "coverage": 0.589155,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "edge",
+      "name": "Edge",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "102",
+          "coverage": 2.86595,
+          "inQuery": true
+        },
+        {
+          "version": "102",
+          "coverage": 0.083622,
+          "inQuery": true
+        },
+        {
+          "version": "101",
+          "coverage": 2.00313,
+          "inQuery": true
+        },
+        {
+          "version": "91",
+          "coverage": 0.095025,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "ios_saf",
+      "name": "Safari on iOS",
+
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "15.5",
+          "coverage": 8.63769,
+          "inQuery": true
+        },
+        {
+          "version": "15.4",
+          "coverage": 2.16691,
+          "inQuery": true
+        },
+        {
+          "version": "15.2-15.3",
+          "coverage": 0.749737,
+          "inQuery": true
+        },
+        {
+          "version": "14.5-14.8",
+          "coverage": 1.278,
+          "inQuery": false
+        }
+      ]
+    },
+    {
+      "id": "ios_saf",
+      "name": "Safari on iOS",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "14.0-14.4",
+          "coverage": 0.528258,
+          "inQuery": true
+        },
+        {
+          "version": "12.2-12.5",
+          "coverage": 0.559684,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "kaios",
+      "name": "KaiOS Browser",
+      "link": "https://ru.wikipedia.org/wiki/KaiOS",
+      "icon": "images/kaios.png",
+      "versions": [
+        {
+          "version": "2.5",
+          "coverage": 0.049592,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "op_mini",
+      "name": "Opera Mini",
+      "link": "https://en.wikipedia.org/wiki/Opera_Mini",
+      "icon": "images/op_mini.png",
+      "versions": [
+        {
+          "version": "all",
+          "coverage": 0.950748,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "op_mob",
+      "name": "Opera Mobile",
+
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/and_chr.png",
+      "versions": [
+        {
+          "version": "64",
+          "coverage": 0.0111391,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "opera",
+      "name": "Opera",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/opera.png",
+      "versions": [
+        {
+          "version": "87",
+          "coverage": 0.592956,
+          "inQuery": true
+        },
+        {
+          "version": "86",
+          "coverage": 0.300279,
+          "inQuery": true
+        },
+        {
+          "version": "85",
+          "coverage": 0.034209,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "safari",
+      "name": "Safari",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/safari.png",
+      "versions": [
+        {
+          "version": "15.5",
+          "coverage": 1.47859,
+          "inQuery": true
+        },
+        {
+          "version": "15.4",
+          "coverage": 0.528339,
+          "inQuery": true
+        }
+      ]
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung Internet",
+      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "icon": "images/samsung.png",
+      "versions": [
+        {
+          "version": "17.0",
+          "coverage": 2.11205,
+          "inQuery": true
+        },
+        {
+          "version": "16.0",
+          "coverage": 0.238123,
+          "inQuery": true
+        },
+        {
+          "version": "11.0",
+          "coverage": 0.1,
+          "inQuery": false
+        }
+      ]
+    }
+  ]
+}
