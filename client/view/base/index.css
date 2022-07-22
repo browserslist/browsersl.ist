@@ -3,3 +3,124 @@
     transition: none !important;
   }
 }
+
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+  color: var(--text-primary);
+  background-color: var(--main-bg);
+}
+
+.Article {
+  box-sizing: border-box;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-height: 100vh;
+  padding: 24px 32px;
+  overflow: scroll;
+}
+
+.Article--right {
+  background-color: var(--bg-highlited);
+}
+
+.Introduction {
+  font-size: 25px;
+  line-height: 32px;
+  letter-spacing: 0.01em;
+}
+
+.Supported {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+p {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+}
+
+p a {
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+  color: var(--text-primary);
+  text-decoration: none;
+  background-image: linear-gradient(to top, var(--text-primary) 1px, transparent 1px, transparent);
+  background-position: 0 1.3em;
+  transition: background-position var(--time);
+
+  --time: 0.3s;
+}
+
+@media (hover) {
+  p a:hover {
+    background-position: 0 1.1em;
+  }
+}
+
+code {
+  /* stylelint-disable-next-line font-family-no-duplicate-names */
+  font-family: monospace, monospace;
+}
+
+p code {
+  padding: 0.2em;
+  color: var(--accent);
+  background-color: var(--text-highlited);
+  border-radius: 0.2em;
+}
+
+.QueryTextArea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  color: inherit;
+  background-color: var(--main-bg);
+  border: none;
+  border-radius: 8px;
+}
+
+.QueryTextArea,
+.QueryTextArea::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.QueryTextArea::placeholder {
+  color: var(--text-secondary);
+}
+
+.QueryTextArea:focus-visible {
+  outline-color: var(--accent);
+}
+
+.Pre {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  font-size: inherit;
+  color: var(--accent);
+  background-color: var(--text-highlited);
+  border-radius: 8px;
+}
+
+.Pre code {
+  font-size: inherit;
+}
