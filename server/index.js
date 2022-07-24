@@ -1,8 +1,8 @@
-import http from 'http';
-import browserslist from 'browserslist';
-import { URL } from 'url';
-import { readFileSync } from 'fs';
-import { agents as caniuse } from 'caniuse-lite';
+import http from 'http'
+import browserslist from 'browserslist'
+import { URL } from 'url'
+import { readFileSync } from 'fs'
+import { agents as caniuse } from 'caniuse-lite'
 
 const { version: browserslistVersion } = importJSON(
   './node_modules/browserslist/package.json'
@@ -10,77 +10,120 @@ const { version: browserslistVersion } = importJSON(
 const { version: caniuseVersion } = importJSON(
   './node_modules/caniuse-lite/package.json'
 )
+const browsersWikipediaLinks = importJSON(
+  '../browsers-data/wikipedia-links.json'
+)
 
-const DEFAULT_QUERY = 'defaults';
-const DEFAULT_REGION = 'Global';
-const PORT = process.env.PORT || 5000;
+const DEFAULT_QUERY = 'defaults'
+const DEFAULT_REGION = 'Global'
+const PORT = process.env.PORT || 5000
 
-let caniuseRegion;
+let caniuseRegion
 
-http.createServer((req, res) => {
-    let url = new URL(req.url, `http://${req.headers.host}/`);
+http
+  .createServer((req, res) => {
+    let url = new URL(req.url, `http://${req.headers.host}/`)
 
     if (url.pathname === '/') {
-      let query = url.searchParams.get('q') || DEFAULT_QUERY;
-      let region = extractRegionFromQuery(query);
-      let browsers = [];
+      let query = url.searchParams.get('q') || DEFAULT_QUERY
+      let region = extractRegionFromQuery(query)
+
+      let compatibleBrowsers = getBrowsers()
+      let browsersByQuery = []
 
       try {
-        let queryWithoutQuotes = query.replace(/'/g, '');
-        browsers = browserslist(queryWithoutQuotes);
+        let queryWithoutQuotes = query.replace(/'/g, '')
+        browsersByQuery = browserslist(queryWithoutQuotes)
       } catch (e) {
-        res.writeHead(200, { 'Content-Type': 'text/json' });
-        res.write(400, JSON.stringify({ status: 'error' }));
-        res.end();
+        // TODO create middleware
+        res.writeHead(400, {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'text/json'
+        })
+        res.write(JSON.stringify({ status: 'error' }))
+        res.end()
+        return
       }
 
-      let compatibleBrowsers = browsers.map((browser) => {
-        let [id, version] = browser.split(' ');
-        let coverage;
-        let name;
-        let db = caniuse[id];
+      for (let browser of browsersByQuery) {
+        let [id, version] = browser.split(' ')
+        let { usage_global: usageGlobal } = caniuse[id]
+        // TODO sort versions by coverage, show versions only >=0.1% coverage
+        // TODO if all versions do not satisfy the request, show the most popular
+        compatibleBrowsers
+          .find(x => x.id === id)
+          .versions.push({
+            version,
+            coverage: region
+              ? getRegionCoverage(region, id, version)
+              : getCoverage(usageGlobal, version)
+            // TODO inQuery flag
+          })
+      }
 
-        coverage = region
-          ? getRegionCoverage(region, id, version)
-          : getCoverage(db.usage_global, version);
-        name = db.browser;
-
-        return { id, name, version, coverage };
-      });
-
-      res.writeHead(200, { 'Content-Type': 'text/json' });
-      res.write(JSON.stringify({
-        query,
-        region: region || DEFAULT_REGION,
-        coverage: browserslist.coverage(browsers, region),
-        browsers: compatibleBrowsers,
-        browserslistVersion,
-        caniuseVersion,
-      }));
-      res.end();
+      res.writeHead(200, {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'text/json'
+      })
+      res.write(
+        JSON.stringify({
+          query,
+          browserslistVersion,
+          caniuseVersion,
+          browsers: compatibleBrowsers,
+          region: region || DEFAULT_REGION,
+          coverage: browserslist.coverage(browsersByQuery, region)
+        })
+      )
+      res.end()
     }
-  }).listen(PORT);
+  })
+  .listen(PORT)
 
 function extractRegionFromQuery(query) {
-  let queryHasIn = query.match(/ in ((?:alt-)?[A-Za-z]{2})(?:,|$)/);
-  return queryHasIn ? queryHasIn[1] : undefined;
+  let queryHasIn = query.match(/ in ((?:alt-)?[A-Za-z]{2})(?:,|$)/)
+  return queryHasIn ? queryHasIn[1] : undefined
 }
 
 function getCoverage(data, version) {
-  let [lastVersion] = Object.keys(data).sort((a, b) => Number(b) - Number(a));
+  let [lastVersion] = Object.keys(data).sort((a, b) => Number(b) - Number(a))
 
   // If specific version coverage is missing, fall back to 'version zero'
-  return data[version] !== undefined
-    ? data[version]
-    : data[lastVersion];
+  return data[version] !== undefined ? data[version] : data[lastVersion]
 }
 
 function getRegionCoverage(region, id, version) {
   if (!caniuseRegion) {
-    caniuseRegion = importJSON(`caniuse-lite/data/regions/${region}.json`);
+    caniuseRegion = importJSON(
+      `./node_modules/caniuse-lite/data/regions/${region}.json`
+    )
   }
 
-  return getCoverage(caniuseRegion.data[id], version);
+  return getCoverage(caniuseRegion.data[id], version)
+}
+
+// TODO fix perfomance (computational complexity)
+function getBrowsers() {
+  return Object.entries(caniuse)
+    .map(([id, data]) => {
+      let coverage = Object.values(data.usage_global).reduce((a, b) => a + b, 0)
+      return {
+        id,
+        name: data.browser,
+        wiki: browsersWikipediaLinks[id],
+        coverage,
+        versions: []
+      }
+    })
+    .sort((a, b) => {
+      if (a.coverage > b.coverage) {
+        return -1
+      }
+      if (a.coverage < b.coverage) {
+        return 1
+      }
+      return 0
+    })
 }
 
 function importJSON(filename) {
