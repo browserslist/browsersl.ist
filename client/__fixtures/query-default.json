@@ -6,8 +6,7 @@
     {
       "id": "and_chr",
       "name": "Chrome for Android",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "103",
@@ -24,8 +23,7 @@
     {
       "id": "and_ff",
       "name": "Firefox for Android",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "101",
@@ -37,8 +35,7 @@
     {
       "id": "and_qq",
       "name": "QQ Browser",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "10.4",
@@ -50,8 +47,7 @@
     {
       "id": "and_uc",
       "name": "UC Browser for Android",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "12.12",
@@ -63,8 +59,7 @@
     {
       "id": "android",
       "name": "Android Browser",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "103",
@@ -76,8 +71,7 @@
     {
       "id": "chrome",
       "name": "Chrome",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "103",
@@ -99,8 +93,7 @@
     {
       "id": "edge",
       "name": "Edge",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "103",
@@ -112,8 +105,7 @@
     {
       "id": "edge",
       "name": "Edge",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "102",
@@ -140,9 +132,7 @@
     {
       "id": "ios_saf",
       "name": "Safari on iOS",
-
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "15.5",
@@ -169,8 +159,7 @@
     {
       "id": "ios_saf",
       "name": "Safari on iOS",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "14.0-14.4",
@@ -187,8 +176,7 @@
     {
       "id": "kaios",
       "name": "KaiOS Browser",
-      "link": "https://ru.wikipedia.org/wiki/KaiOS",
-      "icon": "images/kaios.png",
+      "wiki": "KaiOS",
       "versions": [
         {
           "version": "2.5",
@@ -200,8 +188,7 @@
     {
       "id": "op_mini",
       "name": "Opera Mini",
-      "link": "https://en.wikipedia.org/wiki/Opera_Mini",
-      "icon": "images/op_mini.png",
+      "wiki": "Opera_Mini",
       "versions": [
         {
           "version": "all",
@@ -213,9 +200,7 @@
     {
       "id": "op_mob",
       "name": "Opera Mobile",
-
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/and_chr.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "64",
@@ -227,8 +212,7 @@
     {
       "id": "opera",
       "name": "Opera",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/opera.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "87",
@@ -250,8 +234,7 @@
     {
       "id": "safari",
       "name": "Safari",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/safari.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "15.5",
@@ -268,8 +251,7 @@
     {
       "id": "samsung",
       "name": "Samsung Internet",
-      "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
-      "icon": "images/samsung.png",
+      "wiki": "Google_Chrome",
       "versions": [
         {
           "version": "17.0",
