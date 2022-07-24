@@ -1,25 +1,44 @@
-import fakeData from '../../__fixtures/query-default.json';
+// TODO Add variables to .env
+const API_HOST = 'http://localhost:5000'
+const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
 
-document.getElementById('browsers-root').innerHTML = `
-  <ul class="browsers">
+document.getElementById('browsers-input').addEventListener('input', () => {
+  let query = document.getElementById('browsers-input').value
+  sendQuery(query)
+})
 
-      ${fakeData.browsers.map(({ name, link, icon, versions }) => `
-        <li class="browsers__item">
-           <img src="${icon}" alt="" />
-           <a href="${link}" target="_blank" rel="noreferrer noopener">${name}</a>
+sendQuery('defaults')
 
-           <ul>
-              ${versions.map(({ inQuery, version, coverage }) => `
-                <li ${!inQuery ? 'style="color: gray' : ''}">
-                  ${version} — ${Math.floor(coverage * 1000) / 1000}%
-                </li>
-              `).join("")}
-            </ul>
-        </li>
-        `).join("")}
-  </ul>
+async function sendQuery(query) {
+  let response = await fetch(`${API_HOST}/?q=${encodeURIComponent(query)}`)
+  let data = await response.json()
 
-  Browserslist ver: ${fakeData.browserslistVersion}
-  <br />
-  Data provided by caniuse-db: ${fakeData.caniuseVersion}
-`;
+  document.getElementById('browsers-root').innerHTML = `
+    <ul class="browsers">
+        ${data.browsers
+          .map(
+            ({ id, name, wiki, versions }) => `
+          <li class="browsers__item">
+            <img src="${id}" alt="" />
+            <a href="${WIKIPEDIA_URL}${wiki}" target="_blank" rel="noreferrer noopener">${name}</a>
+
+            <ul>
+                ${versions
+                  .map(
+                    ({ version, coverage }) => `
+                  <li>
+                    ${version} — ${Math.floor(coverage * 1000) / 1000}%
+                  </li>
+                `
+                  )
+                  .join('')}
+              </ul>
+          </li>
+          `).join('')}
+    </ul>
+
+    Browserslist ver: ${data.browserslistVersion}
+    <br />
+    Data provided by caniuse-db: ${data.caniuseVersion}
+    `
+}
