@@ -1,0 +1,8 @@
+.browsers {
+  columns: 2;
+}
+
+.browsers__item {
+  break-inside: avoid;
+  margin-bottom: 1em;
+}
