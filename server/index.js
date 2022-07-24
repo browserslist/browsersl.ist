@@ -4,8 +4,12 @@ import { URL } from 'url';
 import { readFileSync } from 'fs';
 import { agents as caniuse } from 'caniuse-lite';
 
-const { version: browserslistVersion } = importJSON('browserslist/package.json');
-const { version: caniuseVersion } = importJSON('caniuse-lite/package.json');
+const { version: browserslistVersion } = importJSON(
+  './node_modules/browserslist/package.json'
+)
+const { version: caniuseVersion } = importJSON(
+  './node_modules/caniuse-lite/package.json'
+)
 
 const DEFAULT_QUERY = 'defaults';
 const DEFAULT_REGION = 'Global';
@@ -80,7 +84,5 @@ function getRegionCoverage(region, id, version) {
 }
 
 function importJSON(filename) {
-  return JSON.parse(
-    readFileSync(new URL(`./node_modules/${filename}`, `${import.meta.url}`))
-  );
-};
+  return JSON.parse(readFileSync(new URL(filename, import.meta.url)))
+}
