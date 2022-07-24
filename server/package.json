@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "nodemon --inspect index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "browserslist": "^4.21.2",
