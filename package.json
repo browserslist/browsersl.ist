@@ -8,7 +8,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "lint": "tsc --noEmit && eslint . && stylelint **/*.css",
+    "lint": "eslint . && stylelint **/*.css",
     "test": "pnpm audit --prod && pnpm lint"
   },
   "devDependencies": {
