@@ -1,5 +1,6 @@
 .browsers {
-  columns: 2;
+  columns: 3;
+  max-width: 1200px;
 }
 
 .browsers__item {
