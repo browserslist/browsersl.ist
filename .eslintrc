@@ -2,9 +2,10 @@
   "extends": "@logux/eslint-config/esm",
   "overrides": [
     {
-      "files": "**/worker.ts",
+      "files": "**/**.js",
       "rules": {
-        "import/extensions": "off"
+        "import/extensions": "off",
+        "prefer-let/prefer-let": "off"
       }
     }
   ]
