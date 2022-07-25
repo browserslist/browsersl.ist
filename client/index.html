@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="./index.css">
-  <script type="module" src="./index.ts" defer></script>
+  <script type="module" src="./index.js" defer></script>
   <meta name="color-scheme" content="dark light">
 </head>
 
@@ -58,10 +58,8 @@
       <button type="submit">SHOW STATS!!!</button>
     </form>
     <h2>Global coverage: <span id="global-coverage"></span></h2>
-    <div role="presentation" id="global-coverage-presentation"></div>
-    <ul id="browsers-stats">
-      <li><span></span></li>
-    </ul>
+    <ul role="presentation" id="global-coverage-bar" class="GlobalCoverageBar"></ul>
+    <div id="browsers-stats" class="BrowsersStat"></div>
   </article>
 
 </body>
