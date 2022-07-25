@@ -7,6 +7,7 @@
       "id": "and_chr",
       "name": "Chrome for Android",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
+      "coverage": 42.4898,
       "icon": "images/and_chr.png",
       "versions": [
         {
@@ -26,6 +27,7 @@
       "name": "Firefox for Android",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 0.30995,
       "versions": [
         {
           "version": "101",
@@ -39,6 +41,7 @@
       "name": "QQ Browser",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 0.142577,
       "versions": [
         {
           "version": "10.4",
@@ -52,6 +55,7 @@
       "name": "UC Browser for Android",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 0.712885,
       "versions": [
         {
           "version": "12.12",
@@ -65,6 +69,7 @@
       "name": "Android Browser",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 0,
       "versions": [
         {
           "version": "103",
@@ -78,6 +83,7 @@
       "name": "Chrome",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 19,
       "versions": [
         {
           "version": "103",
@@ -101,6 +107,7 @@
       "name": "Edge",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 0.589155,
       "versions": [
         {
           "version": "103",
@@ -114,6 +121,7 @@
       "name": "Edge",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 4,
       "versions": [
         {
           "version": "102",
@@ -143,6 +151,7 @@
 
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 10,
       "versions": [
         {
           "version": "15.5",
@@ -171,6 +180,7 @@
       "name": "Safari on iOS",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 1,
       "versions": [
         {
           "version": "14.0-14.4",
@@ -189,6 +199,7 @@
       "name": "KaiOS Browser",
       "link": "https://ru.wikipedia.org/wiki/KaiOS",
       "icon": "images/kaios.png",
+      "coverage": 0.04,
       "versions": [
         {
           "version": "2.5",
@@ -202,6 +213,7 @@
       "name": "Opera Mini",
       "link": "https://en.wikipedia.org/wiki/Opera_Mini",
       "icon": "images/op_mini.png",
+      "coverage": 1,
       "versions": [
         {
           "version": "all",
@@ -216,6 +228,7 @@
 
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/and_chr.png",
+      "coverage": 0,
       "versions": [
         {
           "version": "64",
@@ -229,6 +242,7 @@
       "name": "Opera",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/opera.png",
+      "coverage": 1.4,
       "versions": [
         {
           "version": "87",
@@ -252,6 +266,7 @@
       "name": "Safari",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/safari.png",
+      "coverage": 1.8,
       "versions": [
         {
           "version": "15.5",
@@ -270,6 +285,7 @@
       "name": "Samsung Internet",
       "link": "https://ru.wikipedia.org/wiki/Google_Chrome",
       "icon": "images/samsung.png",
+      "coverage": 2.4,
       "versions": [
         {
           "version": "17.0",
