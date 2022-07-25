@@ -1,70 +1,19 @@
 {
   "query": "defaults",
+  "error": "",
+  "region": "Global",
   "browserslistVersion": "4.21.2",
-  "caniuseVersion": "1.0.30001367",
+  "caniuseVersion": "1.0.30001369",
   "browsers": [
     {
       "id": "and_chr",
       "name": "Chrome for Android",
-      "wiki": "Google_Chrome",
+      "wiki": "Google_Chrome#Android",
+      "coverage": 42.3898,
       "versions": [
         {
           "version": "103",
-          "coverage": 42.3898,
-          "inQuery": true
-        },
-        {
-          "version": "42",
-          "coverage": 0.1,
-          "inQuery": false
-        }
-      ]
-    },
-    {
-      "id": "and_ff",
-      "name": "Firefox for Android",
-      "wiki": "Google_Chrome",
-      "versions": [
-        {
-          "version": "101",
-          "coverage": 0.30995,
-          "inQuery": true
-        }
-      ]
-    },
-    {
-      "id": "and_qq",
-      "name": "QQ Browser",
-      "wiki": "Google_Chrome",
-      "versions": [
-        {
-          "version": "10.4",
-          "coverage": 0.142577,
-          "inQuery": true
-        }
-      ]
-    },
-    {
-      "id": "and_uc",
-      "name": "UC Browser for Android",
-      "wiki": "Google_Chrome",
-      "versions": [
-        {
-          "version": "12.12",
-          "coverage": 0.712885,
-          "inQuery": true
-        }
-      ]
-    },
-    {
-      "id": "android",
-      "name": "Android Browser",
-      "wiki": "Google_Chrome",
-      "versions": [
-        {
-          "version": "103",
-          "coverage": 0,
-          "inQuery": true
+          "coverage": 42.3898
         }
       ]
     },
@@ -72,116 +21,139 @@
       "id": "chrome",
       "name": "Chrome",
       "wiki": "Google_Chrome",
+      "coverage": 24.034471000000007,
       "versions": [
         {
           "version": "103",
-          "coverage": 1.61923,
-          "inQuery": true
+          "coverage": 1.61923
         },
         {
           "version": "102",
-          "coverage": 17.8077,
-          "inQuery": true
+          "coverage": 17.8077
         },
         {
           "version": "101",
-          "coverage": 1.47099,
-          "inQuery": true
-        }
-      ]
-    },
-    {
-      "id": "edge",
-      "name": "Edge",
-      "wiki": "Google_Chrome",
-      "versions": [
-        {
-          "version": "103",
-          "coverage": 0.589155,
-          "inQuery": true
-        }
-      ]
-    },
-    {
-      "id": "edge",
-      "name": "Edge",
-      "wiki": "Google_Chrome",
-      "versions": [
-        {
-          "version": "102",
-          "coverage": 2.86595,
-          "inQuery": true
-        },
-        {
-          "version": "102",
-          "coverage": 0.083622,
-          "inQuery": true
-        },
-        {
-          "version": "101",
-          "coverage": 2.00313,
-          "inQuery": true
-        },
-        {
-          "version": "91",
-          "coverage": 0.095025,
-          "inQuery": true
+          "coverage": 1.47099
         }
       ]
     },
     {
       "id": "ios_saf",
       "name": "Safari on iOS",
-      "wiki": "Google_Chrome",
+      "wiki": "Safari_(web_browser)",
+      "coverage": 14.933397659999999,
       "versions": [
         {
           "version": "15.5",
-          "coverage": 8.63769,
-          "inQuery": true
+          "coverage": 8.63769
         },
         {
           "version": "15.4",
-          "coverage": 2.16691,
-          "inQuery": true
+          "coverage": 2.16691
         },
         {
           "version": "15.2-15.3",
-          "coverage": 0.749737,
-          "inQuery": true
+          "coverage": 0.749737
         },
         {
           "version": "14.5-14.8",
-          "coverage": 1.278,
-          "inQuery": false
-        }
-      ]
-    },
-    {
-      "id": "ios_saf",
-      "name": "Safari on iOS",
-      "wiki": "Google_Chrome",
-      "versions": [
+          "coverage": 1.278
+        },
         {
           "version": "14.0-14.4",
-          "coverage": 0.528258,
-          "inQuery": true
+          "coverage": 0.528258
         },
         {
           "version": "12.2-12.5",
-          "coverage": 0.559684,
-          "inQuery": true
+          "coverage": 0.559684
         }
       ]
     },
     {
-      "id": "kaios",
-      "name": "KaiOS Browser",
-      "wiki": "KaiOS",
+      "id": "edge",
+      "name": "Edge",
+      "wiki": "Microsoft_Edge",
+      "coverage": 4.106212,
       "versions": [
         {
-          "version": "2.5",
-          "coverage": 0.049592,
-          "inQuery": true
+          "version": "103",
+          "coverage": 0.589155
+        },
+        {
+          "version": "102",
+          "coverage": 2.86595
+        }
+      ]
+    },
+    {
+      "id": "firefox",
+      "name": "Firefox",
+      "wiki": "Mozilla_Firefox",
+      "coverage": 3.257838000000001,
+      "versions": [
+        {
+          "version": "102",
+          "coverage": 0.083622
+        },
+        {
+          "version": "101",
+          "coverage": 2.00313
+        },
+        {
+          "version": "91",
+          "coverage": 0.095025
+        }
+      ]
+    },
+    {
+      "id": "safari",
+      "name": "Safari",
+      "wiki": "Safari_(web_browser)",
+      "coverage": 3.2230030000000003,
+      "versions": [
+        {
+          "version": "15.5",
+          "coverage": 1.47859
+        },
+        {
+          "version": "15.4",
+          "coverage": 0.528339
+        }
+      ]
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung Internet",
+      "wiki": "Samsung_Internet",
+      "coverage": 3.0232388,
+      "versions": [
+        {
+          "version": "17.0",
+          "coverage": 2.11205
+        },
+        {
+          "version": "16.0",
+          "coverage": 0.238123
+        }
+      ]
+    },
+    {
+      "id": "opera",
+      "name": "Opera",
+      "wiki": "Opera_(web_browser)",
+      "coverage": 1.4940070000000005,
+      "versions": [
+        {
+          "version": "87",
+          "coverage": 0.592956
+        },
+        {
+          "version": "86",
+          "coverage": 0.300279
+        },
+        {
+          "version": "85",
+          "coverage": 0.034209
         }
       ]
     },
@@ -189,86 +161,104 @@
       "id": "op_mini",
       "name": "Opera Mini",
       "wiki": "Opera_Mini",
+      "coverage": 0.950748,
       "versions": [
         {
           "version": "all",
-          "coverage": 0.950748,
-          "inQuery": true
+          "coverage": 0.950748
         }
+      ]
+    },
+    {
+      "id": "and_uc",
+      "name": "UC Browser for Android",
+      "wiki": "UC_Browser",
+      "coverage": 0.712885,
+      "versions": [
+        {
+          "version": "12.12",
+          "coverage": 0.712885
+        }
+      ]
+    },
+    {
+      "id": "ie",
+      "name": "IE",
+      "wiki": "Internet_Explorer",
+      "coverage": 0.57393763,
+      "versions": [
+
+      ]
+    },
+    {
+      "id": "android",
+      "name": "Android Browser",
+      "wiki": "List_of_features_in_Android#AndroidBrowser",
+      "coverage": 0.40293480000000004,
+      "versions": [
+        {
+          "version": "103",
+          "coverage": 0
+        }
+      ]
+    },
+    {
+      "id": "and_ff",
+      "name": "Firefox for Android",
+      "wiki": "Firefox_for_Android",
+      "coverage": 0.30995,
+      "versions": [
+        {
+          "version": "101",
+          "coverage": 0.30995
+        }
+      ]
+    },
+    {
+      "id": "and_qq",
+      "name": "QQ Browser",
+      "wiki": "Tencent_QQ",
+      "coverage": 0.142577,
+      "versions": [
+        {
+          "version": "10.4",
+          "coverage": 0.142577
+        }
+      ]
+    },
+    {
+      "id": "kaios",
+      "name": "KaiOS Browser",
+      "wiki": "KaiOS",
+      "coverage": 0.049592,
+      "versions": [
+        {
+          "version": "2.5",
+          "coverage": 0.049592
+        }
+      ]
+    },
+    {
+      "id": "ie_mob",
+      "name": "IE Mobile",
+      "wiki": "Internet_Explorer_Mobile",
+      "coverage": 0.0342574,
+      "versions": [
+
       ]
     },
     {
       "id": "op_mob",
       "name": "Opera Mobile",
-      "wiki": "Google_Chrome",
+      "wiki": "Opera_Mobile",
+      "coverage": 0.0111391,
       "versions": [
         {
           "version": "64",
-          "coverage": 0.0111391,
-          "inQuery": true
-        }
-      ]
-    },
-    {
-      "id": "opera",
-      "name": "Opera",
-      "wiki": "Google_Chrome",
-      "versions": [
-        {
-          "version": "87",
-          "coverage": 0.592956,
-          "inQuery": true
-        },
-        {
-          "version": "86",
-          "coverage": 0.300279,
-          "inQuery": true
-        },
-        {
-          "version": "85",
-          "coverage": 0.034209,
-          "inQuery": true
-        }
-      ]
-    },
-    {
-      "id": "safari",
-      "name": "Safari",
-      "wiki": "Google_Chrome",
-      "versions": [
-        {
-          "version": "15.5",
-          "coverage": 1.47859,
-          "inQuery": true
-        },
-        {
-          "version": "15.4",
-          "coverage": 0.528339,
-          "inQuery": true
-        }
-      ]
-    },
-    {
-      "id": "samsung",
-      "name": "Samsung Internet",
-      "wiki": "Google_Chrome",
-      "versions": [
-        {
-          "version": "17.0",
-          "coverage": 2.11205,
-          "inQuery": true
-        },
-        {
-          "version": "16.0",
-          "coverage": 0.238123,
-          "inQuery": true
-        },
-        {
-          "version": "11.0",
-          "coverage": 0.1,
-          "inQuery": false
+          "coverage": 0.0111391
         }
       ]
     }
-  ]
+  ],
+  "coverage": 90.30631810000003
 }
