@@ -56,7 +56,8 @@ p {
   letter-spacing: 0.01em;
 }
 
-p a {
+p a,
+.BrowsersStat__link {
   padding-bottom: 0.2em;
   margin-bottom: -0.2em;
   color: var(--text-primary);
@@ -69,7 +70,8 @@ p a {
 }
 
 @media (hover) {
-  p a:hover {
+  p a:hover,
+  .BrowsersStat__link:hover {
     background-position: 0 1.1em;
   }
 }
@@ -123,4 +125,97 @@ p code {
 
 .Pre code {
   font-size: inherit;
+}
+
+.GlobalCoverageBar {
+  display: flex;
+  gap: 2px;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  counter-reset: alpha 0;
+  background-color: var(--main-bg);
+  border-radius: 4px;
+}
+
+.GlobalCoverageBar__item {
+  box-sizing: border-box;
+  width: calc(var(--p, 0) * 1%);
+  overflow: hidden;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  list-style: none;
+  counter-increment: alpha -1;
+  background-color: var(--accent-alternave);
+  opacity: var(--a, 0%);
+
+  --p: 0;
+  --a: 0;
+}
+
+.GlobalCoverageBar__item::before {
+  --n: "";
+
+  display: block;
+  content: var(--n, "");
+}
+
+.BrowsersStat {
+  columns: 2;
+  column-fill: balance;
+}
+
+.BrowsersStat__td {
+  padding: 3px;
+  vertical-align: top;
+  break-inside: avoid-column;
+}
+
+td:last-child {
+  text-align: right;
+}
+
+@supports (background:-moz-element(#a)) {
+  table {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+  }
+
+  tbody,
+  tr {
+    display: contents;
+  }
+}
+
+[rowspan="2"] {
+  grid-row: span 2;
+}
+
+[rowspan="3"] {
+  grid-row: span 3;
+}
+
+[rowspan="4"] {
+  grid-row: span 4;
+}
+
+[rowspan="5"] {
+  grid-row: span 5;
+}
+
+[rowspan="6"] {
+  grid-row: span 6;
+}
+
+.BrowsersStat__td--coverage {
+  --c: 20%;
+
+  background-image: linear-gradient(to right, var(--accent-alternave) var(--c), transparent var(--c), transparent);
+}
+
+.BrowsersStat__link {
+  color: inherit;
+  text-decoration: none;
 }
