@@ -37,6 +37,13 @@ http
           })
           res.write(JSON.stringify(browsers))
           res.end()
+        }).catch((error) => {
+          res.writeHead(200, {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'text/json'
+          })
+          res.write(JSON.stringify({ error }))
+          res.end()
         })
       } catch (e) {
         // TODO create middleware
@@ -65,6 +72,9 @@ async function getBrowsers(query = DEFAULT_QUERY, region = DEFAULT_REGION) {
     try {
       browsersByQuery = browserslist(queryWithoutQuotes)
     } catch (e) {
+      if (e.browserslist) {
+        reject(e.message);
+      }
     }
 
     // TODO fix perfomance (computational complexity)
@@ -92,6 +102,8 @@ async function getBrowsers(query = DEFAULT_QUERY, region = DEFAULT_REGION) {
     for (let browser of browsersByQuery) {
       let [id, version] = browser.split(' ')
       let { usage_global: usageGlobal } = caniuseAgents[id]
+      // TODO sort versions by coverage, show versions only >=0.1% coverage
+      // TODO if all versions do not satisfy the request, show the most popular
       let versionData = {
         version,
         coverage: region !== DEFAULT_REGION
@@ -124,11 +136,15 @@ function getCoverage(data, version) {
 }
 
 async function getRegionCoverage(region, id, version) {
-  let loadRegion = async (resolve) => {
-    let { default: regionData } = await import(
-      `./node_modules/caniuse-lite/data/regions/${region}.js`
-    );
-    resolve(regionData);
+  let loadRegion = async (resolve,) => {
+    try {
+      let { default: regionData } = await import(
+        `./node_modules/caniuse-lite/data/regions/${region}.js`
+      );
+      resolve(regionData);
+    } catch (e) {
+      new Error('Region not found');
+    }
   };
   let regionData = await new Promise(loadRegion);
   return getCoverage(caniuseUnpackRegion(regionData)[id], version)
