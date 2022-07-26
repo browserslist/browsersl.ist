@@ -11,21 +11,21 @@ sendQuery('defaults')
 
 async function sendQuery(query) {
   let response = await fetch(`${API_HOST}/?q=${encodeURIComponent(query)}`)
-  let data = await response.json()
+  let { browsers, cv, bv } = await response.json()
 
   document.getElementById('browsers-root').innerHTML = `
     <ul class="browsers">
-        ${data.browsers
+        ${browsers
           .map(
             ({ id, name, wiki, versions }) => `
           <li class="browsers__item">
-            <img src="${id}" alt="" />
+            <img src="/${id}.png" alt="" />
             <a href="${WIKIPEDIA_URL}${wiki}" target="_blank" rel="noreferrer noopener">${name}</a>
 
             <ul>
                 ${versions
                   .map(
-                    ({ version, coverage }) => `
+                    ([version, coverage]) => `
                   <li>
                     ${version} — ${Math.floor(coverage * 1000) / 1000}%
                   </li>
@@ -34,11 +34,13 @@ async function sendQuery(query) {
                   .join('')}
               </ul>
           </li>
-          `).join('')}
+          `
+          )
+          .join('')}
     </ul>
 
-    Browserslist ver: ${data.browserslistVersion}
+    Browserslist ver: ${bv}
     <br />
-    Data provided by caniuse-db: ${data.caniuseVersion}
+    Data provided by caniuse-db: ${cv}
     `
 }
