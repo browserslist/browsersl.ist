@@ -4,7 +4,6 @@ import { URL } from 'url'
 import getBrowsers from './get-browsers.js'
 
 const DEFAULT_QUERY = 'defaults'
-const GLOBAL_REGION = 'Global'
 const PORT = process.env.PORT || 5000
 
 http
@@ -14,10 +13,9 @@ http
     if (url.pathname === '/') {
       let query = url.searchParams.get('q') || DEFAULT_QUERY
       let queryWithoutQuotes = query.replace(/'/g, '')
-      let region = extractRegionFromQuery(query) || GLOBAL_REGION
 
       try {
-        let browsers = await getBrowsers(queryWithoutQuotes, region)
+        let browsers = await getBrowsers(queryWithoutQuotes)
         res.writeHead(200, {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'text/json'
@@ -35,8 +33,3 @@ http
     }
   })
   .listen(PORT)
-
-function extractRegionFromQuery(query) {
-  let queryHasIn = query.match(/ in ((?:alt-)?[A-Za-z]{2})(?:,|$)/)
-  return queryHasIn ? queryHasIn[1] : undefined
-}

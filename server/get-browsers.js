@@ -7,7 +7,11 @@ let { version: bv } = importJSON('./node_modules/browserslist/package.json')
 let { version: cv } = importJSON('./node_modules/caniuse-lite/package.json')
 let wikipediaLinks = importJSON('../browsers-data/wikipedia-links.json')
 
-export default async function getBrowsers(query, region) {
+const GLOBAL_REGION = 'Global'
+
+export default async function getBrowsers(query) {
+  let region = parseRegionFromQuery(query)
+
   // TODO Add support `Node > 0` query
   let loadBrowsersData = async (resolve, reject) => {
     let browsersByQuery = []
@@ -33,11 +37,11 @@ export default async function getBrowsers(query, region) {
 
       browsersGroupsKeys.push(browser)
       let [id, version] = browser.split(' ')
-      let versionCoverage = region
-        ? await getRegionCoverage(id, version, region)
-        : getGlobalCoverage(id, version)
+      let versionCoverage = region === GLOBAL_REGION
+        ? getGlobalCoverage(id, version)
+        : await getRegionCoverage(id, version, region)
 
-      let versionData = [version, roundNumber(versionCoverage)]
+      let versionData = { version, coverage: roundNumber(versionCoverage) }
 
       if (!browsersGroups[id]) {
         browsersGroups[id] = { versions: [versionData] }
@@ -68,15 +72,24 @@ export default async function getBrowsers(query, region) {
 
     resolve({
       query,
-      region,
+      region: region || GLOBAL_REGION,
       coverage: browserslist.coverage(browsersByQuery, region),
-      bv,
-      cv,
+      versions: {
+        browserslist: bv,
+        caniuse: cv
+      },
       browsers
     })
   }
 
   return new Promise(loadBrowsersData)
+}
+
+function parseRegionFromQuery(query) {
+  let queryParsed = browserslist.parse(query)
+  // TODO Take the most frequent region in large queries?
+  let firstQueryRegion = queryParsed.find(x => x.place)
+  return firstQueryRegion ? firstQueryRegion.place : GLOBAL_REGION
 }
 
 function getGlobalCoverage(id, version) {
