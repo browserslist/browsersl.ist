@@ -10,7 +10,7 @@ let wikipediaLinks = importJSON('../browsers-data/wikipedia-links.json')
 const GLOBAL_REGION = 'Global'
 
 export default async function getBrowsers(query) {
-  let region = parseRegionFromQuery(query)
+  let region = parseRegionFromQuery(query) || GLOBAL_REGION
 
   // TODO Add support `Node > 0` query
   let loadBrowsersData = async (resolve, reject) => {
@@ -72,7 +72,7 @@ export default async function getBrowsers(query) {
 
     resolve({
       query,
-      region: region || GLOBAL_REGION,
+      region,
       coverage: browserslist.coverage(browsersByQuery, region),
       versions: {
         browserslist: bv,
@@ -89,7 +89,7 @@ function parseRegionFromQuery(query) {
   let queryParsed = browserslist.parse(query)
   // TODO Take the most frequent region in large queries?
   let firstQueryRegion = queryParsed.find(x => x.place)
-  return firstQueryRegion ? firstQueryRegion.place : GLOBAL_REGION
+  return firstQueryRegion ? firstQueryRegion.place : null
 }
 
 function getGlobalCoverage(id, version) {
