@@ -5,6 +5,10 @@ import getBrowsers from './get-browsers.js'
 
 const DEFAULT_QUERY = 'defaults'
 const PORT = process.env.PORT || 5000
+const defaultHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Content-Type': 'text/json'
+}
 
 http
   .createServer(async (req, res) => {
@@ -16,20 +20,18 @@ http
 
       try {
         let browsers = await getBrowsers(queryWithoutQuotes)
-        res.writeHead(200, {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'text/json'
-        })
+        res.writeHead(200, defaultHeaders)
         res.write(JSON.stringify(browsers))
         res.end()
       } catch (error) {
-        res.writeHead(400, {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'text/json'
-        })
+        res.writeHead(400, defaultHeaders)
         res.write(JSON.stringify({ error }))
         res.end()
       }
+    } else {
+      res.writeHead(404, defaultHeaders)
+      res.write(JSON.stringify({ error: 'Not found' }))
+      res.end()
     }
   })
   .listen(PORT)
