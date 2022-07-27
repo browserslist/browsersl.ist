@@ -13,7 +13,7 @@ sendQuery('defaults')
 
 async function sendQuery(query) {
   let response = await fetch(`${API_HOST}/?q=${encodeURIComponent(query)}`)
-  let { browsers, cv, bv } = await response.json()
+  let { browsers, versions: { browserslist, caniuse } } = await response.json()
 
   document.getElementById('browsers-root').innerHTML = `
     <ul class="browsers">
@@ -41,9 +41,9 @@ async function sendQuery(query) {
           .join('')}
     </ul>
 
-    Browserslist ver: ${bv}
+    Browserslist ver: ${browserslist}
     <br />
-    Data provided by caniuse-db: ${cv}
+    Data provided by caniuse-db: ${caniuse}
     `
 }
 
