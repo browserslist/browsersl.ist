@@ -17,19 +17,19 @@ async function sendQuery(query) {
     <ul class="browsers">
         ${browsers
           .map(
-            ({ id, name, wiki, versions }) => `
+            ({ id, name, versions }) => `
           <li class="browsers__item">
             <img src="/${id}.png" alt="" />
             <a href="${WIKIPEDIA_URL}${wiki}" target="_blank" rel="noreferrer noopener">${name}</a>
 
             <ul>
-                ${versions
+                ${Object.entries(versions)
+                  .sort(([, coverageA], [, coverageB]) => coverageB - coverageA)
                   .map(
                     ([version, coverage]) => `
                   <li>
-                    ${version} — ${Math.floor(coverage * 1000) / 1000}%
-                  </li>
-                `
+                    ${version} — ${coverage}%
+                  </li>`
                   )
                   .join('')}
               </ul>

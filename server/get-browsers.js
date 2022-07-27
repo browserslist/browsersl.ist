@@ -5,7 +5,6 @@ import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
 
 let { version: bv } = importJSON('./node_modules/browserslist/package.json')
 let { version: cv } = importJSON('./node_modules/caniuse-lite/package.json')
-let wikipediaLinks = importJSON('../browsers-data/wikipedia-links.json')
 
 const GLOBAL_REGION = 'Global'
 
@@ -41,29 +40,26 @@ export default async function getBrowsers(query) {
         ? getGlobalCoverage(id, version)
         : await getRegionCoverage(id, version, region)
 
-      let versionData = { version, coverage: roundNumber(versionCoverage) }
+      let versionData = { [`${version}`]: roundNumber(versionCoverage) }
 
       if (!browsersGroups[id]) {
-        browsersGroups[id] = { versions: [versionData] }
+        browsersGroups[id] = { versions: versionData }
       } else {
-        browsersGroups[id].versions.push(versionData)
+        Object.assign(browsersGroups[id].versions, versionData);
       }
     }
 
     let browsers = Object.entries(browsersGroups)
-      .map(([id, data]) => {
+      .map(([id, { versions }]) => {
         let { browser: name, usage_global: usageGlobal } = caniuseAgents[id]
         // TODO Add regional coverage
         let coverage = roundNumber(
           Object.values(usageGlobal).reduce((a, b) => a + b, 0)
         )
-        let wiki = wikipediaLinks[id]
-        let versions = data.versions.sort((a, b) => b.coverage - a.coverage)
 
         return {
           id,
           name,
-          wiki,
           coverage,
           versions
         }
