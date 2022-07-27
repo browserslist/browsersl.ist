@@ -36,16 +36,17 @@ export default async function getBrowsers(query) {
 
       browsersGroupsKeys.push(browser)
       let [id, version] = browser.split(' ')
-      let versionCoverage = region === GLOBAL_REGION
-        ? getGlobalCoverage(id, version)
-        : await getRegionCoverage(id, version, region)
+      let versionCoverage =
+        region === GLOBAL_REGION
+          ? getGlobalCoverage(id, version)
+          : await getRegionCoverage(id, version, region)
 
       let versionData = { [`${version}`]: roundNumber(versionCoverage) }
 
       if (!browsersGroups[id]) {
         browsersGroups[id] = { versions: versionData }
       } else {
-        Object.assign(browsersGroups[id].versions, versionData);
+        Object.assign(browsersGroups[id].versions, versionData)
       }
     }
 
@@ -93,10 +94,14 @@ function getGlobalCoverage(id, version) {
 }
 
 async function getRegionCoverage(id, version, region) {
-  let { default: regionData } = await import(
-    `./node_modules/caniuse-lite/data/regions/${region}.js`
-  )
-  return getCoverage(caniuseRegion(regionData)[id], version)
+  try {
+    let { default: regionData } = await import(
+      `./node_modules/caniuse-lite/data/regions/${region}.js`
+    )
+    return getCoverage(caniuseRegion(regionData)[id], version)
+  } catch (e) {
+    throw new Error(`Unknown region name \`${region}\`.`)
+  }
 }
 
 function getCoverage(data, version) {
