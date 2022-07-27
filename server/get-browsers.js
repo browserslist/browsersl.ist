@@ -14,8 +14,13 @@ export default async function getBrowsers(query, region) {
 
     try {
       browsersByQuery = browserslist(query)
-    } catch (e) {
-      reject(e)
+    } catch (error) {
+      reject(
+        error.browserslist
+          ? error.message
+          : `Unknown browser query \`${query}\`.`
+      )
+      return
     }
 
     let browsersGroups = {}
@@ -28,11 +33,11 @@ export default async function getBrowsers(query, region) {
 
       browsersGroupsKeys.push(browser)
       let [id, version] = browser.split(' ')
-      let coverage = region
-        ? getGlobalCoverage(id, version)
-        : await getRegionCoverage(id, version, region)
+      let versionCoverage = region
+        ? await getRegionCoverage(id, version, region)
+        : getGlobalCoverage(id, version)
 
-      let versionData = [version, roundNumber(coverage)]
+      let versionData = [version, roundNumber(versionCoverage)]
 
       if (!browsersGroups[id]) {
         browsersGroups[id] = { versions: [versionData] }
@@ -78,7 +83,6 @@ function getGlobalCoverage(id, version) {
   return getCoverage(caniuseAgents[id].usage_global, version)
 }
 
-// TODO Show region not found error if not exists
 async function getRegionCoverage(id, version, region) {
   let { default: regionData } = await import(
     `./node_modules/caniuse-lite/data/regions/${region}.js`
