@@ -6,12 +6,16 @@ const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
 
 document.getElementById('browsers-input').addEventListener('input', () => {
   let query = document.getElementById('browsers-input').value
+  // TODO debounce 100ms in printing (too much requests)
+  // TODO abort previous requests
   sendQuery(query)
 })
 
 sendQuery('defaults')
 
 async function sendQuery(query) {
+  // TODO Handling errors: 400 status and connection errors
+
   let response = await fetch(`${API_HOST}/?q=${encodeURIComponent(query)}`)
   let { browsers, versions: { browserslist, caniuse } } = await response.json()
 
