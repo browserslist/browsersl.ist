@@ -1,7 +1,7 @@
 import wikipediaLinks from './wikipedia-links.json'
 
-// TODO Add variables to .env
-const API_HOST = 'http://localhost:5000'
+// TODO Putting client and server to the single Docker image to use the same domain and re-use the power of HTTP/2
+const API_HOST = 'http://localhost:5000/api'
 const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
 
 document.getElementById('browsers-input').addEventListener('input', () => {
@@ -15,9 +15,11 @@ sendQuery('defaults')
 
 async function sendQuery(query) {
   // TODO Handling errors: 400 status and connection errors
-
-  let response = await fetch(`${API_HOST}/?q=${encodeURIComponent(query)}`)
-  let { browsers, versions: { browserslist, caniuse } } = await response.json()
+  let response = await fetch(`${API_HOST}?q=${encodeURIComponent(query)}`)
+  let {
+    browsers,
+    versions: { browserslist, caniuse }
+  } = await response.json()
 
   document.getElementById('browsers-root').innerHTML = `
     <ul class="browsers">
@@ -26,7 +28,9 @@ async function sendQuery(query) {
             ({ id, name, versions }) => `
           <li class="browsers__item">
             <img src="/${id}.png" alt="" />
-            <a href="${getWikipediaLink(id)}" target="_blank" rel="noreferrer noopener">${name}</a>
+            <a href="${getWikipediaLink(
+              id
+            )}" target="_blank" rel="noreferrer noopener">${name}</a>
 
             <ul>
                 ${Object.entries(versions)
@@ -52,5 +56,5 @@ async function sendQuery(query) {
 }
 
 function getWikipediaLink(id) {
-  return WIKIPEDIA_URL + wikipediaLinks[id];
+  return WIKIPEDIA_URL + wikipediaLinks[id]
 }

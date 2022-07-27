@@ -14,7 +14,8 @@ http
   .createServer(async (req, res) => {
     let url = new URL(req.url, `http://${req.headers.host}/`)
 
-    if (url.pathname === '/') {
+    // TODO Putting client and server to the single Docker image to use the same domain and re-use the power of HTTP/2
+    if (url.pathname === '/api') {
       let query = url.searchParams.get('q') || DEFAULT_QUERY
       let queryWithoutQuotes = query.replace(/'/g, '')
 
