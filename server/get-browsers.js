@@ -94,10 +94,9 @@ function getGlobalCoverage(id, version) {
 }
 
 async function getRegionCoverage(id, version, region) {
-  let regionError = new Error(`Unknown region name \`${region}\`.`)
   try {
     if (region.includes('/')) {
-      throw regionError
+      throw new Error(`Invalid symbols in region name \`${region}\`.`)
     }
 
     let { default: regionData } = await import(
@@ -105,7 +104,7 @@ async function getRegionCoverage(id, version, region) {
     )
     return getCoverage(caniuseRegion(regionData)[id], version)
   } catch (e) {
-    throw regionError
+    throw new Error(`Unknown region name \`${region}\`.`)
   }
 }
 
