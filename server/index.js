@@ -25,12 +25,12 @@ http
         res.end()
       } catch (error) {
         res.writeHead(400, defaultHeaders)
-        res.write(JSON.stringify({ error }))
+        res.write(JSON.stringify({ message: error.message }))
         res.end()
       }
     } else {
       res.writeHead(404, defaultHeaders)
-      res.write(JSON.stringify({ error: 'Not found' }))
+      res.write(JSON.stringify({ message: 'Not found' }))
       res.end()
     }
   })
