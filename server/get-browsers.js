@@ -46,6 +46,7 @@ export default async function getBrowsers(query) {
       if (!browsersGroups[id]) {
         browsersGroups[id] = { versions: versionData }
       } else {
+        // TODO Sort version keys by coverage
         Object.assign(browsersGroups[id].versions, versionData)
       }
     }
