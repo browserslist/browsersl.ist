@@ -11,7 +11,6 @@ http
   .createServer(async (req, res) => {
     let url = new URL(req.url, `http://${req.headers.host}/`)
 
-    // TODO add endpoints req.get('/'), req.get('/social') etc.
     if (url.pathname === '/') {
       let query = url.searchParams.get('q') || DEFAULT_QUERY
       let queryWithoutQuotes = query.replace(/'/g, '')
@@ -31,7 +30,6 @@ http
         res.end()
       }
     }
-    // TODO error 500
   })
   .listen(PORT)
 
