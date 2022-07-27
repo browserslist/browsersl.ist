@@ -25,7 +25,7 @@ http
         res.end()
       } catch (error) {
         res.writeHead(400, defaultHeaders)
-        res.write(JSON.stringify({ message: error.message }))
+        res.write(JSON.stringify({ message: error }))
         res.end()
       }
     } else {
