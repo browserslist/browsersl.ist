@@ -55,13 +55,14 @@ function updateBrowsersStats(data) {
   table.classList.add('BrowsersStat__table');
 
   data.browsers.forEach(({name, link, icon, versions}) => {
+    const tBody = document.createElement('tbody');
     const tr = document.createElement('tr');
     tr.classList.add('.BrowsersStat_tr');
 
     const iconCell = document.createElement('td');
     iconCell.classList.add('BrowsersStat__td');
     const iconElem = document.createElement('img');
-    iconCell.classList.add('BrowsersStat__icon');
+    iconElem.classList.add('BrowsersStat__icon');
     iconElem.src = icon;
     iconCell.setAttribute('rowspan', versions.length);
     iconCell.appendChild(iconElem);
@@ -82,7 +83,7 @@ function updateBrowsersStats(data) {
 
     tr.appendChild(createCoverageCell(versions[0].coverage));
 
-    table.appendChild(tr);
+    tBody.appendChild(tr);
 
     versions.slice(1).forEach((item) => {
       const {version, coverage} = item;
@@ -92,9 +93,9 @@ function updateBrowsersStats(data) {
 
       versionTr.appendChild(createCoverageCell(coverage));
 
-      table.appendChild(versionTr);
+      tBody.appendChild(versionTr);
     })
-
+    table.appendChild(tBody);
   });
 
   element.innerHTML = '';
