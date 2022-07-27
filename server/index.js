@@ -16,16 +16,19 @@ http
       let queryWithoutQuotes = query.replace(/'/g, '')
       let region = extractRegionFromQuery(query) || GLOBAL_REGION
 
-      res.writeHead(200, {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'text/json'
-      })
-
       try {
         let browsers = await getBrowsers(queryWithoutQuotes, region)
+        res.writeHead(200, {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'text/json'
+        })
         res.write(JSON.stringify(browsers))
         res.end()
       } catch (error) {
+        res.writeHead(400, {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'text/json'
+        })
         res.write(JSON.stringify({ error }))
         res.end()
       }
