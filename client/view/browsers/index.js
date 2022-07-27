@@ -1,3 +1,5 @@
+import wikipediaLinks from './wikipedia-links.json'
+
 // TODO Add variables to .env
 const API_HOST = 'http://localhost:5000'
 const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
@@ -20,7 +22,7 @@ async function sendQuery(query) {
             ({ id, name, versions }) => `
           <li class="browsers__item">
             <img src="/${id}.png" alt="" />
-            <a href="${WIKIPEDIA_URL}${wiki}" target="_blank" rel="noreferrer noopener">${name}</a>
+            <a href="${getWikipediaLink(id)}" target="_blank" rel="noreferrer noopener">${name}</a>
 
             <ul>
                 ${Object.entries(versions)
@@ -43,4 +45,8 @@ async function sendQuery(query) {
     <br />
     Data provided by caniuse-db: ${cv}
     `
+}
+
+function getWikipediaLink(id) {
+  return WIKIPEDIA_URL + wikipediaLinks[id];
 }
