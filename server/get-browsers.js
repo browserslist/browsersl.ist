@@ -94,13 +94,18 @@ function getGlobalCoverage(id, version) {
 }
 
 async function getRegionCoverage(id, version, region) {
+  let regionError = new Error(`Unknown region name \`${region}\`.`)
   try {
+    if (region.includes('/')) {
+      throw regionError
+    }
+
     let { default: regionData } = await import(
       `./node_modules/caniuse-lite/data/regions/${region}.js`
     )
     return getCoverage(caniuseRegion(regionData)[id], version)
   } catch (e) {
-    throw new Error(`Unknown region name \`${region}\`.`)
+    throw regionError
   }
 }
 
