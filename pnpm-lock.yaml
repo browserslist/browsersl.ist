@@ -67,7 +67,12 @@ importers:
       size-limit: 7.0.8
 
   server:
-    specifiers: {}
+    specifiers:
+      browserslist: ^4.21.3
+      caniuse-lite: ^1.0.30001368
+    dependencies:
+      browserslist: 4.21.3
+      caniuse-lite: 1.0.30001368
 
 packages:
 
@@ -553,10 +558,21 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001367
+      caniuse-lite: 1.0.30001368
       electron-to-chromium: 1.4.192
       node-releases: 2.0.6
       update-browserslist-db: 1.0.4_browserslist@4.21.2
+    dev: false
+
+  /browserslist/4.21.3:
+    resolution: {integrity: sha512-898rgRXLAyRkM1GryrrBHGkqA5hlpkV5MhtZwg9QXeiyLUYs2k00Un05aX5l2/yJIOObYKOpS2JNo8nJDE7fWQ==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+    dependencies:
+      caniuse-lite: 1.0.30001370
+      electron-to-chromium: 1.4.202
+      node-releases: 2.0.6
+      update-browserslist-db: 1.0.5_browserslist@4.21.3
     dev: false
 
   /builtins/5.0.1:
@@ -597,6 +613,14 @@ packages:
 
   /caniuse-lite/1.0.30001367:
     resolution: {integrity: sha512-XDgbeOHfifWV3GEES2B8rtsrADx4Jf+juKX2SICJcaUhjYBO3bR96kvEIHa15VU6ohtOhBZuPGGYGbXMRn0NCw==}
+    dev: false
+
+  /caniuse-lite/1.0.30001368:
+    resolution: {integrity: sha512-wgfRYa9DenEomLG/SdWgQxpIyvdtH3NW8Vq+tB6AwR9e56iOIcu1im5F/wNdDf04XlKHXqIx4N8Jo0PemeBenQ==}
+    dev: false
+
+  /caniuse-lite/1.0.30001370:
+    resolution: {integrity: sha512-3PDmaP56wz/qz7G508xzjx8C+MC2qEm4SYhSEzC9IBROo+dGXFWRuaXkWti0A9tuI00g+toiriVqxtWMgl350g==}
     dev: false
 
   /chalk/2.4.2:
@@ -862,6 +886,10 @@ packages:
 
   /electron-to-chromium/1.4.192:
     resolution: {integrity: sha512-8nCXyIQY9An88NXAp+PuPy5h3/w5ZY7Iu2lag65Q0XREprcat5F8gKhoHsBUnQcFuCRnmevpR8yEBYRU3d2HDw==}
+    dev: false
+
+  /electron-to-chromium/1.4.202:
+    resolution: {integrity: sha512-JYsK2ex9lmQD27kj19fhXYxzFJ/phLAkLKHv49A5UY6kMRV2xED3qMMLg/voW/+0AR6wMiI+VxlmK9NDtdxlPA==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -2973,6 +3001,17 @@ packages:
       browserslist: '>= 4.21.0'
     dependencies:
       browserslist: 4.21.2
+      escalade: 3.1.1
+      picocolors: 1.0.0
+    dev: false
+
+  /update-browserslist-db/1.0.5_browserslist@4.21.3:
+    resolution: {integrity: sha512-dteFFpCyvuDdr9S/ff1ISkKt/9YZxKjI9WlRR99c180GaztJtRa/fn18FdxGVKVsnPY7/a/FDN68mcvUmP4U7Q==}
+    hasBin: true
+    peerDependencies:
+      browserslist: '>= 4.21.0'
+    dependencies:
+      browserslist: 4.21.3
       escalade: 3.1.1
       picocolors: 1.0.0
     dev: false

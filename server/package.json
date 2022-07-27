@@ -3,6 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": ""
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "browserslist": "^4.21.2",
+    "caniuse-lite": "^1.0.30001368"
   }
 }
