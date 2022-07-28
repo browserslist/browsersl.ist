@@ -68,7 +68,7 @@ importers:
 
   server:
     specifiers:
-      browserslist: ^4.21.3
+      browserslist: ^4.21.2
       caniuse-lite: ^1.0.30001368
     dependencies:
       browserslist: 4.21.3

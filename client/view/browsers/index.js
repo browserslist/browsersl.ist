@@ -1,4 +1,4 @@
-import wikipediaLinks from './wikipedia-links.json'
+import wikipediaLinks from '../../wikipedia-links.json'
 
 // TODO Putting client and server to the single Docker image to use the same domain and re-use the power of HTTP/2
 const API_HOST = 'http://localhost:5000/api'
