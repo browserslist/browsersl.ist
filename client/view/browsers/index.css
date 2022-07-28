@@ -1,9 +1,0 @@
-.browsers {
-  columns: 3;
-  max-width: 1200px;
-}
-
-.browsers__item {
-  break-inside: avoid;
-  margin-bottom: 1em;
-}
