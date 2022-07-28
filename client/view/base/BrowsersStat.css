@@ -91,7 +91,9 @@
 
 .BrowsersStat__icon {
   display: inline;
-  height: 10px;
+  height: 20px;
+  line-height: 32px;
+  vertical-align: middle;
 }
 
 .ToolsVersions {
