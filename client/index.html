@@ -8,12 +8,21 @@
 
 <body>
   <article class="Article Article--left">
-    <h1>Browserslist</h1>
-    <p class="Introduction"> Shared browser and platform compatibility config for popular JavaScript tools, including
-      Autoprefixer, Babel, ESLint, PostCSS, and Webpack</p>
-    <p class="Supported"> Supported by <a href="">Evil Martians</a> and
-      <a href="">Cube</a>
-    </p>
+    <section>
+      <h1 class="Article__h1">
+        <img src="./assets/browserlist_logo.svg" role="presentation">
+        Browserslist
+      </h1>
+      <p class="Introduction"> Shared browser and platform compatibility config for popular JavaScript tools, including
+        Autoprefixer, Babel, ESLint, PostCSS, and Webpack</p>
+      <p class="Supported">
+        Supported by
+        <img src="./assets/evil_maritians_logo.svg" role="presentation">
+        <a href="">Evil Martians</a> and
+        <img src="./assets/cube_logo.svg" role="presentation">
+        <a href="">Cube</a>
+      </p>
+    </section>
     <h2>How to get started</h2>
     <p>
       <code>defaults</code> - if you're building a web application for the global audience.
@@ -58,13 +67,16 @@
                 placeholder="Write the Browserslist config here...">defaults</textarea>
       <button type="submit">SHOW STATS!!!</button>
     </form>
+    <div class="BrowsersStat"></div>
     <h2>Global coverage: <span id="global-coverage"></span></h2>
     <ul role="presentation" id="global-coverage-bar" class="GlobalCoverageBar"></ul>
     <div id="browsers-stats" class="BrowsersStat"></div>
-    <p>
-      Data provided by caniuse-db <span id="can_i_use_version"></span>
-    </p>
-    <p>Browserslist version: <span id="browsers_list_version"></span></p>
+    <div class="ToolsVersions">
+      <p>
+        Data provided by caniuse-db <span id="can_i_use_version"></span>
+      </p>
+      <p>Browserslist version: <span id="browsers_list_version"></span></p>
+    </div>
   </article>
 
 </body>
