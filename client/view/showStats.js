@@ -85,6 +85,7 @@ export function updateBrowsersStats(data) {
     nameLink.classList.add('BrowsersStat__link');
     nameLink.href = _getWikipediaLink(id);
     nameLink.rel = "noreferrer noopener";
+    nameLink.target = "_blank";
     nameCell.setAttribute('rowspan', versions.length);
     nameLink.innerHTML = name;
     nameCell.appendChild(nameLink);

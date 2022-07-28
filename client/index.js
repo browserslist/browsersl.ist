@@ -7,8 +7,7 @@ function initForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(form);
-    const query = await getData(formData.get('query'));
-    updateStatsView(query)
+    updateStatsView(formData.get('query'));
   })
   const textarea = document.getElementById('query_text_area');
   textarea.addEventListener('keypress', (e) => {
@@ -21,8 +20,9 @@ function initForm() {
 initForm();
 
 async function updateStatsView(query) {
-  updateBrowsersStats(query);
-  updateGlobalCoverageBar(query);
+  const data = await getData(query);
+  updateBrowsersStats(data);
+  updateGlobalCoverageBar(data);
 }
 
 async function getData(query) {
