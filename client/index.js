@@ -1,12 +1,35 @@
-import './view/base/index.js';
+import wikipediaLinks from "./wikipedia-links.json";
 
-import fakeData from './__fixtures/query-default.json';
+const API_HOST = 'http://localhost:5000/api'
+const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
+
+function init() {
+  const form = document.getElementById('query_form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = await getData(formData.get('query'));
+    updateBrowsersStats(data);
+    updateGlobalCoverageBar(data);
+  })
+}
+
+init();
+
+async function getData(query) {
+    // TODO Handling errors: 400 status and connection errors
+    let response = await fetch(`${API_HOST}?q=${encodeURIComponent(query)}`)
+    let {
+      browsers,
+      // versions: { browserslist, caniuse }
+    } = await response.json();
+    return browsers;
+}
 
 function updateGlobalCoverageBar(data) {
   const element = document.getElementById('global-coverage-bar');
-  data.browsers.sort((a, b) => {
-    return b.coverage - a.coverage;
-  }).forEach((item) => {
+  element.innerHTML = '';
+  data.forEach((item) => {
     const alpha = 1 - 1/(item.coverage);
     const itemElem = document.createElement('li');
     itemElem.classList.add('GlobalCoverageBar__item');
@@ -19,10 +42,12 @@ function updateGlobalCoverageBar(data) {
   })
 }
 
-updateGlobalCoverageBar(fakeData);
+function getWikipediaLink(id) {
+  return WIKIPEDIA_URL + wikipediaLinks[id]
+}
 
 function createCoverageCell(coverage) {
-  const coveragePercentageHtmlString = (cov) => Math.round(cov * 100) / 100 + '%';
+  const coveragePercentageHtmlString = (cov) => cov + '%';
   const coveragePercentageCssString = (cov) => {
     const result =  Math.log(1 + cov) * 100 / Math.log(1 + 100);
     if (result === 0) {
@@ -54,7 +79,17 @@ function updateBrowsersStats(data) {
   const table = document.createElement('table');
   table.classList.add('BrowsersStat__table');
 
-  data.browsers.forEach(({name, link, icon, versions}) => {
+  data.forEach(({id, name, versions: versionsInput}) => {
+
+    const versions = Object.entries(versionsInput)
+      .sort(([, coverageA], [, coverageB]) => coverageB - coverageA)
+      .map(([ version, coverage ]) => {
+      return {
+        version,
+        coverage,
+      }
+    });
+
     const tBody = document.createElement('tbody');
     const tr = document.createElement('tr');
     tr.classList.add('.BrowsersStat_tr');
@@ -63,7 +98,7 @@ function updateBrowsersStats(data) {
     iconCell.classList.add('BrowsersStat__td');
     const iconElem = document.createElement('img');
     iconElem.classList.add('BrowsersStat__icon');
-    iconElem.src = icon;
+    iconElem.src = `/icons${id}`;
     iconCell.setAttribute('rowspan', versions.length);
     iconCell.appendChild(iconElem);
     tr.appendChild(iconCell);
@@ -72,7 +107,7 @@ function updateBrowsersStats(data) {
     nameCell.classList.add('BrowsersStat__td');
     const nameLink = document.createElement('a');
     nameLink.classList.add('BrowsersStat__link');
-    nameLink.href = link;
+    nameLink.href = getWikipediaLink(id);
     nameLink.rel = "noreferrer noopener";
     nameCell.setAttribute('rowspan', versions.length);
     nameLink.innerHTML = name;
@@ -102,4 +137,4 @@ function updateBrowsersStats(data) {
   element.appendChild(table);
 }
 
-updateBrowsersStats(fakeData);
+// updateBrowsersStats(fakeData);

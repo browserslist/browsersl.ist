@@ -156,8 +156,6 @@ p code {
 }
 
 .GlobalCoverageBar__item::before {
-  --n: "";
-
   display: block;
   content: var(--n, "");
 }
@@ -208,6 +206,7 @@ p code {
 .BrowsersStat__table tbody {
   display: inline-table;
   width: 100%;
+  margin-bottom: -1px;
   table-layout: fixed;
   border-top: 1px solid var(--separator);
 }
