@@ -113,3 +113,11 @@ export function updateBrowsersStats(data) {
   element.innerHTML = '';
   element.appendChild(table);
 }
+
+export function updateVersions({ browserslist, caniuse }) {
+  const canIUseElement = document.getElementById('can_i_use_version');
+  canIUseElement.innerHTML = caniuse;
+
+  const browsersListElement = document.getElementById('browsers_list_version');
+  browsersListElement.innerHTML = browserslist;
+}

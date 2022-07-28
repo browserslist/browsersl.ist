@@ -1,4 +1,4 @@
-import { updateBrowsersStats, updateGlobalCoverageBar } from './view/showStats.js';
+import { updateBrowsersStats, updateGlobalCoverageBar, updateVersions } from './view/showStats.js';
 
 const API_HOST = 'http://localhost:5000/api';
 
@@ -20,17 +20,17 @@ function initForm() {
 initForm();
 
 async function updateStatsView(query) {
-  const data = await getData(query);
-  updateBrowsersStats(data);
-  updateGlobalCoverageBar(data);
+  const {
+    browsers,
+    versions
+  } = await getData(query);
+  updateBrowsersStats(browsers);
+  updateGlobalCoverageBar(browsers);
+  updateVersions(versions);
 }
 
 async function getData(query) {
     // TODO Handling errors: 400 status and connection errors
     let response = await fetch(`${API_HOST}?q=${encodeURIComponent(query)}`)
-    let {
-      browsers,
-      // versions: { browserslist, caniuse }
-    } = await response.json();
-    return browsers;
+    return await response.json();
 }
