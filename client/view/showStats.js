@@ -12,8 +12,11 @@ export function updateGlobalCoverageBar(data) {
     itemElem.setAttribute('style', `
     --p: ${item.coverage};
     --a: ${alpha};
-    --n: '${item.coverage > 10 ? item.name : ''}';
     `)
+    if(item.coverage > 10) {
+      itemElem.innerHTML = item.name;
+      itemElem.classList.add('GlobalCoverageBar__item--texted')
+    }
     element.appendChild(itemElem);
   })
 }
