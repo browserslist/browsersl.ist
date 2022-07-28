@@ -1,0 +1,19 @@
+.Article {
+  box-sizing: border-box;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-height: 100vh;
+  padding: 24px 32px;
+  overflow: scroll;
+}
+
+.Article--right {
+  background-color: var(--bg-highlited);
+}
+
+.Article__h1 {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+}

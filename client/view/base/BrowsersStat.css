@@ -1,0 +1,94 @@
+.GlobalCoverageBar {
+  display: flex;
+  gap: 2px;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  counter-reset: alpha 0;
+  background-color: var(--main-bg);
+  border-radius: 4px;
+}
+
+.GlobalCoverageBar__item {
+  box-sizing: border-box;
+  width: calc(var(--p, 0) * 1%);
+  line-height: 1.5;
+  list-style: none;
+  counter-increment: alpha -1;
+  background-color: var(--accent-alternave);
+  opacity: var(--a, 0%);
+
+  --p: 0;
+  --a: 0;
+}
+
+.GlobalCoverageBar__item::before {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  content: var(--n, "");
+}
+
+.BrowsersStat {
+  columns: 2;
+  column-fill: balance;
+}
+
+.BrowsersStat__table {
+  display: block;
+  border-spacing: 0;
+}
+
+.BrowsersStat__table tr:first-child td:first-child {
+  width: 30px;
+}
+
+.BrowsersStat__table tr:first-child td:nth-child(2) {
+  width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.BrowsersStat__td {
+  box-sizing: border-box;
+  height: 32px;
+  line-height: 32px;
+  vertical-align: top;
+  break-inside: avoid;
+}
+
+.BrowsersStat__td:last-child {
+  width: 15%;
+  text-align: left;
+}
+
+.BrowsersStat__td--coverage {
+  --c: 20%;
+
+  background-image: linear-gradient(to right, var(--accent-alternave) var(--c), transparent var(--c), transparent);
+}
+
+.BrowsersStat__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.BrowsersStat__table tbody {
+  display: inline-table;
+  width: 100%;
+  margin-bottom: -1px;
+  table-layout: fixed;
+  border-top: 1px solid var(--separator);
+}
+
+.BrowsersStat__icon {
+  display: inline;
+  height: 10px;
+}
+
+.ToolsVersions {
+  color: var(--text-secondary);
+}
