@@ -7,13 +7,16 @@
   overflow: hidden;
   counter-reset: alpha 0;
   background-color: var(--main-bg);
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .GlobalCoverageBar__item {
   box-sizing: border-box;
   width: calc(var(--p, 0) * 1%);
-  line-height: 1.5;
+  overflow: hidden;
+  line-height: 32px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   list-style: none;
   counter-increment: alpha -1;
   background-color: var(--accent-alternave);
@@ -23,12 +26,11 @@
   --a: 0;
 }
 
-.GlobalCoverageBar__item::before {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  content: var(--n, "");
+.GlobalCoverageBar__item--texted::after,
+.GlobalCoverageBar__item--texted::before {
+  display: inline-block;
+  width: 8px;
+  content: "";
 }
 
 .BrowsersStat {
@@ -38,18 +40,21 @@
 
 .BrowsersStat__table {
   display: block;
-  border-spacing: 0;
+  border-spacing: 8px 0;
 }
 
 .BrowsersStat__table tr:first-child td:first-child {
-  width: 30px;
+  width: 20px;
 }
 
 .BrowsersStat__table tr:first-child td:nth-child(2) {
-  width: 40%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.BrowsersStat__table tr:first-child td:nth-child(3) {
+  width: 7ch;
 }
 
 .BrowsersStat__td {
