@@ -1,0 +1,40 @@
+.Form {
+  position: relative;
+}
+
+.Form__queryTextArea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  color: inherit;
+  background-color: var(--main-bg);
+  border: none;
+  border-radius: 8px;
+}
+
+.Form__queryTextArea,
+.Form__queryTextArea::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.Form__queryTextArea::placeholder {
+  color: var(--text-secondary);
+}
+
+.Form__queryTextArea:focus-visible {
+  outline-color: var(--accent);
+}
+
+.Form__submitButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px;
+  color: var(--accent);
+  cursor: pointer;
+  background-color: var(--text-highlited);
+  border: none;
+  border-radius: 6px;
+}

@@ -1,5 +1,6 @@
 @import "./BrowsersStat.css";
 @import "./Article.css";
+@import "./Form.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -80,31 +81,6 @@ p code {
   color: var(--accent);
   background-color: var(--text-highlited);
   border-radius: 0.2em;
-}
-
-.QueryTextArea {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 12px;
-  color: inherit;
-  background-color: var(--main-bg);
-  border: none;
-  border-radius: 8px;
-}
-
-.QueryTextArea,
-.QueryTextArea::placeholder {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-}
-
-.QueryTextArea::placeholder {
-  color: var(--text-secondary);
-}
-
-.QueryTextArea:focus-visible {
-  outline-color: var(--accent);
 }
 
 .Pre {
