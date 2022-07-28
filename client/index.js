@@ -12,6 +12,7 @@ function initForm() {
   const textarea = document.getElementById('query_text_area');
   textarea.addEventListener('keypress', (e) => {
     if (e.keyCode === 13 && !e.shiftKey) {
+      e.preventDefault();
       updateStatsView(textarea.value);
     }
   })
