@@ -3,10 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js",
+    "test": "uvu test .test.js"
   },
   "dependencies": {
-    "browserslist": "^4.21.2",
-    "caniuse-lite": "^1.0.30001368"
+    "browserslist": "^4.21.3",
+    "caniuse-lite": "^1.0.30001373"
+  },
+  "devDependencies": {
+    "uvu": "^0.5.6"
   }
 }
