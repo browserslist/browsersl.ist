@@ -1,5 +1,5 @@
 import { test } from 'uvu'
-import { instance, match } from 'uvu/assert'
+import { equal, instance, match } from 'uvu/assert'
 
 import getBrowsers from '../lib/get-browsers.js'
 
@@ -24,3 +24,11 @@ test('Throws error for wrong Can I Use `region`', async () => {
   instance(error, Error)
   match(error.message, /Unknown region name/)
 })
+
+test('Returns Node.js versions without coverage`', async () => {
+  let data = await getBrowsers('Node > 0', 'Global')
+
+  equal(data.browsers[0].id, 'node')
+})
+
+test.run()
