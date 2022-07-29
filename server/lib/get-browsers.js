@@ -3,13 +3,14 @@ import { readFileSync } from 'fs'
 import { URL } from 'url'
 import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
 
-let { version: bv } = importJSON('./node_modules/browserslist/package.json')
-let { version: cv } = importJSON('./node_modules/caniuse-lite/package.json')
+let { version: bv } = importJSON('../node_modules/browserslist/package.json')
+let { version: cv } = importJSON('../node_modules/caniuse-lite/package.json')
 
-const GLOBAL_REGION = 'Global'
+export const QUERY_DEFAULTS = 'defaults'
+export const REGION_GLOBAL = 'Global'
 
 export default async function getBrowsers(query) {
-  let region = parseRegionFromQuery(query) || GLOBAL_REGION
+  let region = parseRegionFromQuery(query) || REGION_GLOBAL
 
   // TODO Add support `Node > 0` query
   let loadBrowsersData = async (resolve, reject) => {
@@ -37,7 +38,7 @@ export default async function getBrowsers(query) {
       browsersGroupsKeys.push(browser)
       let [id, version] = browser.split(' ')
       let versionCoverage =
-        region === GLOBAL_REGION
+        region === REGION_GLOBAL
           ? getGlobalCoverage(id, version)
           : await getRegionCoverage(id, version, region)
 
