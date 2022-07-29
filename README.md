@@ -14,13 +14,13 @@ To run a local copy for development:
 1. Install correct versions of Node.js and pnpm. There are two ways:
 	- With [`asdf`](https://github.com/asdf-vm/asdf) version manager:
 
-    ```sh
-    asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-    asdf plugin-add pnpm https://github.com/jonathanmorley/asdf-pnpm.git
-    asdf install
-    ```
+      ```sh
+      asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+      asdf plugin-add pnpm https://github.com/jonathanmorley/asdf-pnpm.git
+      asdf install
+      ```
 
-	- Manually (check needed versions in `.tool-versions`)
+	- Manually by check versions in `.tool-versions`.
 
 2. Install dependencies:
 
