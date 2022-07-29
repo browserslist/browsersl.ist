@@ -1,4 +1,4 @@
-.GlobalCoverageBar {
+.BrowsersStat__globalCoverageBar {
   display: flex;
   gap: 2px;
   justify-content: flex-start;
@@ -10,7 +10,7 @@
   border-radius: 6px;
 }
 
-.GlobalCoverageBar__item {
+.BrowsersStat__globalCoverageBarItem {
   box-sizing: border-box;
   width: calc(var(--p, 0) * 1%);
   overflow: hidden;
@@ -26,8 +26,8 @@
   --a: 0;
 }
 
-.GlobalCoverageBar__item--texted::after,
-.GlobalCoverageBar__item--texted::before {
+.BrowsersStat__globalCoverageBarItem--texted::after,
+.BrowsersStat__globalCoverageBarItem--texted::before {
   display: inline-block;
   width: 8px;
   content: "";
@@ -36,6 +36,30 @@
 .BrowsersStat {
   columns: 2;
   column-fill: balance;
+}
+
+.BrowsersStat__placeholder {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  color: var(--separator);
+  border: 2px dashed var(--separator);
+  border-radius: 8px;
+}
+
+.BrowsersStat__placeholderText {
+  width: 80%;
+  text-align: center;
+}
+
+.BrowsersStat__placeholder--hidden {
+  display: none;
+}
+
+.BrowsersStat__stat--hidden {
+  display: none;
 }
 
 .BrowsersStat__table {

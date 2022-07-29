@@ -1,4 +1,4 @@
-import { updateBrowsersStats, updateGlobalCoverageBar, updateVersions } from './view/showStats.js';
+import { updateBrowsersStats, updateGlobalCoverageBar, updateVersions, hideStatsPlaceholder } from './view/showStats.js';
 
 const API_HOST = 'http://localhost:5000/api';
 
@@ -25,6 +25,7 @@ async function updateStatsView(query) {
     browsers,
     versions
   } = await getData(query);
+  hideStatsPlaceholder();
   updateBrowsersStats(browsers);
   updateGlobalCoverageBar(browsers);
   updateVersions(versions);
