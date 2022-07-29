@@ -6,35 +6,94 @@
   box-sizing: border-box;
   width: 100%;
   padding: 12px;
+  font-family: inherit;
+  font-size: inherit;
   color: inherit;
   background-color: var(--main-bg);
   border: none;
   border-radius: 8px;
 }
 
-.Form__queryTextArea,
 .Form__queryTextArea::placeholder {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-}
-
-.Form__queryTextArea::placeholder {
-  color: var(--text-secondary);
+  opacity: 0%;
 }
 
 .Form__queryTextArea:focus-visible {
   outline-color: var(--accent);
 }
 
-.Form__submitButton {
+.Form__hint {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  padding: 8px;
-  color: var(--accent);
-  cursor: pointer;
-  background-color: var(--text-highlited);
-  border: none;
-  border-radius: 6px;
+  bottom: 16px;
+  left: 16px;
+  width: 300px;
+  height: 16px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text-secondary);
+  pointer-events: none;
+  background-color: var(--main-bg);
+  opacity: 0%;
+  transition: opacity 0.2s linear;
+}
+
+.Form__hint--hidden {
+  opacity: 0%;
+}
+
+.Form__enterIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: calc((20px - 1em) / -2) 0;
+  vertical-align: middle;
+  background-color: var(--bg-highlited);
+  border-radius: 2px;
+}
+
+.Form__interactivePlaceholder {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  margin: 0;
+  color: var(--text-secondary);
+  pointer-events: none;
+  opacity: 0%;
+}
+
+.Form__hint--required {
+  color: var(--warning);
+}
+
+.Form--serverError .Form__hint--required,
+.Form--serverError .Form__hint--progress {
+  opacity: 0% !important;
+}
+
+.Form--justSend .Form__hint--progress {
+  opacity: 0% !important;
+}
+
+.Form__hint--error {
+  color: var(--error);
+}
+
+.Form--serverError .Form__hint--error {
+  opacity: 100%;
+}
+
+.Form__queryTextArea:placeholder-shown ~ .Form__interactivePlaceholder {
+  opacity: 100%;
+}
+
+.Form__queryTextArea:invalid:focus-visible ~ .Form__hint--required {
+  opacity: 100%;
+}
+
+.Form__queryTextArea:focus-visible:valid ~ .Form__hint--progress {
+  opacity: 100%;
 }
