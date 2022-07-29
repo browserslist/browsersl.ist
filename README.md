@@ -12,16 +12,14 @@ Can I Use
 To run a local copy for development:
 
 1. Install correct versions of Node.js and pnpm. There are two ways:
-	- With `asdf` version manager:
-		1. Install [`asdf`](https://github.com/asdf-vm/asdf).
-		2. Install plugins for Node.js and pnpm:
+	- With [`asdf`](https://github.com/asdf-vm/asdf) version manager:
 
-       ```sh
-       asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-       asdf plugin-add pnpm https://github.com/jonathanmorley/asdf-pnpm.git
-       ```
+    ```sh
+    asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+    asdf plugin-add pnpm https://github.com/jonathanmorley/asdf-pnpm.git
+    asdf install
+    ```
 
-		3. Run `asdf install`
 	- Manually (check needed versions in `.tool-versions`)
 
 2. Install dependencies:
