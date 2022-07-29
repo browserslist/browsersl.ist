@@ -8,17 +8,32 @@ export function updateGlobalCoverageBar(data) {
   data.forEach((item) => {
     const alpha = 1 - 1/(item.coverage);
     const itemElem = document.createElement('li');
-    itemElem.classList.add('GlobalCoverageBar__item');
+    itemElem.classList.add('BrowsersStat__globalCoverageBarItem');
     itemElem.setAttribute('style', `
     --p: ${item.coverage};
     --a: ${alpha};
     `)
     if(item.coverage > 10) {
       itemElem.innerHTML = item.name;
-      itemElem.classList.add('GlobalCoverageBar__item--texted')
+      itemElem.classList.add('BrowsersStat__globalCoverageBarItem--texted')
     }
     element.appendChild(itemElem);
   })
+}
+
+const statsPlaceholder = document.querySelector('.BrowsersStat__placeholder');
+
+export function hideStatsPlaceholder() {
+  if(statsPlaceholder.classList.contains('BrowsersStat__placeholder--hidden')) {
+    return true;
+  }
+
+  const statsElem = document.querySelector('.BrowsersStat__stat');
+  statsElem.classList.remove('BrowsersStat__stat--hidden');
+
+  statsPlaceholder.classList.add('BrowsersStat__placeholder--hidden');
+
+  return true;
 }
 
 function _getWikipediaLink(id) {

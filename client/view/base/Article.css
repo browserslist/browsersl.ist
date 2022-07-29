@@ -8,7 +8,17 @@
 }
 
 .Article--right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100vh;
   background-color: var(--bg-highlited);
+}
+
+.Article--right h2 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 26px;
 }
 
 .Article__h1 {

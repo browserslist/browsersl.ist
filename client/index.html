@@ -78,16 +78,21 @@
                 placeholder="Write the Browserslist config here...">defaults</textarea>
       <button type="submit" class="Form__submitButton">Submit</button>
     </form>
-    <div class="BrowsersStat"></div>
-    <h2>Global coverage: <span id="global-coverage"></span></h2>
-    <ul role="presentation" id="global-coverage-bar" class="GlobalCoverageBar"></ul>
-    <div id="browsers-stats" class="BrowsersStat"></div>
-    <div class="ToolsVersions">
-      <p>
-        Data provided by caniuse-db <span id="can_i_use_version"></span>
-      </p>
-      <p>Browserslist version: <span id="browsers_list_version"></span></p>
-    </div>
+      <div class="BrowsersStat__placeholder">
+        <img src="./assets/stats.svg" alt="">
+        <p class="BrowsersStat__placeholderText">add the Browserslist config to display compatible browsers</p>
+      </div>
+      <div class="BrowsersStat__stat BrowsersStat__stat--hidden">
+        <h2>Global coverage: <span id="global-coverage"></span></h2>
+        <ul role="presentation" id="global-coverage-bar" class="BrowsersStat__globalCoverageBar"></ul>
+        <div id="browsers-stats" class="BrowsersStat"></div>
+        <div class="ToolsVersions">
+          <p>
+            Data provided by caniuse-db <span id="can_i_use_version"></span>
+          </p>
+          <p>Browserslist version: <span id="browsers_list_version"></span></p>
+        </div>
+      </div>
   </article>
 
 </body>
