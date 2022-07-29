@@ -21,8 +21,8 @@ export default async function getBrowsers(query) {
     } catch (error) {
       reject(
         error.browserslist
-          ? error.message
-          : `Unknown browser query \`${query}\`.`
+          ? error
+          : new Error(`Unknown browser query \`${query}\`.`)
       )
       return
     }
@@ -69,10 +69,18 @@ export default async function getBrowsers(query) {
       })
       .sort((a, b) => b.coverage - a.coverage)
 
+    let coverage
+
+    try {
+      coverage = browserslist.coverage(browsersByQuery, region)
+    } catch (error) {
+      reject(error)
+    }
+
     resolve({
       query,
       region,
-      coverage: browserslist.coverage(browsersByQuery, region),
+      coverage,
       versions: {
         browserslist: bv,
         caniuse: cv

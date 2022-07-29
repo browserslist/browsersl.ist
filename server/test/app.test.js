@@ -27,6 +27,15 @@ test('responses status 200 for `/browsers` route', async () => {
   equal(response.status, 200)
 })
 
+test('responses 400 for `/browsers` route with wrong `q` param', async () => {
+  let url = new URL(`browsers?q=wrong-query`, base)
+  let response = await fetch(url)
+  let error = await response.json()
+
+  equal(response.status, 400)
+  match(error.message, /Unknown/)
+})
+
 test('responses 404 for unknown route', async () => {
   let url = new URL(`wrong-route`, base)
   let response = await fetch(url)
