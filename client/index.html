@@ -73,26 +73,41 @@
   <article class="Article Article--right">
     <h2>Display compatible browsers</h2>
     <form id="query_form" class="Form">
-      <textarea name="query" cols="30" rows="5"
+      <textarea name="query" cols="30" rows="6" required
                 class="Form__queryTextArea" id="query_text_area"
-                placeholder="Write the Browserslist config here...">defaults</textarea>
-      <button type="submit" class="Form__submitButton">Submit</button>
+                placeholder="Write the Browserslist config here..."></textarea>
+      <p class="Form__interactivePlaceholder">Write the Browserslist config here... <br>
+        For example
+        <code>defaults</code> ,
+        <code>not dead</code></p>
+      <p class="Form__hint Form__hint--progress">Press Enter
+        <span role="presentation" class="Form__enterIcon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none">
+            <path
+              d="M10.71 1.42h-.8a.1.1 0 0 0-.1.1v6.94H3.28V7.5a.1.1 0 0 0-.17-.09l-1.9 1.5a.1.1 0 0 0 0 .17l1.9 1.5a.1.1 0 0 0 .17-.08v-1h6.67c.48 0 .86-.4.86-.87v-7.1a.1.1 0 0 0-.1-.1Z"
+              fill="#1E1E1E" fill-opacity=".4"/>
+          </svg>
+        </span>
+        to submit
+      </p>
+      <p class="Form__hint Form__hint--required">Query should be not empty</p>
+      <p class="Form__hint Form__hint--error" id="error_message">Unknown query</p>
     </form>
-      <div class="BrowsersStat__placeholder">
-        <img src="./assets/stats.svg" alt="">
-        <p class="BrowsersStat__placeholderText">add the Browserslist config to display compatible browsers</p>
+    <div class="BrowsersStat__placeholder">
+      <img src="./assets/stats.svg" alt="">
+      <p class="BrowsersStat__placeholderText">add the Browserslist config to display compatible browsers</p>
+    </div>
+    <div class="BrowsersStat__stat BrowsersStat__stat--hidden">
+      <h2>Global coverage: <span id="global-coverage"></span></h2>
+      <ul role="presentation" id="global-coverage-bar" class="BrowsersStat__globalCoverageBar"></ul>
+      <div id="browsers-stats" class="BrowsersStat"></div>
+      <div class="ToolsVersions">
+        <p>
+          Data provided by caniuse-db <span id="can_i_use_version"></span>
+        </p>
+        <p>Browserslist version: <span id="browsers_list_version"></span></p>
       </div>
-      <div class="BrowsersStat__stat BrowsersStat__stat--hidden">
-        <h2>Global coverage: <span id="global-coverage"></span></h2>
-        <ul role="presentation" id="global-coverage-bar" class="BrowsersStat__globalCoverageBar"></ul>
-        <div id="browsers-stats" class="BrowsersStat"></div>
-        <div class="ToolsVersions">
-          <p>
-            Data provided by caniuse-db <span id="can_i_use_version"></span>
-          </p>
-          <p>Browserslist version: <span id="browsers_list_version"></span></p>
-        </div>
-      </div>
+    </div>
   </article>
 
 </body>

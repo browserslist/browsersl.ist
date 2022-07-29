@@ -132,7 +132,7 @@ export function updateBrowsersStats(data) {
   element.appendChild(table);
 }
 
-export function updateVersions({ browserslist, caniuse }) {
+export function updateToolsVersions({ browserslist, caniuse }) {
   const canIUseElement = document.getElementById('can_i_use_version');
   canIUseElement.innerHTML = caniuse;
 
