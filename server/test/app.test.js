@@ -21,6 +21,13 @@ test('responses `Global` region for `/browsers` route without `region` param', a
   equal(data.region, 'Global')
 })
 
+test('extract region from `query` for `/browsers` without `region` not setted', async () => {
+  let url = new URL(`browsers?q=>5% in US`, base)
+  let response = await fetch(url)
+  let data = await response.json()
+  equal(data.region, 'US')
+})
+
 test('responses status 200 for `/browsers` route', async () => {
   let url = new URL(`browsers`, base)
   let response = await fetch(url)
