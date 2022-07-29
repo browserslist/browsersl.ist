@@ -10,7 +10,6 @@ export const QUERY_DEFAULTS = 'defaults'
 export const REGION_GLOBAL = 'Global'
 
 export default async function getBrowsers(query, region) {
-  // TODO Add support `Node > 0` query
   let loadBrowsersData = async (resolve, reject) => {
     let browsersByQuery = []
 
@@ -35,10 +34,18 @@ export default async function getBrowsers(query, region) {
 
       browsersGroupsKeys.push(browser)
       let [id, version] = browser.split(' ')
-      let versionCoverage =
-        region === REGION_GLOBAL
-          ? getGlobalCoverage(id, version)
-          : await getRegionCoverage(id, version, region)
+      let versionCoverage = null
+
+      if (id !== 'node') {
+        try {
+          versionCoverage =
+            region === REGION_GLOBAL
+              ? getGlobalCoverage(id, version)
+              : await getRegionCoverage(id, version, region)
+        } catch (error) {
+          reject(error)
+        }
+      }
 
       let versionData = { [`${version}`]: roundNumber(versionCoverage) }
 
@@ -52,11 +59,19 @@ export default async function getBrowsers(query, region) {
 
     let browsers = Object.entries(browsersGroups)
       .map(([id, { versions }]) => {
-        let { browser: name, usage_global: usageGlobal } = caniuseAgents[id]
-        // TODO Add regional coverage
-        let coverage = roundNumber(
-          Object.values(usageGlobal).reduce((a, b) => a + b, 0)
-        )
+        let coverage = null
+        let name
+        // Node.js doesn't have coverage statistics on Can I Use
+        if (id === 'node') {
+          name = 'Node'
+        } else {
+          let { browser, usage_global: usageGlobal } = caniuseAgents[id]
+          // TODO Add regional coverage
+          coverage = roundNumber(
+            Object.values(usageGlobal).reduce((a, b) => a + b, 0)
+          )
+          name = browser
+        }
 
         return {
           id,
