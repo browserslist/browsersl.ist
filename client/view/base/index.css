@@ -1,6 +1,8 @@
 @import "./BrowsersStat.css";
 @import "./Article.css";
 @import "./Form.css";
+@import "./Introduction.css";
+@import "./Badge.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -27,24 +29,6 @@ body {
   color: var(--text-primary);
   background-color: var(--main-bg);
   accent-color: var(--accent);
-}
-
-.Introduction {
-  margin: 16px 0;
-  font-size: 25px;
-  line-height: 32px;
-  letter-spacing: 0.01em;
-}
-
-.Supported {
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
-}
-
-.Supported img {
-  vertical-align: middle;
 }
 
 p {
