@@ -3,6 +3,11 @@ import { readFileSync } from 'fs'
 import { URL } from 'url'
 import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
 
+import getRegions, {
+  REGION_GLOBAL_KEY,
+  REGION_GLOBAL_VALUE
+} from './get-regions.js'
+
 let { version: bv } = importJSON('../node_modules/browserslist/package.json')
 let { version: cv } = importJSON('../node_modules/caniuse-lite/package.json')
 
@@ -39,7 +44,7 @@ export default async function getBrowsers(query, region) {
       if (id !== 'node') {
         try {
           versionCoverage =
-            region === REGION_GLOBAL
+            region === REGION_GLOBAL_KEY
               ? getGlobalCoverage(id, version)
               : await getRegionCoverage(id, version, region)
         } catch (error) {
@@ -110,16 +115,12 @@ function getGlobalCoverage(id, version) {
 }
 
 async function getRegionCoverage(id, version, region) {
-  try {
-    if (region.includes('/')) {
-      throw new Error(`Invalid symbols in region name \`${region}\`.`)
-    }
-
+  if (region in getRegions()) {
     let { default: regionData } = await import(
       `../node_modules/caniuse-lite/data/regions/${region}.js`
     )
     return getCoverage(caniuseRegion(regionData)[id], version)
-  } catch (e) {
+  } else {
     throw new Error(`Unknown region name \`${region}\`.`)
   }
 }
