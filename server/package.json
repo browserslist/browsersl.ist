@@ -6,6 +6,9 @@
     "start": "node app.js",
     "test": "uvu test .test.js"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "browserslist": "^4.21.3",
     "caniuse-lite": "^1.0.30001373"
