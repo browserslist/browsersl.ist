@@ -2,6 +2,7 @@ import http from 'http'
 import { URL } from 'url'
 
 import handleBrowsers from './api/browsers.js'
+import handleRegion from './api/regions.js'
 import handleError404 from './api/error404.js'
 
 const PORT = process.env.PORT || 5000
@@ -13,6 +14,10 @@ const App = http
     switch (pathname) {
       case '/api/browsers':
         handleBrowsers(req, res)
+        break
+
+      case '/api/regions':
+        handleRegion(req, res)
         break
 
       // TODO Add endpoint /api/social
