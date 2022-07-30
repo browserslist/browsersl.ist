@@ -12,9 +12,13 @@ let { version: bv } = importJSON('../node_modules/browserslist/package.json')
 let { version: cv } = importJSON('../node_modules/caniuse-lite/package.json')
 
 export const QUERY_DEFAULTS = 'defaults'
-export const REGION_GLOBAL = 'Global'
 
 export default async function getBrowsers(query, region) {
+  // Browserslist supports alias `Global` for region `alt-ww`
+  if (region === REGION_GLOBAL_VALUE) {
+    region = REGION_GLOBAL_KEY
+  }
+
   let loadBrowsersData = async (resolve, reject) => {
     let browsersByQuery = []
 
