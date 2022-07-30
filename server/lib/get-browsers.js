@@ -101,7 +101,7 @@ export default async function getBrowsers(query, region) {
 
     resolve({
       query,
-      region,
+      region: getRegions()[region],
       coverage,
       versions: {
         browserslist: bv,
