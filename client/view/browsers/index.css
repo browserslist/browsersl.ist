@@ -1,3 +1,7 @@
+body {
+  padding: 10px;
+}
+
 .browsers {
   columns: 3;
   max-width: 1200px;
@@ -6,4 +10,10 @@
 .browsers__item {
   break-inside: avoid;
   margin-bottom: 1em;
+}
+
+input,
+select {
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
