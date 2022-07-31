@@ -31,7 +31,9 @@ jobs:
           path: ~/.local/share/pnpm/
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Run projects postinstall
+        run: pnpm -r postinstall
       - name: Run core tests
         run: pnpm test
         env:
