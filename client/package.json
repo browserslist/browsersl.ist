@@ -5,7 +5,9 @@
   "scripts": {
     "start": "vite",
     "build": "vite build -m production",
-    "test": "pnpm build && size-limit"
+    "build:regions": "node ./scripts/generate-regions-json.js",
+    "test": "pnpm build && size-limit",
+    "postinstall": "pnpm build:regions"
   },
   "dependencies": {
     "@csstools/postcss-oklab-function": "^1.1.1",
@@ -20,6 +22,10 @@
   },
   "devDependencies": {
     "@size-limit/file": "^7.0.8",
+    "caniuse-lite": "^1.0.30001373",
     "size-limit": "^7.0.8"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
