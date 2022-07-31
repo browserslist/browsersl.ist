@@ -1,4 +1,6 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
+// TODO render regions in `<select>`
+// eslint-disable-next-line no-unused-vars
 import regions from '../../data/regions.js'
 
 // TODO Put client and server to the single Docker image to use the same domain and re-use the power of HTTP/2
