@@ -18,8 +18,7 @@ const regions = {
 }
 
 fs.writeFileSync(DATA_REGION_FILE, JSON.stringify(regions))
-// eslint-disable-next-line no-console
-console.info(`A file "client/${DATA_REGION_FILE}" with regions has been created`);
+process.stdout.write(`A file "client/${DATA_REGION_FILE}" with regions has been created\n`)
 
 function getCaniuseCountries() {
   let regionCodes = fs
