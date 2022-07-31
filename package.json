@@ -8,6 +8,7 @@
     "node": ">=18"
   },
   "scripts": {
+    "start": "pnpm -r start",
     "lint": "eslint . && stylelint **/*.css",
     "test": "pnpm audit --prod && pnpm lint"
   },
