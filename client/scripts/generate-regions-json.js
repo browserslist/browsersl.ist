@@ -14,7 +14,7 @@ const regions = {
     'alt-oc': 'Oceania',
     'alt-sa': 'South America'
   },
-  countries: getCaniuseCountries()
+  countryCodes: getCaniuseCountries()
 }
 
 fs.writeFileSync(DATA_REGION_FILE, JSON.stringify(regions))
@@ -25,16 +25,10 @@ function getCaniuseCountries() {
     .readdirSync(REGIONS_LIST_PATH)
     .map(file => file.split('.js')[0])
 
-  let countries = regionCodes
+  return regionCodes
     .filter(regionCode => {
       let isContinentCode = regionCode.includes('alt-')
       return !isContinentCode
     })
     .sort((a, b) => b - a)
-    .map(countryCode => [
-      countryCode,
-      new Intl.DisplayNames(['us'], { type: 'region' }).of(countryCode)
-    ])
-
-  return Object.fromEntries(countries)
 }

@@ -11,9 +11,9 @@ let select = document.getElementById('browsers-region-select')
 document.addEventListener('DOMContentLoaded', async () => {
   renderResults(await getBrowsers())
 
-  let { continents, countries } = renderRegionsOptgroups(regions);
-  select.appendChild(continents)
-  select.appendChild(countries)
+  let { continentsOptgroup, countriesOptgroup } = renderRegionsOptgroups(regions);
+  select.appendChild(continentsOptgroup)
+  select.appendChild(countriesOptgroup)
 })
 
 input.addEventListener('input', async () => {
@@ -78,7 +78,7 @@ function renderRegionsOptgroups({ continents, countries }) {
   let createOptgroup = (groupName, regionsGroup) => {
     let optgroup = document.createElement('optgroup')
     optgroup.label = groupName
-    for (let [ id, name ] of Object.entries(regionsGroup)) {
+    for (let { id, name } of regionsGroup) {
       let option = renderOption(id, name)
       optgroup.appendChild(option)
     }
@@ -86,8 +86,8 @@ function renderRegionsOptgroups({ continents, countries }) {
   }
 
   return {
-    continents: createOptgroup('Continents', continents),
-    countries: createOptgroup('Countries', countries)
+    continentsOptgroup: createOptgroup('Continents', continents),
+    countriesOptgroup: createOptgroup('Countries',  countries)
   }
 }
 
