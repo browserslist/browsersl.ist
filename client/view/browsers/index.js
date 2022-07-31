@@ -8,17 +8,24 @@ const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
 let input = document.getElementById('browsers-input')
 let select = document.getElementById('browsers-region-select')
 
-document.addEventListener('DOMContentLoaded', async () => {
+async function init() {
   renderResults(await getBrowsers())
 
-  let { continentsOptgroup, countriesOptgroup } = renderRegionsOptgroups(regions);
+  let { continentsOptgroup, countriesOptgroup } =
+    renderRegionsOptgroups(regions)
   select.appendChild(continentsOptgroup)
   select.appendChild(countriesOptgroup)
-})
+}
+
+init()
 
 input.addEventListener('input', async () => {
   // TODO debounce 100ms in printing (too much requests)
   // TODO abort previous requests
+  renderResults(await getBrowsers(input.value, select.value))
+})
+
+select.addEventListener('change', async () => {
   renderResults(await getBrowsers(input.value, select.value))
 })
 
@@ -87,13 +94,9 @@ function renderRegionsOptgroups({ continents, countries }) {
 
   return {
     continentsOptgroup: createOptgroup('Continents', continents),
-    countriesOptgroup: createOptgroup('Countries',  countries)
+    countriesOptgroup: createOptgroup('Countries', countries)
   }
 }
-
-select.addEventListener('change', async () => {
-  renderResults(await getBrowsers(input.value, select.value))
-})
 
 function getWikipediaLink(id) {
   return WIKIPEDIA_URL + wikipediaLinks[id]
