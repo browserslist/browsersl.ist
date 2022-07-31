@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@size-limit/file": "^7.0.8",
+    "caniuse-lite": "^1.0.30001373",
     "size-limit": "^7.0.8"
   }
 }
