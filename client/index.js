@@ -35,7 +35,7 @@ initForm();
 async function updateStatsView(query) {
   let response;
   try {
-    response = await fetch(`${API_HOST}?q=${encodeURIComponent(query)}`)
+    response = await fetch(`${API_HOST}/browsers?q=${encodeURIComponent(query)}`)
   } catch (error) {}
 
   const data = await response.json();
