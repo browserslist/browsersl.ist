@@ -34,7 +34,7 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Build regions data for the client
         run: pnpm -r build:regions
-      - name: Run projects tests
+      - name: Run tests
         run: pnpm test -r --include-workspace-root
         env:
           FORCE_COLOR: 2
