@@ -23,6 +23,10 @@ const App = http
         break
     }
   })
-  .listen(PORT)
+  .listen(PORT, () => {
+    process.stdout.write(
+      `Server listening on a port http://localhost:${PORT}/api/\n`
+    )
+  })
 
 export default App
