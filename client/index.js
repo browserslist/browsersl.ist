@@ -36,7 +36,11 @@ async function updateStatsView(query) {
   let response;
   try {
     response = await fetch(`${API_HOST}?q=${encodeURIComponent(query)}`)
-  } catch (error) {}
+    // TODO add loader
+  } catch (error) {
+    // TODO handle error
+    return false;
+  }
 
   const data = await response.json();
 
@@ -81,6 +85,7 @@ function initQueryLinks() {
 
 initQueryLinks();
 
+//TODO change url when change query and get query from url when page are loading
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   const urlParams = new URLSearchParams(window.location.search);

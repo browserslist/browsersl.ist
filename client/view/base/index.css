@@ -51,7 +51,7 @@ p {
 }
 
 @media (hover) {
-  a:hover {
+  .Link:hover {
     background-position: 0 1.1em;
   }
 }

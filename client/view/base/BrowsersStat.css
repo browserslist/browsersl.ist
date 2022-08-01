@@ -22,6 +22,7 @@
   background-color: var(--accent-alternave);
   opacity: var(--a, 0%);
 
+  /* TODO types for this variables */
   --p: 0;
   --a: 0;
 }

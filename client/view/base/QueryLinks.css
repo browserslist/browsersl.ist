@@ -5,6 +5,9 @@ a[data-query] {
   transition: transform 0.2s;
 }
 
-a[data-query]:hover {
-  transform: scale(1.05);
+@media (hover) {
+  /* TODO approve this hover by designers */
+  a[data-query]:hover {
+    transform: scale(1.05);
+  }
 }
