@@ -1,5 +1,5 @@
-import { test } from 'uvu'
-import { equal, instance, match } from 'uvu/assert'
+import test from 'node:test'
+import { equal, ok, match } from 'node:assert'
 
 import getBrowsers from '../lib/get-browsers.js'
 
@@ -10,7 +10,7 @@ test('Throws error for wrong browserslist `query`', async () => {
   } catch (e) {
     error = e
   }
-  instance(error, Error)
+  ok(error instanceof Error)
   match(error.message, /Unknown browser query/)
 })
 
@@ -21,7 +21,7 @@ test('Throws error for wrong Can I Use `region`', async () => {
   } catch (e) {
     error = e
   }
-  instance(error, Error)
+  ok(error instanceof Error)
   match(error.message, /Unknown region name/)
 })
 
@@ -30,5 +30,3 @@ test('Returns Node.js versions without coverage`', async () => {
 
   equal(data.browsers[0].id, 'node')
 })
-
-test.run()
