@@ -1,0 +1,10 @@
+a[data-query] {
+  display: inline-block;
+  pointer-events: initial;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+a[data-query]:hover {
+  transform: scale(1.05);
+}

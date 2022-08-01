@@ -29,38 +29,38 @@
       <p class="Introduction__supported">
         Supported by
         <img src="./assets/evil_maritians_logo.svg" role="presentation">
-        <a href="">Evil Martians</a> and
+        <a href="" class="Link">Evil Martians</a> and
         <img src="./assets/cube_logo.svg" role="presentation">
-        <a href="">Cube</a>
+        <a href="" class="Link">Cube</a>
       </p>
     </section>
     <h2>How to get started</h2>
     <p>
-      <code>defaults</code> - if you're building a web application for the global audience.
+      <a data-query="defaults"><code>defaults</code></a> - if you're building a web application for the global audience.
     </p>
     <p>
-      <code>node 18</code> - if you're building a Node.js application, e.g., for SSR.
+      <a data-query="node 18"><code>node 18</code></a> - if you're building a Node.js application, e.g., for SSR.
     </p>
-    <p><a href="">Autoprefixer</a> Autoprefixer ,
-      <a href="">Babel</a> or any of the following libraries will find target browsers automatically, when you add the
+    <p><a href="" class="Link">Autoprefixer</a> Autoprefixer ,
+      <a href="" class="Link">Babel</a> or any of the following libraries will find target browsers automatically, when you add the
       following to
       <b>package.json</b>:
     </p>
-    <pre class="Pre">
+    <a data-query="defaults, not IE 11, maintained node versions"><pre class="Pre">
       <code>"browserslist": [</code>
       <code>  "defaults",</code>
       <code>  "not IE 11",</code>
       <code>  "maintained node versions"</code>
       <code>]</code>
-    </pre>
-    <p>You can also check publicly Browserslist configs on <a href="">GitHub</a></p>
+    </pre></a>
+    <p>You can also check publicly Browserslist configs on <a href="" class="Link">GitHub</a></p>
 
     <h2>Query Syntax</h2>
     <p> You can specify the browser and Node.js versions by queries (case insensitive):</p>
     <ul></ul>
     <li>
-      <p><code>defaults</code>: Browserslist's default browsers</p>
-      <p><code>> 0.5%</code> , last 2 versions, Firefox ESR, not dead</p>
+      <p><a data-query="defaults"><code>defaults</code></a>: Browserslist's default browsers</p>
+      <p><a data-query="> 0.5%"><code>> 0.5%</code></a> , last 2 versions, Firefox ESR, not dead</p>
     </li>
     <li>
       <p>By usage statistics</p>
@@ -78,8 +78,9 @@
                 placeholder="Write the Browserslist config here..."></textarea>
       <p class="Form__interactivePlaceholder">Write the Browserslist config here... <br>
         For example
-        <code>defaults</code> ,
-        <code>not dead</code></p>
+        <a data-query="defaults"><code>defaults</code></a> ,
+        <a data-query="not dead"><code>not dead</code></a>
+      </p>
       <p class="Form__hint Form__hint--progress">Press Enter
         <span role="presentation" class="Form__enterIcon">
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none">

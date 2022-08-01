@@ -3,6 +3,7 @@
 @import "./Form.css";
 @import "./Introduction.css";
 @import "./Badge.css";
+@import "./QueryLinks.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -37,7 +38,7 @@ p {
   letter-spacing: 0.01em;
 }
 
-a {
+.Link {
   padding-bottom: 0.2em;
   margin-bottom: -0.2em;
   color: var(--text-primary);

@@ -6,7 +6,7 @@ const form = document.getElementById('query_form');
 const textarea = document.getElementById('query_text_area');
 const errorMessage = document.getElementById('error_message');
 
-  function initForm() {
+function initForm() {
   form.addEventListener('submit', async (e) => {
     if(!form.checkValidity()) {
       return;
@@ -58,7 +58,6 @@ async function updateStatsView(query) {
   return true;
 }
 
-
 function renderError(message) {
   errorMessage.innerHTML = message.split('.')[0];
   form.classList.add('Form--serverError');
@@ -68,6 +67,20 @@ function renderError(message) {
     once: true,
   })
 }
+
+function initQueryLinks() {
+  const links = document.querySelectorAll('a[data-query]');
+  links.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      textarea.value = item.getAttribute('data-query');
+      form.dispatchEvent(new Event('submit'));
+    })
+  })
+}
+
+initQueryLinks();
+
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   const urlParams = new URLSearchParams(window.location.search);
