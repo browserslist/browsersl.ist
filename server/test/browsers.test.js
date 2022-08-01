@@ -1,5 +1,5 @@
 import test from 'node:test'
-import { equal, ok, match } from 'assert'
+import { equal, ok, match } from 'node:assert'
 
 import getBrowsers from '../lib/get-browsers.js'
 
