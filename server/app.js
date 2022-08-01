@@ -1,5 +1,5 @@
-import http from 'http'
-import { URL } from 'url'
+import http from 'node:http'
+import { URL } from 'node:url'
 
 import handleBrowsers from './api/browsers.js'
 import handleError404 from './api/error404.js'

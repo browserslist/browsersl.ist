@@ -1,7 +1,7 @@
-import browserslist from 'browserslist'
-import { readFileSync } from 'fs'
-import { URL } from 'url'
 import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
+import { readFileSync } from 'node:fs'
+import browserslist from 'browserslist'
+import { URL } from 'node:url'
 
 let { version: bv } = importJSON('../node_modules/browserslist/package.json')
 let { version: cv } = importJSON('../node_modules/caniuse-lite/package.json')
