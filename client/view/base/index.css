@@ -4,6 +4,7 @@
 @import "./Introduction.css";
 @import "./Badge.css";
 @import "./QueryLinks.css";
+@import "./DocSection.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -43,7 +44,7 @@ p {
   margin-bottom: -0.2em;
   color: var(--text-primary);
   text-decoration: none;
-  background-image: linear-gradient(to top, var(--text-primary) 1px, transparent 1px, transparent);
+  background-image: linear-gradient(to top, currentcolor 1px, transparent 1px, transparent);
   background-position: 0 1.3em;
   transition: background-position var(--time);
 
@@ -61,13 +62,6 @@ code {
   font-family: monospace, monospace;
 }
 
-p code {
-  padding: 0.2em;
-  color: var(--accent);
-  background-color: var(--text-highlited);
-  border-radius: 0.2em;
-}
-
 .Pre {
   display: flex;
   flex-direction: column;
@@ -80,4 +74,5 @@ p code {
 
 .Pre code {
   font-size: inherit;
+  background-color: initial;
 }
