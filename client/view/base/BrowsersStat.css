@@ -12,7 +12,7 @@
 
 .BrowsersStat__globalCoverageBarItem {
   box-sizing: border-box;
-  width: calc(var(--p, 0) * 1%);
+  width: calc(var(--proportion, 0) * 1%);
   overflow: hidden;
   line-height: 32px;
   text-overflow: ellipsis;
@@ -20,11 +20,11 @@
   list-style: none;
   counter-increment: alpha -1;
   background-color: var(--accent-alternave);
-  opacity: var(--a, 0%);
+  opacity: var(--alpha, 0%);
 
   /* TODO types for this variables */
-  --p: 0;
-  --a: 0;
+  --proportion: 0;
+  --alpha: 0;
 }
 
 .BrowsersStat__globalCoverageBarItem--texted::after,

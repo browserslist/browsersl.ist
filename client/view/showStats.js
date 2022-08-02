@@ -10,8 +10,8 @@ export function updateGlobalCoverageBar(data) {
     const itemElem = document.createElement('li');
     itemElem.classList.add('BrowsersStat__globalCoverageBarItem');
     itemElem.setAttribute('style', `
-    --p: ${item.coverage};
-    --a: ${alpha};
+    --proportion: ${item.coverage};
+    --alpha: ${alpha};
     `)
     if(item.coverage > 10) {
       itemElem.innerHTML = item.name;
