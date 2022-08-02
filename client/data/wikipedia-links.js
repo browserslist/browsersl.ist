@@ -1,4 +1,4 @@
-{
+export default {
   "and_chr": "Google_Chrome#Android",
   "and_ff": "Firefox_for_Android",
   "and_qq": "Tencent_QQ",

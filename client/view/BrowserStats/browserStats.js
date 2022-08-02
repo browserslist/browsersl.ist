@@ -1,4 +1,4 @@
-import wikipediaLinks from "../../wikipedia-links.json";
+import wikipediaLinks from "../../data/wikipedia-links.js";
 
 const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
 

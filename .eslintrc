@@ -4,7 +4,7 @@
     {
       "files": "**/**.js",
       "rules": {
-        "import/extensions": "off",
+        "import/extensions": "on",
         "prefer-let/prefer-let": "off"
       }
     }

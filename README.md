@@ -1,20 +1,26 @@
 # Browserslist Website
 
-This website uses [Browserslist] and [Can I Use] to display the compatible browsers for a browsers query.
+This website uses [Browserslist] and [Can I Use] to display
+the compatible browsers for a browsers query.
 
 [browserslist]: https://github.com/browserslist/browserslist
-[caniuse]: https://github.com/Fyrd/caniuse
+[Can I Use]: https://github.com/Fyrd/caniuse
 
 
 ## Development
-
+Can I Use
 To run a local copy for development:
 
-1. Install correct versions of `Node.js` and `pnpm`. There are two ways:
-	1. With `asdf` version manager:
-		1. Install [`asdf`](https://github.com/asdf-vm/asdf) and asdf plugins for `Node.js` and `pnpm`
-		2. Run `asdf install`
-	2. Manually (check needed versions in `.tool-versions`)
+1. Install correct versions of Node.js and pnpm. There are two ways:
+	- With [`asdf`](https://github.com/asdf-vm/asdf) version manager:
+
+      ```sh
+      asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+      asdf plugin-add pnpm https://github.com/jonathanmorley/asdf-pnpm.git
+      asdf install
+      ```
+
+	- Manually by check versions in `.tool-versions`.
 
 2. Install dependencies:
 

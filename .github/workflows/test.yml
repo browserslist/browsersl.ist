@@ -28,15 +28,13 @@ jobs:
         env:
           cache-name: cache-pnpm-modules
         with:
-          path: ~/.pnpm-store
+          path: ~/.local/share/pnpm/
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
-      - name: Run core tests
-        run: pnpm test
-        env:
-          FORCE_COLOR: 2
-      - name: Run projects tests
-        run: pnpm -r test
+      - name: Build regions data for the client
+        run: pnpm -r build:regions
+      - name: Run tests
+        run: pnpm test -r --include-workspace-root
         env:
           FORCE_COLOR: 2
