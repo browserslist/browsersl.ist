@@ -59,18 +59,18 @@ export default async function getBrowsers(query, region) {
 
     let browsers = Object.entries(browsersGroups)
       .map(([id, { versions }]) => {
-        let coverage = null
         let name
-        // Node.js doesn't have coverage statistics on Can I Use
+        let coverage
+
+        // The Node.js is not in the Can I Use db
         if (id === 'node') {
           name = 'Node'
+          coverage = null
         } else {
-          let { browser, usage_global: usageGlobal } = caniuseAgents[id]
-          // TODO Add regional coverage
+          name = caniuseAgents[id].browser
           coverage = roundNumber(
-            Object.values(usageGlobal).reduce((a, b) => a + b, 0)
+            Object.values(versions).reduce((a, b) => a + b, 0)
           )
-          name = browser
         }
 
         return {
@@ -85,7 +85,7 @@ export default async function getBrowsers(query, region) {
     let coverage
 
     try {
-      coverage = browserslist.coverage(browsersByQuery, region)
+      coverage = roundNumber(browserslist.coverage(browsersByQuery, region))
     } catch (error) {
       reject(error)
     }
