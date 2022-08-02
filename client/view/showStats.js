@@ -101,7 +101,7 @@ export function updateBrowsersStats(data) {
     const nameCell = document.createElement('td');
     nameCell.classList.add('BrowsersStat__td');
     const nameLink = document.createElement('a');
-    nameLink.classList.add('BrowsersStat__link', 'Link');
+    nameLink.classList.add('Link');
     nameLink.href = _getWikipediaLink(id);
     nameLink.rel = "noreferrer noopener";
     nameLink.target = "_blank";

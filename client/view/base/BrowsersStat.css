@@ -102,11 +102,6 @@
   background-image: linear-gradient(to right, var(--accent-alternave) var(--c), transparent var(--c), transparent);
 }
 
-.BrowsersStat__link {
-  color: inherit;
-  text-decoration: none;
-}
-
 .BrowsersStat__table tbody {
   display: inline-table;
   width: 100%;
