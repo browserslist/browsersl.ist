@@ -4,12 +4,12 @@
   <link rel="stylesheet" href="./index.css">
   <script type="module" src="./index.js" defer></script>
   <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-  <article class="Article Article--left">
-    <section class="Introduction">
-      <div class="Introduction__header">
+  <article class="Article Article--intro">
+      <div class="Article--intro__header">
         <h1 class="Article__h1">
           <img src="./assets/browserlist_logo.svg" role="presentation">
           Browserslist
@@ -23,17 +23,61 @@
           4k
         </a>
       </div>
-      <p class="Introduction__about">Shared browser and platform compatibility config for popular JavaScript tools,
+      <p class="Article--intro__about">Shared browser and platform compatibility config for popular JavaScript tools,
         including
         Autoprefixer, Babel, ESLint, PostCSS, and Webpack</p>
-      <p class="Introduction__supported">
+      <p class="Article--intro__supported">
         Supported by
         <img src="./assets/evil_maritians_logo.svg" role="presentation">
         <a href="" class="Link">Evil Martians</a> and
         <img src="./assets/cube_logo.svg" role="presentation">
         <a href="" class="Link">Cube</a>
       </p>
-    </section>
+  </article>
+
+  <article class="Article Article--stats">
+    <h2>Display compatible browsers</h2>
+    <form id="query_form" class="Form">
+      <textarea name="query" cols="30" rows="6" required
+                class="Form__queryTextArea" id="query_text_area"
+                placeholder="Write the Browserslist config here..."></textarea>
+      <p class="Form__interactivePlaceholder">Write the Browserslist config here... <br>
+        For example
+        <a class="QueryLink" data-query="defaults"><code>defaults</code></a> ,
+        <a class="QueryLink" data-query="not dead"><code>not dead</code></a>
+      </p>
+      <p class="Form__hint Form__hint--progress">Press Enter
+        <span role="presentation" class="Form__enterIcon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none">
+            <path
+              d="M10.71 1.42h-.8a.1.1 0 0 0-.1.1v6.94H3.28V7.5a.1.1 0 0 0-.17-.09l-1.9 1.5a.1.1 0 0 0 0 .17l1.9 1.5a.1.1 0 0 0 .17-.08v-1h6.67c.48 0 .86-.4.86-.87v-7.1a.1.1 0 0 0-.1-.1Z"
+              fill="#1E1E1E" fill-opacity=".4"/>
+          </svg>
+        </span>
+        to submit
+      </p>
+      <p class="Form__hint Form__hint--required">Query should be not empty</p>
+      <p class="Form__hint Form__hint--error" id="error_message">Unknown query</p>
+    </form>
+    <div class="BrowsersStat__placeholder">
+      <img src="./assets/stats.svg" alt="">
+      <p class="BrowsersStat__placeholderText">add the Browserslist config to display compatible browsers</p>
+    </div>
+    <div class="BrowsersStat__stat BrowsersStat__stat--hidden">
+      <h2>Global coverage: <span id="global-coverage"></span></h2>
+      <ul role="presentation" id="global-coverage-bar" class="BrowsersStat__globalCoverageBar"></ul>
+      <div id="browsers-stats" class="BrowsersStat"></div>
+      <div class="ToolsVersions">
+        <p>
+          Data provided by caniuse-db <span id="can_i_use_version"></span>
+        </p>
+        <p>Browserslist version: <span id="browsers_list_version"></span></p>
+      </div>
+    </div>
+    <!-- TODO write real documentation -->
+  </article>
+
+  <article class="Article Article--docs">
     <h2>How to get started</h2>
     <p>
       <a class="QueryLink" data-query="defaults"><code>defaults</code></a> - if you're building a web application for
@@ -56,8 +100,7 @@
     </pre>
     </a>
     <p>You can also check publicly Browserslist configs on <a href="" class="Link">GitHub</a></p>
-
-    <h2>Query Syntax</h2>
+    <h2 class="Article__h2">Query Syntax</h2>
     <section class="DocSection">
       <h3 class="DocSection__header">Start with the default configuration</h3>
 
@@ -108,10 +151,11 @@
           <a class="QueryLink" data-query="not dead"><code>not dead</code></a></li>
       </ul>
 
-      <details open>
+      <details>
         <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
         <ul class="DocSection__list">
-          <li><a class="QueryLink" data-query="> 5% in my stats"><code>> 5% in my stats</code></a> - versions with > 5%
+          <li><a class="QueryLink" data-query="> 5% in my stats"><code>> 5% in my stats</code></a> - versions with >
+            5%
             of usage
             within your own audience.
           </li>
@@ -161,7 +205,8 @@
       <details>
         <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
         <ul class="DocSection__list">
-          <li><a class="QueryLink" data-query="last 2 major versions"><code>last 2 major versions</code></a> - all minor
+          <li><a class="QueryLink" data-query="last 2 major versions"><code>last 2 major versions</code></a> - all
+            minor
             and patch releases of the last 2 major versions.
           </li>
           <li><a class="QueryLink" data-query="last 2 Safari major versions"><code>last 2 Safari major
@@ -205,7 +250,8 @@
         <li><a class="QueryLink" data-query="Firefox > 20"><code>Firefox > 20</code></a> -desktop Firefox versions
           newer than 20.
         </li>
-        <li><a class="QueryLink" data-query="iOS >= 13.2"><code>iOS >= 13.2</code></a> - mobile Safari version 13.2 and
+        <li><a class="QueryLink" data-query="iOS >= 13.2"><code>iOS >= 13.2</code></a> - mobile Safari version 13.2
+          and
           newer.
         </li>
         <li><a class="QueryLink" data-query="not IE 11"><code>not IE 11</code></a> - goodbye, old friend; you can
@@ -227,7 +273,8 @@
       <details>
         <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
         <ul>
-          <li><a class="QueryLink" data-query="ie 6-8"><code>ie 6-8</code></a> - an inclusive range of Internet Explorer
+          <li><a class="QueryLink" data-query="ie 6-8"><code>ie 6-8</code></a> - an inclusive range of Internet
+            Explorer
             versions.
           </li>
           <li><a class="QueryLink" data-query="Firefox ESR"><code>Firefox ESR</code></a> - the latest Firefox Extended
@@ -252,7 +299,8 @@
         <li><a class="QueryLink" data-query="Firefox > 20"><code>Firefox > 20</code></a> -desktop Firefox versions
           newer than 20.
         </li>
-        <li><a class="QueryLink" data-query="iOS >= 13.2"><code>iOS >= 13.2</code></a> - mobile Safari version 13.2 and
+        <li><a class="QueryLink" data-query="iOS >= 13.2"><code>iOS >= 13.2</code></a> - mobile Safari version 13.2
+          and
           newer.
         </li>
         <li><a class="QueryLink" data-query="not IE 11"><code>not IE 11</code></a> - goodbye, old friend; you can
@@ -274,7 +322,8 @@
       <details>
         <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
         <ul>
-          <li><a class="QueryLink" data-query="ie 6-8"><code>ie 6-8</code></a> - an inclusive range of Internet Explorer
+          <li><a class="QueryLink" data-query="ie 6-8"><code>ie 6-8</code></a> - an inclusive range of Internet
+            Explorer
             versions.
           </li>
           <li><a class="QueryLink" data-query="Firefox ESR"><code>Firefox ESR</code></a> - the latest Firefox Extended
@@ -312,10 +361,12 @@
       <details>
         <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
         <ul class="DocSection__list">
-          <li><a class="QueryLink" data-query="maintained node versions"><code>maintained node versions</code></a> - all Node.js
+          <li><a class="QueryLink" data-query="maintained node versions"><code>maintained node versions</code></a> -
+            all Node.js
             versions currently maintained by Node.js Foundation.
           </li>
-          <li><a class="QueryLink" data-query="current node"><code>current node</code></a> - the Node.js version used by
+          <li><a class="QueryLink" data-query="current node"><code>current node</code></a> - the Node.js version used
+            by
             Browserslist right now.
           </li>
         </ul>
@@ -333,10 +384,12 @@
 
       <h4 class="DocSection__subHeader">Examples:</h4>
       <ul class="DocSection__list">
-        <li><a class="QueryLink" data-query="es6-module"><code>es6-module</code></a> - versions that support JavaScript
+        <li><a class="QueryLink" data-query="es6-module"><code>es6-module</code></a> - versions that support
+          JavaScript
           modules via script tag
         </li>
-        <li><a class="QueryLink" data-query="css-grid"><code>css-grid</code></a> - versions that support CSS Grid Layout
+        <li><a class="QueryLink" data-query="css-grid"><code>css-grid</code></a> - versions that support CSS Grid
+          Layout
         </li>
       </ul>
 
@@ -362,7 +415,9 @@
           - combines versions matched by <a class="QueryLink" data-query="> 0.5%"><code>> 0.5%</code></a>
           with versions matched by <a class="QueryLink" data-query="last 2 versions"><code>last 2 versions</code></a>
         </li>
-        <li><a class="QueryLink" data-query="> 0.5% or last 2 versions"><code>> 0.5% or last 2 versions</code></a> - same as above</li>
+        <li><a class="QueryLink" data-query="> 0.5% or last 2 versions"><code>> 0.5% or last 2 versions</code></a> -
+          same as above
+        </li>
         <li><a class="QueryLink" data-query="> 0.5% and last 2 versions"><code>> 0.5% and last 2 versions</code></a> -
           intersects versions matched by <a class="QueryLink" data-query="> 0.5%"><code>> 0.5%</code></a>
           with versions matched by <a class="QueryLink" data-query="last 2 versions"><code>last 2 versions</code></a>
@@ -413,47 +468,6 @@
       </ul>
     </section>
 
-  </article>
-  <article class="Article Article--right">
-    <h2>Display compatible browsers</h2>
-    <form id="query_form" class="Form">
-      <textarea name="query" cols="30" rows="6" required
-                class="Form__queryTextArea" id="query_text_area"
-                placeholder="Write the Browserslist config here..."></textarea>
-      <p class="Form__interactivePlaceholder">Write the Browserslist config here... <br>
-        For example
-        <a class="QueryLink" data-query="defaults"><code>defaults</code></a> ,
-        <a class="QueryLink" data-query="not dead"><code>not dead</code></a>
-      </p>
-      <p class="Form__hint Form__hint--progress">Press Enter
-        <span role="presentation" class="Form__enterIcon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none">
-            <path
-              d="M10.71 1.42h-.8a.1.1 0 0 0-.1.1v6.94H3.28V7.5a.1.1 0 0 0-.17-.09l-1.9 1.5a.1.1 0 0 0 0 .17l1.9 1.5a.1.1 0 0 0 .17-.08v-1h6.67c.48 0 .86-.4.86-.87v-7.1a.1.1 0 0 0-.1-.1Z"
-              fill="#1E1E1E" fill-opacity=".4"/>
-          </svg>
-        </span>
-        to submit
-      </p>
-      <p class="Form__hint Form__hint--required">Query should be not empty</p>
-      <p class="Form__hint Form__hint--error" id="error_message">Unknown query</p>
-    </form>
-    <div class="BrowsersStat__placeholder">
-      <img src="./assets/stats.svg" alt="">
-      <p class="BrowsersStat__placeholderText">add the Browserslist config to display compatible browsers</p>
-    </div>
-    <div class="BrowsersStat__stat BrowsersStat__stat--hidden">
-      <h2>Global coverage: <span id="global-coverage"></span></h2>
-      <ul role="presentation" id="global-coverage-bar" class="BrowsersStat__globalCoverageBar"></ul>
-      <div id="browsers-stats" class="BrowsersStat"></div>
-      <div class="ToolsVersions">
-        <p>
-          Data provided by caniuse-db <span id="can_i_use_version"></span>
-        </p>
-        <p>Browserslist version: <span id="browsers_list_version"></span></p>
-      </div>
-    </div>
-<!-- TODO write real documentation -->
   </article>
 
 </body>

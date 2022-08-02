@@ -1,11 +1,11 @@
 @import "./BrowsersStat.css";
 @import "./Article.css";
 @import "./Form.css";
-@import "./Introduction.css";
 @import "./Badge.css";
 @import "./QueryLinks.css";
 @import "./DocSection.css";
 @import "./Link.css";
+@import "./Pre.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -14,8 +14,6 @@
 }
 
 body {
-  display: flex;
-  height: 100vh;
   margin: 0;
   font-family:
     -apple-system,
@@ -43,19 +41,4 @@ p {
 code {
   /* stylelint-disable-next-line font-family-no-duplicate-names */
   font-family: monospace, monospace;
-}
-
-.Pre {
-  display: flex;
-  flex-direction: column;
-  padding: 12px;
-  font-size: inherit;
-  color: var(--accent);
-  background-color: var(--text-highlited);
-  border-radius: 8px;
-}
-
-.Pre code {
-  font-size: inherit;
-  background-color: initial;
 }
