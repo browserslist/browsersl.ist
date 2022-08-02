@@ -94,6 +94,7 @@ export function updateBrowsersStats(data) {
     iconElem.classList.add('BrowsersStat__icon');
     iconElem.src = `/assets/browser_logos/${id}.svg`;
     iconCell.setAttribute('rowspan', versions.length);
+    iconElem.setAttribute('role', 'presentation');
     iconCell.appendChild(iconElem);
     tr.appendChild(iconCell);
 
