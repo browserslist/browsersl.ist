@@ -5,6 +5,7 @@
 @import "./Badge.css";
 @import "./QueryLinks.css";
 @import "./DocSection.css";
+@import "./Link.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -37,24 +38,6 @@ p {
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0.01em;
-}
-
-.Link {
-  padding-bottom: 0.2em;
-  margin-bottom: -0.2em;
-  color: var(--text-primary);
-  text-decoration: none;
-  background-image: linear-gradient(to top, currentcolor 1px, transparent 1px, transparent);
-  background-position: 0 1.3em;
-  transition: background-position var(--time);
-
-  --time: 0.3s;
-}
-
-@media (hover) {
-  .Link:hover {
-    background-position: 0 1.1em;
-  }
 }
 
 code {

@@ -1,0 +1,17 @@
+.Link {
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+  color: var(--text-primary);
+  text-decoration: none;
+  background-image: linear-gradient(to top, currentcolor 1px, transparent 1px, transparent);
+  background-position: 0 1.3em;
+  transition: background-position var(--time);
+
+  --time: 0.3s;
+}
+
+@media (hover) {
+  .Link:hover {
+    background-position: 0 1.1em;
+  }
+}
