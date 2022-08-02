@@ -1,11 +1,11 @@
-@import "./BrowsersStat.css";
-@import "./Article.css";
-@import "./Form.css";
-@import "./Badge.css";
-@import "./QueryLinks.css";
-@import "./DocSection.css";
-@import "./Link.css";
-@import "./Pre.css";
+@import "../BrowserStats/BrowsersStat.css";
+@import "../Article/Article.css";
+@import "../Form/Form.css";
+@import "../Badge/Badge.css";
+@import "../QueryLink/QueryLink.css";
+@import "../DocSection/DocSection.css";
+@import "../Link/Link.css";
+@import "../Pre/Pre.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
