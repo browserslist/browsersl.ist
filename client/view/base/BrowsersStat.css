@@ -91,7 +91,7 @@
 }
 
 .BrowsersStat__td:last-child {
-  width: 15%;
+  width: 6ch;
   text-align: left;
 }
 
