@@ -1,13 +1,20 @@
-a[data-query] {
+.QueryLink {
   display: inline-block;
-  pointer-events: initial;
   cursor: pointer;
   transition: transform 0.2s;
 }
 
 @media (hover) {
   /* TODO approve this hover by designers */
-  a[data-query]:hover {
+  .QueryLink:hover {
     transform: scale(1.05);
   }
+}
+
+.QueryLink code {
+  padding: 0 4px;
+  line-height: 20px;
+  color: var(--accent);
+  background-color: var(--text-highlited);
+  border-radius: 4px;
 }
