@@ -45,6 +45,11 @@ async function updateStatsView(query) {
   const data = await response.json();
 
   if (!response.ok) {
+    if (data.message === 'Custom usage statistics was not provided') {
+      renderError(`This website does not support in my stats queries yet. Run Browserslist
+ <a href="https://github.com/browserslist/browserslist#custom-usage-data" class="Link">locally</a>.`)
+      return false;
+    }
     renderError(data.message);
     return false;
   }
@@ -63,7 +68,7 @@ async function updateStatsView(query) {
 }
 
 function renderError(message) {
-  errorMessage.innerHTML = message.split('.')[0];
+  errorMessage.innerHTML = message;
   form.classList.add('Form--serverError');
   textarea.addEventListener('input', () => {
     form.classList.remove('Form--serverError');

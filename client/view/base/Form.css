@@ -26,7 +26,7 @@
   position: absolute;
   bottom: 16px;
   left: 16px;
-  width: 300px;
+  max-width: calc(100% - 12px * 2);
   height: 16px;
   margin: 0;
   font-size: 14px;
@@ -86,7 +86,13 @@
   opacity: 100%;
 }
 
+.Form--serverError .Form__hint--error a {
+  color: inherit;
+  pointer-events: initial;
+}
+
 .Form__queryTextArea:placeholder-shown ~ .Form__interactivePlaceholder {
+  pointer-events: initial;
   opacity: 100%;
 }
 
