@@ -6,13 +6,10 @@ export function updateGlobalCoverageBar(data) {
   const element = document.getElementById('global-coverage-bar');
   element.innerHTML = '';
   data.forEach((item) => {
-    const alpha = 1 - 1/(item.coverage);
     const itemElem = document.createElement('li');
     itemElem.classList.add('BrowsersStat__globalCoverageBarItem');
-    itemElem.setAttribute('style', `
-    --proportion: ${item.coverage};
-    --alpha: ${alpha};
-    `)
+    itemElem.style.setProperty('--proportion', item.coverage)
+    itemElem.style.setProperty('--alpha',  1 - 1/(item.coverage))
     if(item.coverage > 10) {
       itemElem.innerHTML = item.name;
       itemElem.classList.add('BrowsersStat__globalCoverageBarItem--texted')
