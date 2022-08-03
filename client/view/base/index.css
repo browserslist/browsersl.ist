@@ -42,3 +42,9 @@ code {
   /* stylelint-disable-next-line font-family-no-duplicate-names */
   font-family: monospace, monospace;
 }
+
+.screenReader {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
