@@ -33,11 +33,11 @@ export function hideStatsPlaceholder() {
   return true;
 }
 
-function _getWikipediaLink(id) {
+function getWikipediaLink(id) {
   return WIKIPEDIA_URL + wikipediaLinks[id]
 }
 
-function _createCoverageCell(coverage) {
+function createCoverageCell(coverage) {
   const coveragePercentageHtmlString = (cov) => cov + '%';
   const coveragePercentageCssString = (cov) => {
     const result =  Math.log(1 + cov) * 100 / Math.log(1 + 100);
@@ -57,7 +57,7 @@ function _createCoverageCell(coverage) {
   return coverageCell;
 }
 
-function _createVersionCell(version) {
+function createVersionCell(version) {
   const versionCell = document.createElement('td');
   versionCell.classList.add('BrowsersStat__td');
   versionCell.innerHTML = version;
@@ -99,7 +99,7 @@ export function updateBrowsersStats(data) {
     nameCell.classList.add('BrowsersStat__td');
     const nameLink = document.createElement('a');
     nameLink.classList.add('Link');
-    nameLink.href = _getWikipediaLink(id);
+    nameLink.href = getWikipediaLink(id);
     nameLink.rel = "noreferrer noopener";
     nameLink.target = "_blank";
     nameCell.setAttribute('rowspan', versions.length);
@@ -107,9 +107,9 @@ export function updateBrowsersStats(data) {
     nameCell.appendChild(nameLink);
     tr.appendChild(nameCell);
 
-    tr.appendChild(_createVersionCell(versions[0].version));
+    tr.appendChild(createVersionCell(versions[0].version));
 
-    tr.appendChild(_createCoverageCell(versions[0].coverage));
+    tr.appendChild(createCoverageCell(versions[0].coverage));
 
     tBody.appendChild(tr);
 
@@ -117,9 +117,9 @@ export function updateBrowsersStats(data) {
       const {version, coverage} = item;
       const versionTr = document.createElement('tr');
 
-      versionTr.appendChild(_createVersionCell(version));
+      versionTr.appendChild(createVersionCell(version));
 
-      versionTr.appendChild(_createCoverageCell(coverage));
+      versionTr.appendChild(createCoverageCell(coverage));
 
       tBody.appendChild(versionTr);
     })
