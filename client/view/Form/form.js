@@ -7,9 +7,9 @@ import {
 
 const API_HOST = 'http://localhost:5000/api';
 
-const form = document.getElementById('query_form');
-const textarea = document.getElementById('query_text_area');
-const errorMessage = document.getElementById('error_message');
+const form = document.querySelector('[data-id=query_form]');
+const textarea = document.querySelector('[data-id=query_text_area]');
+const errorMessage = document.querySelector('[data-id=error_message]');
 
 export function initForm() {
   form.addEventListener('submit', async (e) => {

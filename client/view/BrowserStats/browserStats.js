@@ -3,7 +3,7 @@ import wikipediaLinks from "../../data/wikipedia-links.js";
 const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
 
 export function updateGlobalCoverageBar(data) {
-  const element = document.getElementById('global-coverage-bar');
+  const element = document.querySelector('[data-id=global-coverage-bar]');
   element.innerHTML = '';
   data.forEach((item) => {
     const itemElem = document.createElement('li');
@@ -65,7 +65,7 @@ function _createVersionCell(version) {
 }
 
 export function updateBrowsersStats(data) {
-  const element = document.getElementById('browsers-stats');
+  const element = document.querySelector('[data-id=browsers-stats]');
 
   const table = document.createElement('table');
   table.classList.add('BrowsersStat__table');
@@ -131,9 +131,9 @@ export function updateBrowsersStats(data) {
 }
 
 export function updateToolsVersions({ browserslist, caniuse }) {
-  const canIUseElement = document.getElementById('can_i_use_version');
+  const canIUseElement = document.querySelector('[data-id=can_i_use_version]');
   canIUseElement.innerHTML = caniuse;
 
-  const browsersListElement = document.getElementById('browsers_list_version');
+  const browsersListElement = document.querySelector('[data-id=browsers_list_version]');
   browsersListElement.innerHTML = browserslist;
 }
