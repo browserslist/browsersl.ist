@@ -5,9 +5,7 @@
   text-decoration: none;
   background-image: linear-gradient(to top, currentcolor 1px, transparent 1px, transparent);
   background-position: 0 1.3em;
-  transition: background-position var(--time);
-
-  --time: 0.3s;
+  transition: background-position 0.3s;
 }
 
 @media (hover) {
