@@ -1,7 +1,46 @@
-@import "./reset.css";
+@import "../BrowserStats/BrowsersStat.css";
+@import "../Article/Article.css";
+@import "../Form/Form.css";
+@import "../Badge/Badge.css";
+@import "../QueryLink/QueryLink.css";
+@import "../DocSection/DocSection.css";
+@import "../Link/Link.css";
+@import "../Pre/Pre.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
   }
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+  color: var(--text-primary);
+  background-color: var(--main-bg);
+  accent-color: var(--accent);
+}
+
+p {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+}
+
+code {
+  /* stylelint-disable-next-line font-family-no-duplicate-names */
+  font-family: monospace, monospace;
+
+  /* explain: https://github.com/necolas/normalize.css/issues/519#issuecomment-197131966 */
 }

@@ -1,0 +1,122 @@
+.BrowsersStat__globalCoverageBar {
+  display: flex;
+  gap: 2px;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  counter-reset: alpha 0;
+  background-color: var(--main-bg);
+  border-radius: 6px;
+}
+
+.BrowsersStat__globalCoverageBarItem {
+  box-sizing: border-box;
+  width: calc(var(--proportion, 0) * 1%);
+  overflow: hidden;
+  line-height: 32px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  list-style: none;
+  counter-increment: alpha -1;
+  background-color: var(--accent-alternave);
+  opacity: var(--alpha, 0%);
+
+  /* TODO types for this variables */
+  --proportion: 0;
+  --alpha: 0;
+}
+
+.BrowsersStat__globalCoverageBarItem--texted::after,
+.BrowsersStat__globalCoverageBarItem--texted::before {
+  display: inline-block;
+  width: 8px;
+  content: "";
+}
+
+.BrowsersStat {
+  columns: 2;
+  column-fill: balance;
+}
+
+.BrowsersStat__placeholder {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: var(--separator);
+}
+
+.BrowsersStat__placeholderText {
+  width: 80%;
+  margin: 0;
+  text-align: center;
+}
+
+.BrowsersStat__placeholder--hidden {
+  display: none;
+}
+
+.BrowsersStat__stat--hidden {
+  display: none;
+}
+
+.BrowsersStat__table {
+  display: block;
+  border-spacing: 8px 0;
+}
+
+.BrowsersStat__table tr:first-child td:first-child {
+  width: 20px;
+}
+
+.BrowsersStat__table tr:first-child td:nth-child(2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.BrowsersStat__table tr:first-child td:nth-child(3) {
+  width: 7ch;
+}
+
+.BrowsersStat__td {
+  box-sizing: border-box;
+  height: 32px;
+  line-height: 32px;
+  vertical-align: top;
+  break-inside: avoid;
+}
+
+.BrowsersStat__td:last-child {
+  width: 6ch;
+  text-align: left;
+}
+
+.BrowsersStat__td--coverage {
+  --coverage: 20%;
+
+  background-image: linear-gradient(to right, var(--accent-alternave) var(--c), transparent var(--c), transparent);
+}
+
+.BrowsersStat__table tbody {
+  display: inline-table;
+  width: 100%;
+  margin-bottom: -1px;
+  table-layout: fixed;
+  border-top: 1px solid var(--separator);
+}
+
+.BrowsersStat__icon {
+  display: inline;
+  height: 20px;
+  line-height: 32px;
+  vertical-align: middle;
+}
+
+.ToolsVersions {
+  color: var(--text-secondary);
+}

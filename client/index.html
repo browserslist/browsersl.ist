@@ -1,11 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <template data-type="pug" data-src="./view/base/meta.pug" />
-    <link rel="stylesheet" href="./index.css">
-    <script type="module" src="./index.js" defer></script>
-  </head>
-  <body>
-    <template data-type="pug" data-src="./view/browsers/browsers.pug" />
-  </body>
+<head>
+  <link rel="stylesheet" href="./index.css">
+  <script type="module" src="./index.js" defer></script>
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <article class="Article Article--intro">
+      <div class="Article--intro__header">
+        <h1 class="Article__h1">
+          <img src="./assets/browserlist_logo.svg" alt="">
+          Browserslist
+        </h1>
+        <a class="Badge" href="https://github.com/browserslist/browserslist">
+          <img src="./assets/github_logo.svg" alt="Count of github stars"> 10.5k
+        </a>
+        <a class="Badge" href="https://twitter.com/Browserslist">
+          <img src="./assets/twitter_logo.svg" alt="Count of twitter followers"> 4k
+        </a>
+      </div>
+      <p class="Article--intro__about">Shared browser and platform compatibility config for popular JavaScript tools,
+        including
+        Autoprefixer, Babel, ESLint, PostCSS, and Webpack</p>
+      <p class="Article--intro__supported">
+        Supported by
+        <img src="./assets/evil_maritians_logo.svg" alt="">
+        <a href="https://evilmartians.com/" class="Link">Evil Martians</a> and
+        <img src="./assets/cube_logo.svg" alt="">
+        <a href="https://cube.dev/" class="Link">Cube</a>
+      </p>
+  </article>
+
+  <article class="Article Article--stats">
+    <h2>Display compatible browsers</h2>
+    <form data-id="query_form" class="Form">
+      <textarea name="query" cols="30" rows="6" required
+                class="Form__queryTextArea" data-id="query_text_area"
+                placeholder="Write the Browserslist config here…"></textarea>
+      <p class="Form__interactivePlaceholder">Write the Browserslist config here… <br>
+        For example
+        <a class="QueryLink" data-query="defaults"><code>defaults</code></a> ,
+        <a class="QueryLink" data-query="not dead"><code>not dead</code></a>
+      </p>
+      <p class="Form__hint Form__hint--progress">Press Enter
+        <span alt="" class="Form__enterIcon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none">
+            <path
+              d="M10.71 1.42h-.8a.1.1 0 0 0-.1.1v6.94H3.28V7.5a.1.1 0 0 0-.17-.09l-1.9 1.5a.1.1 0 0 0 0 .17l1.9 1.5a.1.1 0 0 0 .17-.08v-1h6.67c.48 0 .86-.4.86-.87v-7.1a.1.1 0 0 0-.1-.1Z"
+              fill="#1E1E1E" fill-opacity=".4"/>
+          </svg>
+        </span>
+        to submit
+      </p>
+      <p class="Form__hint Form__hint--required">Query should be not empty</p>
+      <p class="Form__hint Form__hint--error" data-id="error_message">Unknown query</p>
+    </form>
+    <div class="BrowsersStat__placeholder">
+      <img src="./assets/stats.svg" alt="">
+      <p class="BrowsersStat__placeholderText">add the Browserslist config to display compatible browsers</p>
+    </div>
+    <div class="BrowsersStat__stat BrowsersStat__stat--hidden">
+      <h2>Global coverage: <span data-id="global-coverage"></span></h2>
+      <ul alt="" data-id="global-coverage-bar" class="BrowsersStat__globalCoverageBar"></ul>
+      <div data-id="browsers-stats" class="BrowsersStat"></div>
+      <div class="ToolsVersions">
+        <p>
+          Data provided by caniuse-db <span data-id="can_i_use_version"></span>
+        </p>
+        <p>Browserslist version: <span data-id="browsers_list_version"></span></p>
+      </div>
+    </div>
+    <!-- TODO write real documentation -->
+  </article>
+
+  <article class="Article Article--docs">
+    <h2>How to get started</h2>
+    <p>
+      <a class="QueryLink" data-query="defaults"><code>defaults</code></a> - if you're building a web application for
+      the global audience.
+    </p>
+    <p>
+      <a class="QueryLink" data-query="node 18"><code>node 18</code></a> - if you're building a Node.js application,
+      e.g., for SSR.
+    </p>
+    <p><a href="https://www.npmjs.com/package/autoprefixer" class="Link" target="_blank">Autoprefixer</a> Autoprefixer ,
+      <a href="https://babeljs.io/" class="Link" target="_blank">Babel</a> or any of the following libraries will find target browsers automatically, when
+      you add the following to <b>package.json</b>:
+    </p>
+    <a class="QueryLink" data-query="defaults, not IE 11, maintained node versions"><pre class="Pre">
+      <code>"browserslist": [</code>
+      <code>  "defaults",</code>
+      <code>  "not IE 11",</code>
+      <code>  "maintained node versions"</code>
+      <code>]</code>
+    </pre>
+    </a>
+    <p>You can also check publicly Browserslist configs on GitHub</p>
+    <h2 class="Article__h2">Query Syntax</h2>
+    <section class="DocSection">
+      <h3 class="DocSection__header">Start with the default configuration</h3>
+
+      <p>You can pick a sound set of versions with the `defaults` query which is a
+        shortcut for
+        <a class="QueryLink" data-query="> 0.5%, last 2 versions, Firefox ESR, not dead">
+          <code>> 0.5%, last 2 versions, Firefox ESR, not dead</code>
+        </a>. It matches recent versions of popular and supported browsers worldwide and includes
+        Firefox Extended Support Release which is updated roughly annually.
+      </p>
+
+      <p>The <a class="QueryLink" data-query="defaults"><code>defaults</code></a> query was thoroughly designed by the
+        Browserslist community.
+        It helps promote best practices and avoid common pitfalls.
+      </p>
+    </section>
+
+    <section class="DocSection">
+      <h3 class="DocSection__header">Select browser versions with certain usage</h3>
+
+      <p>You can pick versions that have more than or less than a certain size of the
+        audience worldwide, in a region, or in a country. You can also use the visitor
+        data of your own website.</p>
+
+      <h4 class="DocSection__subHeader">Examples:</h4>
+      <ul class="DocSection__list">
+        <li><a class="QueryLink" data-query="> 5%"><code>> 5%</code></a> - all versions with > 5% of the audience
+          worldwide.
+        </li>
+        <li><a class="QueryLink" data-query=">= 5% in US"><code>>= 5% in US</code></a> - same as above but in the US.
+        </li>
+        <li><a class="QueryLink" data-query=">= 5% in alt-AS"><code>>= 5% in alt-AS</code></a> - same as above but in
+          Asia.
+        </li>
+      </ul>
+
+      <h4 class="DocSection__subHeader">Beware:</h4>
+      <ul class="DocSection__list">
+        <li> You may exclude the most recent versions of all browsers that have been just
+          released. Please always add <a class="QueryLink" data-query="last 2 versions"><code>last …
+            versions</code></a> to include them back.
+        </li>
+        <li> You can exclude your global audience. Please be careful when narrowing the
+          audience to a region or a country.
+        </li>
+        <li> You may include <a class="QueryLink" data-query="dead"><code>dead</code></a> versions. Please consider
+          adding
+          <a class="QueryLink" data-query="not dead"><code>not dead</code></a></li>
+      </ul>
+
+      <details>
+        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
+        <ul class="DocSection__list">
+          <li><a class="QueryLink" data-query="> 5% in my stats"><code>> 5% in my stats</code></a> - versions with >
+            5%
+            of usage
+            within your own audience.
+          </li>
+          <li><a class="QueryLink" data-query="> 5% in circle-ci stats"><code>> 5% in circle-ci stats</code></a> -
+            versions with > 5% of usage within the audience data from shareable configuration, available as
+            github.com/circleci/circleci-docs/blob/master/browserslist-stats.json
+          </li>
+          <li><a class="QueryLink" data-query="cover 99.5%"><code>cover 99.5%</code></a> - the smallest set of popular
+            versions with collective usage over 99.5% of the audience worldwide.
+          </li>
+          <li><a class="QueryLink" data-query="cover 99.5% in CN"><code>cover 99.5% in CN</code></a> - same as above
+            but in China.
+          </li>
+          <li><a class="QueryLink" data-query="cover 99.5% in alt-EU"><code>cover 99.5% in alt-EU</code></a> - same
+            as above but in Europe.
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="DocSection">
+      <h3 class="DocSection__header">Select recent browser versions</h3>
+
+      <p>You can pick a few recent browser versions.</p>
+
+      <h4 class="DocSection__subHeader">Examples:</h4>
+      <ul class="DocSection__list">
+        <li><a class="QueryLink" data-query="> 5%"><code>last 2 versions</code></a> - last 2 versions of each
+          browser.
+        </li>
+        <li><a class="QueryLink" data-query="> 5%"><code>last 2 Chrome versions</code></a> - same as above but just
+          Chrome.
+        </li>
+      </ul>
+
+      Beware:
+      <ul class="DocSection__list">
+        <li>ou might exclude older versions still used by a substantial audience.
+          Please always add <a class="QueryLink" data-query="> 5%"><code>> …</code></a> to include them back.
+        </li>
+        <li>ou may pick <a class="QueryLink" data-query="dead"><code>dead</code></a> browsers like Internet Explorer.
+          Always use<a class="QueryLink" data-query="last 2 versions"><code>last … versions</code></a>
+          with `not dead`.
+        </li>
+      </ul>
+
+      <details>
+        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
+        <ul class="DocSection__list">
+          <li><a class="QueryLink" data-query="last 2 major versions"><code>last 2 major versions</code></a> - all
+            minor
+            and patch releases of the last 2 major versions.
+          </li>
+          <li><a class="QueryLink" data-query="last 2 Safari major versions"><code>last 2 Safari major
+            versions</code></a>
+            - same as above but just Safari.
+          </li>
+          <li><a class="QueryLink" data-query="unreleased versions"><code>unreleased versions</code></a>
+            - alpha and beta versions.
+          </li>
+          <li><a class="QueryLink" data-query="unreleased Chrome versions"><code>unreleased Chrome versions</code></a>
+            - same as above but just Chrome.
+          </li>
+          <li><a class="QueryLink" data-query="since 2020-01-15"><code>since 2020-01-15</code></a>
+            - versions released since Jan 15, 2020.
+          </li>
+          <li><a class="QueryLink" data-query="since 2020-01"><code>since 2020-01</code></a>
+            - versions released since January 2020, inclusive.
+          </li>
+          <li><a class="QueryLink" data-query="since 2020"><code>since 2020</code></a>
+            - versions released since 2020, inclusive.
+          </li>
+          <li><a class="QueryLink" data-query="last 3 years"><code>last 3 years</code></a>
+            - same as above if you run this query in 2022.
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="DocSection">
+      <h3 class="DocSection__header">Select specific browser versions</h3>
+
+      <p>You can pick browser versions or a version range of your choice.</p>
+
+      <h4 class="DocSection__subHeader">Examples:</h4>
+      <ul class="DocSection__list">
+
+
+        <li><a class="QueryLink" data-query="ChromeAndroid 103"><code>ChromeAndroid 103</code></a> - mobile Chrome
+          version 103.
+        </li>
+        <li><a class="QueryLink" data-query="Firefox > 20"><code>Firefox > 20</code></a> -desktop Firefox versions
+          newer than 20.
+        </li>
+        <li><a class="QueryLink" data-query="iOS >= 13.2"><code>iOS >= 13.2</code></a> - mobile Safari version 13.2
+          and
+          newer.
+        </li>
+        <li><a class="QueryLink" data-query="not IE 11"><code>not IE 11</code></a> - goodbye, old friend; you can
+          combine
+          with <a class="QueryLink" data-query="> 5%"><code>not</code></a>.
+        </li>
+      </ul>
+
+      <h4 class="DocSection__subHeader">Beware:</h4>
+      <ul class="DocSection__list">
+        <li> Make sure that your audience uses specific versions (e.g., in a corporate
+          setting) or that your application is not built to work with specific
+          versions (e.g., it's a bleeding-edge demo project). Please consider using
+          <a class="QueryLink" data-query="last 2 versions"><code>last … versions</code></a>
+          or <a class="QueryLink" data-query="> 5%"><code>> …</code></a> to include more versions.
+        </li>
+      </ul>
+
+      <details>
+        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
+        <ul>
+          <li><a class="QueryLink" data-query="ie 6-8"><code>ie 6-8</code></a> - an inclusive range of Internet
+            Explorer
+            versions.
+          </li>
+          <li><a class="QueryLink" data-query="Firefox ESR"><code>Firefox ESR</code></a> - the latest Firefox Extended
+            Support Release.
+          </li>
+        </ul>
+      </details>
+    </section>
+
+
+    <section class="DocSection">
+      <h3 class="DocSection__header">Select specific browser versions</h3>
+
+      <p>You can pick browser versions or a version range of your choice.</p>
+
+      <h4 class="DocSection__subHeader">Examples:</h4>
+      <ul class="DocSection__list">
+
+        <li><a class="QueryLink" data-query="ChromeAndroid 103"><code>ChromeAndroid 103</code></a> - mobile Chrome
+          version 103.
+        </li>
+        <li><a class="QueryLink" data-query="Firefox > 20"><code>Firefox > 20</code></a> -desktop Firefox versions
+          newer than 20.
+        </li>
+        <li><a class="QueryLink" data-query="iOS >= 13.2"><code>iOS >= 13.2</code></a> - mobile Safari version 13.2
+          and
+          newer.
+        </li>
+        <li><a class="QueryLink" data-query="not IE 11"><code>not IE 11</code></a> - goodbye, old friend; you can
+          combine
+          with <a class="QueryLink" data-query="> 5%"><code>not</code></a>.
+        </li>
+      </ul>
+
+      <h4 class="DocSection__subHeader">Beware:</h4>
+      <ul class="DocSection__list">
+        <li> Make sure that your audience uses specific versions (e.g., in a corporate
+          setting) or that your application is not built to work with specific
+          versions (e.g., it's a bleeding-edge demo project). Please consider using
+          <a class="QueryLink" data-query="last 2 versions"><code>last … versions</code></a>
+          or <a class="QueryLink" data-query="> 5%"><code>> …</code></a> to include more versions.
+        </li>
+      </ul>
+
+      <details>
+        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
+        <ul>
+          <li><a class="QueryLink" data-query="ie 6-8"><code>ie 6-8</code></a> - an inclusive range of Internet
+            Explorer
+            versions.
+          </li>
+          <li><a class="QueryLink" data-query="Firefox ESR"><code>Firefox ESR</code></a> - the latest Firefox Extended
+            Support Release.
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="DocSection">
+      <h3 class="DocSection__header">Select specific Node.js versions</h3>
+
+      <p>You can pick Node.js versions or a version range of your choice. Useful if you
+        know for sure the runtime configuration of your server-side code.</p>
+
+      <h4 class="DocSection__subHeader">Examples:</h4>
+      <ul class="DocSection__list">
+        <li><a class="QueryLink" data-query="node 10"><code>node 10</code></a> - latest
+          <a class="QueryLink" data-query="10.x.x"><code>10.x.x</code></a> Node.js version.
+        </li>
+        <li><a class="QueryLink" data-query="node 10.4"><code>node 10.4</code></a> - latest
+          <a class="QueryLink" data-query="10.4.x"><code>10.4.x</code></a> Node.js version.
+        </li>
+        <li><a class="QueryLink" data-query="node > 16"><code>node > 16</code></a> - all Node.js versions newer than
+          <a class="QueryLink" data-query="16.0.0"><code>16.0.0</code></a>.
+        </li>
+        <li><a class="QueryLink" data-query="last 2 node versions"><code>last 2 node versions</code></a>
+          - two latest Node.js releases.
+        </li>
+        <li><a class="QueryLink" data-query="last 2 node major versions"><code>last 2 node major versions</code></a> -
+          two last major-version Node.js releases.
+        </li>
+      </ul>
+
+      <details>
+        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
+        <ul class="DocSection__list">
+          <li><a class="QueryLink" data-query="maintained node versions"><code>maintained node versions</code></a> -
+            all Node.js
+            versions currently maintained by Node.js Foundation.
+          </li>
+          <li><a class="QueryLink" data-query="current node"><code>current node</code></a> - the Node.js version used
+            by
+            Browserslist right now.
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="DocSection">
+      <h3 class="DocSection__header">Select browser versions that support a certain feature</h3>
+
+      <p>You can pick browser versions that fully support features from the Can I Use database. See the
+        <a href="https://github.com/browserslist/caniuse-lite/tree/main/data/features" class="Link">
+          caniuse-lite repository
+        </a>
+        for the full list of features.</p>
+
+      <h4 class="DocSection__subHeader">Examples:</h4>
+      <ul class="DocSection__list">
+        <li><a class="QueryLink" data-query="es6-module"><code>es6-module</code></a> - versions that support
+          JavaScript
+          modules via script tag
+        </li>
+        <li><a class="QueryLink" data-query="css-grid"><code>css-grid</code></a> - versions that support CSS Grid
+          Layout
+        </li>
+      </ul>
+
+      <h4 class="DocSection__subHeader">Beware:</h4>
+      <ul class="DocSection__list">
+        <li> This query rarely works well on its own. Please consider combining it with
+          other queries.
+        </li>
+      </ul>
+    </section>
+
+    <section class="DocSection">
+      <h3 class="DocSection__header">Combine multiple queries into one</h3>
+
+      <p>You can combine versions matched by multiple queries with <code>or</code> or <code>,</code>; you can
+        intersect them with `and`. You can also negate any query with `not` if it's
+        not the first one in your list.</p>
+
+      <h4 class="DocSection__subHeader">Examples:</h4>
+      <ul class="DocSection__list">
+        <li>
+          <a class="QueryLink" data-query="> 0.5%, last 2 versions"><code>> 0.5%, last 2 versions</code></a>
+          - combines versions matched by <a class="QueryLink" data-query="> 0.5%"><code>> 0.5%</code></a>
+          with versions matched by <a class="QueryLink" data-query="last 2 versions"><code>last 2 versions</code></a>
+        </li>
+        <li><a class="QueryLink" data-query="> 0.5% or last 2 versions"><code>> 0.5% or last 2 versions</code></a> -
+          same as above
+        </li>
+        <li><a class="QueryLink" data-query="> 0.5% and last 2 versions"><code>> 0.5% and last 2 versions</code></a> -
+          intersects versions matched by <a class="QueryLink" data-query="> 0.5%"><code>> 0.5%</code></a>
+          with versions matched by <a class="QueryLink" data-query="last 2 versions"><code>last 2 versions</code></a>
+        </li>
+        <li><a class="QueryLink" data-query="> 0.5% and not last 2 versions"><code>
+          > 0.5% and not last 2 versions</code></a>- removes
+          <a class="QueryLink" data-query="last 2 versions"><code>last 2 versions</code></a>
+          from versions matched by <a class="QueryLink" data-query="> 0.5%"><code>> 0.5%</code></a>
+        </li>
+      </ul>
+
+      <h4 class="DocSection__subHeader">Beware:</h4>
+      <ul class="DocSection__list">
+        <li> A query with `not` can't be the left-hand one in the list.</li>
+        <li> A query with not is always joined to the left-hand one with `and`, even if `or` or `,` are used.</li>
+      </ul>
+
+      <details>
+        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
+        <ul class="DocSection__list">
+          <li><a class="QueryLink" data-query="> 0.5% and not last 2 versions">
+            <code>> 0.5% and not last 2 versions</code></a>,
+            <a class="QueryLink" data-query="> 0.5% or not last 2 versions"><code>
+              > 0.5% or not last 2 versions</code></a>,
+            <a class="QueryLink" data-query="> 0.5%"><code>> 0.5%</code></a>,
+            <a class="QueryLink" data-query="not last 2 versions"><code>not last 2 versions</code></a>
+            - these queries yield the same result.
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="DocSection">
+      <h3 class="DocSection__header">Exclude unmaintained browser versions</h3>
+
+      <p>You can combine your queries with <a class="QueryLink" data-query="not dead"><code>not dead</code></a>
+        to exclude <a class="QueryLink" data-query="dead"><code>dead</code></a> browsers, i.e.,
+        browsers without official support or updates for more than 24 months.
+        Right now these include IE 11, IE Mobile 11, BlackBerry 10, BlackBerry 7,
+        Samsung 4, Opera Mobile 12.1, and all versions of Baidu.</p>
+
+      <h4 class="DocSection__subHeader">Examples:</h4>
+      <ul class="DocSection__list">
+        <li><a class="QueryLink" data-query="> 0.2% and not dead"><code>> 0.2% and not dead</code></a> -
+          excludes versions matched by <a class="QueryLink" data-query="dead"><code>dead</code></a>
+          from versions matched by <a class="QueryLink" data-query="> 0.2%"><code>> 0.2%</code></a>
+        </li>
+      </ul>
+    </section>
+
+  </article>
+
+</body>
 </html>
