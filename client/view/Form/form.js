@@ -48,7 +48,7 @@ export function renderError(message) {
 async function updateStatsView(query) {
   let response;
   try {
-    response = await fetch(`${API_HOST}?q=${encodeURIComponent(query)}`)
+    response = await fetch(`${API_HOST}/browsers?q=${encodeURIComponent(query)}`)
     // TODO add loader
   } catch (error) {
     // TODO handle error
