@@ -1,0 +1,96 @@
+.Form {
+  position: relative;
+}
+
+.Form__queryTextArea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: var(--main-bg);
+  border: none;
+  border-radius: 8px;
+}
+
+.Form__queryTextArea::placeholder {
+  opacity: 0%;
+}
+
+.Form__queryTextArea:focus-visible {
+  outline-color: var(--accent);
+}
+
+.Form__hint {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  max-width: calc(100% - 12px * 2);
+  height: 16px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text-secondary);
+  pointer-events: none;
+  background-color: var(--main-bg);
+  opacity: 0%;
+  transition: opacity 0.2s linear;
+}
+
+.Form__hint--hidden {
+  opacity: 0%;
+}
+
+.Form__enterIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: calc((20px - 1em) / -2) 0;
+  vertical-align: middle;
+  background-color: var(--bg-highlited);
+  border-radius: 2px;
+}
+
+.Form__interactivePlaceholder {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  margin: 0;
+  color: var(--text-secondary);
+  pointer-events: none;
+  opacity: 0%;
+}
+
+.Form__hint--required {
+  color: var(--warning);
+}
+
+.Form__hint--error {
+  color: var(--error);
+}
+
+.Form--serverError .Form__hint--error {
+  opacity: 100%;
+}
+
+.Form--serverError .Form__hint--error a {
+  color: inherit;
+  pointer-events: initial;
+}
+
+.Form__queryTextArea:placeholder-shown ~ .Form__interactivePlaceholder {
+  pointer-events: initial;
+  opacity: 100%;
+}
+
+.Form:not(.Form--serverError) .Form__queryTextArea:invalid:focus-visible ~ .Form__hint--required {
+  opacity: 100%;
+}
+
+.Form:not(.Form--serverError):not(.Form--justSend) .Form__queryTextArea:focus-visible:valid ~ .Form__hint--progress {
+  opacity: 100%;
+}
