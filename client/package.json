@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@size-limit/file": "^8.0.0",
-    "caniuse-lite": "^1.0.30001373",
+    "caniuse-lite": "^1.0.30001374",
     "size-limit": "^8.0.0"
   },
   "engines": {
