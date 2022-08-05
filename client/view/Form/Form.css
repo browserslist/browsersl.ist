@@ -69,15 +69,6 @@
   color: var(--warning);
 }
 
-.Form--serverError .Form__hint--required,
-.Form--serverError .Form__hint--progress {
-  opacity: 0% !important;
-}
-
-.Form--justSend .Form__hint--progress {
-  opacity: 0% !important;
-}
-
 .Form__hint--error {
   color: var(--error);
 }
@@ -96,10 +87,10 @@
   opacity: 100%;
 }
 
-.Form__queryTextArea:invalid:focus-visible ~ .Form__hint--required {
+.Form:not(.Form--serverError) .Form__queryTextArea:invalid:focus-visible ~ .Form__hint--required {
   opacity: 100%;
 }
 
-.Form__queryTextArea:focus-visible:valid ~ .Form__hint--progress {
+.Form:not(.Form--serverError):not(.Form--justSend) .Form__queryTextArea:focus-visible:valid ~ .Form__hint--progress {
   opacity: 100%;
 }
