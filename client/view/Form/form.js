@@ -16,8 +16,8 @@ export function initForm() {
     if (!form.checkValidity()) {
       return;
     }
-    const formData = new FormData(form);
-    const query = formData.get('query')
+    let formData = new FormData(form);
+    let query = formData.get('query')
     e.preventDefault();
     form.classList.add('Form--justSend');
     textarea.addEventListener('input', () => {
@@ -55,7 +55,7 @@ async function updateStatsView(query) {
     return false;
   }
 
-  const data = await response.json();
+  let data = await response.json();
 
   if (!response.ok) {
     if (data.message === 'Custom usage statistics was not provided') {
@@ -67,7 +67,7 @@ async function updateStatsView(query) {
     return false;
   }
 
-  const {
+  let {
     browsers,
     versions,
   } = data;

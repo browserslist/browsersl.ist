@@ -1,12 +1,3 @@
 {
-  "extends": "@logux/eslint-config/esm",
-  "overrides": [
-    {
-      "files": "**/**.js",
-      "rules": {
-        "import/extensions": "on",
-        "prefer-let/prefer-let": "off"
-      }
-    }
-  ]
+  "extends": "@logux/eslint-config/esm"
 }

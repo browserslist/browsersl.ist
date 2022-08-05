@@ -3,10 +3,10 @@ import wikipediaLinks from "../../data/wikipedia-links.js";
 const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
 
 export function updateGlobalCoverageBar(data) {
-  const element = document.querySelector('[data-id=global-coverage-bar]');
+  let element = document.querySelector('[data-id=global-coverage-bar]');
   element.innerHTML = '';
   data.forEach((item) => {
-    const itemElem = document.createElement('li');
+    let itemElem = document.createElement('li');
     itemElem.classList.add('BrowsersStat__globalCoverageBarItem');
     itemElem.style.setProperty('--proportion', item.coverage)
     itemElem.style.setProperty('--alpha',  1 - 1/(item.coverage))
@@ -25,7 +25,7 @@ export function hideStatsPlaceholder() {
     return true;
   }
 
-  const statsElem = document.querySelector('.BrowsersStat__stat');
+  let statsElem = document.querySelector('.BrowsersStat__stat');
   statsElem.classList.remove('BrowsersStat__stat--hidden');
 
   statsPlaceholder.classList.add('BrowsersStat__placeholder--hidden');
@@ -38,9 +38,9 @@ function getWikipediaLink(id) {
 }
 
 function createCoverageCell(coverage) {
-  const coveragePercentageHtmlString = (cov) => cov + '%';
-  const coveragePercentageCssString = (cov) => {
-    const result =  Math.log(1 + cov) * 100 / Math.log(1 + 100);
+  let coveragePercentageHtmlString = (cov) => cov + '%';
+  let coveragePercentageCssString = (cov) => {
+    let result =  Math.log(1 + cov) * 100 / Math.log(1 + 100);
     if (result === 0) {
       return '0';
     } else if (result > 5) {
@@ -49,7 +49,7 @@ function createCoverageCell(coverage) {
     return '1px';
   }
 
-  const coverageCell = document.createElement('td');
+  let coverageCell = document.createElement('td');
   coverageCell.classList.add('BrowsersStat__td');
   coverageCell.innerHTML = coveragePercentageHtmlString(coverage);
   coverageCell.classList.add('BrowsersStat__td--coverage');
@@ -58,21 +58,21 @@ function createCoverageCell(coverage) {
 }
 
 function createVersionCell(version) {
-  const versionCell = document.createElement('td');
+  let versionCell = document.createElement('td');
   versionCell.classList.add('BrowsersStat__td');
   versionCell.innerHTML = version;
   return versionCell;
 }
 
 export function updateBrowsersStats(data) {
-  const element = document.querySelector('[data-id=browsers-stats]');
+  let element = document.querySelector('[data-id=browsers-stats]');
 
-  const table = document.createElement('table');
+  let table = document.createElement('table');
   table.classList.add('BrowsersStat__table');
 
   data.forEach(({id, name, versions: versionsInput}) => {
 
-    const versions = Object.entries(versionsInput)
+    let versions = Object.entries(versionsInput)
       .sort(([, coverageA], [, coverageB]) => coverageB - coverageA)
       .map(([ version, coverage ]) => {
         return {
@@ -81,13 +81,13 @@ export function updateBrowsersStats(data) {
         }
       });
 
-    const tBody = document.createElement('tbody');
-    const tr = document.createElement('tr');
+    let tBody = document.createElement('tbody');
+    let tr = document.createElement('tr');
     tr.classList.add('.BrowsersStat_tr');
 
-    const iconCell = document.createElement('td');
+    let iconCell = document.createElement('td');
     iconCell.classList.add('BrowsersStat__td');
-    const iconElem = document.createElement('img');
+    let iconElem = document.createElement('img');
     iconElem.classList.add('BrowsersStat__icon');
     iconElem.src = `/assets/browser_logos/${id}.svg`;
     iconCell.setAttribute('rowspan', versions.length);
@@ -95,9 +95,9 @@ export function updateBrowsersStats(data) {
     iconCell.appendChild(iconElem);
     tr.appendChild(iconCell);
 
-    const nameCell = document.createElement('td');
+    let nameCell = document.createElement('td');
     nameCell.classList.add('BrowsersStat__td');
-    const nameLink = document.createElement('a');
+    let nameLink = document.createElement('a');
     nameLink.classList.add('Link');
     nameLink.href = getWikipediaLink(id);
     nameLink.rel = "noreferrer noopener";
@@ -114,8 +114,8 @@ export function updateBrowsersStats(data) {
     tBody.appendChild(tr);
 
     versions.slice(1).forEach((item) => {
-      const {version, coverage} = item;
-      const versionTr = document.createElement('tr');
+      let {version, coverage} = item;
+      let versionTr = document.createElement('tr');
 
       versionTr.appendChild(createVersionCell(version));
 
@@ -131,9 +131,9 @@ export function updateBrowsersStats(data) {
 }
 
 export function updateToolsVersions({ browserslist, caniuse }) {
-  const canIUseElement = document.querySelector('[data-id=can_i_use_version]');
+  let canIUseElement = document.querySelector('[data-id=can_i_use_version]');
   canIUseElement.innerHTML = caniuse;
 
-  const browsersListElement = document.querySelector('[data-id=browsers_list_version]');
+  let browsersListElement = document.querySelector('[data-id=browsers_list_version]');
   browsersListElement.innerHTML = browserslist;
 }
