@@ -17,7 +17,8 @@ export default {
 }
 
 function getCountryName(id) {
-  let isIntlDisplayNameSupports = 'Intl' in window && 'DisplayNames' in window.Intl
+  let isIntlDisplayNameSupports =
+    'Intl' in window && 'DisplayNames' in window.Intl
 
   // Show country `id` instead country fullname for old browsers
   return isIntlDisplayNameSupports

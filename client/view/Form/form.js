@@ -5,78 +5,84 @@ import {
   hideStatsPlaceholder
 } from '../BrowserStats/browserStats.js'
 
-const API_HOST = 'http://localhost:5000/api';
+const API_HOST = 'http://localhost:5000/api'
 
-const form = document.querySelector('[data-id=query_form]');
-const textarea = document.querySelector('[data-id=query_text_area]');
-const errorMessage = document.querySelector('[data-id=error_message]');
+const form = document.querySelector('[data-id=query_form]')
+const textarea = document.querySelector('[data-id=query_text_area]')
+const errorMessage = document.querySelector('[data-id=error_message]')
 
 export function initForm() {
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async e => {
     if (!form.checkValidity()) {
-      return;
+      return
     }
-    let formData = new FormData(form);
+    let formData = new FormData(form)
     let query = formData.get('query')
-    e.preventDefault();
-    form.classList.add('Form--justSend');
-    textarea.addEventListener('input', () => {
-      form.classList.remove('Form--justSend');
-    }, {
-      once: true,
-    })
-    updateStatsView(query);
+    e.preventDefault()
+    form.classList.add('Form--justSend')
+    textarea.addEventListener(
+      'input',
+      () => {
+        form.classList.remove('Form--justSend')
+      },
+      {
+        once: true
+      }
+    )
+    updateStatsView(query)
   })
-  textarea.addEventListener('keypress', (e) => {
+  textarea.addEventListener('keypress', e => {
     if (e.keyCode === 13 && !e.shiftKey) {
-      e.preventDefault();
-      form.dispatchEvent(new Event('submit'));
+      e.preventDefault()
+      form.dispatchEvent(new Event('submit'))
     }
   })
 }
 
 export function renderError(message) {
-  errorMessage.innerHTML = message;
-  form.classList.add('Form--serverError');
-  textarea.addEventListener('input', () => {
-    form.classList.remove('Form--serverError');
-  }, {
-    once: true,
-  })
+  errorMessage.innerHTML = message
+  form.classList.add('Form--serverError')
+  textarea.addEventListener(
+    'input',
+    () => {
+      form.classList.remove('Form--serverError')
+    },
+    {
+      once: true
+    }
+  )
 }
 
 async function updateStatsView(query) {
-  let response;
+  let response
   try {
-    response = await fetch(`${API_HOST}/browsers?q=${encodeURIComponent(query)}`)
+    response = await fetch(
+      `${API_HOST}/browsers?q=${encodeURIComponent(query)}`
+    )
     // TODO add loader
   } catch (error) {
     // TODO handle error
-    return false;
+    return false
   }
 
-  let data = await response.json();
+  let data = await response.json()
 
   if (!response.ok) {
     if (data.message === 'Custom usage statistics was not provided') {
       renderError(`This website does not support in my stats queries yet. Run Browserslist
  <a href="https://github.com/browserslist/browserslist#custom-usage-data" class="Link">locally</a>.`)
-      return false;
+      return false
     }
-    renderError(data.message);
-    return false;
+    renderError(data.message)
+    return false
   }
 
-  let {
-    browsers,
-    versions,
-  } = data;
+  let { browsers, versions } = data
 
-  hideStatsPlaceholder();
-  updateBrowsersStats(browsers);
-  updateGlobalCoverageBar(browsers);
-  updateToolsVersions(versions);
+  hideStatsPlaceholder()
+  updateBrowsersStats(browsers)
+  updateGlobalCoverageBar(browsers)
+  updateToolsVersions(versions)
 
-  return true;
+  return true
 }
-

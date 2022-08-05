@@ -1,8 +1,8 @@
-import { initForm } from './view/Form/form.js';
-import { initQueryLinks } from './view/QueryLink/queryLink.js';
+import { initForm } from './view/Form/form.js'
+import { initQueryLinks } from './view/QueryLink/queryLink.js'
 
-initForm();
+initForm()
 
-initQueryLinks();
+initQueryLinks()
 
 //TODO change url when change query and get query from url when page are loading
