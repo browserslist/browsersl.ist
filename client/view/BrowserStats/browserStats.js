@@ -53,7 +53,9 @@ function createCoverageCell(coverage) {
   coverageCell.classList.add('BrowsersStat__td');
   coverageCell.innerHTML = coveragePercentageHtmlString(coverage);
   coverageCell.classList.add('BrowsersStat__td--coverage');
-  coverageCell.setAttribute('style', `--c:${coveragePercentageCssString(coverage)}`);
+
+
+  coverageCell.style.setProperty('--coverage',  coveragePercentageCssString(coverage));
   return coverageCell;
 }
 

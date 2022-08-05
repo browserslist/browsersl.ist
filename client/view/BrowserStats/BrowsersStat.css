@@ -97,7 +97,7 @@
 }
 
 .BrowsersStat__td--coverage {
-  --c: 20%;
+  --coverage: 20%;
 
   background-image: linear-gradient(to right, var(--accent-alternave) var(--c), transparent var(--c), transparent);
 }
