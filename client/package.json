@@ -13,7 +13,7 @@
     "@csstools/postcss-oklab-function": "^1.1.1",
     "autoprefixer": "^10.4.8",
     "jstransformer-markdown-it": "^3.0.0",
-    "postcss": "^8.4.14",
+    "postcss": "^8.4.16",
     "postcss-media-minmax": "^5.0.0",
     "postcss-nesting": "^10.1.10",
     "postcss-opacity-percentage": "^1.1.2",
