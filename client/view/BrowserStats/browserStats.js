@@ -1,7 +1,7 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
 
-export function updateRegionCoverageCaption(coverage) {
-  let element = document.querySelector('[data-id=region_coverage]')
+export function updateRegionCoverageCounter(coverage) {
+  let element = document.querySelector('[data-id=region_coverage_counter]')
   element.innerHTML = coverage + '%'
 }
 
@@ -22,7 +22,7 @@ export function updateRegionCoverageBar(data) {
 }
 
 export function hideStatsPlaceholder() {
-  let statsPlaceholder = document.querySelector('.BrowsersStat__placeholder')
+  let statsPlaceholder = document.querySelector('[data-id=form_placeholder]')
 
   if (
     statsPlaceholder.classList.contains('BrowsersStat__placeholder--hidden')
@@ -30,7 +30,7 @@ export function hideStatsPlaceholder() {
     return true
   }
 
-  let statsElem = document.querySelector('.BrowsersStat__stat')
+  let statsElem = document.querySelector('[data-id=region_coverage]')
   statsElem.classList.remove('BrowsersStat__stat--hidden')
 
   statsPlaceholder.classList.add('BrowsersStat__placeholder--hidden')

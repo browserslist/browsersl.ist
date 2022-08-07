@@ -40,7 +40,7 @@
       <div class="Form__queryTextAreaContainer">
         <textarea name="query" cols="30" rows="6" required class="Form__queryTextArea" data-id="query_text_area"
         placeholder="Write the Browserslist config here…"></textarea>
-        <p class="Form__interactivePlaceholder">Write the Browserslist config here… <br>
+        <p class="Form__interactivePlaceholder">Write the Browserslist config here…<br>
           For example
           <a class="QueryLink" data-query="defaults"><code>defaults</code></a> ,
           <a class="QueryLink" data-query="not dead"><code>not dead</code></a>
@@ -58,13 +58,13 @@
         <p class="Form__hint Form__hint--required">Query should be not empty</p>
         <p class="Form__hint Form__hint--error" data-id="error_message">Unknown query</p>
       </div>
-      <div class="BrowsersStat__placeholder">
+      <div class="BrowsersStat__placeholder" data-id="form_placeholder">
         <img src="./assets/stats.svg" alt="">
         <p class="BrowsersStat__placeholderText">add the Browserslist config to display compatible browsers</p>
       </div>
-      <div class="BrowsersStat__stat BrowsersStat__stat--hidden">
+      <div class="BrowsersStat__stat BrowsersStat__stat--hidden" data-id="region_coverage">
         <div class="BrowsersStat__regionCoverageCaption">
-          <h2>Region coverage: <span data-id="region_coverage"></span></h2>
+          <h2>Region coverage: <span data-id="region_coverage_counter"></span></h2>
           <select name="region" data-id="region_select" class="region_select"></select>
         </div>
         <ul alt="" data-id="region_coverage_bar" class="BrowsersStat__regionCoverageBar"></ul>

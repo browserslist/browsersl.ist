@@ -1,6 +1,6 @@
 import {
   updateBrowsersStats,
-  updateRegionCoverageCaption,
+  updateRegionCoverageCounter,
   updateRegionCoverageBar,
   updateToolsVersions,
   hideStatsPlaceholder
@@ -123,7 +123,7 @@ async function updateStatsView(query, region) {
 
   hideStatsPlaceholder()
   updateBrowsersStats(browsers)
-  updateRegionCoverageCaption(coverage)
+  updateRegionCoverageCounter(coverage)
   updateRegionCoverageBar(browsers)
   updateToolsVersions(versions)
 
