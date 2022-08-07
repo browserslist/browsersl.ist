@@ -2,6 +2,10 @@ import { readFile } from 'fs'
 import path from 'path'
 import { URL } from 'node:url'
 
+const CLIENT_DIR = '../../client'
+const DIST_DIR = '/dist'
+const ASSETS_DIR = '/assets'
+
 const MIME_TYPES = {
   '.js': 'text/javascript',
   '.css': 'text/css',
@@ -12,9 +16,13 @@ const MIME_TYPES = {
 }
 
 export default async function handleStatic(req, res) {
-  let filePath = req.url.includes('/assets/')
-    ? new URL(`../../client${req.url}`, import.meta.url)
-    : new URL(`../../client/dist${req.url}`, import.meta.url)
+  let filePath
+
+  if (req.url.includes(ASSETS_DIR)) {
+    filePath = new URL(`${CLIENT_DIR}${req.url}`, import.meta.url)
+  } else {
+    filePath = new URL(`${CLIENT_DIR}${DIST_DIR}${req.url}`, import.meta.url)
+  }
 
   let extname = path.extname(req.url)
 
