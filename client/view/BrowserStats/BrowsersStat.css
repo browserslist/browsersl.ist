@@ -1,4 +1,12 @@
-.BrowsersStat__globalCoverageBar {
+.BrowsersStat__regionCoverageCaption {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 24px 0;
+}
+
+.BrowsersStat__regionCoverageBar {
   display: flex;
   gap: 2px;
   justify-content: flex-start;
@@ -10,7 +18,7 @@
   border-radius: 6px;
 }
 
-.BrowsersStat__globalCoverageBarItem {
+.BrowsersStat__regionCoverageBarItem {
   box-sizing: border-box;
   width: calc(var(--proportion, 0) * 1%);
   overflow: hidden;
@@ -27,8 +35,8 @@
   --alpha: 0;
 }
 
-.BrowsersStat__globalCoverageBarItem--texted::after,
-.BrowsersStat__globalCoverageBarItem--texted::before {
+.BrowsersStat__regionCoverageBarItem--texted::after,
+.BrowsersStat__regionCoverageBarItem--texted::before {
   display: inline-block;
   width: 8px;
   content: "";
