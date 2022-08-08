@@ -1,6 +1,6 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
 
-export function updateRegionCoverageCounter(coverage) {
+export function updateRegionCoverageHeader(coverage) {
   let element = document.querySelector('[data-id=region_coverage_counter]')
   element.innerHTML = coverage + '%'
 }
