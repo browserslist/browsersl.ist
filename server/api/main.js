@@ -1,13 +1,7 @@
 import { readFile } from 'fs'
 import { URL } from 'node:url'
 
-const CACHE_TIMEOUT = 3 * 60 * 1000
-
 let responseCache = null
-
-setInterval(() => {
-  responseCache = null
-}, CACHE_TIMEOUT)
 
 export default async function handleMain(req, res) {
   let filePath = new URL(`../../client/dist/index.html`, import.meta.url)
@@ -15,7 +9,7 @@ export default async function handleMain(req, res) {
   let sendResponse = content => {
     res.writeHead(200, {
       'Content-Type': 'text/html',
-      'Cache-Control': 'public, max-age=0, must-revalidate'
+      'Cache-Control': 'public, max-age=300, must-revalidate'
     })
     res.end(content, 'utf-8')
   }
