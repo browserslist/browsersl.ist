@@ -1,5 +1,6 @@
 .DocSection {
   padding: 16px;
+  overflow: hidden;
   background-color: var(--bg-highlited);
   border-radius: 8px;
 }
@@ -8,7 +9,59 @@
   margin-top: 24px;
 }
 
+@media (max-width: 740px) {
+  .DocSection__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s;
+  }
+
+  .DocSection--open .DocSection__content {
+    height: initial;
+    max-height: 700px;
+  }
+}
+
+.DocSection__button {
+  display: none;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-color: transparent;
+  border-top: 8px solid transparent;
+  border-right: 0;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid;
+}
+
+@media (max-width: 740px) {
+  .DocSection__header {
+    position: relative;
+    padding-inline-start: 24px;
+  }
+
+  .DocSection__button {
+    position: absolute;
+    display: block;
+    transition: transform 1s;
+    transform: translate(0, -50%);
+    inset-block-start: 50%;
+    inset-inline-start: 0;
+  }
+
+  .DocSection--open .DocSection__button {
+    transform: translate(0, -50%) rotate(90deg);
+  }
+}
+
 .DocSection__header {
+  height: initial;
+  opacity: initial;
+}
+
+.DocSection__title {
   margin: 0;
   font-size: 18px;
   font-weight: 600;
@@ -20,7 +73,7 @@
   line-height: 22px;
 }
 
-.DocSection__subHeader {
+.DocSection__subTitle {
   margin-top: 24px;
   margin-bottom: 10px;
   font-size: 12px;
@@ -29,7 +82,7 @@
   text-transform: uppercase;
 }
 
-summary .DocSection__subHeader {
+summary .DocSection__subTitle {
   display: inline-block;
   margin-bottom: 0;
 }
