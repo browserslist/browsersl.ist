@@ -1,9 +1,9 @@
 import {
   updateBrowsersStats,
-  updateRegionCoverageHeader,
+  updateRegionCoverageCounter,
   updateRegionCoverageBar,
   updateToolsVersions,
-  hideStatsPlaceholder
+  showStats
 } from '../BrowserStats/browserStats.js'
 import regionsList from '../../data/regions.js'
 
@@ -11,7 +11,8 @@ const API_HOST = 'http://localhost:5000/api/'
 
 const form = document.querySelector('[data-id=query_form]')
 const textarea = document.querySelector('[data-id=query_text_area]')
-const regionSelect = document.querySelector('[data-id=region_select]')
+const regionCoverage = document.querySelector('[data-id=region_coverage]')
+const regionCoverageSelect = document.querySelector('[data-id=region_coverage_select]')
 const errorMessage = document.querySelector('[data-id=error_message]')
 
 export function initForm() {
@@ -44,11 +45,15 @@ export function initForm() {
     }
   })
 
-  regionSelect.addEventListener('change', submitForm)
+  regionCoverageSelect.addEventListener('change', submitForm)
 }
 
 function submitForm() {
   form.dispatchEvent(new Event('submit', { cancelable: true }))
+}
+
+function showCoverageControls() {
+  regionCoverage.classList.remove('Form__coverage--hidden')
 }
 
 function renderRegionSelectOptions() {
@@ -77,8 +82,8 @@ function renderRegionSelectOptions() {
   }
 
   let { continentsOptgroup, countriesOptgroup } = renderOptgroups(regionsList)
-  regionSelect.appendChild(continentsOptgroup)
-  regionSelect.appendChild(countriesOptgroup)
+  regionCoverageSelect.appendChild(continentsOptgroup)
+  regionCoverageSelect.appendChild(countriesOptgroup)
 }
 
 function renderError(message) {
@@ -121,9 +126,10 @@ async function updateStatsView(query, region) {
 
   let { browsers, coverage, versions } = data
 
-  hideStatsPlaceholder()
+  showCoverageControls()
+  showStats()
   updateBrowsersStats(browsers)
-  updateRegionCoverageHeader(coverage)
+  updateRegionCoverageCounter(coverage)
   updateRegionCoverageBar(browsers)
   updateToolsVersions(versions)
 

@@ -1,6 +1,6 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
 
-export function updateRegionCoverageHeader(coverage) {
+export function updateRegionCoverageCounter(coverage) {
   let element = document.querySelector('[data-id=region_coverage_counter]')
   element.innerHTML = coverage + '%'
 }
@@ -21,21 +21,12 @@ export function updateRegionCoverageBar(data) {
   })
 }
 
-export function hideStatsPlaceholder() {
-  let statsPlaceholder = document.querySelector('[data-id=form_placeholder]')
-
-  if (
-    statsPlaceholder.classList.contains('BrowsersStat__placeholder--hidden')
-  ) {
-    return true
-  }
-
-  let statsElem = document.querySelector('[data-id=region_coverage]')
-  statsElem.classList.remove('BrowsersStat__stat--hidden')
+export function showStats() {
+  let statsPlaceholder = document.querySelector('[data-id=browsers_stats_placeholder]')
+  let browserStats = document.querySelector('[data-id=browsers_stats]')
 
   statsPlaceholder.classList.add('BrowsersStat__placeholder--hidden')
-
-  return true
+  browserStats.classList.remove('BrowsersStat__stat--hidden')
 }
 
 function createCoverageCell(coverage) {
@@ -70,7 +61,7 @@ function createVersionCell(version) {
 }
 
 export function updateBrowsersStats(data) {
-  let element = document.querySelector('[data-id=browsers_stats]')
+  let element = document.querySelector('[data-id=browsers_stats_results]')
 
   let table = document.createElement('table')
   table.classList.add('BrowsersStat__table')
@@ -87,7 +78,7 @@ export function updateBrowsersStats(data) {
 
     let tBody = document.createElement('tbody')
     let tr = document.createElement('tr')
-    tr.classList.add('.BrowsersStat_tr')
+    tr.classList.add('BrowsersStat_tr')
 
     let iconCell = document.createElement('td')
     iconCell.classList.add('BrowsersStat__td')

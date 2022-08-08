@@ -1,7 +1,7 @@
 .Form {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  gap: 24px;
 }
 
 .Form__queryTextAreaContainer {
@@ -99,4 +99,15 @@
 
 .Form:not(.Form--serverError):not(.Form--justSend) .Form__queryTextArea:focus-visible:valid ~ .Form__hint--progress {
   opacity: 100%;
+}
+
+.Form__coverage {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Form__coverage--hidden {
+  display: none;
 }

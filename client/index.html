@@ -58,17 +58,21 @@
         <p class="Form__hint Form__hint--required">Query should be not empty</p>
         <p class="Form__hint Form__hint--error" data-id="error_message">Unknown query</p>
       </div>
-      <div class="BrowsersStat__placeholder" data-id="form_placeholder">
+      <div class="Form__coverage Form__coverage--hidden" data-id="region_coverage">
+        <h2>Region coverage: <span data-id="region_coverage_counter"></span></h2>
+        <select name="region" data-id="region_coverage_select"></select>
+      </div>
+    </form>
+
+    <div class="BrowsersStat">
+      <div class="BrowsersStat__placeholder" data-id="browsers_stats_placeholder">
         <img src="./assets/stats.svg" alt="">
         <p class="BrowsersStat__placeholderText">add the Browserslist config to display compatible browsers</p>
       </div>
-      <div class="BrowsersStat__stat BrowsersStat__stat--hidden" data-id="region_coverage">
-        <div class="BrowsersStat__regionCoverageCaption">
-          <h2>Region coverage: <span data-id="region_coverage_counter"></span></h2>
-          <select name="region" data-id="region_select" class="region_select"></select>
-        </div>
-        <ul alt="" data-id="region_coverage_bar" class="BrowsersStat__regionCoverageBar"></ul>
-        <div data-id="browsers_stats" class="BrowsersStat"></div>
+
+      <div class="BrowsersStat__stat BrowsersStat__stat--hidden" data-id="browsers_stats">
+        <ul class="BrowsersStat__regionCoverageBar" alt=""  data-id="region_coverage_bar"></ul>
+        <div class="BrowsersStat__tableContainer" data-id="browsers_stats_results"></div>
         <div class="ToolsVersions">
           <p>
             Data provided by caniuse-db <span data-id="can_i_use_version"></span>
@@ -76,8 +80,8 @@
           <p>Browserslist version: <span data-id="browsers_list_version"></span></p>
         </div>
       </div>
-    </form>
-    <!-- TODO write real documentation -->
+      <!-- TODO write real documentation -->
+    </div>
   </article>
 
   <article class="Article Article--docs">

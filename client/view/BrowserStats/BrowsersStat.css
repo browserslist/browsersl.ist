@@ -1,11 +1,3 @@
-.BrowsersStat__regionCoverageCaption {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 24px 0;
-}
-
 .BrowsersStat__regionCoverageBar {
   display: flex;
   gap: 2px;
@@ -16,6 +8,7 @@
   counter-reset: alpha 0;
   background-color: var(--main-bg);
   border-radius: 6px;
+  margin: 0 0 24px;
 }
 
 .BrowsersStat__regionCoverageBarItem {
@@ -42,7 +35,7 @@
   content: "";
 }
 
-.BrowsersStat {
+.BrowsersStat__tableContainer {
   columns: 2;
   column-fill: balance;
 }
