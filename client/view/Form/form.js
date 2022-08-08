@@ -56,16 +56,17 @@ export function renderError(message) {
 async function updateStatsView(query) {
   let response
   try {
-    response = await fetch(
-      `${API_HOST}/browsers?q=${encodeURIComponent(query)}`
-    )
-    // TODO add loader
+    form.classList.add('Form--loaded')
+    response = await fetch(`${API_HOST}/browsers?q=${encodeURIComponent(query)}`)
   } catch (error) {
     // TODO handle error
+    form.classList.remove('Form--loaded')
     return false
   }
 
   let data = await response.json()
+
+  form.classList.remove('Form--loaded')
 
   if (!response.ok) {
     if (data.message === 'Custom usage statistics was not provided') {
