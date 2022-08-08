@@ -102,11 +102,11 @@ export function submitForm(query) {
 function initUrlControl() {
   let urlParams = new URLSearchParams(window.location.search);
 
-  if (urlParams.get('query')) {
-    submitForm(urlParams.get('query'));
+  if (urlParams.get('q')) {
+    submitForm(urlParams.get('q'));
   }
 }
 
 function changeUrl(query) {
-  window.history.pushState({}, query, `?query=${query}`)
+  window.history.pushState({}, query, `?q=${query}`)
 }
