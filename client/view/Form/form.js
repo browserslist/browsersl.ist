@@ -16,8 +16,10 @@ export function initForm() {
     if (!form.checkValidity()) {
       return
     }
+
     let formData = new FormData(form)
     let query = formData.get('query')
+    changeUrl(query);
     e.preventDefault()
     form.classList.add('Form--justSend')
     textarea.addEventListener(
@@ -34,9 +36,11 @@ export function initForm() {
   textarea.addEventListener('keypress', e => {
     if (e.keyCode === 13 && !e.shiftKey) {
       e.preventDefault()
-      form.dispatchEvent(new Event('submit'))
+      submitForm()
     }
   })
+
+  initUrlControl()
 }
 
 export function renderError(message) {
@@ -85,4 +89,24 @@ async function updateStatsView(query) {
   updateToolsVersions(versions)
 
   return true
+}
+
+export function submitForm(query) {
+  if (query) {
+    textarea.value = query
+  }
+
+  form.dispatchEvent(new Event('submit', { cancelable: true }));
+}
+
+function initUrlControl() {
+  let urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.get('query')) {
+    submitForm(urlParams.get('query'));
+  }
+}
+
+function changeUrl(query) {
+  window.history.pushState({}, query, `?query=${query}`)
 }
