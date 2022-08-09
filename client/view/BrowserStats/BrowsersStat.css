@@ -1,4 +1,4 @@
-.BrowsersStat__globalCoverageBar {
+.BrowsersStat__regionCoverageBar {
   display: flex;
   gap: 2px;
   justify-content: flex-start;
@@ -8,9 +8,10 @@
   counter-reset: alpha 0;
   background-color: var(--main-bg);
   border-radius: 6px;
+  margin: 0 0 24px;
 }
 
-.BrowsersStat__globalCoverageBarItem {
+.BrowsersStat__regionCoverageBarItem {
   box-sizing: border-box;
   width: calc(var(--proportion, 0) * 1%);
   overflow: hidden;
@@ -27,14 +28,14 @@
   --alpha: 0;
 }
 
-.BrowsersStat__globalCoverageBarItem--texted::after,
-.BrowsersStat__globalCoverageBarItem--texted::before {
+.BrowsersStat__regionCoverageBarItem--texted::after,
+.BrowsersStat__regionCoverageBarItem--texted::before {
   display: inline-block;
   width: 8px;
   content: "";
 }
 
-.BrowsersStat {
+.BrowsersStat__tableContainer {
   columns: 2;
   column-fill: balance;
 }
