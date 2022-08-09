@@ -19,7 +19,9 @@ export function initForm() {
 
     let formData = new FormData(form)
     let query = formData.get('query')
-    changeUrl(query);
+    if (getUrlQuery() !== query) {
+      changeUrl(query)
+    }
     e.preventDefault()
     form.classList.add('Form--justSend')
     textarea.addEventListener(
@@ -96,17 +98,23 @@ export function submitForm(query) {
     textarea.value = query
   }
 
-  form.dispatchEvent(new Event('submit', { cancelable: true }));
+  form.dispatchEvent(new Event('submit', { cancelable: true }))
 }
 
 function initUrlControl() {
-  let urlParams = new URLSearchParams(window.location.search);
+  submitForm(getUrlQuery())
 
-  if (urlParams.get('q')) {
-    submitForm(urlParams.get('q'));
-  }
+  window.addEventListener('popstate', () => {
+    submitForm(getUrlQuery())
+  })
 }
 
 function changeUrl(query) {
   window.history.pushState({}, query, `?q=${query}`)
+}
+
+function getUrlQuery() {
+  let urlParams = new URLSearchParams(window.location.search)
+
+  return urlParams.get('q')
 }
