@@ -28,7 +28,8 @@
   outline-color: var(--accent);
 }
 
-.Form__hint {
+.Form__hint,
+.Form__loader {
   position: absolute;
   bottom: 16px;
   left: 16px;
@@ -79,26 +80,60 @@
   color: var(--error);
 }
 
-.Form--serverError .Form__hint--error {
-  opacity: 100%;
-}
-
-.Form--serverError .Form__hint--error a {
+.Form__hint--error a {
   color: inherit;
   pointer-events: initial;
 }
 
+.Form.Form--serverError:not(.Form--loaded) .Form__hint--error {
+  opacity: 100%;
+}
+
 .Form__queryTextArea:placeholder-shown ~ .Form__interactivePlaceholder {
+  pointer-events: none;
+  opacity: 100%;
+}
+
+.Form__queryTextArea:placeholder-shown ~ .Form__interactivePlaceholder a {
   pointer-events: initial;
+}
+
+.Form:not(.Form--serverError):not(.Form--loaded) .Form__queryTextArea:invalid:focus-visible ~ .Form__hint--required {
   opacity: 100%;
 }
 
-.Form:not(.Form--serverError) .Form__queryTextArea:invalid:focus-visible ~ .Form__hint--required {
+.Form:not(.Form--serverError):not(.Form--justSend):not(.Form--loaded) .Form__queryTextArea:focus-visible:valid ~ .Form__hint--progress {
   opacity: 100%;
 }
 
-.Form:not(.Form--serverError):not(.Form--justSend) .Form__queryTextArea:focus-visible:valid ~ .Form__hint--progress {
+.Form--loaded .Form__loader {
   opacity: 100%;
+}
+
+.Form__loader::after {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 1ch;
+  content: "";
+  background-image:
+    radial-gradient(var(--main-bg) 60%, transparent 60%),
+    conic-gradient(transparent, currentcolor);
+  border-radius: 50%;
+  animation-name: form-loader;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.5, 0.2, 0.5, 0.8);
+  animation-iteration-count: infinite;
+}
+
+@keyframes form-loader {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .Form__coverage {
