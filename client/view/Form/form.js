@@ -53,10 +53,6 @@ export function initForm() {
   regionCoverageSelect.addEventListener('change', submitForm)
 }
 
-function submitForm() {
-  form.dispatchEvent(new Event('submit', { cancelable: true }))
-}
-
 function showCoverageControls() {
   regionCoverage.classList.remove('Form__coverage--hidden')
 }
