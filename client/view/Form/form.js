@@ -12,7 +12,9 @@ const API_HOST = 'http://localhost:5000/api/'
 const form = document.querySelector('[data-id=query_form]')
 const textarea = document.querySelector('[data-id=query_text_area]')
 const regionCoverage = document.querySelector('[data-id=region_coverage]')
-const regionCoverageSelect = document.querySelector('[data-id=region_coverage_select]')
+const regionCoverageSelect = document.querySelector(
+  '[data-id=region_coverage_select]'
+)
 const errorMessage = document.querySelector('[data-id=error_message]')
 
 export function initForm() {
