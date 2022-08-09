@@ -106,16 +106,19 @@ function renderError(message) {
 async function updateStatsView(query, region) {
   let response
   try {
+    form.classList.add('Form--loaded')
     let urlParams = new URLSearchParams({ q: query, region })
     let url = new URL(`browsers?${urlParams}`, `${API_HOST}`)
     response = await fetch(url)
-    // TODO add loader
   } catch (error) {
     // TODO handle error
+    form.classList.remove('Form--loaded')
     return false
   }
 
   let data = await response.json()
+
+  form.classList.remove('Form--loaded')
 
   if (!response.ok) {
     if (data.message === 'Custom usage statistics was not provided') {
