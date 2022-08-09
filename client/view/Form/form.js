@@ -17,43 +17,42 @@ const regionCoverageSelect = document.querySelector(
 )
 const errorMessage = document.querySelector('[data-id=error_message]')
 
-export function initForm() {
-  renderRegionSelectOptions()
+renderRegionSelectOptions()
 
-  form.addEventListener('submit', async e => {
-    if (!form.checkValidity()) {
-      return
-    }
+form.addEventListener('submit', async e => {
+  if (!form.checkValidity()) {
+    return
+  }
 
-    let formData = new FormData(form)
-    let query = formData.get('query')
-    let region = formData.get('region')
-    if (getUrlQuery() !== query) {
-      changeUrl(query)
+  let formData = new FormData(form)
+  let query = formData.get('query')
+  let region = formData.get('region')
+  if (getUrlQuery() !== query) {
+    changeUrl(query)
+  }
+  e.preventDefault()
+  form.classList.add('Form--justSend')
+  textarea.addEventListener(
+    'input',
+    () => {
+      form.classList.remove('Form--justSend')
+    },
+    {
+      once: true
     }
+  )
+  updateStatsView(query, region)
+})
+
+textarea.addEventListener('keypress', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault()
-    form.classList.add('Form--justSend')
-    textarea.addEventListener(
-      'input',
-      () => {
-        form.classList.remove('Form--justSend')
-      },
-      {
-        once: true
-      }
-    )
-    updateStatsView(query, region)
-  })
+    submitForm()
+  }
+})
 
-  textarea.addEventListener('keypress', e => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-      submitForm()
-    }
-  })
-
-  regionCoverageSelect.addEventListener('change', submitForm)
-}
+initUrlControl()
+regionCoverageSelect.addEventListener('change', () => submitForm())
 
 function showCoverageControls() {
   regionCoverage.classList.remove('Form__coverage--hidden')
@@ -140,9 +139,12 @@ async function updateStatsView(query, region) {
   return true
 }
 
-export function submitForm(query) {
+export function submitForm(query, region) {
   if (query) {
     textarea.value = query
+  }
+  if (region) {
+    regionCoverageSelect.value = region
   }
 
   form.dispatchEvent(new Event('submit', { cancelable: true }))

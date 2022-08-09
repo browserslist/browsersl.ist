@@ -4,11 +4,11 @@
   justify-content: flex-start;
   width: 100%;
   padding: 0;
+  margin: 0 0 24px;
   overflow: hidden;
   counter-reset: alpha 0;
   background-color: var(--main-bg);
   border-radius: 6px;
-  margin: 0 0 24px;
 }
 
 .BrowsersStat__regionCoverageBarItem {

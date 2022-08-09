@@ -103,8 +103,8 @@
 
 .Form__coverage {
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
+  gap: 8px;
   justify-content: space-between;
 }
 
