@@ -114,6 +114,7 @@
   border-radius: 50%;
   animation-name: form-loader;
   animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
   animation-iteration-count: infinite;
 }
 
