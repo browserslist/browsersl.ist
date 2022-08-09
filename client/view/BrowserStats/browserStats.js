@@ -1,42 +1,34 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
 
-const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
+export function updateRegionCoverageCounter(coverage) {
+  let element = document.querySelector('[data-id=region_coverage_counter]')
+  element.innerHTML = coverage + '%'
+}
 
-export function updateGlobalCoverageBar(data) {
-  let element = document.querySelector('[data-id=global-coverage-bar]')
+export function updateRegionCoverageBar(data) {
+  let element = document.querySelector('[data-id=region_coverage_bar]')
   element.innerHTML = ''
   data.forEach(item => {
     let itemElem = document.createElement('li')
-    itemElem.classList.add('BrowsersStat__globalCoverageBarItem')
+    itemElem.classList.add('BrowsersStat__regionCoverageBarItem')
     itemElem.style.setProperty('--proportion', item.coverage)
     itemElem.style.setProperty('--alpha', 1 - 1 / item.coverage)
     if (item.coverage > 10) {
       itemElem.innerHTML = item.name
-      itemElem.classList.add('BrowsersStat__globalCoverageBarItem--texted')
+      itemElem.classList.add('BrowsersStat__regionCoverageBarItem--texted')
     }
     element.appendChild(itemElem)
   })
 }
 
-const statsPlaceholder = document.querySelector('.BrowsersStat__placeholder')
-
-export function hideStatsPlaceholder() {
-  if (
-    statsPlaceholder.classList.contains('BrowsersStat__placeholder--hidden')
-  ) {
-    return true
-  }
-
-  let statsElem = document.querySelector('.BrowsersStat__stat')
-  statsElem.classList.remove('BrowsersStat__stat--hidden')
+export function showStats() {
+  let statsPlaceholder = document.querySelector(
+    '[data-id=browsers_stats_placeholder]'
+  )
+  let browserStats = document.querySelector('[data-id=browsers_stats]')
 
   statsPlaceholder.classList.add('BrowsersStat__placeholder--hidden')
-
-  return true
-}
-
-function getWikipediaLink(id) {
-  return WIKIPEDIA_URL + wikipediaLinks[id]
+  browserStats.classList.remove('BrowsersStat__stat--hidden')
 }
 
 function createCoverageCell(coverage) {
@@ -71,7 +63,7 @@ function createVersionCell(version) {
 }
 
 export function updateBrowsersStats(data) {
-  let element = document.querySelector('[data-id=browsers-stats]')
+  let element = document.querySelector('[data-id=browsers_stats_results]')
 
   let table = document.createElement('table')
   table.classList.add('BrowsersStat__table')
@@ -88,7 +80,7 @@ export function updateBrowsersStats(data) {
 
     let tBody = document.createElement('tbody')
     let tr = document.createElement('tr')
-    tr.classList.add('.BrowsersStat_tr')
+    tr.classList.add('BrowsersStat_tr')
 
     let iconCell = document.createElement('td')
     iconCell.classList.add('BrowsersStat__td')
@@ -104,7 +96,7 @@ export function updateBrowsersStats(data) {
     nameCell.classList.add('BrowsersStat__td')
     let nameLink = document.createElement('a')
     nameLink.classList.add('Link')
-    nameLink.href = getWikipediaLink(id)
+    nameLink.href = wikipediaLinks[id]
     nameLink.rel = 'noreferrer noopener'
     nameLink.target = '_blank'
     nameCell.setAttribute('rowspan', versions.length)
