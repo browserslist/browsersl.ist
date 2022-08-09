@@ -22,7 +22,9 @@ export function updateRegionCoverageBar(data) {
 }
 
 export function showStats() {
-  let statsPlaceholder = document.querySelector('[data-id=browsers_stats_placeholder]')
+  let statsPlaceholder = document.querySelector(
+    '[data-id=browsers_stats_placeholder]'
+  )
   let browserStats = document.querySelector('[data-id=browsers_stats]')
 
   statsPlaceholder.classList.add('BrowsersStat__placeholder--hidden')
