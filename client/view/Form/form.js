@@ -11,39 +11,37 @@ const form = document.querySelector('[data-id=query_form]')
 const textarea = document.querySelector('[data-id=query_text_area]')
 const errorMessage = document.querySelector('[data-id=error_message]')
 
-export function initForm() {
-  form.addEventListener('submit', async e => {
-    if (!form.checkValidity()) {
-      return
-    }
+form.addEventListener('submit', async e => {
+  if (!form.checkValidity()) {
+    return
+  }
 
-    let formData = new FormData(form)
-    let query = formData.get('query')
-    if (getUrlQuery() !== query) {
-      changeUrl(query)
+  let formData = new FormData(form)
+  let query = formData.get('query')
+  if (getUrlQuery() !== query) {
+    changeUrl(query)
+  }
+  e.preventDefault()
+  form.classList.add('Form--justSend')
+  textarea.addEventListener(
+    'input',
+    () => {
+      form.classList.remove('Form--justSend')
+    },
+    {
+      once: true
     }
+  )
+  updateStatsView(query)
+})
+textarea.addEventListener('keypress', e => {
+  if (e.keyCode === 13 && !e.shiftKey) {
     e.preventDefault()
-    form.classList.add('Form--justSend')
-    textarea.addEventListener(
-      'input',
-      () => {
-        form.classList.remove('Form--justSend')
-      },
-      {
-        once: true
-      }
-    )
-    updateStatsView(query)
-  })
-  textarea.addEventListener('keypress', e => {
-    if (e.keyCode === 13 && !e.shiftKey) {
-      e.preventDefault()
-      submitForm()
-    }
-  })
+    submitForm()
+  }
+})
 
-  initUrlControl()
-}
+initUrlControl()
 
 export function renderError(message) {
   errorMessage.innerHTML = message
