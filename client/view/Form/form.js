@@ -45,7 +45,7 @@ form.addEventListener('submit', async e => {
 })
 
 textarea.addEventListener('keypress', e => {
-  if (e.keyCode === 13 && !e.shiftKey) {
+  if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault()
     submitForm()
   }
