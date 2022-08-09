@@ -1,45 +1,95 @@
 import {
   updateBrowsersStats,
-  updateGlobalCoverageBar,
+  updateRegionCoverageCounter,
+  updateRegionCoverageBar,
   updateToolsVersions,
-  hideStatsPlaceholder
+  showStats
 } from '../BrowserStats/browserStats.js'
+import regionsList from '../../data/regions.js'
 
-const API_HOST = 'http://localhost:5000/api'
+const API_HOST = 'http://localhost:5000/api/'
 
 const form = document.querySelector('[data-id=query_form]')
 const textarea = document.querySelector('[data-id=query_text_area]')
+const regionCoverage = document.querySelector('[data-id=region_coverage]')
+const regionCoverageSelect = document.querySelector(
+  '[data-id=region_coverage_select]'
+)
 const errorMessage = document.querySelector('[data-id=error_message]')
 
-export function initForm() {
-  form.addEventListener('submit', async e => {
-    if (!form.checkValidity()) {
-      return
+renderRegionSelectOptions()
+
+form.addEventListener('submit', async e => {
+  if (!form.checkValidity()) {
+    return
+  }
+
+  let formData = new FormData(form)
+  let query = formData.get('query')
+  let region = formData.get('region')
+  if (getUrlQuery() !== query) {
+    changeUrl(query)
+  }
+  e.preventDefault()
+  form.classList.add('Form--justSend')
+  textarea.addEventListener(
+    'input',
+    () => {
+      form.classList.remove('Form--justSend')
+    },
+    {
+      once: true
     }
-    let formData = new FormData(form)
-    let query = formData.get('query')
+  )
+  updateStatsView(query, region)
+})
+
+textarea.addEventListener('keypress', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault()
-    form.classList.add('Form--justSend')
-    textarea.addEventListener(
-      'input',
-      () => {
-        form.classList.remove('Form--justSend')
-      },
-      {
-        once: true
-      }
-    )
-    updateStatsView(query)
-  })
-  textarea.addEventListener('keypress', e => {
-    if (e.keyCode === 13 && !e.shiftKey) {
-      e.preventDefault()
-      form.dispatchEvent(new Event('submit'))
-    }
-  })
+    submitForm()
+  }
+})
+
+initUrlControl()
+regionCoverageSelect.addEventListener('change', () => submitForm())
+
+function showCoverageControls() {
+  regionCoverage.classList.remove('Form__coverage--hidden')
 }
 
-export function renderError(message) {
+function renderRegionSelectOptions() {
+  let renderOptgroups = ({ continents, countries }) => {
+    let renderOption = (id, name) => {
+      let option = document.createElement('option')
+      option.value = id
+      option.innerHTML = name
+      return option
+    }
+
+    let renderOptgroup = (groupName, regionsGroup) => {
+      let optgroup = document.createElement('optgroup')
+      optgroup.label = groupName
+      for (let { id, name } of regionsGroup) {
+        let option = renderOption(id, name)
+        optgroup.appendChild(option)
+      }
+      return optgroup
+    }
+
+    return {
+      continentsOptgroup: renderOptgroup('Continents', continents),
+      countriesOptgroup: renderOptgroup('Countries', countries)
+    }
+  }
+
+  let { continentsOptgroup, countriesOptgroup } = renderOptgroups(regionsList)
+  regionCoverageSelect.appendChild(continentsOptgroup)
+  regionCoverageSelect.appendChild(countriesOptgroup)
+  initUrlControl()
+}
+
+function renderError(message) {
   errorMessage.innerHTML = message
   form.classList.add('Form--serverError')
   textarea.addEventListener(
@@ -53,11 +103,13 @@ export function renderError(message) {
   )
 }
 
-async function updateStatsView(query) {
+async function updateStatsView(query, region) {
   let response
   try {
     form.classList.add('Form--loaded')
-    response = await fetch(`${API_HOST}/browsers?q=${encodeURIComponent(query)}`)
+    let urlParams = new URLSearchParams({ q: query, region })
+    let url = new URL(`browsers?${urlParams}`, `${API_HOST}`)
+    response = await fetch(url)
   } catch (error) {
     // TODO handle error
     form.classList.remove('Form--loaded')
@@ -78,12 +130,43 @@ async function updateStatsView(query) {
     return false
   }
 
-  let { browsers, versions } = data
+  let { browsers, coverage, versions } = data
 
-  hideStatsPlaceholder()
+  showCoverageControls()
+  showStats()
   updateBrowsersStats(browsers)
-  updateGlobalCoverageBar(browsers)
+  updateRegionCoverageCounter(coverage)
+  updateRegionCoverageBar(browsers)
   updateToolsVersions(versions)
 
   return true
+}
+
+export function submitForm(query, region) {
+  if (query) {
+    textarea.value = query
+  }
+  if (region) {
+    regionCoverageSelect.value = region
+  }
+
+  form.dispatchEvent(new Event('submit', { cancelable: true }))
+}
+
+function initUrlControl() {
+  submitForm(getUrlQuery())
+
+  window.addEventListener('popstate', () => {
+    submitForm(getUrlQuery())
+  })
+}
+
+function changeUrl(query) {
+  window.history.pushState({}, query, `?q=${query}`)
+}
+
+function getUrlQuery() {
+  let urlParams = new URLSearchParams(window.location.search)
+
+  return urlParams.get('q')
 }

@@ -1,4 +1,10 @@
 .Form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.Form__queryTextAreaContainer {
   position: relative;
 }
 
@@ -110,7 +116,9 @@
   height: 1em;
   margin-left: 1ch;
   content: "";
-  background-image: radial-gradient(var(--main-bg) 60%, transparent 60%), conic-gradient(transparent, currentcolor);
+  background-image:
+    radial-gradient(var(--main-bg) 60%, transparent 60%),
+    conic-gradient(transparent, currentcolor);
   border-radius: 50%;
   animation-name: form-loader;
   animation-duration: 1s;
@@ -126,4 +134,15 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.Form__coverage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.Form__coverage--hidden {
+  display: none;
 }
