@@ -1,4 +1,5 @@
 {
   "*.css": "stylelint --fix",
+  "*.js": "prettier --write",
   "*.svg": "svgo"
 }

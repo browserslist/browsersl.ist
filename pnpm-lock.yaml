@@ -18,6 +18,7 @@ importers:
       eslint-plugin-prefer-let: ^3.0.1
       eslint-plugin-promise: ^6.0.0
       nano-staged: ^0.8.0
+      prettier: ^2.7.1
       simple-git-hooks: ^2.8.0
       stylelint: ^14.9.1
       svgo: ^2.8.0
@@ -34,6 +35,7 @@ importers:
       eslint-plugin-prefer-let: 3.0.1
       eslint-plugin-promise: 6.0.0_eslint@8.21.0
       nano-staged: 0.8.0
+      prettier: 2.7.1
       simple-git-hooks: 2.8.0
       stylelint: 14.9.1
       svgo: 2.8.0
@@ -2412,6 +2414,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /promise/7.3.1:
