@@ -133,7 +133,7 @@ async function updateStatsView(query, region) {
     let url = new URL(`browsers?${urlParams}`, `${API_HOST}`)
     response = await fetch(url)
   } catch (error) {
-    // TODO handle error
+    renderError(`Network error. Check that you are online.`)
     form.classList.remove('Form--loaded')
     return false
   }
@@ -146,6 +146,11 @@ async function updateStatsView(query, region) {
     if (data.message === 'Custom usage statistics was not provided') {
       renderError(`This website does not support in my stats queries yet. Run Browserslist
  <a href="https://github.com/browserslist/browserslist#custom-usage-data" class="Link">locally</a>.`)
+      return false
+    }
+    if (response.status === 500) {
+      renderError(`Server error. <a href="https://github.com/browserslist/browserl.ist" class="Link">
+Report an issue</a> to our repository.`)
       return false
     }
     renderError(data.message)
