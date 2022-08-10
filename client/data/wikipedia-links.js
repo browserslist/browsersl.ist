@@ -1,11 +1,13 @@
-export default {
+const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
+
+const WIKIPEDIA_LINKS = {
   and_chr: 'Google_Chrome#Android',
   and_ff: 'Firefox_for_Android',
   and_qq: 'Tencent_QQ',
   and_uc: 'UC_Browser',
   android: 'List_of_features_in_Android#AndroidBrowser',
   baidu: 'Baidu_Browser',
-  bb: 'Baidu_Browser',
+  bb: 'BlackBerry#Software',
   chrome: 'Google_Chrome',
   edge: 'Microsoft_Edge',
   firefox: 'Mozilla_Firefox',
@@ -20,3 +22,9 @@ export default {
   safari: 'Safari_(web_browser)',
   samsung: 'Samsung_Internet'
 }
+
+for (let browser in WIKIPEDIA_LINKS) {
+  WIKIPEDIA_LINKS[browser] = WIKIPEDIA_URL + WIKIPEDIA_LINKS[browser]
+}
+
+export default WIKIPEDIA_LINKS
