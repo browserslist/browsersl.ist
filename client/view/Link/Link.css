@@ -2,14 +2,16 @@
   padding-bottom: 0.2em;
   margin-bottom: -0.2em;
   color: var(--text-primary);
-  text-decoration: none;
-  background-image: linear-gradient(to top, currentcolor 1px, transparent 1px, transparent);
-  background-position: 0 1.3em;
-  transition: background-position 0.3s;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: var(--text-secondary);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.3s;
 }
 
 @media (hover) {
   .Link:hover {
+    text-decoration-color: currentcolor;
     background-position: 0 1.1em;
   }
 }

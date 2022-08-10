@@ -4,7 +4,6 @@
   flex-grow: 1;
   width: 50%;
   padding: 24px 32px;
-  overflow: scroll;
 }
 
 .Article--stats {
@@ -17,6 +16,7 @@
   width: 50%;
   height: 100vh;
   max-height: 100vh;
+  overflow: scroll;
   background-color: var(--bg-highlited);
 }
 
