@@ -15,7 +15,8 @@ const MIME_TYPES = {
   '.webmanifest': 'application/manifest+json',
   '.png': 'image/png',
   '.jpg': 'image/jpg',
-  '.svg': 'image/svg+xml'
+  '.svg': 'image/svg+xml',
+  '.ico': 'image/x-icon'
 }
 
 export default async function handleStatic(req, res) {
