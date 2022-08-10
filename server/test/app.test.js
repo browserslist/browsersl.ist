@@ -39,7 +39,6 @@ test('Integration tests', async t => {
       let url = new URL(`api/browsers?q=wrong-query`, base)
       let response = await fetch(url)
       let error = await response.json()
-
       equal(response.status, 400)
       match(error.message, /Unknown/)
     }
@@ -50,7 +49,7 @@ test('Integration tests', async t => {
     let response = await fetch(url)
     let text = await response.text()
     equal(response.status, 404)
-    match(text, /404 Not found/)
+    match(text, /Not Found/)
   })
 
   await t.test('opens the file index.html by the URL `/`', async () => {
@@ -62,6 +61,23 @@ test('Integration tests', async t => {
     match(html, /<body/)
   })
 
+  await t.test(
+    'loads static `/favicon.ico` with correct MIME-type',
+    async () => {
+      let url = new URL('/favicon.ico', base)
+      let response = await fetch(url)
+      equal(response.status, 200)
+      equal(response.headers.get('Content-Type'), 'image/x-icon')
+    }
+  )
+
+  await t.test('loads static `/favicon.ico` with 1 hour cache', async () => {
+    let url = new URL('/favicon.ico', base)
+    let response = await fetch(url)
+    equal(response.status, 200)
+    equal(response.headers.get('Cache-Control'), 'max-age=3600')
+  })
+
   App.closeAllConnections()
-  App.close(() => process.exit(0))
+  App.close()
 })
