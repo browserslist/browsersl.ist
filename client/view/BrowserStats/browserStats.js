@@ -1,4 +1,5 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
+import * as browsersIcons from '../../data/browsers-icons.js'
 
 export function updateRegionCoverageCounter(coverage) {
   let element = document.querySelector('[data-id=region_coverage_counter]')
@@ -86,7 +87,7 @@ export function updateBrowsersStats(data) {
     iconCell.classList.add('BrowsersStat__td')
     let iconElem = document.createElement('img')
     iconElem.classList.add('BrowsersStat__icon')
-    iconElem.src = `/assets/browser_logos/${id}.svg`
+    iconElem.src = browsersIcons[id]
     iconCell.setAttribute('rowspan', versions.length)
     iconElem.setAttribute('alt', '')
     iconCell.appendChild(iconElem)
