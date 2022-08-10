@@ -7,7 +7,6 @@ import { sendResponse, sendResponseError } from '../lib/send-response.js'
 const CLIENT_DIR = '../../client'
 const DIST_DIR = '/dist'
 const ASSETS_DIR = '/assets'
-
 const MIME_TYPES = {
   '.html': 'text/html',
   '.js': 'text/javascript',
@@ -28,21 +27,21 @@ export default async function handleStatic(req, res) {
     filePath = new URL(`${CLIENT_DIR}${DIST_DIR}${req.url}`, import.meta.url)
   }
 
-  fs.access(filePath, fs.constants.F_OK, error => {
-    if (error) {
+  fs.access(filePath, fs.constants.F_OK, errorAccess => {
+    if (errorAccess) {
       sendResponseError(res, 404, 'Not Found')
-    }
-  })
-
-  fs.readFile(filePath, (error, content) => {
-    if (error) {
-      sendResponseError(res, 500, 'Internal Server Error')
     } else {
-      let resHeaders = {
-        'Content-Type': getMimeType(req.url),
-        'Cache-Control': getCacheControl(req.url)
-      }
-      sendResponse(res, 200, resHeaders, content)
+      fs.readFile(filePath, (errorRead, content) => {
+        if (errorRead) {
+          sendResponseError(res, 500, 'Internal Server Error')
+        } else {
+          let resHeaders = {
+            'Content-Type': getMimeType(req.url),
+            'Cache-Control': getCacheControl(req.url)
+          }
+          sendResponse(res, 200, resHeaders, content)
+        }
+      })
     }
   })
 }
