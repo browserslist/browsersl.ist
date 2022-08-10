@@ -1,4 +1,5 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
+import * as browsersIcons from '../../data/browsers-logos.js'
 
 export function updateRegionCoverageCounter(coverage) {
   let element = document.querySelector('[data-id=region_coverage_counter]')
@@ -84,18 +85,22 @@ export function updateBrowsersStats(data) {
 
     let iconCell = document.createElement('td')
     iconCell.classList.add('BrowsersStat__td')
-    let iconElem = document.createElement('img')
-    iconElem.classList.add('BrowsersStat__icon')
-    iconElem.src = `/assets/browser_logos/${id}.svg`
     iconCell.setAttribute('rowspan', versions.length)
-    iconElem.setAttribute('alt', '')
-    iconCell.appendChild(iconElem)
     tr.appendChild(iconCell)
+
+    if (id in browsersIcons) {
+      let iconElem = document.createElement('img')
+      iconElem.classList.add('BrowsersStat__icon')
+      iconElem.src = browsersIcons[id]
+      iconElem.setAttribute('alt', '')
+      iconCell.appendChild(iconElem)
+    }
 
     let nameCell = document.createElement('td')
     nameCell.classList.add('BrowsersStat__td')
     let nameLink = document.createElement('a')
     nameLink.classList.add('Link')
+    // TODO Need to take care of the case when we do not have link for some browser. Can I Use sometimes adds browsers
     nameLink.href = wikipediaLinks[id]
     nameLink.rel = 'noreferrer noopener'
     nameLink.target = '_blank'
