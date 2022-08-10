@@ -1,20 +1,19 @@
 .QueryLink {
-  display: inline-block;
   cursor: pointer;
-  transition: transform 0.2s;
 }
 
 @media (hover) {
-  /* TODO approve this hover by designers */
-  .QueryLink:hover {
-    transform: scale(1.05);
+  .QueryLink:hover > code,
+  .QueryLink:hover > pre {
+    background-color: var(--text-highlited-hover);
   }
 }
 
-.QueryLink code {
+.QueryLink > code {
   padding: 0 4px;
   line-height: 20px;
   color: var(--accent);
   background-color: var(--text-highlited);
   border-radius: 4px;
+  transition: background-color 0.3s;
 }

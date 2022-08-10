@@ -41,14 +41,19 @@
 }
 
 .BrowsersStat__placeholder {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   gap: 16px;
   align-items: center;
   justify-content: center;
+  height: 100%;
   padding: 24px;
   color: var(--separator);
+}
+
+.BrowsersStat {
+  flex-grow: 1;
 }
 
 .BrowsersStat__placeholderText {
@@ -100,7 +105,13 @@
 .BrowsersStat__td--coverage {
   --coverage: 20%;
 
-  background-image: linear-gradient(to right, var(--accent-alternave) var(--c), transparent var(--c), transparent);
+  background-image:
+    linear-gradient(
+      to right,
+      var(--accent-alternave) var(--coverage),
+      transparent var(--coverage),
+      transparent
+    );
 }
 
 .BrowsersStat__table tbody {
