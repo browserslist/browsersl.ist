@@ -3,9 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "vite",
+    "start": "vite build --watch",
     "build": "vite build -m production",
-    "build:watch": "vite build --watch",
     "build:regions": "node ./scripts/build-regions.js",
     "test": "pnpm build && size-limit",
     "postinstall": "pnpm build:regions"

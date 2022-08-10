@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "pnpm static-watch & node app.js",
-    "static-watch": "pnpm -r build:watch",
-    "test": "pnpm static-watch && node --test test/*.test.js"
+    "start": "pnpm serve",
+    "serve": "node app.js",
+    "test": "pnpm -r build && node --test test/*.test.js"
   },
   "dependencies": {
     "browserslist": "^4.21.3",
