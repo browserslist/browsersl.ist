@@ -1,5 +1,5 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
-import * as browsersIcons from '../../data/browsers-icons.js'
+import * as browsersIcons from '../../data/browsers-logos.js'
 
 export function updateRegionCoverageCounter(coverage) {
   let element = document.querySelector('[data-id=region_coverage_counter]')
