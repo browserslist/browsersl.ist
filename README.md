@@ -30,8 +30,14 @@ To run a local copy for development:
 
 3. Run local server:
 
-   ```sh
-   pnpm start
-   ```
+   -  Server with client-side hot-reload
+      ```sh
+      pnpm start
+      ```
+
+   -  Server production mode
+      ```
+      pnpm production
+      ```
 
 We recommend to install Prettier and EditorConfig plugins to your text editor.
