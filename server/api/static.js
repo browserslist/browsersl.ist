@@ -7,9 +7,11 @@ const DIST_DIR = '/dist'
 const ASSETS_DIR = '/assets'
 
 const MIME_TYPES = {
+  '.html': 'text/html',
   '.js': 'text/javascript',
   '.css': 'text/css',
   '.json': 'application/json',
+  '.webmanifest': 'application/manifest+json',
   '.png': 'image/png',
   '.jpg': 'image/jpg',
   '.svg': 'image/svg+xml'
