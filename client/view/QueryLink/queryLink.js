@@ -1,4 +1,4 @@
-import { submitForm } from '../Form/form.js'
+import { setFormValues, submitForm } from '../Form/form.js'
 
 let links = document.querySelectorAll('a.QueryLink')
 links.forEach(item => {
@@ -6,9 +6,10 @@ links.forEach(item => {
     e.preventDefault()
     let queryAttr = item.getAttribute('data-query')
     if (queryAttr) {
-      submitForm(queryAttr)
+      setFormValues({ query: queryAttr })
     } else {
-      submitForm(item.innerText)
+      setFormValues({ query: item.innerText })
     }
+    submitForm()
   })
 })

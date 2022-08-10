@@ -17,9 +17,28 @@ const regionCoverageSelect = document.querySelector(
 )
 const errorMessage = document.querySelector('[data-id=error_message]')
 
+form.addEventListener('submit', handleFormSubmit)
+
+textarea.addEventListener('keypress', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault()
+    submitForm()
+  }
+})
+
 renderRegionSelectOptions()
 
-form.addEventListener('submit', async e => {
+regionCoverageSelect.addEventListener('change', () => {
+  submitForm()
+})
+
+submitFormWithUrlParams()
+
+window.addEventListener('popstate', () => {
+  submitFormWithUrlParams()
+})
+
+async function handleFormSubmit(e) {
   if (!form.checkValidity()) {
     return
   }
@@ -27,9 +46,9 @@ form.addEventListener('submit', async e => {
   let formData = new FormData(form)
   let query = formData.get('query')
   let region = formData.get('region')
-  if (getUrlQuery() !== query) {
-    changeUrl(query)
-  }
+
+  changeUrl(query, region)
+
   e.preventDefault()
   form.classList.add('Form--justSend')
   textarea.addEventListener(
@@ -42,17 +61,21 @@ form.addEventListener('submit', async e => {
     }
   )
   updateStatsView(query, region)
-})
+}
 
-textarea.addEventListener('keypress', e => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault()
-    submitForm()
+export function setFormValues({ query, region }) {
+  if (query) {
+    textarea.value = query
   }
-})
 
-initUrlControl()
-regionCoverageSelect.addEventListener('change', () => submitForm())
+  if (region) {
+    regionCoverageSelect.value = region
+  }
+}
+
+export function submitForm() {
+  form.dispatchEvent(new Event('submit', { cancelable: true }))
+}
 
 function showCoverageControls() {
   regionCoverage.classList.remove('Form__coverage--hidden')
@@ -86,7 +109,6 @@ function renderRegionSelectOptions() {
   let { continentsOptgroup, countriesOptgroup } = renderOptgroups(regionsList)
   regionCoverageSelect.appendChild(continentsOptgroup)
   regionCoverageSelect.appendChild(countriesOptgroup)
-  initUrlControl()
 }
 
 function renderError(message) {
@@ -142,31 +164,17 @@ async function updateStatsView(query, region) {
   return true
 }
 
-export function submitForm(query, region) {
-  if (query) {
-    textarea.value = query
-  }
-  if (region) {
-    regionCoverageSelect.value = region
-  }
-
-  form.dispatchEvent(new Event('submit', { cancelable: true }))
+function changeUrl(query, region) {
+  let urlParams = new URLSearchParams({ q: query, region })
+  window.history.pushState({}, query, '?' + urlParams)
 }
 
-function initUrlControl() {
-  submitForm(getUrlQuery())
-
-  window.addEventListener('popstate', () => {
-    submitForm(getUrlQuery())
-  })
-}
-
-function changeUrl(query) {
-  window.history.pushState({}, query, `?q=${query}`)
-}
-
-function getUrlQuery() {
+function submitFormWithUrlParams() {
   let urlParams = new URLSearchParams(window.location.search)
 
-  return urlParams.get('q')
+  setFormValues({
+    query: urlParams.get('q'),
+    region: urlParams.get('region')
+  })
+  submitForm()
 }
