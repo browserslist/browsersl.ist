@@ -66,6 +66,7 @@ async function handleFormSubmit(e) {
 export function setFormValues({ query, region }) {
   if (query) {
     textarea.value = query
+    form.classList.remove('Form--serverError')
   }
 
   if (region) {
