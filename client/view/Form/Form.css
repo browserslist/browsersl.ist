@@ -12,7 +12,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 12px;
-  font-family: inherit;
+  font-family: monospace, monospace;
   font-size: inherit;
   color: inherit;
   background-color: var(--main-bg);

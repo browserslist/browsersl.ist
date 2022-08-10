@@ -19,8 +19,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --main-bg: oklch(0% 0 0);
-    --bg-highlited: oklch(25.33% 0.012 248.3);
+    --main-bg: oklch(23.5% 0 0);
+    --bg-highlited: oklch(30.72% 0.009 285.86);
     --accent: oklch(77.05% 0.12 255);
     --text-highlited: oklch(66.37% 0.18 256.56 / 20%);
     --text-highlited-hover: oklch(66.37% 0.185 256.56 / 30%);
