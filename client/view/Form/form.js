@@ -171,7 +171,15 @@ Report an issue</a> to our repository.`)
 }
 
 function changeUrl(query, region) {
-  let urlParams = new URLSearchParams({ q: query, region })
+  let urlParams = new URLSearchParams()
+  if (query) {
+    urlParams.set('q', query)
+  }
+
+  if (region) {
+    urlParams.set('region', region)
+  }
+
   window.history.pushState({}, query, '?' + urlParams)
 }
 
