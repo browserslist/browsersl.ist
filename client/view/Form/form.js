@@ -38,7 +38,8 @@ window.addEventListener('popstate', () => {
   submitFormWithUrlParams()
 })
 
-async function handleFormSubmit(e) {
+function handleFormSubmit(e) {
+  e.preventDefault()
   if (!form.checkValidity()) {
     return
   }
@@ -171,16 +172,26 @@ Report an issue</a> to our repository.`)
 }
 
 function changeUrl(query, region) {
-  let urlParams = new URLSearchParams({ q: query, region })
+  let urlParams = new URLSearchParams()
+  if (query) {
+    urlParams.set('q', query)
+  }
+
+  if (region) {
+    urlParams.set('region', region)
+  }
+
   window.history.pushState({}, query, '?' + urlParams)
 }
 
 function submitFormWithUrlParams() {
   let urlParams = new URLSearchParams(window.location.search)
 
-  setFormValues({
-    query: urlParams.get('q'),
-    region: urlParams.get('region')
-  })
+  let query = urlParams.get('q')
+  let region = urlParams.get('region')
+
+  if (!query) return
+
+  setFormValues({ query, region })
   submitForm()
 }
