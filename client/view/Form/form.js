@@ -186,9 +186,11 @@ function changeUrl(query, region) {
 function submitFormWithUrlParams() {
   let urlParams = new URLSearchParams(window.location.search)
 
-  setFormValues({
-    query: urlParams.get('q'),
-    region: urlParams.get('region')
-  })
+  let query = urlParams.get('q')
+  let region = urlParams.get('region')
+
+  if (!query) return
+
+  setFormValues({ query, region })
   submitForm()
 }
