@@ -56,10 +56,18 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  gap: 32px;
   align-items: center;
   justify-content: center;
   height: 100%;
   color: var(--separator);
+}
+
+@media (max-width: 740px) {
+  .BrowsersStat__placeholder {
+    gap: 16px;
+    padding: 32px 0;
+  }
 }
 
 .BrowsersStat__placeholderImage {
