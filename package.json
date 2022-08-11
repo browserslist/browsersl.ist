@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "pnpm -r start",
-    "production": "pnpm -r build && pnpm -r serve",
+    "production": "pnpm -r build && NODE_ENV=production pnpm -r serve",
     "lint": "eslint . && stylelint **/*.css",
     "test": "pnpm audit --prod && pnpm lint && pnpm -r test"
   },
