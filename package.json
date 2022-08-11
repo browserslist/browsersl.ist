@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "pnpm -r start",
-    "production": "pnpm -r build && pnpm -r serve",
+    "production": "pnpm -r build && NODE_ENV=production pnpm -r serve",
     "lint": "eslint . && stylelint **/*.css",
     "test": "pnpm audit --prod && pnpm lint && pnpm -r test"
   },
@@ -27,7 +27,7 @@
     "nano-staged": "^0.8.0",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
-    "stylelint": "^14.9.1",
+    "stylelint": "^14.10.0",
     "svgo": "^2.8.0",
     "typescript": "^4.7.4"
   },

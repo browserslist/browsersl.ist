@@ -34,12 +34,12 @@
   bottom: 16px;
   left: 16px;
   max-width: calc(100% - 12px * 2);
-  height: 16px;
   margin: 0;
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
   color: var(--text-secondary);
+  overflow-wrap: break-word;
   pointer-events: none;
   background-color: var(--main-bg);
   opacity: 0%;
@@ -67,6 +67,7 @@
   top: 12px;
   left: 12px;
   margin: 0;
+  font-family: monospace, monospace;
   color: var(--text-secondary);
   pointer-events: none;
   opacity: 0%;
@@ -140,9 +141,22 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  align-items: center;
   justify-content: space-between;
 }
 
 .Form__coverage--hidden {
   display: none;
+}
+
+.Form__coverageSelect {
+  width: fit-content;
+  max-width: 200px;
+  padding: 2px 8px;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--accent);
+  background-color: var(--main-bg);
+  border: none;
+  border-radius: 4px;
 }

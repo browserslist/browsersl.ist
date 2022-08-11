@@ -8,7 +8,7 @@ links.forEach(item => {
     if (queryAttr) {
       setFormValues({ query: queryAttr })
     } else {
-      setFormValues({ query: item.innerText })
+      setFormValues({ query: item.innerText.trim() })
     }
     submitForm()
   })
