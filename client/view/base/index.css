@@ -6,6 +6,7 @@
 @import "../DocSection/DocSection.css";
 @import "../Link/Link.css";
 @import "../Pre/Pre.css";
+@import "../Tweet/Tweet.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -28,6 +29,7 @@ body {
     "Helvetica Neue",
     sans-serif;
   color: var(--text-primary);
+  overflow-wrap: break-word;
   background-color: var(--main-bg);
   accent-color: var(--accent);
 }
