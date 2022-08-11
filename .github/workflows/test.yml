@@ -35,6 +35,6 @@ jobs:
       - name: Build regions data for the client
         run: pnpm -r build:regions
       - name: Run tests
-        run: pnpm test -r --include-workspace-root
+        run: pnpm test
         env:
           FORCE_COLOR: 2
