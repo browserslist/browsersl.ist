@@ -1,7 +1,11 @@
 // regions.json is created on `postinstall` step
 import { continents, countryCodes } from './regions.json'
 
-export default {
+export const DEFAULT_REGION = 'alt-ww'
+
+export const regionList = [...Object.keys(continents), ...countryCodes]
+
+export const regionGroups = {
   continents: Object.entries(continents).map(([id, name]) => {
     return {
       id,
