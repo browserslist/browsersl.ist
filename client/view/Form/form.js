@@ -38,7 +38,8 @@ window.addEventListener('popstate', () => {
   submitFormWithUrlParams()
 })
 
-async function handleFormSubmit(e) {
+function handleFormSubmit(e) {
+  e.preventDefault()
   if (!form.checkValidity()) {
     return
   }
