@@ -1,6 +1,6 @@
 .BrowsersStat__regionCoverageBar {
   display: flex;
-  gap: 2px;
+  gap: 1px;
   justify-content: flex-start;
   width: 100%;
   padding: 0;
@@ -38,6 +38,18 @@
 .BrowsersStat__tableContainer {
   columns: 2;
   column-fill: balance;
+}
+
+@media (min-width: 740px) and (max-width: 1200px) {
+  .BrowsersStat__tableContainer {
+    columns: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .BrowsersStat__tableContainer {
+    columns: 1;
+  }
 }
 
 .BrowsersStat__placeholder {
