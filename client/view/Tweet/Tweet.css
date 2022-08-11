@@ -3,12 +3,9 @@
   z-index: 1;
   height: fit-content;
   padding: 16px;
+  pointer-events: none;
   border: 1px solid var(--separator);
   border-radius: 12px;
-}
-
-.Tweet * {
-  pointer-events: none;
 }
 
 .Tweet__link {
