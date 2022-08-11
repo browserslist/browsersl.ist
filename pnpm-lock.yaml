@@ -20,12 +20,12 @@ importers:
       nano-staged: ^0.8.0
       prettier: ^2.7.1
       simple-git-hooks: ^2.8.0
-      stylelint: ^14.9.1
+      stylelint: ^14.10.0
       svgo: ^2.8.0
       typescript: ^4.7.4
     devDependencies:
       '@logux/eslint-config': 47.2.0_7hz3xvmviof7onfgk6hpedqcom
-      '@logux/stylelint-config': 0.10.1_stylelint@14.9.1
+      '@logux/stylelint-config': 0.10.1_stylelint@14.10.0
       '@typescript-eslint/eslint-plugin': 5.33.0_njno5y7ry2l2lcmiu4tywxkwnq
       '@typescript-eslint/parser': 5.33.0_qugx7qdu5zevzvxaiqyxfiwquq
       eslint: 8.21.0
@@ -37,7 +37,7 @@ importers:
       nano-staged: 0.8.0
       prettier: 2.7.1
       simple-git-hooks: 2.8.0
-      stylelint: 14.9.1
+      stylelint: 14.10.0
       svgo: 2.8.0
       typescript: 4.7.4
 
@@ -46,7 +46,7 @@ importers:
       '@csstools/postcss-oklab-function': ^1.1.1
       '@size-limit/file': ^8.0.0
       autoprefixer: ^10.4.8
-      caniuse-lite: ^1.0.30001374
+      caniuse-lite: ^1.0.30001375
       jstransformer-markdown-it: ^3.0.0
       postcss: ^8.4.16
       postcss-media-minmax: ^5.0.0
@@ -67,16 +67,16 @@ importers:
       vite-plugin-pug-transformer: 1.0.2_vite@3.0.5
     devDependencies:
       '@size-limit/file': 8.0.0_size-limit@8.0.0
-      caniuse-lite: 1.0.30001374
+      caniuse-lite: 1.0.30001375
       size-limit: 8.0.0
 
   server:
     specifiers:
       browserslist: ^4.21.3
-      caniuse-lite: ^1.0.30001374
+      caniuse-lite: ^1.0.30001375
     dependencies:
       browserslist: 4.21.3
-      caniuse-lite: 1.0.30001374
+      caniuse-lite: 1.0.30001375
 
 packages:
 
@@ -217,15 +217,15 @@ packages:
       eslint-plugin-promise: 6.0.0_eslint@8.21.0
     dev: true
 
-  /@logux/stylelint-config/0.10.1_stylelint@14.9.1:
+  /@logux/stylelint-config/0.10.1_stylelint@14.10.0:
     resolution: {integrity: sha512-LdqGWEO/IisgQMhtu2t18ygmFP1c38CD4d2HmFIonTvNPKJAAyGcYexOdi8MkUxdGC3oXR4dwJII3z4apiEhNQ==}
     peerDependencies:
       stylelint: ^14.2.0
     dependencies:
-      stylelint: 14.9.1
-      stylelint-config-recess-order: 3.0.0_stylelint@14.9.1
-      stylelint-config-standard: 25.0.0_stylelint@14.9.1
-      stylelint-order: 5.0.0_stylelint@14.9.1
+      stylelint: 14.10.0
+      stylelint-config-recess-order: 3.0.0_stylelint@14.10.0
+      stylelint-config-standard: 25.0.0_stylelint@14.10.0
+      stylelint-order: 5.0.0_stylelint@14.10.0
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -530,7 +530,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.3
-      caniuse-lite: 1.0.30001374
+      caniuse-lite: 1.0.30001375
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -581,8 +581,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001374
-      electron-to-chromium: 1.4.212
+      caniuse-lite: 1.0.30001375
+      electron-to-chromium: 1.4.215
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
     dev: false
@@ -623,8 +623,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001374:
-    resolution: {integrity: sha512-mWvzatRx3w+j5wx/mpFN5v5twlPrabG8NqX2c6e45LCpymdoGqNvRkRutFUqpRTXKFQFNQJasvK0YT7suW6/Hw==}
+  /caniuse-lite/1.0.30001375:
+    resolution: {integrity: sha512-kWIMkNzLYxSvnjy0hL8w1NOaWNr2rn39RTAVyIwcw8juu60bZDWiF1/loOYANzjtJmy6qPgNmn38ro5Pygagdw==}
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -668,13 +668,6 @@ packages:
     resolution: {integrity: sha512-CLOGsVDrVamzv8sXJGaILUVI6dsuAkouJP/n6t+OxLPeeA4DDby7zn9SB6EUpa1H7oIKoE+rMmkW80zYsFfUjA==}
     dev: true
 
-  /clone-regexp/2.2.0:
-    resolution: {integrity: sha512-beMpP7BOtTipFuW8hrJvREQ2DrRu3BE7by0ZpibtfBA+qfHYvMGTc2Yb1JMYPKg/JUw0CHYvpg796aNTSW9z7Q==}
-    engines: {node: '>=6'}
-    dependencies:
-      is-regexp: 2.1.0
-    dev: true
-
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -696,8 +689,8 @@ packages:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: true
 
-  /colord/2.9.2:
-    resolution: {integrity: sha512-Uqbg+J445nc1TKn4FoDPS6ZZqAvEDnwrH42yo8B40JSOgSLxMZ/gt3h4nmCtPLQeXhjJJkqBx7SCY35WnIixaQ==}
+  /colord/2.9.3:
+    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
     dev: true
 
   /commander/7.2.0:
@@ -887,8 +880,8 @@ packages:
       domhandler: 4.3.1
     dev: true
 
-  /electron-to-chromium/1.4.212:
-    resolution: {integrity: sha512-LjQUg1SpLj2GfyaPDVBUHdhmlDU1vDB4f0mJWSGkISoXQrn5/lH3ECPCuo2Bkvf6Y30wO+b69te+rZK/llZmjg==}
+  /electron-to-chromium/1.4.215:
+    resolution: {integrity: sha512-vqZxT8C5mlDZ//hQFhneHmOLnj1LhbzxV0+I1yqHV8SB1Oo4Y5Ne9+qQhwHl7O1s9s9cRuo2l5CoLEHdhMTwZg==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -1436,13 +1429,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /execall/2.0.0:
-    resolution: {integrity: sha512-0FU2hZ5Hh6iQnarpRtQurM/aAvp3RIbfvgLHrcqJYzhXyV2KFruhuChf9NC6waAhiUR7FFtlugkI4p7f2Fqlow==}
-    engines: {node: '>=8'}
-    dependencies:
-      clone-regexp: 2.2.0
-    dev: true
-
   /fast-deep-equal/3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
     dev: true
@@ -1568,11 +1554,6 @@ packages:
       function-bind: 1.1.1
       has: 1.0.3
       has-symbols: 1.0.3
-
-  /get-stdin/8.0.0:
-    resolution: {integrity: sha512-sY22aA6xchAzprjyqmSEQv4UbAAzRN0L2dQB0NlN5acTTK9Don6nhoc3eAbUnpZiCANAMfd/+40kVdKfFygohg==}
-    engines: {node: '>=10'}
-    dev: true
 
   /get-symbol-description/1.0.0:
     resolution: {integrity: sha512-2EmdH1YvIQiZpltCNgkuiUnyukzxM/R6NDJX31Ke3BG1Nq5b0S2PhX59UKi9vZpPDQVdqn+1IcaAwnzTT5vCjw==}
@@ -1862,11 +1843,6 @@ packages:
     dependencies:
       call-bind: 1.0.2
       has-tostringtag: 1.0.0
-
-  /is-regexp/2.1.0:
-    resolution: {integrity: sha512-OZ4IlER3zmRIoB9AqNhEggVxqIH4ofDns5nRrPS6yQxXE1TPCUpFznBfRQmQa8uC+pXqjMnukiJBxCisIxiLGA==}
-    engines: {node: '>=6'}
-    dev: true
 
   /is-shared-array-buffer/1.0.2:
     resolution: {integrity: sha512-sqN2UDu1/0y6uvXyStCOzyhAjCSlHceFoMKJW8W9EU9cvic/QdsZ0kEU93HEy3IUEFZIiH/3w+AH/UQbPHNdhA==}
@@ -2621,8 +2597,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup/2.77.2:
-    resolution: {integrity: sha512-m/4YzYgLcpMQbxX3NmAqDvwLATZzxt8bIegO78FZLl+lAgKJBd1DRAOeEiZcKOIOPjxE6ewHWHNgGEalFXuz1g==}
+  /rollup/2.77.3:
+    resolution: {integrity: sha512-/qxNTG7FbmefJWoeeYJFbHehJ2HNWnjkAFRKzWN/45eNBBF/r8lo992CwcJXEzyVxs5FmfId+vTSTQDb+bxA+g==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -2796,58 +2772,56 @@ packages:
     resolution: {integrity: sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==}
     dev: true
 
-  /stylelint-config-recess-order/3.0.0_stylelint@14.9.1:
+  /stylelint-config-recess-order/3.0.0_stylelint@14.10.0:
     resolution: {integrity: sha512-uNXrlDz570Q7HJlrq8mNjgfO/xlKIh2hKVKEFMTG1/ih/6tDLcTbuvO1Zoo2dnQay990OAkWLDpTDOorB+hmBw==}
     peerDependencies:
       stylelint: '>=14'
     dependencies:
-      stylelint: 14.9.1
-      stylelint-order: 5.0.0_stylelint@14.9.1
+      stylelint: 14.10.0
+      stylelint-order: 5.0.0_stylelint@14.10.0
     dev: true
 
-  /stylelint-config-recommended/7.0.0_stylelint@14.9.1:
+  /stylelint-config-recommended/7.0.0_stylelint@14.10.0:
     resolution: {integrity: sha512-yGn84Bf/q41J4luis1AZ95gj0EQwRX8lWmGmBwkwBNSkpGSpl66XcPTulxGa/Z91aPoNGuIGBmFkcM1MejMo9Q==}
     peerDependencies:
       stylelint: ^14.4.0
     dependencies:
-      stylelint: 14.9.1
+      stylelint: 14.10.0
     dev: true
 
-  /stylelint-config-standard/25.0.0_stylelint@14.9.1:
+  /stylelint-config-standard/25.0.0_stylelint@14.10.0:
     resolution: {integrity: sha512-21HnP3VSpaT1wFjFvv9VjvOGDtAviv47uTp3uFmzcN+3Lt+RYRv6oAplLaV51Kf792JSxJ6svCJh/G18E9VnCA==}
     peerDependencies:
       stylelint: ^14.4.0
     dependencies:
-      stylelint: 14.9.1
-      stylelint-config-recommended: 7.0.0_stylelint@14.9.1
+      stylelint: 14.10.0
+      stylelint-config-recommended: 7.0.0_stylelint@14.10.0
     dev: true
 
-  /stylelint-order/5.0.0_stylelint@14.9.1:
+  /stylelint-order/5.0.0_stylelint@14.10.0:
     resolution: {integrity: sha512-OWQ7pmicXufDw5BlRqzdz3fkGKJPgLyDwD1rFY3AIEfIH/LQY38Vu/85v8/up0I+VPiuGRwbc2Hg3zLAsJaiyw==}
     peerDependencies:
       stylelint: ^14.0.0
     dependencies:
       postcss: 8.4.16
       postcss-sorting: 7.0.1_postcss@8.4.16
-      stylelint: 14.9.1
+      stylelint: 14.10.0
     dev: true
 
-  /stylelint/14.9.1:
-    resolution: {integrity: sha512-RdAkJdPiLqHawCSnu21nE27MjNXaVd4WcOHA4vK5GtIGjScfhNnaOuWR2wWdfKFAvcWQPOYe311iveiVKSmwsA==}
+  /stylelint/14.10.0:
+    resolution: {integrity: sha512-VAmyKrEK+wNFh9R8mNqoxEFzaa4gsHGhcT4xgkQDuOA5cjF6CaNS8loYV7gpi4tIZBPUyXesotPXzJAMN8VLOQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
       '@csstools/selector-specificity': 2.0.2_pnx64jze6bptzcedy5bidi3zdi
       balanced-match: 2.0.0
-      colord: 2.9.2
+      colord: 2.9.3
       cosmiconfig: 7.0.1
       css-functions-list: 3.1.0
       debug: 4.3.4
-      execall: 2.0.0
       fast-glob: 3.2.11
       fastest-levenshtein: 1.0.16
       file-entry-cache: 6.0.1
-      get-stdin: 8.0.0
       global-modules: 2.0.0
       globby: 11.1.0
       globjoin: 0.1.4
@@ -3094,7 +3068,7 @@ packages:
       esbuild: 0.14.54
       postcss: 8.4.16
       resolve: 1.22.1
-      rollup: 2.77.2
+      rollup: 2.77.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
