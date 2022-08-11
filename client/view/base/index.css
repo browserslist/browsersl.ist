@@ -6,6 +6,7 @@
 @import "../DocSection/DocSection.css";
 @import "../Link/Link.css";
 @import "../Pre/Pre.css";
+@import "../Tweet/Tweet.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {

@@ -17,27 +17,27 @@
 
 <body>
   <article class="Article Article--intro">
-      <div class="Article--intro__header">
-        <h1 class="Article__h1">
-          <img src="./assets/browserlist_logo.svg" alt="">
-          Browserslist
-        </h1>
-        <a class="Badge" href="https://github.com/browserslist/browserslist">
-          <img src="./assets/github_logo.svg" alt="Count of github stars"> 10.5k
-        </a>
-        <a class="Badge" href="https://twitter.com/Browserslist">
-          <img src="./assets/twitter_logo.svg" alt="Count of twitter followers"> 4k
-        </a>
-      </div>
-      <p class="Article--intro__about">Shared browser and platform compatibility config for popular JavaScript tools,
-        including Autoprefixer, Babel, ESLint, PostCSS, and Webpack</p>
-      <p class="Article--intro__supported">
-        Supported by
-        <img src="./assets/evil_maritians_logo.svg" alt="">
-        <a href="https://evilmartians.com/" class="Link">Evil Martians</a> and
-        <img src="./assets/cube_logo.svg" alt="">
-        <a href="https://cube.dev/" class="Link">Cube</a>
-      </p>
+    <div class="Article--intro__header">
+      <h1 class="Article__h1">
+        <img src="./assets/browserlist_logo.svg" alt="">
+        Browserslist
+      </h1>
+      <a class="Badge" href="https://github.com/browserslist/browserslist">
+        <img src="./assets/github_logo.svg" alt="Count of github stars"> 10.5k
+      </a>
+      <a class="Badge" href="https://twitter.com/Browserslist">
+        <img src="./assets/twitter_logo.svg" alt="Count of twitter followers"> 4k
+      </a>
+    </div>
+    <p class="Article--intro__about">Shared browser and platform compatibility config for popular JavaScript tools,
+      including Autoprefixer, Babel, ESLint, PostCSS, and Webpack</p>
+    <p class="Article--intro__supported">
+      Supported by
+      <img src="./assets/evil_maritians_logo.svg" alt="">
+      <a href="https://evilmartians.com/" class="Link">Evil Martians</a> and
+      <img src="./assets/cube_logo.svg" alt="">
+      <a href="https://cube.dev/" class="Link">Cube</a>
+    </p>
   </article>
 
   <article class="Article Article--stats">
@@ -45,7 +45,7 @@
     <form data-id="query_form" class="Form">
       <div class="Form__queryTextAreaContainer">
         <textarea name="query" cols="30" rows="6" required class="Form__queryTextArea" data-id="query_text_area"
-        placeholder="Write the Browserslist config here…"></textarea>
+                  placeholder="Write the Browserslist config here…"></textarea>
         <p class="Form__interactivePlaceholder">Write the Browserslist config here…<br>
           For example
           <a class="QueryLink" data-query="defaults"><code>defaults</code></a> ,
@@ -56,7 +56,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none">
               <path
                 d="M10.71 1.42h-.8a.1.1 0 0 0-.1.1v6.94H3.28V7.5a.1.1 0 0 0-.17-.09l-1.9 1.5a.1.1 0 0 0 0 .17l1.9 1.5a.1.1 0 0 0 .17-.08v-1h6.67c.48 0 .86-.4.86-.87v-7.1a.1.1 0 0 0-.1-.1Z"
-                fill="#1E1E1E" fill-opacity=".4" />
+                fill="#1E1E1E" fill-opacity=".4"/>
             </svg>
           </span>
           to submit
@@ -78,7 +78,7 @@
       </div>
 
       <div class="BrowsersStat__stat BrowsersStat__stat--hidden" data-id="browsers_stats">
-        <ul class="BrowsersStat__regionCoverageBar" alt=""  data-id="region_coverage_bar"></ul>
+        <ul class="BrowsersStat__regionCoverageBar" alt="" data-id="region_coverage_bar"></ul>
         <div class="BrowsersStat__tableContainer" data-id="browsers_stats_results"></div>
         <div class="ToolsVersions">
           <p>
@@ -102,7 +102,8 @@
       e.g., for SSR.
     </p>
     <p><a href="https://www.npmjs.com/package/autoprefixer" class="Link" target="_blank">Autoprefixer</a>,
-      <a href="https://babeljs.io/" class="Link" target="_blank">Babel</a> or any of the following libraries will find target browsers automatically, when
+      <a href="https://babeljs.io/" class="Link" target="_blank">Babel</a> or any of the following libraries will find
+      target browsers automatically, when
       you add the following to <b>package.json</b>:
     </p>
     <a class="QueryLink" data-query="defaults, not IE 11, maintained node versions"><pre class="Pre">
@@ -417,6 +418,45 @@
       </ul>
     </section>
 
+    <h2 class="Article__h2">Why Browserslist</h2>
+    <p>Browserslist helps you keep the right balance between browser compatibility and bundle size.
+      You will cover wider audience and have smaller bundle size. </p>
+
+    <h2 class="Article__h2">What people say about Browserslist</h2>
+    <div class="Tweet__list">
+      <section class="Tweet">
+        <a href="https://twitter.com/rossta/status/1334625522903605250" class="Tweet__link" target="_blank"></a>
+        <address class="Tweet__address">
+          <img src="assets/twitter/rossta.png" alt="Ross Kaffenberger avatar" class="Tweet__img">
+          <span class="Tweet__name">Ross Kaffenberger</span>
+          <a href="" class="Tweet__nickName">@rossta</a>
+        </address>
+        <p class="Tweet__text">
+          Use browserslist!<br><br>
+
+          Leveraged through a module bundler like Webpack, you can specify the supported browser range in a
+          browserslist file to automagically help you avoid the dangers
+          <a href="https://twitter.com/dhh" target="_blank">@dhh</a> describes.<br><br>
+
+          For Rails devs: it's integrated into Webpacker!
+        </p>
+      </section>
+
+      <section class="Tweet">
+        <a href="https://twitter.com/gha_dev/status/1412477867208982529" class="Tweet__link" target="_blank"></a>
+        <address class="Tweet__address">
+          <img src="assets/twitter/gha_dev.png" alt="Gibbs Herbert avatar" class="Tweet__img">
+          <span class="Tweet__name">Gibbs Herbert</span>
+          <a href="" class="Tweet__nickName">@gha_dev</a>
+        </address>
+        <p class="Tweet__text">
+
+          browserslist is a package that allows you to define which browsers you are currently supporting.
+          <a href="https://twitter.com/hashtag/100DaysOfCode?src=hashtag_click" target="_blank">#100DaysOfCode</a>
+          <a href="https://twitter.com/hashtag/javascript?src=hashtag_click" target="_blank">#javascript</a>
+        </p>
+      </section>
+    </div>
   </article>
 
 </body>

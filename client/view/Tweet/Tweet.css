@@ -1,0 +1,89 @@
+.Tweet {
+  position: relative;
+  z-index: 1;
+  height: fit-content;
+  padding: 16px;
+  border: 1px solid var(--separator);
+  border-radius: 12px;
+}
+
+.Tweet * {
+  pointer-events: none;
+}
+
+.Tweet__link {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: all;
+  transition: background-color 0.3s;
+}
+
+@media (hover) {
+  .Tweet__link:hover {
+    background-color: var(--text-highlited);
+  }
+}
+
+.Tweet__address {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-auto-rows: 1fr 1fr;
+  column-gap: 10px;
+  margin-bottom: 10px;
+  font-style: normal;
+}
+
+.Tweet__address::after {
+  position: absolute;
+  bottom: -3px;
+  left: 26px;
+  width: 16px;
+  height: 16px;
+  content: "";
+  background-color: var(--twitter);
+  background-image: url(../../assets/twitter_white.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.Tweet__img {
+  grid-row: span 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.Tweet__nickName {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.Tweet__name {
+  font-weight: 600;
+}
+
+.Tweet__text {
+  margin: 0;
+}
+
+.Tweet__text a {
+  color: var(--accent);
+  text-decoration: none;
+  pointer-events: initial;
+}
+
+@media (hover) {
+  .Tweet__text a:hover {
+    text-decoration: underline;
+  }
+}
+
+.Tweet__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-flow: column dense;
+  column-gap: 12px;
+}

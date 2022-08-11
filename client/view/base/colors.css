@@ -14,6 +14,7 @@
     --separator: oklch(23.5% 0 0 / 12%);
     --warning: oklch(73% 100 65.45 / 80%);
     --error: oklch(66% 0.096 30.71);
+    --twitter: oklch(70.35% 0.124 234.85);
   }
 }
 
@@ -31,5 +32,6 @@
     --separator: oklch(100% 3.55 106.37 / 12%);
     --warning: oklch(47.96% 0.103 65.45);
     --error: oklch(66% 0.096 30.71);
+    --twitter: oklch(70.35% 0.124 234.85);
   }
 }
