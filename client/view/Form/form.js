@@ -1,3 +1,4 @@
+import { DEFAULT_REGION, regionList, regionGroups } from '../../data/regions.js'
 import {
   updateBrowsersStats,
   updateRegionCoverageCounter,
@@ -5,7 +6,6 @@ import {
   updateToolsVersions,
   showStats
 } from '../BrowserStats/browserStats.js'
-import regionsList from '../../data/regions.js'
 
 const API_HOST = 'http://localhost:5000/api/'
 
@@ -70,7 +70,9 @@ export function setFormValues({ query, region }) {
     form.classList.remove('Form--serverError')
   }
 
-  if (region) {
+  let isRegionExists = regionList.includes(region)
+
+  if (region && isRegionExists) {
     regionCoverageSelect.value = region
   }
 }
@@ -108,7 +110,7 @@ function renderRegionSelectOptions() {
     }
   }
 
-  let { continentsOptgroup, countriesOptgroup } = renderOptgroups(regionsList)
+  let { continentsOptgroup, countriesOptgroup } = renderOptgroups(regionGroups)
   regionCoverageSelect.appendChild(continentsOptgroup)
   regionCoverageSelect.appendChild(countriesOptgroup)
 }
@@ -177,7 +179,7 @@ function changeUrl(query, region) {
     urlParams.set('q', query)
   }
 
-  if (region) {
+  if (region && region !== DEFAULT_REGION) {
     urlParams.set('region', region)
   }
 
