@@ -32,6 +32,7 @@
 summary .DocSection__subHeader {
   display: inline-block;
   margin-bottom: 0;
+  cursor: pointer;
 }
 
 .DocSection__list {
