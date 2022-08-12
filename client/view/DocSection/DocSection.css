@@ -32,7 +32,15 @@
 summary .DocSection__subHeader {
   display: inline-block;
   margin-bottom: 0;
+}
+
+.DocSection details summary {
+  width: fit-content;
   cursor: pointer;
+}
+
+.DocSection details[open] summary {
+  margin-bottom: 8px;
 }
 
 .DocSection__list {

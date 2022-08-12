@@ -157,6 +157,7 @@
   line-height: 20px;
   color: var(--accent);
   background-color: var(--main-bg);
+  background-image: none;
   border: none;
   border-radius: 4px;
 }
