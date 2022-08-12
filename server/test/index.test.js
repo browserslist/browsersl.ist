@@ -2,7 +2,7 @@ import { equal, match } from 'node:assert'
 import { URL } from 'node:url'
 import test from 'node:test'
 
-import App from '../app.js'
+import App from '../index.js'
 
 const base = `http://localhost:${App.address().port}/`
 

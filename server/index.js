@@ -19,9 +19,6 @@ const App = http.createServer(async (req, res) => {
       handleAPIBrowsers(req, res)
       break
 
-    // TODO Add endpoint /api/social
-    // handleAPISocial(req, res) : { githubStars: number, twitterFollowers: number }
-
     default:
       handleStatic(req, res)
       break
