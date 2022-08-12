@@ -9,14 +9,15 @@
 .Article--stats {
   position: fixed;
   top: 0;
-  right: 0;
+  /* Hide scrollbar */
+  right: calc(-1 * (100vw - 100%));
   display: flex;
   flex-direction: column;
   gap: 16px;
   width: 50%;
   height: 100vh;
   max-height: 100vh;
-  overflow: auto;
+  overflow-y: scroll;
   background-color: var(--bg-highlited);
 }
 
