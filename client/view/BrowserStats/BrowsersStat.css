@@ -98,6 +98,12 @@
   display: none;
 }
 
+.BrowsersStat__stat {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
 .BrowsersStat__stat--hidden {
   display: none;
 }
@@ -166,7 +172,8 @@
   flex-wrap: wrap;
   column-gap: 12px;
   color: var(--text-secondary);
-  margin-top: 24px;
+  margin-top: auto;
+  padding-top: 24px;
 }
 
 .BrowsersStat__toolsVersionsItem {
