@@ -16,7 +16,7 @@
   width: 50%;
   height: 100vh;
   max-height: 100vh;
-  overflow: scroll;
+  overflow: auto;
   background-color: var(--bg-highlited);
 }
 
