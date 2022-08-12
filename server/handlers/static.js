@@ -5,7 +5,6 @@ import getFileData from '../lib/get-file-data.js'
 
 const CLIENT_DIR = '../../client'
 const DIST_DIR = '/dist'
-const ASSETS_DIR = '/assets'
 const MIME_TYPES = {
   '.html': 'text/html',
   '.js': 'text/javascript',
@@ -19,13 +18,7 @@ const MIME_TYPES = {
 }
 
 export default async function handleStatic(req, res) {
-  let filePath
-
-  if (req.url.includes(ASSETS_DIR)) {
-    filePath = new URL(`${CLIENT_DIR}${req.url}`, import.meta.url)
-  } else {
-    filePath = new URL(`${CLIENT_DIR}${DIST_DIR}${req.url}`, import.meta.url)
-  }
+  let filePath = new URL(`${CLIENT_DIR}${DIST_DIR}${req.url}`, import.meta.url)
 
   try {
     let { name, ext, size, data } = await getFileData(filePath)

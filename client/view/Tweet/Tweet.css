@@ -41,7 +41,7 @@
   height: 16px;
   content: "";
   background-color: var(--twitter);
-  background-image: url(../../assets/twitter_white.svg);
+  background-image: url(./twitter_white.svg);
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
