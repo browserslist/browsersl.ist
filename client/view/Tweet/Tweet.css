@@ -3,6 +3,7 @@
   z-index: 1;
   height: fit-content;
   padding: 16px;
+  overflow: hidden;
   pointer-events: none;
   border: 1px solid var(--separator);
   border-radius: 12px;
