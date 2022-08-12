@@ -161,6 +161,16 @@
   vertical-align: middle;
 }
 
-.ToolsVersions {
+.BrowsersStat__toolsVersions {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
   color: var(--text-secondary);
+  margin-top: 24px;
+}
+
+.BrowsersStat__toolsVersionsItem {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
 }
