@@ -71,7 +71,7 @@ export function updateBrowsersStats(data) {
 
   data.forEach(({ id, name, versions: versionsInput }) => {
     let versions = Object.entries(versionsInput)
-      .sort(([, coverageA], [, coverageB]) => coverageB - coverageA)
+      .sort(([versionA], [versionB]) => versionB - versionA)
       .map(([version, coverage]) => {
         return {
           version,
