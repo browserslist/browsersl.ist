@@ -26,6 +26,6 @@ function getCountryName(id) {
 
   // Show country `id` instead country fullname for old browsers
   return isIntlDisplayNameSupports
-    ? new Intl.DisplayNames(['us'], { type: 'region' }).of(id)
+    ? new Intl.DisplayNames('en-US', { type: 'region' }).of(id)
     : id
 }
