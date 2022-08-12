@@ -8,7 +8,7 @@ const base = `http://localhost:${App.address().port}/`
 
 test('Integration tests', async t => {
   await t.test(
-    'responses `defauts` query for `/browsers` route without `q` param',
+    'responses `defaults` query for `/browsers` route without `q` param',
     async () => {
       let url = new URL(`api/browsers`, base)
       let response = await fetch(url)
