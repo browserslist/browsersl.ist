@@ -1,37 +1,47 @@
-import fs from 'node:fs'
 import path from 'node:path'
+import fs from 'node:fs/promises'
+import { existsSync } from 'node:fs'
 
-export default function getFileData(filePath) {
-  let { name, ext } = path.parse(filePath.pathname)
+const IS_PRODUCTION = process.env.NODE_ENV === 'production'
+const cache = {}
 
-  let readFile = (res, rej) => {
-    fs.access(filePath, fs.constants.F_OK, errorAccess => {
-      if (errorAccess) {
-        rej({ status: 404, message: 'Not Found' })
-        return
+export default function getFileData(filePath, shouldBeCached = false) {
+  shouldBeCached = shouldBeCached && IS_PRODUCTION
+
+  let readFile = async (resolve, reject) => {
+    let fileData
+
+    if (shouldBeCached && filePath in cache) {
+      resolve(cache[filePath])
+      return
+    }
+
+    if (!existsSync(filePath)) {
+      reject({ status: 404, message: 'Not Found' })
+      return
+    }
+
+    try {
+      let { name, ext } = path.parse(filePath.pathname)
+      let { size } = await fs.stat(filePath)
+      let data = await fs.readFile(filePath)
+
+      fileData = {
+        name,
+        ext,
+        size,
+        data
       }
+    } catch (error) {
+      reject({ status: 500, message: 'Internal Server Error' })
+      return
+    }
 
-      fs.stat(filePath, (errorStats, { size }) => {
-        if (errorStats) {
-          rej({ status: 500, message: 'Internal Server Error' })
-          return
-        }
+    if (shouldBeCached) {
+      cache[filePath] = fileData
+    }
 
-        fs.readFile(filePath, (errorRead, data) => {
-          if (errorRead) {
-            rej({ status: 500, message: 'Internal Server Error' })
-            return
-          }
-
-          res({
-            name,
-            ext,
-            size,
-            data
-          })
-        })
-      })
-    })
+    resolve(fileData)
   }
 
   return new Promise(readFile)
