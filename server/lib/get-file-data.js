@@ -2,9 +2,19 @@ import path from 'node:path'
 import fs from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 
-export default function getFileData(filePath) {
+const IS_PRODUCTION = process.env.NODE_ENV === 'production'
+const cache = {}
+
+export default function getFileData(filePath, shouldBeCached = false) {
+  shouldBeCached = shouldBeCached && IS_PRODUCTION
+
   let readFile = async (resolve, reject) => {
     let fileData
+
+    if (shouldBeCached && filePath in cache) {
+      resolve(cache[filePath])
+      return
+    }
 
     if (!existsSync(filePath)) {
       reject({ status: 404, message: 'Not Found' })
@@ -25,6 +35,10 @@ export default function getFileData(filePath) {
     } catch (error) {
       reject({ status: 500, message: 'Internal Server Error' })
       return
+    }
+
+    if (shouldBeCached) {
+      cache[filePath] = fileData
     }
 
     resolve(fileData)

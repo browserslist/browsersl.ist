@@ -21,7 +21,8 @@ export default async function handleStatic(req, res) {
   let filePath = new URL(`${CLIENT_DIR}${DIST_DIR}${req.url}`, import.meta.url)
 
   try {
-    let { name, ext, size, data } = await getFileData(filePath)
+    let shouldBeCached = req.url === '/favicon.ico'
+    let { name, ext, size, data } = await getFileData(filePath, shouldBeCached)
     let resHeaders = {
       'Cache-Control': getCacheControl(name),
       'Content-Type': getContentType(ext),
