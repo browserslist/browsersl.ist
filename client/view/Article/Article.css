@@ -79,6 +79,8 @@
   .Article--stats {
     position: initial;
     height: initial;
+    max-height: initial;
+    overflow: visible;
   }
 }
 
