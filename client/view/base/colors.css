@@ -4,7 +4,7 @@
   :root {
     --main-bg: oklch(100% 0 0);
     --bg-highlited: oklch(97% 0.003 286.35);
-    --accent: oklch(57% 0.2 257);
+    --accent: oklch(53.05% 0.192 258.53);
     --text-highlited: oklch(53% 0.192 258.53 / 7%);
     --text-highlited-hover: oklch(57.37% 0.195 257.86 / 14%);
     --text-primary: oklch(11.264% 0.1 139.088);
