@@ -1,9 +1,44 @@
-name: Preview
+name: CI
 on:
+  push:
+    branches:
+      - main
   pull_request:
 env:
   FORCE_COLOR: 2
 jobs:
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v1
+      - name: Cache asdf
+        id: asdf-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.asdf
+          key: asdf-${{ hashFiles('**/.tool-versions') }}
+      - name: Install asdf tools
+        if: steps.asdf-cache.outputs.cache-hit != 'true'
+        uses: asdf-vm/actions/install@v1
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-pnpm-modules
+        with:
+          path: ~/.local/share/pnpm/
+          key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Build regions data for the client
+        run: pnpm -r build:regions
+      - name: Run tests
+        run: pnpm test
+
   preview:
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
@@ -39,7 +74,7 @@ jobs:
       - name: Install production dependencies
         run: pnpm install --prod --frozen-lockfile --ignore-scripts
       - name: Build static files
-        run: npm build
+        run: pnpm build
       - name: Auth Google Cloud
         uses: google-github-actions/auth@v0
         with:
