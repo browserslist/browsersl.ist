@@ -12,7 +12,7 @@
     "prebuild": "pnpm -r prebuild",
     "build": "pnpm -r build",
     "lint": "eslint . && stylelint **/*.css",
-    "test:run": "node check-versions.js && pnpm audit --prod && pnpm lint",
+    "test:run": "node scripts/check-versions.js && pnpm audit --prod && pnpm lint",
     "test": "pnpm -r --include-workspace-root test:run"
   },
   "dependencies": {
