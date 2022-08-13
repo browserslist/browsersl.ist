@@ -34,12 +34,13 @@ jobs:
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
-      - name: Build regions data for the client
+      - name: Build regions
         run: pnpm -r build:regions
       - name: Run tests
         run: pnpm test
 
   preview:
+    name: Preview
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
     steps:
@@ -73,6 +74,8 @@ jobs:
           key: pnpm-production-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install production dependencies
         run: pnpm install --prod --frozen-lockfile --ignore-scripts
+      - name: Build regions
+        run: pnpm -r build:regions
       - name: Build static files
         run: pnpm build
       - name: Auth Google Cloud
@@ -92,6 +95,7 @@ jobs:
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
       - name: Update deployment status
         uses: bobheadxi/deployments@v1
+        if: always()
         with:
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
