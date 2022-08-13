@@ -8,7 +8,7 @@ the compatible browsers for a browsers query.
 
 
 ## Development
-Can I Use
+
 To run a local copy for development:
 
 1. Install correct versions of Node.js and pnpm. There are two ways:
@@ -36,8 +36,8 @@ To run a local copy for development:
       ```
 
    -  Server production mode
-      ```
-      pnpm production
+      ```sh
+      pnpm ssdeploy run
       ```
 
 We recommend to install Prettier and EditorConfig plugins to your text editor.
