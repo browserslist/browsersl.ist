@@ -42,7 +42,7 @@ jobs:
         if: steps.changes.outputs.changes
         run: |
           git config user.name "Auto-Updater"
-          git config user.email "<andrey+caniuse@sitnik.ru>"
+          git config user.email "<andrey+browserslist-website@sitnik.ru>"
       - name: Run tests
         if: steps.changes.outputs.changes
         run: pnpm unit
