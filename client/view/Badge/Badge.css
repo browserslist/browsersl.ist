@@ -12,6 +12,11 @@
   border-radius: 4px;
 }
 
+.Badge__logo {
+  width: 20px;
+  height: 20px;
+}
+
 @media (prefers-color-scheme: dark) {
   .Badge__githubLogo {
     filter: invert(1);
