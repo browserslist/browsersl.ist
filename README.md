@@ -30,12 +30,12 @@ To run a local copy for development:
 
 3. Run local server:
 
-   -  Server with client-side hot-reload
+   -  Server with client-side watcher:
       ```sh
       pnpm start
       ```
 
-   -  Server production mode
+   -  Server production mode:
       ```sh
       pnpm ssdeploy run
       ```
