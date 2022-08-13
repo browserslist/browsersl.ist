@@ -48,7 +48,9 @@ jobs:
         run: pnpm unit
       - name: Commit changes
         if: steps.changes.outputs.changes
-        run: git add **/pnpm-lock.yaml **/package.json && git commit -m "Update caniuse-lite and browserslist"
+        run: |
+          git add **/pnpm-lock.yaml **/package.json
+          git commit -m "Update caniuse-lite and browserslist"
       - name: Push changes
         if: steps.changes.outputs.changes
         run: git push --follow-tags
