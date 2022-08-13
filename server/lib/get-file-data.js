@@ -3,46 +3,35 @@ import fs from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production'
-const cache = {}
+const CACHE = {}
 
-export default function getFileData(filePath, shouldBeCached = false) {
+export default async function getFileData(filePath, shouldBeCached = false) {
   shouldBeCached = shouldBeCached && IS_PRODUCTION
 
-  let readFile = async (resolve, reject) => {
-    let fileData
-
-    if (shouldBeCached && filePath in cache) {
-      resolve(cache[filePath])
-      return
-    }
-
-    if (!existsSync(filePath)) {
-      reject({ status: 404, message: 'Not Found' })
-      return
-    }
-
-    try {
-      let { name, ext } = path.parse(filePath.pathname)
-      let { size } = await fs.stat(filePath)
-      let data = await fs.readFile(filePath)
-
-      fileData = {
-        name,
-        ext,
-        size,
-        data
-      }
-    } catch (error) {
-      reject({ status: 500, message: 'Internal Server Error' })
-      return
-    }
-
-    if (shouldBeCached) {
-      cache[filePath] = fileData
-    }
-
-    resolve(fileData)
+  if (shouldBeCached && filePath in CACHE) {
+    return CACHE[filePath]
   }
 
-  return new Promise(readFile)
+  if (!existsSync(filePath)) {
+    let error = new Error('Not Found')
+    error.httpStatus = 404
+    throw error
+  }
+
+  let { name, ext } = path.parse(filePath.pathname)
+  let { size } = await fs.stat(filePath)
+  let data = await fs.readFile(filePath)
+
+  let fileData = {
+    name,
+    ext,
+    size,
+    data
+  }
+
+  if (shouldBeCached) {
+    CACHE[filePath] = fileData
+  }
+
+  return fileData
 }
