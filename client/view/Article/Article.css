@@ -9,6 +9,7 @@
 .Article--stats {
   position: fixed;
   top: 0;
+
   /* Hide scrollbar */
   right: calc(-1 * (100vw - 100%));
   display: flex;
@@ -42,6 +43,11 @@
   margin: 0;
 }
 
+.Article__logo {
+  width: 32px;
+  height: 32px;
+}
+
 .Article__h2 {
   margin-top: 32px;
   font-size: 22px;
@@ -62,9 +68,18 @@
   letter-spacing: 0.02em;
 }
 
-.Article--intro__supported img {
+.Article--intro__martians,
+.Article--intro__cube {
   height: 16px;
   vertical-align: middle;
+}
+
+.Article--intro__martians {
+  width: 23px;
+}
+
+.Article--intro__cube {
+  width: 17px;
 }
 
 .Article--intro__header {

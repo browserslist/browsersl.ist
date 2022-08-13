@@ -74,6 +74,7 @@
   width: 100%;
   object-fit: cover;
   max-width: 380px;
+  aspect-ratio: 380 / 316;
 }
 
 @media (max-width: 740px) {
@@ -162,6 +163,7 @@
 
 .BrowsersStat__icon {
   display: inline;
+  width: 20px;
   height: 20px;
   line-height: 32px;
   vertical-align: middle;
@@ -171,13 +173,13 @@
   display: flex;
   flex-wrap: wrap;
   column-gap: 12px;
-  color: var(--text-secondary);
-  margin-top: auto;
   padding-top: 24px;
+  margin-top: auto;
+  color: var(--text-secondary);
 }
 
 .BrowsersStat__toolsVersionsItem {
+  margin: 0;
   font-size: 14px;
   line-height: 20px;
-  margin: 0;
 }
