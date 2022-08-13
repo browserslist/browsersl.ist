@@ -3,6 +3,8 @@
 This website uses [Browserslist] and [Can I Use] to display
 the compatible browsers for a browsers query.
 
+**[browsersl.ist](https://browsersl.ist/)**
+
 [browserslist]: https://github.com/browserslist/browserslist
 [Can I Use]: https://github.com/Fyrd/caniuse
 
