@@ -29,8 +29,12 @@ export default async function handleStatic(req, res) {
       'Content-Length': size
     }
     sendResponse(res, 200, resHeaders, data)
-  } catch ({ status, message }) {
-    sendResponseError(res, status, message)
+  } catch (error) {
+    if (error.httpStatus) {
+      sendResponseError(res, error.httpStatus, error.message)
+    } else {
+      sendResponseError(res, 500, 'Internal Server Error')
+    }
   }
 }
 
