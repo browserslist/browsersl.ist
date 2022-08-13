@@ -1,7 +1,7 @@
 import fs from 'fs'
 
 const DATA_REGION_FILE = 'data/regions.json'
-const REGIONS_LIST_PATH = 'node_modules/caniuse-lite/data/regions'
+const REGIONS_LIST_PATH = './node_modules/caniuse-lite/data/regions'
 
 const regions = {
   continents: {
