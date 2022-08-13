@@ -73,7 +73,7 @@ jobs:
       - name: Install production dependencies
         run: pnpm install --prod --frozen-lockfile --ignore-scripts
       - name: Build regions
-        run: pnpm -r build:regions
+        run: pnpm prebuild
       - name: Build static files
         run: pnpm build
       - name: Auth Google Cloud
