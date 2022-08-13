@@ -3,8 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "pnpm serve",
-    "serve": "node app.js",
+    "start": "node index.js",
     "test": "pnpm -r build && node --test test/*.test.js"
   },
   "dependencies": {

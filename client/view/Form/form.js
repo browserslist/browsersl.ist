@@ -7,8 +7,6 @@ import {
   showStats
 } from '../BrowserStats/browserStats.js'
 
-const API_HOST = 'http://localhost:5000/api/'
-
 const form = document.querySelector('[data-id=query_form]')
 const textarea = document.querySelector('[data-id=query_text_area]')
 const regionCoverage = document.querySelector('[data-id=region_coverage]')
@@ -134,8 +132,7 @@ async function updateStatsView(query, region) {
   try {
     form.classList.add('Form--loaded')
     let urlParams = new URLSearchParams({ q: query, region })
-    let url = new URL(`browsers?${urlParams}`, `${API_HOST}`)
-    response = await fetch(url)
+    response = await fetch(`/api/browsers?${urlParams}`)
   } catch (error) {
     renderError(`Network error. Check that you are online.`)
     form.classList.remove('Form--loaded')

@@ -1,0 +1,165 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+env:
+  FORCE_COLOR: 2
+jobs:
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v1
+      - name: Cache asdf
+        id: asdf-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.asdf
+          key: asdf-${{ hashFiles('**/.tool-versions') }}
+      - name: Install asdf tools
+        if: steps.asdf-cache.outputs.cache-hit != 'true'
+        uses: asdf-vm/actions/install@v1
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-pnpm-modules
+        with:
+          path: ~/.local/share/pnpm/
+          key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Build regions
+        run: pnpm -r build:regions
+      - name: Run tests
+        run: pnpm test
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Notify about new deployment
+        uses: bobheadxi/deployments@v1
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: production
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v1
+      - name: Cache asdf
+        id: asdf-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.asdf
+          key: asdf-${{ hashFiles('**/.tool-versions') }}
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-pnpm-modules
+        with:
+          path: ~/.local/share/pnpm/
+          key: pnpm-production-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install production dependencies
+        run: pnpm install --prod --frozen-lockfile --ignore-scripts
+      - name: Build regions
+        run: pnpm -r build:regions
+      - name: Build static files
+        run: pnpm build
+      - name: Auth Google Cloud
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCLOUD_AUTH }}
+      - name: Install Google Cloud
+        uses: google-github-actions/setup-gcloud@v0
+      - name: Deploy files
+        id: deploy
+        run: ./node_modules/.bin/ssdeploy deploy --verbose
+        env:
+          GCLOUD_APP: ${{ secrets.GCLOUD_APP }}
+          GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+      - name: Update deployment status
+        uses: bobheadxi/deployments@v1
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env: ${{ steps.deployment.outputs.env }}
+          env_url: ${{ steps.deploy.outputs.url }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+  preview:
+    name: Preview
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+    steps:
+      - name: Notify about new deployment
+        uses: bobheadxi/deployments@v1
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.head_ref }}
+          env: preview-${{ github.event.number }}
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v1
+      - name: Cache asdf
+        id: asdf-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.asdf
+          key: asdf-${{ hashFiles('**/.tool-versions') }}
+      - name: Install asdf tools
+        if: steps.asdf-cache.outputs.cache-hit != 'true'
+        uses: asdf-vm/actions/install@v1
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-pnpm-modules
+        with:
+          path: ~/.local/share/pnpm/
+          key: pnpm-production-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install production dependencies
+        run: pnpm install --prod --frozen-lockfile --ignore-scripts
+      - name: Build regions
+        run: pnpm -r build:regions
+      - name: Build static files
+        run: pnpm build
+      - name: Auth Google Cloud
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCLOUD_AUTH }}
+      - name: Install Google Cloud
+        uses: google-github-actions/setup-gcloud@v0
+      - name: Deploy files
+        id: deploy
+        run: ./node_modules/.bin/ssdeploy preview $PR --verbose
+        env:
+          PR: ${{ github.event.number }}
+          GCLOUD_APP: ${{ secrets.GCLOUD_APP }}
+          GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+      - name: Update deployment status
+        uses: bobheadxi/deployments@v1
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env: ${{ steps.deployment.outputs.env }}
+          env_url: ${{ steps.deploy.outputs.url }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}

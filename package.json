@@ -9,9 +9,12 @@
   },
   "scripts": {
     "start": "pnpm -r start",
-    "production": "pnpm -r build && NODE_ENV=production pnpm -r serve",
+    "build": "pnpm -r build",
     "lint": "eslint . && stylelint **/*.css",
     "test": "pnpm audit --prod && pnpm lint && pnpm -r test"
+  },
+  "dependencies": {
+    "ssdeploy": "^0.9.1"
   },
   "devDependencies": {
     "@logux/eslint-config": "^47.2.0",
