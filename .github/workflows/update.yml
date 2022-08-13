@@ -1,0 +1,54 @@
+name: Update
+on:
+  schedule:
+    - cron: "0 0 * * *"
+env:
+  FORCE_COLOR: 2
+jobs:
+  update:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v1
+      - name: Cache asdf
+        id: asdf-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.asdf
+          key: asdf-${{ hashFiles('**/.tool-versions') }}
+      - name: Install asdf tools
+        if: steps.asdf-cache.outputs.cache-hit != 'true'
+        uses: asdf-vm/actions/install@v1
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-pnpm-modules
+        with:
+          path: ~/.local/share/pnpm/
+          key: pnpm-production-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: pnpm install --prod --frozen-lockfile --ignore-scripts
+      - name: Update dependencies
+        run: pnpm update caniuse-lite browserslist
+      - name: Check dependencies
+        id: changes
+        run: node ./scripts/check-changes.js
+      - name: Setup git config
+        if: steps.changes.outputs.changes
+        run: |
+          git config user.name "Auto-Updater"
+          git config user.email "<andrey+caniuse@sitnik.ru>"
+      - name: Run tests
+        if: steps.changes.outputs.changes
+        run: pnpm unit
+      - name: Commit changes
+        if: steps.changes.outputs.changes
+        run: git add **/pnpm-lock.yaml **/package.json && git commit -m "Update caniuse-lite and browserslist"
+      - name: Push changes
+        if: steps.changes.outputs.changes
+        run: git push --follow-tags
