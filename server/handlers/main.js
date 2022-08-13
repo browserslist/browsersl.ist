@@ -14,7 +14,11 @@ export default async function handleMain(req, res) {
   try {
     let { data } = await getFileData(filePath, true)
     sendResponse(res, 200, responseHeaders, data)
-  } catch ({ status, message }) {
-    sendResponseError(res, status, message)
+  } catch (error) {
+    if (error.httpStatus) {
+      sendResponseError(res, error.httpStatus, error.message)
+    } else {
+      sendResponseError(res, 500, 'Internal Server Error')
+    }
   }
 }
