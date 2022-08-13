@@ -115,7 +115,7 @@ async function getRegionCoverage(id, version, region) {
     }
 
     let { default: regionData } = await import(
-      `../node_modules/caniuse-lite/data/regions/${region}.js`
+      `caniuse-lite/data/regions/${region}.js`
     )
     return getCoverage(caniuseRegion(regionData)[id], version)
   } catch (e) {

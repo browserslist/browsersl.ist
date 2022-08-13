@@ -1,0 +1,12 @@
+node_modules/
+
+server/test/
+client/
+!client/dist/
+
+.*
+README.md
+LICENSE
+nano-staged.json
+simple-git-hooks.json
+Dockerfile
