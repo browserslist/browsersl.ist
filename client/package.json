@@ -5,9 +5,11 @@
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build -m production",
-    "build:regions": "node ./scripts/build-regions.js",
-    "test": "pnpm build && size-limit",
-    "postinstall": "pnpm build:regions"
+    "prebuild": "pnpm prebuild:regions",
+    "prebuild:regions": "node ./scripts/build-regions.js",
+    "test:run": "pnpm prebuild && pnpm build && size-limit",
+    "postinstall": "pnpm build:regions",
+    "test": "pnpm test:run"
   },
   "dependencies": {
     "@csstools/postcss-oklab-function": "^1.1.1",

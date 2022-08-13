@@ -9,9 +9,11 @@
   },
   "scripts": {
     "start": "pnpm -r start",
+    "prebuild": "pnpm -r prebuild",
     "build": "pnpm -r build",
     "lint": "eslint . && stylelint **/*.css",
-    "test": "pnpm audit --prod && pnpm lint && pnpm -r test"
+    "test:run": "pnpm audit --prod && pnpm lint",
+    "test": "pnpm -r --include-workspace-root test:run"
   },
   "dependencies": {
     "ssdeploy": "^0.9.1"
