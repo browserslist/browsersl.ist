@@ -11,6 +11,8 @@ the compatible browsers for a browsers query.
 
 ## Development
 
+We recommend to install Prettier and EditorConfig plugins to your text editor.
+
 To run a local copy for development:
 
 1. Install correct versions of Node.js and pnpm. There are two ways:
@@ -30,16 +32,14 @@ To run a local copy for development:
    pnpm install
    ```
 
-3. Run local server:
+3. Run local server  with client-side watcher.
 
-   -  Server with client-side watcher:
-      ```sh
-      pnpm start
-      ```
+   ```sh
+   pnpm start
+   ```
 
-   -  Server production mode:
-      ```sh
-      pnpm ssdeploy run
-      ```
+To run local server in production mode:
 
-We recommend to install Prettier and EditorConfig plugins to your text editor.
+```sh
+pnpm ssdeploy run
+```
