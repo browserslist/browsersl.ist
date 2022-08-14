@@ -16,7 +16,7 @@
     "test": "pnpm -r --include-workspace-root test:run"
   },
   "dependencies": {
-    "ssdeploy": "^0.9.1"
+    "ssdeploy": "^0.9.2"
   },
   "devDependencies": {
     "@logux/eslint-config": "^47.2.0",
