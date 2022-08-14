@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 5000
 const App = http.createServer(async (req, res) => {
   if (req.headers.host.startsWith('www.')) {
     let noWww = req.headers.host.slice(4)
-    res.redirect(301, req.protocol + '://' + noWww + req.originalUrl)
+    res.writeHead(301, { Location: 'https://' + noWww + req.url })
+    res.end()
     return
   }
 
@@ -31,7 +32,9 @@ const App = http.createServer(async (req, res) => {
 })
 
 App.listen(PORT, () => {
-  process.stdout.write(`Server listening on a port http://localhost:${PORT}/\n`)
+  if (process.env.NODE_ENV !== 'production') {
+    process.stdout.write(`Server listening http://localhost:${PORT}/\n`)
+  }
 })
 
 export default App
