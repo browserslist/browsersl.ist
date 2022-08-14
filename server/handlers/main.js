@@ -5,7 +5,20 @@ import { sendResponse, sendResponseError } from '../lib/send-response.js'
 
 const responseHeaders = {
   'Content-Type': 'text/html',
-  'Cache-Control': 'public, max-age=300, must-revalidate'
+  'Cache-Control': 'public, max-age=300, must-revalidate',
+  'Content-Security-Policy':
+    `object-src 'none'; ` +
+    `frame-ancestors 'none'; ` +
+    `style-src 'self'; ` +
+    `script-src 'self'`,
+  'X-Frame-Options': 'DENY',
+  'X-XSS-Protection': '1; mode=block',
+  'X-Content-Type-Options': 'nosniff'
+}
+
+if (process.env.NODE_ENV === 'production') {
+  responseHeaders['Strict-Transport-Security'] =
+    'max-age=31536000; includeSubDomains; preload'
 }
 
 export default async function handleMain(req, res) {
