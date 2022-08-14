@@ -57,5 +57,5 @@ summary .DocSection__subHeader {
 }
 
 .DocSection__list li + li {
-  margin-top: 10px;
+  margin-top: 5px;
 }

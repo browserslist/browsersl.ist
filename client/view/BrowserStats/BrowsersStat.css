@@ -130,8 +130,9 @@
 
 .BrowsersStat__td {
   box-sizing: border-box;
-  height: 32px;
-  line-height: 32px;
+  height: 28px;
+  line-height: 28px;
+  white-space: nowrap;
   vertical-align: top;
   break-inside: avoid;
 }
