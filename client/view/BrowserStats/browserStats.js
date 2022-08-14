@@ -2,7 +2,7 @@ import wikipediaLinks from '../../data/wikipedia-links.js'
 import * as browsersIcons from '../../data/browsers-logos.js'
 
 function formatPercent(percent) {
-  let rounded = percent >= 0.1 ? percent.toFixed(1) : percent.toFixed(0)
+  let rounded = percent >= 0.1 ? percent.toFixed(1) : 0
 
   return rounded + '&thinsp;%'
 }
