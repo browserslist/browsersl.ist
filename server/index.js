@@ -8,8 +8,13 @@ import handleStatic from './handlers/static.js'
 const PORT = process.env.PORT || 5000
 
 const App = http.createServer(async (req, res) => {
-  let { pathname } = new URL(req.url, `http://${req.headers.host}/`)
+  if (req.headers.host.startsWith('www.')) {
+    let noWww = req.headers.host.slice(4)
+    res.redirect(301, req.protocol + '://' + noWww + req.originalUrl)
+    return
+  }
 
+  let { pathname } = new URL(req.url, `http://${req.headers.host}/`)
   switch (pathname) {
     case '/':
       handleMain(req, res)
