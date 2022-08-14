@@ -5,7 +5,7 @@ import handleMain from './handlers/main.js'
 import handleAPIBrowsers from './handlers/api-browsers.js'
 import handleStatic from './handlers/static.js'
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 const App = http.createServer(async (req, res) => {
   if (req.headers.host.startsWith('www.')) {
