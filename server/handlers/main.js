@@ -16,11 +16,6 @@ const responseHeaders = {
   'X-Content-Type-Options': 'nosniff'
 }
 
-if (process.env.NODE_ENV === 'production') {
-  responseHeaders['Strict-Transport-Security'] =
-    'max-age=31536000; includeSubDomains; preload'
-}
-
 export default async function handleMain(req, res) {
   let filePath = new URL('../../client/dist/index.html', import.meta.url)
 
