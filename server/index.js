@@ -33,7 +33,7 @@ const App = http.createServer(async (req, res) => {
 
 App.listen(PORT, () => {
   if (process.env.NODE_ENV !== 'production') {
-    process.stdout.write(`Server listening http://localhost:${PORT}/\n`)
+    process.stdout.write(`Server listening at http://localhost:${PORT}/\n`)
   }
 })
 

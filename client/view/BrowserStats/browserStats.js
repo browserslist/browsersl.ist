@@ -1,9 +1,15 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
 import * as browsersIcons from '../../data/browsers-logos.js'
 
+function formatPercent(percent) {
+  let rounded = percent >= 0.1 ? percent.toFixed(1) : percent.toFixed(0)
+
+  return rounded + '&thinsp;%'
+}
+
 export function updateRegionCoverageCounter(coverage) {
   let element = document.querySelector('[data-id=region_coverage_counter]')
-  element.innerHTML = coverage + '%'
+  element.innerHTML = formatPercent(coverage)
 }
 
 export function updateRegionCoverageBar(data) {
@@ -33,7 +39,7 @@ export function showStats() {
 }
 
 function createCoverageCell(coverage) {
-  let coveragePercentageHtmlString = cov => cov + '%'
+  let coveragePercentageHtmlString = cov => formatPercent(cov)
   let coveragePercentageCssString = cov => {
     let result = (Math.log(1 + cov) * 100) / Math.log(1 + 100)
     if (result === 0) {
