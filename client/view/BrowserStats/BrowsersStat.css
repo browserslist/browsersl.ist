@@ -72,15 +72,15 @@
 
 .BrowsersStat__placeholderImage {
   width: 100%;
-  object-fit: cover;
   max-width: 380px;
   aspect-ratio: 380 / 316;
+  object-fit: contain;
 }
 
 @media (max-width: 740px) {
   .BrowsersStat__placeholderImage {
-    width: initial;
     max-width: 100%;
+    height: initial;
     max-height: 300px;
   }
 }
