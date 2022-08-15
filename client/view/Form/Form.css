@@ -142,7 +142,7 @@
 .Form__coverage {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 16px 24px;
   align-items: center;
   justify-content: space-between;
 }
