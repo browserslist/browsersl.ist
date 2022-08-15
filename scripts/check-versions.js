@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-const ROOT = join(fileURLToPath(import.meta.url), '..')
+const ROOT = join(fileURLToPath(import.meta.url), '..', '..')
 
 let tools = readFileSync(join(ROOT, '.tool-versions')).toString()
 let dockerfile = readFileSync(join(ROOT, 'Dockerfile')).toString()

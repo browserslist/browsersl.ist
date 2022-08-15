@@ -12,18 +12,18 @@
     "prebuild": "pnpm -r prebuild",
     "build": "pnpm -r build",
     "lint": "eslint . && stylelint **/*.css",
-    "test:run": "node check-versions.js && pnpm audit --prod && pnpm lint",
+    "test:run": "node scripts/check-versions.js && pnpm audit --prod && pnpm lint",
     "test": "pnpm -r --include-workspace-root test:run"
   },
   "dependencies": {
-    "ssdeploy": "^0.9.1"
+    "ssdeploy": "^0.9.2"
   },
   "devDependencies": {
     "@logux/eslint-config": "^47.2.0",
     "@logux/stylelint-config": "^0.10.1",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
-    "eslint": "^8.21.0",
+    "eslint": "^8.22.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.4",

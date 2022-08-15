@@ -8,7 +8,7 @@
     "prebuild": "pnpm prebuild:regions",
     "prebuild:regions": "node ./scripts/build-regions.js",
     "test:run": "pnpm prebuild && pnpm build && size-limit",
-    "postinstall": "pnpm build:regions",
+    "postinstall": "pnpm prebuild",
     "test": "pnpm test:run"
   },
   "dependencies": {
