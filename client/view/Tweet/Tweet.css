@@ -14,7 +14,6 @@
   inset: 0;
   z-index: -1;
   pointer-events: all;
-  transition: background-color 0.3s;
 }
 
 @media (hover) {
