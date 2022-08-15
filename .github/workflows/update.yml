@@ -33,9 +33,9 @@ jobs:
           cache-name: cache-pnpm-modules
         with:
           path: ~/.local/share/pnpm/
-          key: pnpm-production-${{ hashFiles('pnpm-lock.yaml') }}
+          key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
-        run: pnpm install --prod --frozen-lockfile --ignore-scripts
+        run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Update dependencies
         run: pnpm update -r caniuse-lite browserslist
       - name: Check dependencies
