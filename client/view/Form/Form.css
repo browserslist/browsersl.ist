@@ -142,7 +142,7 @@
 .Form__coverage {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 16px 24px;
   align-items: center;
   justify-content: space-between;
 }
@@ -152,14 +152,35 @@
 }
 
 .Form__coverageSelect {
+  appearance: none;
+  display: inline-block;
   width: fit-content;
   max-width: 200px;
-  padding: 2px 8px;
+  padding: .25em 1.25em .25em .5em;
   font-size: 16px;
-  line-height: 20px;
+  height: 28px;
+  line-height: 1.42;
   color: var(--accent);
   background-color: var(--main-bg);
-  background-image: none;
+  background-image: url(./select-arrow-light.svg);
+  background-repeat: no-repeat;
+  background-position: 96% 54%;
   border: none;
   border-radius: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.Form__coverageSelectLabel {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .Form__coverageSelect {
+    background-image: url(./select-arrow-dark.svg);
+  }
 }
