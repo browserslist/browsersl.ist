@@ -18,7 +18,13 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .Badge__githubLogo {
+  .Badge__logo--github {
     filter: invert(1);
+  }
+}
+
+@media (hover) {
+  .Badge:hover {
+    background-color: var(--bg-highlited-hover);
   }
 }

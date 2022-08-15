@@ -4,8 +4,8 @@
   color: var(--text-primary);
   text-decoration-line: underline;
   text-decoration-style: solid;
-  text-underline-offset: 2px;
   text-decoration-color: var(--text-underline);
+  text-underline-offset: 2px;
 }
 
 @media (hover) {
