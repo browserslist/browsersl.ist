@@ -4,14 +4,15 @@ const queryContainer = document.querySelector('[data-id=query_container]')
 const links = document.querySelectorAll('a.QueryLink')
 
 links.forEach(item => {
+  let queryAttr = item.getAttribute('data-query')
+  let query = queryAttr || item.innerText.trim()
+
+  item.setAttribute('href', `?q=${query}`)
+
   item.addEventListener('click', e => {
     e.preventDefault()
-    let queryAttr = item.getAttribute('data-query')
-    if (queryAttr) {
-      setFormValues({ query: queryAttr })
-    } else {
-      setFormValues({ query: item.innerText.trim() })
-    }
+
+    setFormValues({ query })
 
     submitForm()
 
