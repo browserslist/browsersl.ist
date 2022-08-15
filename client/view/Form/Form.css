@@ -167,6 +167,9 @@
   background-position: 96% 54%;
   border: none;
   border-radius: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .Form__coverageSelectLabel {
