@@ -1,7 +1,7 @@
 name: Update
 on:
   schedule:
-    - cron: "12 30 * * *"
+    - cron: "12 20 * * *"
 env:
   FORCE_COLOR: 2
 jobs:
