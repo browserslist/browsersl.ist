@@ -52,7 +52,7 @@ jobs:
       - name: Commit changes
         if: steps.changes.outputs.changes
         run: |
-          git add **/pnpm-lock.yaml **/package.json
+          git add pnpm-lock.yaml **/package.json
           git commit -m "Update caniuse-lite and browserslist"
       - name: Push changes
         if: steps.changes.outputs.changes
