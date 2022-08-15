@@ -48,7 +48,7 @@ jobs:
           git config user.email "<andrey+browserslist-website@sitnik.ru>"
       - name: Run tests
         if: steps.changes.outputs.changes
-        run: pnpm unit
+        run: pnpm test
       - name: Commit changes
         if: steps.changes.outputs.changes
         run: |
