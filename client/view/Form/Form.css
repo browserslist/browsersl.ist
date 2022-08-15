@@ -18,6 +18,7 @@
   background-color: var(--main-bg);
   border: none;
   border-radius: 8px;
+  resize: none;
 }
 
 .Form__queryTextArea::placeholder {
