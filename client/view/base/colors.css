@@ -4,11 +4,13 @@
   :root {
     --main-bg: oklch(100% 0 0);
     --bg-highlited: oklch(97% 0.003 286.35);
-    --accent: oklch(53.05% 0.192 258.53);
-    --text-highlited: oklch(53% 0.192 258.53 / 7%);
+    --accent: oklch(44.63% 0.172 258.93);
+    --text-highlited:  oklch(66.37% 0.18 256.56 / 10%);
     --text-highlited-hover: oklch(57.37% 0.195 257.86 / 14%);
     --text-primary: oklch(11.264% 0.1 139.088);
-    --text-secondary: oklch(23.5% 0 0 / 40%);
+    --text-secondary: oklch(23.5% 0 0 / 65%);
+    --text-underline: oklch(23.5% 0 0 / 40%);
+    --text-underline-hover: oklch(23.5% 0 0);
     --accent-blue-primary: oklch(43.639% 45.224 280.199);
     --accent-alternave: oklch(88.4% 0.41 92.834);
     --separator: oklch(23.5% 0 0 / 12%);
@@ -22,14 +24,16 @@
   :root {
     --main-bg: oklch(23.5% 0 0);
     --bg-highlited: oklch(30.72% 0.009 285.86);
-    --accent: oklch(77.05% 0.12 255);
-    --text-highlited: oklch(66.37% 0.18 256.56 / 20%);
-    --text-highlited-hover: oklch(66.37% 0.185 256.56 / 30%);
+    --accent: oklch(77.04% 0.11 255.97);
+    --text-highlited: oklch(66.37% 0.18 256.56 / 10%);
+    --text-highlited-hover: oklch(66.37% 0.18 256.56 / 30%);
     --text-primary: oklch(100% 0.1 139.088);
-    --text-secondary: oklch(60% 0.01 257);
+    --text-secondary: oklch(100% 0 102.07 / 50%);
+    --text-underline: oklch(100% 3.55 106.37 / 40%);
+    --text-underline-hover: oklch(100% 3.55 106.37 / 85%);
     --accent-blue-primary: oklch(43.639% 45.224 280.199);
     --accent-alternave: oklch(63.02% 0.13 78.82);
-    --separator: oklch(100% 3.55 106.37 / 12%);
+    --separator: oklch(100% 3.55 106.37 / 20%);
     --warning: oklch(47.96% 0.103 65.45);
     --error: oklch(66% 0.096 30.71);
     --twitter: oklch(70.35% 0.124 234.85);
