@@ -169,6 +169,12 @@
   border-radius: 4px;
 }
 
+.Form__coverageSelectLabel {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
 
 @media (prefers-color-scheme: dark) {
   .Form__coverageSelect {
