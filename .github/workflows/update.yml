@@ -41,8 +41,8 @@ jobs:
       - name: Setup git config
         if: steps.changes.outputs.changes
         run: |
-          git config user.name "Auto-Updater"
-          git config user.email "<andrey+browserslist-website@sitnik.ru>"
+          git config user.name "GitHub Actions"
+          git config user.email "actions@users.noreply.github.com"
       - name: Run tests
         if: steps.changes.outputs.changes
         run: pnpm test
