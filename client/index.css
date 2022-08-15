@@ -1,2 +1,10 @@
-@import "./view/base/index.css";
-@import "./view/base/colors.css";
+@import "./view/base/base.css";
+@import "./view/BrowserStats/BrowsersStat.css";
+@import "./view/Article/Article.css";
+@import "./view/Form/Form.css";
+@import "./view/Badge/Badge.css";
+@import "./view/QueryLink/QueryLink.css";
+@import "./view/DocSection/DocSection.css";
+@import "./view/Link/Link.css";
+@import "./view/Pre/Pre.css";
+@import "./view/Tweet/Tweet.css";
