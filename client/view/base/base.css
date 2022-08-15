@@ -1,12 +1,4 @@
-@import "../BrowserStats/BrowsersStat.css";
-@import "../Article/Article.css";
-@import "../Form/Form.css";
-@import "../Badge/Badge.css";
-@import "../QueryLink/QueryLink.css";
-@import "../DocSection/DocSection.css";
-@import "../Link/Link.css";
-@import "../Pre/Pre.css";
-@import "../Tweet/Tweet.css";
+@import "./colors.css";
 
 @media (prefers-reduced-motion: reduce) {
   * {
