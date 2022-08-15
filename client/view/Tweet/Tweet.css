@@ -3,7 +3,6 @@
   z-index: 1;
   height: fit-content;
   padding: 16px;
-  overflow: hidden;
   pointer-events: none;
   border: 1px solid var(--separator);
   border-radius: 12px;
@@ -14,6 +13,7 @@
   inset: 0;
   z-index: -1;
   pointer-events: all;
+  border-radius: inherit;
 }
 
 @media (hover) {
