@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --prod --frozen-lockfile --ignore-scripts
       - name: Update dependencies
-        run: pnpm update caniuse-lite browserslist
+        run: pnpm update -r caniuse-lite browserslist
       - name: Check dependencies
         id: changes
         run: node ./scripts/check-changes.js
