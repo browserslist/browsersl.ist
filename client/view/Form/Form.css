@@ -11,6 +11,7 @@
 .Form__queryTextArea {
   box-sizing: border-box;
   width: 100%;
+  min-height: 150px;
   padding: 12px;
   font-family: monospace, monospace;
   font-size: inherit;
@@ -18,7 +19,7 @@
   background-color: var(--main-bg);
   border: none;
   border-radius: 8px;
-  resize: none;
+  resize: vertical;
 }
 
 .Form__queryTextArea::placeholder {
