@@ -6,6 +6,7 @@
       }
     },
     "postcss-opacity-percentage": {},
+    "postcss-mixins": {},
     "postcss-nesting": {},
     "postcss-media-minmax": {},
     "autoprefixer": {}
