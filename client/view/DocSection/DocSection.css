@@ -24,9 +24,9 @@
   margin-top: 24px;
   margin-bottom: 10px;
   font-size: 12px;
-  font-weight: 800;
   line-height: 16px;
   text-transform: uppercase;
+  @mixin font-lato-black-custom;
 }
 
 summary .DocSection__subHeader {

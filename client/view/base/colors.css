@@ -8,6 +8,7 @@
   --text-highlited: oklch(66.37% 0.18 256.56 / 10%);
   --text-highlited-hover: oklch(57.37% 0.195 257.86 / 14%);
   --text-primary: oklch(11.264% 0.1 139.088);
+  --text-primary-stroke: oklch(11.264% 0.1 139.088 / 80%);
   --text-secondary: oklch(23.5% 0 0 / 65%);
   --text-underline: oklch(23.5% 0 0 / 40%);
   --text-underline-hover: oklch(23.5% 0 0);
@@ -28,6 +29,7 @@
     --text-highlited: oklch(66.37% 0.18 256.56 / 10%);
     --text-highlited-hover: oklch(66.37% 0.18 256.56 / 30%);
     --text-primary: oklch(100% 0.1 139.088);
+    --text-primary-stroke: oklch(100% 0.1 139.088 / 75%);
     --text-secondary: oklch(100% 0 102.07 / 50%);
     --text-underline: oklch(100% 3.55 106.37 / 40%);
     --text-underline-hover: oklch(100% 3.55 106.37 / 85%);

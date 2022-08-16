@@ -26,6 +26,7 @@
   margin: 0;
   font-size: 22px;
   line-height: 26px;
+  @mixin font-lato-black-custom;
 }
 
 .Article > *:last-child {
@@ -57,7 +58,9 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  margin: 0;
+  margin: 0 8px 0;
+  font-size: 22px;
+  @mixin font-lato-black-custom;
 }
 
 .Article__logo {
@@ -69,6 +72,7 @@
   margin-top: 32px;
   font-size: 22px;
   line-height: 26px;
+  @mixin font-lato-black-custom;
 }
 
 .Article--intro__about {

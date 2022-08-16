@@ -5,7 +5,6 @@
     "function-disallowed-list": ["rgb", "rgba", "hsl", "hsla"],
     "alpha-value-notation": "percentage",
     "color-named": "never",
-    "declaration-block-no-redundant-longhand-properties": null,
-    "font-family-no-duplicate-names": [true, { "ignoreFontFamilyNames":"monospace"}]
+    "declaration-block-no-redundant-longhand-properties": null
   }
 }

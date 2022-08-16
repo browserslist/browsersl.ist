@@ -18,6 +18,7 @@
     "jstransformer-markdown-it": "^3.0.0",
     "postcss": "^8.4.16",
     "postcss-media-minmax": "^5.0.0",
+    "postcss-mixins": "^9.0.3",
     "postcss-nesting": "^10.1.10",
     "postcss-opacity-percentage": "^1.1.2",
     "vite": "^3.0.7",

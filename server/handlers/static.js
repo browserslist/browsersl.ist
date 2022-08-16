@@ -14,7 +14,8 @@ const MIME_TYPES = {
   '.png': 'image/png',
   '.jpg': 'image/jpg',
   '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon'
+  '.ico': 'image/x-icon',
+  '.woff2': 'font/woff2'
 }
 
 export default async function handleStatic(req, res) {

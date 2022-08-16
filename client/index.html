@@ -5,6 +5,9 @@
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Browserslist</title>
+  <link rel="preload" href="./view/font-lato/Lato-Regular-1.104.woff2" as="font" type="font/woff2" crossorigin="crossorigin" />
+  <link rel="preload" href="./view/font-lato/Lato-Bold-1.104.woff2" as="font" type="font/woff2" crossorigin="crossorigin" />
+  <link rel="preload" href="./view/font-martian-mono/MartianMono-0.9.1.woff2" as="font" type="font/woff2" crossorigin="crossorigin" />
   <meta name="description" content="Display target browsers from a Browserslist config">
   <meta property="og:image" content="./og.png">
   <link rel="icon" href="./favicon.ico" sizes="any">
@@ -44,7 +47,7 @@
     <h2>Check compatible browsers</h2>
     <form data-id="query_form" class="Form">
       <div class="Form__queryTextAreaContainer">
-        <textarea name="query" cols="30" rows="7" required class="Form__queryTextArea" data-id="query_text_area"
+        <textarea name="query" cols="30" rows="4" required class="Form__queryTextArea" data-id="query_text_area"
                   placeholder="Write the Browserslist config here…"></textarea>
         <p class="Form__interactivePlaceholder">Write the Browserslist config here…<br>
           For example
