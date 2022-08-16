@@ -54,7 +54,7 @@ importers:
       postcss-nesting: ^10.1.10
       postcss-opacity-percentage: ^1.1.2
       size-limit: ^8.0.1
-      vite: ^3.0.7
+      vite: ^3.0.8
       vite-plugin-pug-transformer: ^1.0.2
     dependencies:
       '@csstools/postcss-oklab-function': 1.1.1_postcss@8.4.16
@@ -66,8 +66,8 @@ importers:
       postcss-mixins: 9.0.3_postcss@8.4.16
       postcss-nesting: 10.1.10_postcss@8.4.16
       postcss-opacity-percentage: 1.1.2
-      vite: 3.0.7
-      vite-plugin-pug-transformer: 1.0.2_vite@3.0.7
+      vite: 3.0.8
+      vite-plugin-pug-transformer: 1.0.2_vite@3.0.8
     devDependencies:
       '@size-limit/file': 8.0.1_size-limit@8.0.1
       size-limit: 8.0.1
@@ -585,7 +585,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001377
-      electron-to-chromium: 1.4.219
+      electron-to-chromium: 1.4.221
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
     dev: false
@@ -903,8 +903,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /electron-to-chromium/1.4.219:
-    resolution: {integrity: sha512-zoQJsXOUw0ZA0YxbjkmzBumAJRtr6je5JySuL/bAoFs0DuLiLJ+5FzRF7/ZayihxR2QcewlRZVm5QZdUhwjOgA==}
+  /electron-to-chromium/1.4.221:
+    resolution: {integrity: sha512-aWg2mYhpxZ6Q6Xvyk7B2ziBca4YqrCDlXzmcD7wuRs65pVEVkMT1u2ifdjpAQais2O2o0rW964ZWWWYRlAL/kw==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -948,7 +948,7 @@ packages:
       is-weakref: 1.0.2
       object-inspect: 1.12.2
       object-keys: 1.1.1
-      object.assign: 4.1.3
+      object.assign: 4.1.4
       regexp.prototype.flags: 1.4.3
       string.prototype.trimend: 1.0.5
       string.prototype.trimstart: 1.0.5
@@ -2227,8 +2227,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /object.assign/4.1.3:
-    resolution: {integrity: sha512-ZFJnX3zltyjcYJL0RoCJuzb+11zWGyaDbjgxZbdV7rFEcHQuYxrZqhow67aA7xpes6LhojyFDaBKAFfogQrikA==}
+  /object.assign/4.1.4:
+    resolution: {integrity: sha512-1mxKf0e58bvyjSCtKYY4sRe9itRk3PJpquJOjeIkz885CczcI4IvJJDLPS72oowuSh+pBxUFROpX+TU++hxhZQ==}
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
@@ -2928,7 +2928,7 @@ packages:
       svg-tags: 1.0.0
       table: 6.8.0
       v8-compile-cache: 2.3.0
-      write-file-atomic: 4.0.1
+      write-file-atomic: 4.0.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3120,7 +3120,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-pug-transformer/1.0.2_vite@3.0.7:
+  /vite-plugin-pug-transformer/1.0.2_vite@3.0.8:
     resolution: {integrity: sha512-RtXEYaEgQoy5ttNjuuNMWRzZwfJz+cjePSdQzmNJTteIzUamVb8xvAlwNouMt189V2mk6HxyfTGfAGKUQ6KGig==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
@@ -3128,11 +3128,11 @@ packages:
     dependencies:
       picocolors: 1.0.0
       pug: 3.0.2
-      vite: 3.0.7
+      vite: 3.0.8
     dev: false
 
-  /vite/3.0.7:
-    resolution: {integrity: sha512-dILhvKba1mbP1wCezVQx/qhEK7/+jVn9ciadEcyKMMhZpsuAi/eWZfJRMkmYlkSFG7Qq9NvJbgFq4XOBxugJsA==}
+  /vite/3.0.8:
+    resolution: {integrity: sha512-AOZ4eN7mrkJiOLuw8IA7piS4IdOQyQCA81GxGsAQvAZzMRi9ZwGB3TOaYsj4uLAWK46T5L4AfQ6InNGlxX30IQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -3207,9 +3207,9 @@ packages:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
 
-  /write-file-atomic/4.0.1:
-    resolution: {integrity: sha512-nSKUxgAbyioruk6hU87QzVbY279oYT6uiwgDoujth2ju4mJ+TZau7SQBhtbTmUyuNYTuXnSyRn66FV0+eCgcrQ==}
-    engines: {node: ^12.13.0 || ^14.15.0 || >=16}
+  /write-file-atomic/4.0.2:
+    resolution: {integrity: sha512-7KxauUdBmSdWnmpaGFg+ppNjKF8uNLry8LyzjauQDOVONfFLNKrKvQOxZ/VuTIcS/gge/YNahf5RIIQWTSarlg==}
+    engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
