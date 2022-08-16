@@ -12,8 +12,10 @@
 
 .QueryLink > code {
   padding: 0 4px;
-  line-height: 20px;
   color: var(--accent);
   background-color: var(--text-highlited);
   border-radius: 4px;
+  display: inline-block;
+  padding: 0 4px;
+  font-weight: 300;
 }

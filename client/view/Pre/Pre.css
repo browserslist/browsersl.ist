@@ -1,16 +1,18 @@
 .Pre {
   display: flex;
   flex-direction: column;
-  padding: 12px;
-  font-size: inherit;
+  font-size: 12px;
+  line-height: 20px;
   color: var(--accent);
   background-color: var(--text-highlited);
   border-radius: 8px;
+  padding: 12px;
 }
 
 .Pre code {
   overflow: hidden;
   font-size: inherit;
+  font-weight: 300;
   white-space: pre-wrap;
   background-color: initial;
 }

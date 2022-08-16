@@ -33,8 +33,8 @@ p {
 }
 
 code {
-  /* stylelint-disable-next-line font-family-no-duplicate-names */
-  font-family: monospace, monospace;
-
-  /* explain: https://github.com/necolas/normalize.css/issues/519#issuecomment-197131966 */
+  font-family: 'Martian Mono', monospace;
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 600;
 }
