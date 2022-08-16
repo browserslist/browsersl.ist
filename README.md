@@ -43,3 +43,54 @@ To run local server in production mode:
 ```sh
 pnpm ssdeploy run
 ```
+
+
+## HTTP API
+You can use the site API in your own applications.
+
+```
+https://browsersl.ist/api/browsers?q=defaults&region=alt-ww
+```
+
+- `q` — query. Examples are available [on the website](https://browsersl.ist) or in the [browserslist repository](https://github.com/browserslist/browserslist#full-list). `defaults` by default.
+- `region` — region code. List of all region codes can be found at [caniuse-lite/data/regions](https://github.com/browserslist/caniuse-lite/tree/main/data/regions). `Global` by default.
+
+
+### Response example
+
+```js
+// https://browsersl.ist/api/browsers?q=>0.3%&region=alt-as
+
+{
+  "query": ">0.3%",
+  "region": "alt-as",
+  "coverage": 92.64,
+  "versions": {
+    "browserslist": "4.21.3",
+    "caniuse": "1.0.30001377"
+  },
+  "browsers": [
+    {
+      "id": "chrome",
+      "name": "Chrome",
+      "coverage": 17.04,
+      "versions": {
+        "102": 0.72,
+        "103": 16.32
+      }
+    }
+    ...
+  ]
+}
+```
+
+### Errors
+If you send a request with an error, you will receive error message with the status 400.
+
+```js
+// https://browsersl.ist/api/browsers?q=>0%&region=XX
+
+{
+  "message": "Unknown region name `XX`."
+}
+```
