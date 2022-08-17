@@ -6,6 +6,7 @@ import {
   updateToolsVersions,
   showStats
 } from '../BrowserStats/browserStats.js'
+import transformQuery from './transformQuery.js'
 
 const form = document.querySelector('[data-id=query_form]')
 const textarea = document.querySelector('[data-id=query_text_area]')
@@ -129,9 +130,13 @@ function renderError(message) {
 
 async function updateStatsView(query, region) {
   let response
+
   try {
     form.classList.add('Form--loaded')
-    let urlParams = new URLSearchParams({ q: query, region })
+    let urlParams = new URLSearchParams({
+      q: transformQuery(query),
+      region
+    })
     response = await fetch(`/api/browsers?${urlParams}`)
   } catch (error) {
     renderError(`Network error. Check that you are online.`)
