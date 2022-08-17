@@ -25,8 +25,8 @@
 .Article--stats h2 {
   margin: 0;
   font-size: 22px;
+  font-weight: 700;
   line-height: 26px;
-  @mixin font-lato-black-custom;
 }
 
 .Article > *:last-child {
@@ -60,7 +60,6 @@
   align-items: center;
   margin: 0 8px 0 0;
   font-size: 22px;
-  @mixin font-lato-black-custom;
 }
 
 .Article__logo {
@@ -72,7 +71,6 @@
   margin-top: 32px;
   font-size: 22px;
   line-height: 26px;
-  @mixin font-lato-black-custom;
 }
 
 .Article--intro__about {
