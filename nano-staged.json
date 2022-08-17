@@ -1,5 +1,6 @@
 {
   "*.css": "stylelint --fix",
   "*.js": "prettier --write",
-  "*.svg": "svgo"
+  "*.svg": "svgo",
+  ".tool-versions": "node scripts/check-versions.js"
 }
