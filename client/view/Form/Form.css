@@ -109,10 +109,6 @@
   opacity: 100%;
 }
 
-.Form:not(.Form--serverError):not(.Form--justSend):not(.Form--loaded) .Form__queryTextArea:focus-visible:valid ~ .Form__hint--progress {
-  opacity: 100%;
-}
-
 .Form--loaded .Form__loader {
   opacity: 100%;
 }

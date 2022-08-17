@@ -18,11 +18,10 @@ const errorMessage = document.querySelector('[data-id=error_message]')
 
 form.addEventListener('submit', handleFormSubmit)
 
-textarea.addEventListener('keypress', e => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault()
-    submitForm()
-  }
+const submitFormDebounced = debounce(submitForm, 300)
+
+textarea.addEventListener('input', () => {
+  submitFormDebounced()
 })
 
 renderRegionSelectOptions()
@@ -198,4 +197,12 @@ function submitFormWithUrlParams() {
 
   setFormValues({ query, region })
   submitForm()
+}
+
+function debounce(callback, delay) {
+  let timeout
+  return function () {
+    clearTimeout(timeout)
+    timeout = setTimeout(callback, delay)
+  }
 }
