@@ -1,5 +1,0 @@
-@define-mixin font-lato-black-custom {
-  font-weight: 600;
-  -webkit-text-stroke: 0.02em var(--text-primary-stroke);
-  letter-spacing: 0.005em;
-}
