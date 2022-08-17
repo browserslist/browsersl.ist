@@ -5,7 +5,7 @@ WORKDIR /var/www
 COPY --chown=node:node . /var/www
 
 RUN corepack enable
-RUN corepack prepare pnpm@7.9.1 --activate
+RUN corepack prepare pnpm@7.9.3 --activate
 COPY ./pnpm-workspace.yaml /var/www/
 COPY ./package.json /var/www/
 COPY ./pnpm-lock.yaml /var/www/
