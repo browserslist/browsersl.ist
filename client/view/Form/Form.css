@@ -11,7 +11,7 @@
 .Form__queryTextArea {
   box-sizing: border-box;
   width: 100%;
-  min-height: 120px;
+  min-height: 134px;
   padding: 12px;
   font-family: 'Martian Mono', monospace;
   font-weight: 300;
@@ -106,10 +106,6 @@
 }
 
 .Form:not(.Form--serverError):not(.Form--loaded) .Form__queryTextArea:invalid:focus-visible ~ .Form__hint--required {
-  opacity: 100%;
-}
-
-.Form:not(.Form--serverError):not(.Form--justSend):not(.Form--loaded) .Form__queryTextArea:focus-visible:valid ~ .Form__hint--progress {
   opacity: 100%;
 }
 

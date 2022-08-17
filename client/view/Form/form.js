@@ -6,6 +6,7 @@ import {
   updateToolsVersions,
   showStats
 } from '../BrowserStats/browserStats.js'
+import transformQuery from './transformQuery.js'
 
 const form = document.querySelector('[data-id=query_form]')
 const textarea = document.querySelector('[data-id=query_text_area]')
@@ -17,11 +18,10 @@ const errorMessage = document.querySelector('[data-id=error_message]')
 
 form.addEventListener('submit', handleFormSubmit)
 
-textarea.addEventListener('keypress', e => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault()
-    submitForm()
-  }
+const submitFormDebounced = debounce(submitForm, 300)
+
+textarea.addEventListener('input', () => {
+  submitFormDebounced()
 })
 
 renderRegionSelectOptions()
@@ -129,9 +129,13 @@ function renderError(message) {
 
 async function updateStatsView(query, region) {
   let response
+
   try {
     form.classList.add('Form--loaded')
-    let urlParams = new URLSearchParams({ q: query, region })
+    let urlParams = new URLSearchParams({
+      q: transformQuery(query),
+      region
+    })
     response = await fetch(`/api/browsers?${urlParams}`)
   } catch (error) {
     renderError(`Network error. Check that you are online.`)
@@ -193,4 +197,12 @@ function submitFormWithUrlParams() {
 
   setFormValues({ query, region })
   submitForm()
+}
+
+function debounce(callback, delay) {
+  let timeout
+  return function () {
+    clearTimeout(timeout)
+    timeout = setTimeout(callback, delay)
+  }
 }

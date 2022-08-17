@@ -10,7 +10,7 @@ export default async function handleAPIBrowsers(req, res) {
   let { searchParams: params } = new URL(req.url, `http://${req.headers.host}/`)
 
   let query = params.get('q') || QUERY_DEFAULTS
-  let queryWithoutQuotes = query.replace(/'/g, '')
+  let queryWithoutQuotes = query.replace(/'|"/g, '')
 
   let region = params.get('region') || REGION_GLOBAL
 
