@@ -4,8 +4,8 @@ import getFileData from '../lib/get-file-data.js'
 import { sendResponse, sendResponseError } from '../lib/send-response.js'
 
 const responseHeaders = {
-  'Content-Type': 'text/html',
-  'Cache-Control': 'public, max-age=300, must-revalidate',
+  'Content-Type': 'text/html; charset=utf-8',
+  'Cache-Control': 'public, max-age=300',
   'Content-Security-Policy':
     `object-src 'none'; ` +
     `frame-ancestors 'none'; ` +

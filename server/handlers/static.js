@@ -6,7 +6,6 @@ import getFileData from '../lib/get-file-data.js'
 const CLIENT_DIR = '../../client'
 const DIST_DIR = '/dist'
 const MIME_TYPES = {
-  '.html': 'text/html',
   '.js': 'text/javascript',
   '.css': 'text/css',
   '.json': 'application/json',
