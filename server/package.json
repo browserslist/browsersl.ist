@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "browserslist": "^4.21.3",
-    "caniuse-lite": "^1.0.30001377"
+    "caniuse-lite": "^1.0.30001378"
   }
 }
