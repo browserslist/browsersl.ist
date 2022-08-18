@@ -1,6 +1,16 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
 import * as browsersIcons from '../../data/browsers-logos.js'
 
+const browserStats = document.querySelector('[data-id=browsers_stats]')
+
+const regionCoverage = document.querySelector('[data-id=region_coverage]')
+const regionCoverageCounter = document.querySelector(
+  '[data-id=region_coverage_counter]'
+)
+const palceholder = document.querySelector(
+  '[data-id=browsers_stats_placeholder]'
+)
+
 function formatPercent(percent) {
   let rounded = percent >= 0.1 ? percent.toFixed(1) : 0
 
@@ -8,8 +18,7 @@ function formatPercent(percent) {
 }
 
 export function updateRegionCoverageCounter(coverage) {
-  let element = document.querySelector('[data-id=region_coverage_counter]')
-  element.innerHTML = formatPercent(coverage)
+  regionCoverageCounter.innerHTML = formatPercent(coverage)
 }
 
 export function updateRegionCoverageBar(data) {
@@ -28,14 +37,10 @@ export function updateRegionCoverageBar(data) {
   })
 }
 
-export function showStats() {
-  let statsPlaceholder = document.querySelector(
-    '[data-id=browsers_stats_placeholder]'
-  )
-  let browserStats = document.querySelector('[data-id=browsers_stats]')
-
-  statsPlaceholder.classList.add('BrowsersStat__placeholder--hidden')
-  browserStats.classList.remove('BrowsersStat__stat--hidden')
+export function toggleShowStats(isShown) {
+  regionCoverage.hidden = !isShown
+  browserStats.hidden = !isShown
+  palceholder.hidden = isShown
 }
 
 function createCoverageCell(coverage) {

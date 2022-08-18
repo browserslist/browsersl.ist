@@ -30,3 +30,7 @@ code {
   line-height: 22px;
   font-weight: 600;
 }
+
+[hidden] {
+  display: none !important;
+}
