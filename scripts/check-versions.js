@@ -19,6 +19,13 @@ if (!dockerfile.includes(`pnpm@${pnpmVersion}`)) {
   process.exit(1)
 }
 
+if (!dockerfile.includes(`FROM node:${nodeVersion}-alpine`)) {
+  process.stderr.write(
+    'Dockerfile and .tool-versions have different node version\n'
+  )
+  process.exit(1)
+}
+
 if (!packageJson.includes(`"node": ">=${nodeMajor}"`)) {
   process.stderr.write(
     'package.json and .tool-versions have different node version\n'
