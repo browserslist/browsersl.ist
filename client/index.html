@@ -52,11 +52,10 @@
           <a class="QueryLink"><code>defaults</code></a>,
           <a class="QueryLink"><code>> 0.2% and not dead</code></a>
         </p>
-        <p class="Form__hint Form__hint--required">Query should be not empty</p>
         <p class="Form__hint Form__hint--error" data-id="error_message">Unknown query</p>
         <p class="Form__loader">Loading…</p>
       </div>
-      <div class="Form__coverage Form__coverage--hidden" data-id="region_coverage">
+      <div class="Form__coverage" data-id="region_coverage" hidden>
         <h2>Audience coverage: <span data-id="region_coverage_counter"></span></h2>
         <label class="Form__coverageSelectLabel">
           Region
@@ -77,7 +76,7 @@
         <p class="BrowsersStat__placeholderText">Add the Browserslist config to display compatible browsers.</p>
       </div>
 
-      <div class="BrowsersStat__stat BrowsersStat__stat--hidden" data-id="browsers_stats">
+      <div class="BrowsersStat__stat" data-id="browsers_stats" hidden>
         <ul class="BrowsersStat__regionCoverageBar" data-id="region_coverage_bar"></ul>
         <div class="BrowsersStat__tableContainer" data-id="browsers_stats_results"></div>
 

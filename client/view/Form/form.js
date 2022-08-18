@@ -4,13 +4,12 @@ import {
   updateRegionCoverageCounter,
   updateRegionCoverageBar,
   updateToolsVersions,
-  showStats
+  toggleShowStats
 } from '../BrowserStats/browserStats.js'
 import transformQuery from './transformQuery.js'
 
 const form = document.querySelector('[data-id=query_form]')
 const textarea = document.querySelector('[data-id=query_text_area]')
-const regionCoverage = document.querySelector('[data-id=region_coverage]')
 const regionCoverageSelect = document.querySelector(
   '[data-id=region_coverage_select]'
 )
@@ -38,9 +37,6 @@ window.addEventListener('popstate', () => {
 
 function handleFormSubmit(e) {
   e.preventDefault()
-  if (!form.checkValidity()) {
-    return
-  }
 
   let formData = new FormData(form)
   let query = transformQuery(formData.get('query'))
@@ -77,10 +73,6 @@ export function setFormValues({ query, region }) {
 
 export function submitForm() {
   form.dispatchEvent(new Event('submit', { cancelable: true }))
-}
-
-function showCoverageControls() {
-  regionCoverage.classList.remove('Form__coverage--hidden')
 }
 
 function renderRegionSelectOptions() {
@@ -130,6 +122,11 @@ function renderError(message) {
 async function updateStatsView(query, region) {
   let response
 
+  if (query.length === 0) {
+    toggleShowStats(false)
+    return false
+  }
+
   try {
     form.classList.add('Form--loaded')
     let urlParams = new URLSearchParams({
@@ -164,8 +161,7 @@ Report an issue</a> to our repository.`)
 
   let { browsers, coverage, versions } = data
 
-  showCoverageControls()
-  showStats()
+  toggleShowStats(true)
   updateBrowsersStats(browsers)
   updateRegionCoverageCounter(coverage)
   updateRegionCoverageBar(browsers)

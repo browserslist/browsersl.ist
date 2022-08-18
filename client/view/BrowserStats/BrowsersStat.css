@@ -95,18 +95,10 @@
   text-align: center;
 }
 
-.BrowsersStat__placeholder--hidden {
-  display: none;
-}
-
 .BrowsersStat__stat {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-}
-
-.BrowsersStat__stat--hidden {
-  display: none;
 }
 
 .BrowsersStat__table {

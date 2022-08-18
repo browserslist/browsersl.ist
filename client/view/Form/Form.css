@@ -79,10 +79,6 @@
   opacity: 0%;
 }
 
-.Form__hint--required {
-  color: var(--warning);
-}
-
 .Form__hint--error {
   color: var(--error);
 }
@@ -103,10 +99,6 @@
 
 .Form__queryTextArea:placeholder-shown ~ .Form__interactivePlaceholder a {
   pointer-events: initial;
-}
-
-.Form:not(.Form--serverError):not(.Form--loaded) .Form__queryTextArea:invalid:focus-visible ~ .Form__hint--required {
-  opacity: 100%;
 }
 
 .Form--loaded .Form__loader {
@@ -145,10 +137,6 @@
   gap: 16px 24px;
   align-items: center;
   justify-content: space-between;
-}
-
-.Form__coverage--hidden {
-  display: none;
 }
 
 .Form__coverageSelect {
