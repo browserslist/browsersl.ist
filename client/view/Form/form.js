@@ -43,7 +43,7 @@ function handleFormSubmit(e) {
   }
 
   let formData = new FormData(form)
-  let query = formData.get('query')
+  let query = transformQuery(formData.get('query'))
   let region = formData.get('region')
 
   changeUrl(query, region)
@@ -133,7 +133,7 @@ async function updateStatsView(query, region) {
   try {
     form.classList.add('Form--loaded')
     let urlParams = new URLSearchParams({
-      q: transformQuery(query),
+      q: query,
       region
     })
     response = await fetch(`/api/browsers?${urlParams}`)
