@@ -19,7 +19,7 @@ if (!dockerfile.includes(`pnpm@${pnpmVersion}`)) {
   process.exit(1)
 }
 
-if (!dockerfile.includes(`FROM node:${nodeVersion}-`)) {
+if (!dockerfile.includes(`FROM node:${nodeVersion}-alphine`)) {
   process.stderr.write(
     'Dockerfile and .tool-versions have different node version\n'
   )
