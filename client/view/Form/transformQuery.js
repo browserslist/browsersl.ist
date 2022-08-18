@@ -28,9 +28,10 @@ function transfromJSONFragmentToQuery(query) {
   return transfromJSONToQuery('{' + query + '}')
 }
 
+// TODO Use a parser from the browserslist API
 function transformMultilineToQuery(query) {
-  // Replace newline to browserslist `or`
-  return query.replace(/\n/, ',')
+  // Replace newline to browserslist `or`. Support `,` at end of line
+  return query.replace(/\n|,+\n/g, ',')
 }
 
 function hasJSONSymbols(query) {
