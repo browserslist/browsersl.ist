@@ -23,7 +23,7 @@ test('Integration tests', async t => {
       let url = new URL(`api/browsers`, base)
       let response = await fetch(url)
       let data = await response.json()
-      equal(data.region, 'Global')
+      equal(data.region, 'alt-ww')
     }
   )
 

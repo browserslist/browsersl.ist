@@ -6,7 +6,7 @@ import getBrowsers from '../lib/get-browsers.js'
 test('Throws error for wrong browserslist `query`', async () => {
   let error
   try {
-    await getBrowsers('wrong', 'Global')
+    await getBrowsers('wrong', 'alt-ww')
   } catch (e) {
     error = e
   }
@@ -15,7 +15,7 @@ test('Throws error for wrong browserslist `query`', async () => {
 })
 
 test('Returns multiple browser names and versions by `>1%` query', async () => {
-  let data = await getBrowsers('>1%', 'Global')
+  let data = await getBrowsers('>1%', 'alt-ww')
   let browsersNames = data.browsers
   let browsersVersions = Object.keys(browsersNames[0])
 
@@ -35,14 +35,14 @@ test('Throws error for wrong Can I Use `region`', async () => {
 })
 
 test('Returns Node.js versions without coverage`', async () => {
-  let data = await getBrowsers('Node > 0', 'Global')
+  let data = await getBrowsers('Node > 0', 'alt-ww')
 
   equal(data.browsers[0].name, 'Node')
   equal(data.browsers[0].coverage, null)
 })
 
 test('Сoverage of all browsers should differ in different regions', async () => {
-  let continentData = await getBrowsers('>1%', 'Global')
+  let continentData = await getBrowsers('>1%', 'alt-ww')
   let countryData = await getBrowsers('>1%', 'IT')
 
   notEqual(continentData.coverage, countryData.coverage)
