@@ -18,12 +18,12 @@ test('Integration tests', async t => {
   )
 
   await t.test(
-    'responses `Global` region for `/browsers` route without `region` param',
+    'responses `alt-ww` region for `/browsers` route without `region` param',
     async () => {
       let url = new URL(`api/browsers`, base)
       let response = await fetch(url)
       let data = await response.json()
-      equal(data.region, 'Global')
+      equal(data.region, 'alt-ww')
     }
   )
 
