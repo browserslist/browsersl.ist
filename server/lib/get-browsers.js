@@ -30,17 +30,18 @@ export default async function getBrowsers(query, region) {
     if (id === 'node') {
       versionCoverage = null
     } else {
-      versionCoverage =
+      versionCoverage = roundNumber(
         region === REGION_GLOBAL
           ? getGlobalCoverage(id, version)
           : await getRegionCoverage(id, version, region)
+      )
     }
 
     if (!browsersByQueryCoverage[id]) {
       browsersByQueryCoverage[id] = {}
     }
 
-    browsersByQueryCoverage[id][version] = roundNumber(versionCoverage)
+    browsersByQueryCoverage[id][version] = versionCoverage
   }
 
   let browsers = Object.entries(browsersByQueryCoverage)
