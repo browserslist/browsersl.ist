@@ -1,5 +1,8 @@
 # Browserslist Website
 
+<img width="120" height="120" alt="Browserslist logo by Anton Popov"
+     src="https://browsersl.ist/logo.svg" align="right">
+
 This website uses [Browserslist] and [Can I Use] to display
 the compatible browsers for a browsers query.
 
