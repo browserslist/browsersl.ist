@@ -46,13 +46,12 @@
     <h2>Check compatible browsers</h2>
     <form data-id="query_form" class="Form">
       <div class="Form__queryTextAreaContainer">
-        <textarea name="query" cols="30" rows="5" required class="Form__queryTextArea" data-id="query_text_area"
-                  placeholder="Write the Browserslist config here…"></textarea>
-        <p class="Form__interactivePlaceholder">Write the Browserslist config here…<br>
+        <textarea id="form_query" name="query" cols="30" rows="5" required class="Form__queryTextArea" data-id="query_text_area"></textarea>
+        <label for="form_query" class="Form__interactivePlaceholder">Write the Browserslist config here…<br>
           For example
           <a class="QueryLink"><code>defaults</code></a>,
           <a class="QueryLink"><code>> 0.2% and not dead</code></a>
-        </p>
+        </label>
         <p class="Form__loader">Loading…</p>
         <p class="Form__hint Form__hint--error" data-id="error_message">Unknown query</p>
       </div>
