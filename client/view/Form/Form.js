@@ -108,9 +108,14 @@ function renderRegionSelectOptions() {
 function renderError(message) {
   errorMessage.innerHTML = message
   form.classList.add('Form--serverError')
+  textarea.setAttribute('aria-errormessage', 'form_error')
+  textarea.setAttribute('aria-invalid', 'true')
   textarea.addEventListener(
     'input',
     () => {
+      textarea.removeAttribute('aria-errormessage')
+      textarea.removeAttribute('aria-invalid')
+      errorMessage.innerHTML = ''
       form.classList.remove('Form--serverError')
     },
     {
