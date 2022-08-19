@@ -24,15 +24,8 @@ export default async function getBrowsers(query, region) {
       return
     }
 
-    let browsersGroups = {}
-    let browsersGroupsKeys = []
-
+    let browsersNames = {}
     for (let browser of browsersByQuery) {
-      if (browsersGroupsKeys.includes(browser)) {
-        return
-      }
-
-      browsersGroupsKeys.push(browser)
       let [id, version] = browser.split(' ')
       let versionCoverage = null
 
@@ -49,14 +42,14 @@ export default async function getBrowsers(query, region) {
 
       let versionData = { [`${version}`]: roundNumber(versionCoverage) }
 
-      if (!browsersGroups[id]) {
-        browsersGroups[id] = { versions: versionData }
+      if (!browsersNames[id]) {
+        browsersNames[id] = { versions: versionData }
       } else {
-        Object.assign(browsersGroups[id].versions, versionData)
+        Object.assign(browsersNames[id].versions, versionData)
       }
     }
 
-    let browsers = Object.entries(browsersGroups)
+    let browsers = Object.entries(browsersNames)
       .map(([id, { versions }]) => {
         let name
         let coverage
