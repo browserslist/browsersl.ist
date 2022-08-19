@@ -30,7 +30,7 @@ https://browsersl.ist/api/browsers?q=defaults&region=alt-ww
 // https://browsersl.ist/api/browsers?q=>0.3%&region=alt-as
 
 {
-  "query": ">0.3%",
+  "query": ">0.3% in alt-as", // Append `in region` to audience coverage queries
   "region": "alt-as",
   "coverage": 92.64,
   "versions": {
