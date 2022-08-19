@@ -8,16 +8,16 @@ import {
 } from '../BrowserStats/BrowserStats.js'
 import transformQuery from './transformQuery.js'
 
-const form = document.querySelector('[data-id=query_form]')
-const textarea = document.querySelector('[data-id=query_text_area]')
-const regionCoverageSelect = document.querySelector(
+let form = document.querySelector('[data-id=query_form]')
+let textarea = document.querySelector('[data-id=query_text_area]')
+let regionCoverageSelect = document.querySelector(
   '[data-id=region_coverage_select]'
 )
-const errorMessage = document.querySelector('[data-id=error_message]')
+let errorMessage = document.querySelector('[data-id=error_message]')
 
 form.addEventListener('submit', handleFormSubmit)
 
-const submitFormDebounced = debounce(submitForm, 300)
+let submitFormDebounced = debounce(submitForm, 300)
 
 textarea.addEventListener('input', () => {
   submitFormDebounced()

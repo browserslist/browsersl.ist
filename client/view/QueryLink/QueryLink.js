@@ -1,7 +1,7 @@
 import { setFormValues, submitForm } from '../Form/Form.js'
 
-const queryContainer = document.querySelector('[data-id=query_container]')
-const links = document.querySelectorAll('a.QueryLink')
+let queryContainer = document.querySelector('[data-id=query_container]')
+let links = document.querySelectorAll('a.QueryLink')
 
 links.forEach(item => {
   let queryAttr = item.getAttribute('data-query')

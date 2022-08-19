@@ -1,15 +1,13 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
 import * as browsersIcons from '../../data/browsers-logos.js'
 
-const browserStats = document.querySelector('[data-id=browsers_stats]')
+let browserStats = document.querySelector('[data-id=browsers_stats]')
 
-const regionCoverage = document.querySelector('[data-id=region_coverage]')
-const regionCoverageCounter = document.querySelector(
+let regionCoverage = document.querySelector('[data-id=region_coverage]')
+let regionCoverageCounter = document.querySelector(
   '[data-id=region_coverage_counter]'
 )
-const palceholder = document.querySelector(
-  '[data-id=browsers_stats_placeholder]'
-)
+let palceholder = document.querySelector('[data-id=browsers_stats_placeholder]')
 
 function formatPercent(percent) {
   let rounded = percent >= 0.1 ? percent.toFixed(1) : 0
