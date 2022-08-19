@@ -71,6 +71,9 @@ export default async function getBrowsers(query, region) {
 
   let coverage = roundNumber(browserslist.coverage(browsersByQuery, region))
 
+  // BUG `caniuse-db` returns coverage >100% https://github.com/Fyrd/caniuse/issues/6426
+  coverage = coverage > 100 ? 100 : coverage
+
   return {
     query,
     region,
