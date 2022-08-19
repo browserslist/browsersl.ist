@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@logux/eslint-config': ^47.2.0
-      '@logux/stylelint-config': ^0.10.1
+      '@logux/stylelint-config': ^0.11.0
       '@typescript-eslint/eslint-plugin': ^5.33.1
       '@typescript-eslint/parser': ^5.33.1
       eslint: ^8.22.0
@@ -25,7 +25,7 @@ importers:
       ssdeploy: 0.9.2
     devDependencies:
       '@logux/eslint-config': 47.2.0_yu2allr4k57q56xe463cam3gou
-      '@logux/stylelint-config': 0.10.1_stylelint@14.10.0
+      '@logux/stylelint-config': 0.11.0_stylelint@14.10.0
       '@typescript-eslint/eslint-plugin': 5.33.1_vsoshirnpb7xw6mr7xomgfas2i
       '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
       eslint: 8.22.0
@@ -217,14 +217,15 @@ packages:
       eslint-plugin-promise: 6.0.0_eslint@8.22.0
     dev: true
 
-  /@logux/stylelint-config/0.10.1_stylelint@14.10.0:
-    resolution: {integrity: sha512-LdqGWEO/IisgQMhtu2t18ygmFP1c38CD4d2HmFIonTvNPKJAAyGcYexOdi8MkUxdGC3oXR4dwJII3z4apiEhNQ==}
+  /@logux/stylelint-config/0.11.0_stylelint@14.10.0:
+    resolution: {integrity: sha512-Rzn6qKTSpUku0hyUv6l9kgfD7zGVrdzX47VnyD2rXfGnVHReLvIcSRecoCCkQk+X0hOSVMfwPN5ZxZM/4SCkEA==}
     peerDependencies:
       stylelint: ^14.2.0
     dependencies:
       stylelint: 14.10.0
       stylelint-config-recess-order: 3.0.0_stylelint@14.10.0
-      stylelint-config-standard: 25.0.0_stylelint@14.10.0
+      stylelint-config-standard: 27.0.0_stylelint@14.10.0
+      stylelint-gamut: 1.1.2_stylelint@14.10.0
       stylelint-order: 5.0.0_stylelint@14.10.0
     dev: true
 
@@ -587,7 +588,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001378
-      electron-to-chromium: 1.4.221
+      electron-to-chromium: 1.4.224
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
     dev: false
@@ -702,6 +703,10 @@ packages:
 
   /colord/2.9.3:
     resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
+    dev: true
+
+  /colorjs.io/0.4.0:
+    resolution: {integrity: sha512-AUKG9GCDSHsFRUnxGrEMCm6nq6lxddnDvD0avmsy/klCEk68htpqgl9IERGtGoxaGJlr7uP5wmD381gY2uG8hw==}
     dev: true
 
   /commander/7.2.0:
@@ -900,8 +905,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /electron-to-chromium/1.4.221:
-    resolution: {integrity: sha512-aWg2mYhpxZ6Q6Xvyk7B2ziBca4YqrCDlXzmcD7wuRs65pVEVkMT1u2ifdjpAQais2O2o0rW964ZWWWYRlAL/kw==}
+  /electron-to-chromium/1.4.224:
+    resolution: {integrity: sha512-dOujC5Yzj0nOVE23iD5HKqrRSDj2SD7RazpZS/b/WX85MtO6/LzKDF4TlYZTBteB+7fvSg5JpWh0sN7fImNF8w==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -2837,21 +2842,31 @@ packages:
       stylelint-order: 5.0.0_stylelint@14.10.0
     dev: true
 
-  /stylelint-config-recommended/7.0.0_stylelint@14.10.0:
-    resolution: {integrity: sha512-yGn84Bf/q41J4luis1AZ95gj0EQwRX8lWmGmBwkwBNSkpGSpl66XcPTulxGa/Z91aPoNGuIGBmFkcM1MejMo9Q==}
+  /stylelint-config-recommended/9.0.0_stylelint@14.10.0:
+    resolution: {integrity: sha512-9YQSrJq4NvvRuTbzDsWX3rrFOzOlYBmZP+o513BJN/yfEmGSr0AxdvrWs0P/ilSpVV/wisamAHu5XSk8Rcf4CQ==}
     peerDependencies:
-      stylelint: ^14.4.0
+      stylelint: ^14.10.0
     dependencies:
       stylelint: 14.10.0
     dev: true
 
-  /stylelint-config-standard/25.0.0_stylelint@14.10.0:
-    resolution: {integrity: sha512-21HnP3VSpaT1wFjFvv9VjvOGDtAviv47uTp3uFmzcN+3Lt+RYRv6oAplLaV51Kf792JSxJ6svCJh/G18E9VnCA==}
+  /stylelint-config-standard/27.0.0_stylelint@14.10.0:
+    resolution: {integrity: sha512-J+wxyODWQCW2kgdhVzj51a4cFcJkglkMQrjPU/1Jo8w2oKSKK5ZRqHvDDWxEmjYWIYbMhhIMS5dOgVpGUMIACw==}
     peerDependencies:
-      stylelint: ^14.4.0
+      stylelint: ^14.10.0
     dependencies:
       stylelint: 14.10.0
-      stylelint-config-recommended: 7.0.0_stylelint@14.10.0
+      stylelint-config-recommended: 9.0.0_stylelint@14.10.0
+    dev: true
+
+  /stylelint-gamut/1.1.2_stylelint@14.10.0:
+    resolution: {integrity: sha512-F3TX7EP98h4Ni350C92Hj6QOWPHXPqFkvfaRWBcM8simsWbFn4XnA/DT3c6mtm9Z8RE1J9lDHlMmlnzUZPsehA==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      stylelint: ^14.10.0
+    dependencies:
+      colorjs.io: 0.4.0
+      stylelint: 14.10.0
     dev: true
 
   /stylelint-order/5.0.0_stylelint@14.10.0:
