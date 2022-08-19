@@ -1,5 +1,5 @@
 import test from 'node:test'
-import { equal, notEqual, ok, match } from 'node:assert'
+import { equal, deepEqual, notEqual, ok, match, notDeepEqual } from 'node:assert'
 
 import getBrowsers from '../lib/get-browsers.js'
 
@@ -41,11 +41,13 @@ test('Returns Node.js versions without coverage`', async () => {
   equal(data.browsers[0].coverage, null)
 })
 
-test('Сoverage of all browsers should differ in different regions', async () => {
-  let continentData = await getBrowsers('>1%', 'Global')
+test('Should show different coverage statistics for another regions', async () => {
+  let query = '>0.1% and supports es6-module'
   let continentData = await getBrowsers(query, 'alt-as')
+  let countryData = await getBrowsers(query, 'IT')
 
   notEqual(continentData.coverage, countryData.coverage)
+  notDeepEqual(continentData.browsers, countryData.browsers)
 })
 
 test('Сoverage for browser should differ in different regions', async () => {
@@ -56,4 +58,11 @@ test('Сoverage for browser should differ in different regions', async () => {
   let countryBrowser = countryData.browsers[0]
 
   notEqual(continentBrowser.coverage, countryBrowser.coverage)
+})
+
+test('Should transform query with type `popularity` to `popularity_in_place`', async () => {
+  deepEqual(
+    await getBrowsers('>0.1% and <10%, dead', 'FR'),
+    await getBrowsers('>0.1% in FR and <10% in FR, dead', 'FR')
+  )
 })
