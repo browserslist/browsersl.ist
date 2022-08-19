@@ -44,10 +44,13 @@
   line-height: 1;
   color: var(--text-secondary);
   overflow-wrap: break-word;
-  pointer-events: none;
   background-color: var(--main-bg);
   opacity: 0%;
   transition: opacity 0.2s linear;
+}
+
+.Form__loader {
+  pointer-events: none;
 }
 
 .Form__hint--hidden {
