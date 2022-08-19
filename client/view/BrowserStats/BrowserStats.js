@@ -30,6 +30,8 @@ export function updateRegionCoverageBar(data) {
     if (item.coverage > 10) {
       itemElem.innerHTML = item.name
       itemElem.classList.add('BrowsersStat__regionCoverageBarItem--texted')
+    } else {
+      itemElem.title = item.name
     }
     element.appendChild(itemElem)
   })
