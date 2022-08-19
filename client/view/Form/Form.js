@@ -5,7 +5,7 @@ import {
   updateRegionCoverageBar,
   updateToolsVersions,
   toggleShowStats
-} from '../BrowserStats/browserStats.js'
+} from '../BrowserStats/BrowserStats.js'
 import transformQuery from './transformQuery.js'
 
 const form = document.querySelector('[data-id=query_form]')

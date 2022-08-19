@@ -1,4 +1,4 @@
-import { setFormValues, submitForm } from '../Form/form.js'
+import { setFormValues, submitForm } from '../Form/Form.js'
 
 const queryContainer = document.querySelector('[data-id=query_container]')
 const links = document.querySelectorAll('a.QueryLink')
