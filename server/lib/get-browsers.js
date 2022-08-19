@@ -20,7 +20,7 @@ export default async function getBrowsers(query, region) {
       : new Error(`Unknown browser query \`${query}\`.`)
   }
 
-  let browsersByQueryCoverage = {}
+  let browsersCoverageByQuery = {}
 
   for (let browser of browsersByQuery) {
     let [id, version] = browser.split(' ')
@@ -37,14 +37,14 @@ export default async function getBrowsers(query, region) {
       )
     }
 
-    if (!browsersByQueryCoverage[id]) {
-      browsersByQueryCoverage[id] = {}
+    if (!browsersCoverageByQuery[id]) {
+      browsersCoverageByQuery[id] = {}
     }
 
-    browsersByQueryCoverage[id][version] = versionCoverage
+    browsersCoverageByQuery[id][version] = versionCoverage
   }
 
-  let browsers = Object.entries(browsersByQueryCoverage)
+  let browsers = Object.entries(browsersCoverageByQuery)
     .map(([id, versions]) => {
       let name
       let coverage
