@@ -44,7 +44,8 @@ export function toggleShowStats(isShown) {
 }
 
 function createCoverageCell(coverage) {
-  let coveragePercentageHtmlString = cov => formatPercent(cov)
+  let coveragePercentageHtmlString = cov =>
+    cov !== null ? formatPercent(cov) : '—'
   let coveragePercentageCssString = cov => {
     let result = (Math.log(1 + cov) * 100) / Math.log(1 + 100)
     if (result === 0) {
