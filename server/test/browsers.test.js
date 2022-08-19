@@ -14,6 +14,15 @@ test('Throws error for wrong browserslist `query`', async () => {
   match(error.message, /Unknown browser query/)
 })
 
+test('Returns multiple browser names and versions by `>1%` query', async () => {
+  let data = await getBrowsers('>1%', 'Global')
+  let browsersNames = data.browsers
+  let browsersVersions = Object.keys(browsersNames[0])
+
+  ok(browsersNames.length > 0)
+  ok(browsersVersions.length > 0)
+})
+
 test('Throws error for wrong Can I Use `region`', async () => {
   let error
   try {
