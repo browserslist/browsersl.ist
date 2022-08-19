@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs'
 import browserslist from 'browserslist'
 import { URL } from 'node:url'
 
+import getQueryWithRegion from './get-query-with-region.js'
+
 let { version: bv } = importJSON('../node_modules/browserslist/package.json')
 let { version: cv } = importJSON('../node_modules/caniuse-lite/package.json')
 
@@ -10,10 +12,13 @@ export const QUERY_DEFAULTS = 'defaults'
 export const REGION_GLOBAL = 'alt-ww'
 
 export default async function getBrowsers(query, region) {
+  let queryWithRegion = ''
   let browsersByQuery = []
 
   try {
-    browsersByQuery = browserslist(query)
+    queryWithRegion =
+      region === REGION_GLOBAL ? query : getQueryWithRegion(query, region)
+    browsersByQuery = browserslist(queryWithRegion)
   } catch (error) {
     throw error.browserslist
       ? error
@@ -69,10 +74,13 @@ export default async function getBrowsers(query, region) {
     })
     .sort((a, b) => b.coverage - a.coverage)
 
+  // NOTE: in browserslist
+  // browserslist.coverage(browserslist('>5%'), 'FR') not equals
+  // browserslist.coverage(browserslist('>5% in FR'))
   let coverage = roundNumber(browserslist.coverage(browsersByQuery, region))
 
   return {
-    query,
+    query: queryWithRegion,
     region,
     coverage,
     versions: {
