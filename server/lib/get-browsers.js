@@ -20,29 +20,32 @@ export default async function getBrowsers(query, region) {
       : new Error(`Unknown browser query \`${query}\`.`)
   }
 
-  let browsersNames = {}
+  let browsersCoverageByQuery = {}
+
   for (let browser of browsersByQuery) {
     let [id, version] = browser.split(' ')
-    let versionCoverage = null
+    let versionCoverage
 
-    if (id !== 'node') {
-      versionCoverage =
+    // The Node.js is not in the Can I Use db
+    if (id === 'node') {
+      versionCoverage = null
+    } else {
+      versionCoverage = roundNumber(
         region === REGION_GLOBAL
           ? getGlobalCoverage(id, version)
           : await getRegionCoverage(id, version, region)
+      )
     }
 
-    let versionData = { [`${version}`]: roundNumber(versionCoverage) }
-
-    if (!browsersNames[id]) {
-      browsersNames[id] = { versions: versionData }
-    } else {
-      Object.assign(browsersNames[id].versions, versionData)
+    if (!browsersCoverageByQuery[id]) {
+      browsersCoverageByQuery[id] = {}
     }
+
+    browsersCoverageByQuery[id][version] = versionCoverage
   }
 
-  let browsers = Object.entries(browsersNames)
-    .map(([id, { versions }]) => {
+  let browsers = Object.entries(browsersCoverageByQuery)
+    .map(([id, versions]) => {
       let name
       let coverage
 
