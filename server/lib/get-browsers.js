@@ -10,91 +10,74 @@ export const QUERY_DEFAULTS = 'defaults'
 export const REGION_GLOBAL = 'Global'
 
 export default async function getBrowsers(query, region) {
-  let loadBrowsersData = async (resolve, reject) => {
-    let browsersByQuery = []
+  let browsersByQuery = []
 
-    try {
-      browsersByQuery = browserslist(query)
-    } catch (error) {
-      reject(
-        error.browserslist
-          ? error
-          : new Error(`Unknown browser query \`${query}\`.`)
-      )
-      return
-    }
-
-    let browsersNames = {}
-    for (let browser of browsersByQuery) {
-      let [id, version] = browser.split(' ')
-      let versionCoverage = null
-
-      if (id !== 'node') {
-        try {
-          versionCoverage =
-            region === REGION_GLOBAL
-              ? getGlobalCoverage(id, version)
-              : await getRegionCoverage(id, version, region)
-        } catch (error) {
-          reject(error)
-        }
-      }
-
-      let versionData = { [`${version}`]: roundNumber(versionCoverage) }
-
-      if (!browsersNames[id]) {
-        browsersNames[id] = { versions: versionData }
-      } else {
-        Object.assign(browsersNames[id].versions, versionData)
-      }
-    }
-
-    let browsers = Object.entries(browsersNames)
-      .map(([id, { versions }]) => {
-        let name
-        let coverage
-
-        // The Node.js is not in the Can I Use db
-        if (id === 'node') {
-          name = 'Node'
-          coverage = null
-        } else {
-          name = caniuseAgents[id].browser
-          coverage = roundNumber(
-            Object.values(versions).reduce((a, b) => a + b, 0)
-          )
-        }
-
-        return {
-          id,
-          name,
-          coverage,
-          versions
-        }
-      })
-      .sort((a, b) => b.coverage - a.coverage)
-
-    let coverage
-
-    try {
-      coverage = roundNumber(browserslist.coverage(browsersByQuery, region))
-    } catch (error) {
-      reject(error)
-    }
-
-    resolve({
-      query,
-      region,
-      coverage,
-      versions: {
-        browserslist: bv,
-        caniuse: cv
-      },
-      browsers
-    })
+  try {
+    browsersByQuery = browserslist(query)
+  } catch (error) {
+    throw error.browserslist
+      ? error
+      : new Error(`Unknown browser query \`${query}\`.`)
   }
 
-  return new Promise(loadBrowsersData)
+  let browsersNames = {}
+  for (let browser of browsersByQuery) {
+    let [id, version] = browser.split(' ')
+    let versionCoverage = null
+
+    if (id !== 'node') {
+      versionCoverage =
+        region === REGION_GLOBAL
+          ? getGlobalCoverage(id, version)
+          : await getRegionCoverage(id, version, region)
+    }
+
+    let versionData = { [`${version}`]: roundNumber(versionCoverage) }
+
+    if (!browsersNames[id]) {
+      browsersNames[id] = { versions: versionData }
+    } else {
+      Object.assign(browsersNames[id].versions, versionData)
+    }
+  }
+
+  let browsers = Object.entries(browsersNames)
+    .map(([id, { versions }]) => {
+      let name
+      let coverage
+
+      // The Node.js is not in the Can I Use db
+      if (id === 'node') {
+        name = 'Node'
+        coverage = null
+      } else {
+        name = caniuseAgents[id].browser
+        coverage = roundNumber(
+          Object.values(versions).reduce((a, b) => a + b, 0)
+        )
+      }
+
+      return {
+        id,
+        name,
+        coverage,
+        versions
+      }
+    })
+    .sort((a, b) => b.coverage - a.coverage)
+
+  let coverage = roundNumber(browserslist.coverage(browsersByQuery, region))
+
+  return {
+    query,
+    region,
+    coverage,
+    versions: {
+      browserslist: bv,
+      caniuse: cv
+    },
+    browsers
+  }
 }
 
 function getGlobalCoverage(id, version) {
