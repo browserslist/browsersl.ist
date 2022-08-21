@@ -145,7 +145,7 @@ async function updateStatsView(query, region) {
   form.classList.remove('Form--loading')
 
   if (error) {
-    renderError(error)
+    renderError(error.message)
     return
   }
 
