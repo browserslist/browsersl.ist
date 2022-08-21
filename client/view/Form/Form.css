@@ -87,7 +87,7 @@
   pointer-events: initial;
 }
 
-.Form.Form--serverError:not(.Form--loaded) .Form__hint--error {
+.Form.Form--serverError:not(.Form--loading) .Form__hint--error {
   opacity: 100%;
 }
 
@@ -100,7 +100,7 @@
   pointer-events: initial;
 }
 
-.Form--loaded .Form__loader {
+.Form--loading .Form__loader {
   opacity: 100%;
 }
 
