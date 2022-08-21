@@ -7,6 +7,7 @@ import {
   toggleShowStats
 } from '../BrowserStats/BrowserStats.js'
 import transformQuery from './transformQuery.js'
+import loadBrowsersData from './loadBrowsersData.js'
 
 let form = document.querySelector('[data-id=query_form]')
 let textarea = document.querySelector('[data-id=query_text_area]')
@@ -125,43 +126,31 @@ function renderError(message) {
 }
 
 async function updateStatsView(query, region) {
-  let response
-
   if (query.length === 0) {
     toggleShowStats(false)
-    return false
+    return
   }
+
+  let data
+  let error
+
+  form.classList.add('Form--loaded')
 
   try {
-    form.classList.add('Form--loaded')
-    let urlParams = new URLSearchParams({
-      q: query,
-      region
-    })
-    response = await fetch(`/api/browsers?${urlParams}`)
-  } catch (error) {
-    renderError(`Network error. Check that you are online.`)
-    form.classList.remove('Form--loaded')
-    return false
+    data = await loadBrowsersData(query, region)
+  } catch (e) {
+    error = e
   }
-
-  let data = await response.json()
 
   form.classList.remove('Form--loaded')
 
-  if (!response.ok) {
-    if (data.message === 'Custom usage statistics was not provided') {
-      renderError(`This website does not support in my stats queries yet. Run Browserslist
- <a href="https://github.com/browserslist/browserslist#custom-usage-data" class="Link">locally</a>.`)
-      return false
-    }
-    if (response.status === 500) {
-      renderError(`Server error. <a href="https://github.com/browserslist/browserl.ist" class="Link">
-Report an issue</a> to our repository.`)
-      return false
-    }
-    renderError(data.message)
-    return false
+  if (error) {
+    renderError(error)
+    return
+  }
+
+  if (!data) {
+    return
   }
 
   let { browsers, coverage, versions } = data
@@ -171,8 +160,6 @@ Report an issue</a> to our repository.`)
   updateRegionCoverageCounter(coverage)
   updateRegionCoverageBar(browsers)
   updateToolsVersions(versions)
-
-  return true
 }
 
 function changeUrl(query, region) {
