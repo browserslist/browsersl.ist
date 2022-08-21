@@ -134,7 +134,7 @@ async function updateStatsView(query, region) {
   let data
   let error
 
-  form.classList.add('Form--loaded')
+  form.classList.add('Form--loading')
 
   try {
     data = await loadBrowsersData(query, region)
@@ -142,7 +142,7 @@ async function updateStatsView(query, region) {
     error = e
   }
 
-  form.classList.remove('Form--loaded')
+  form.classList.remove('Form--loading')
 
   if (error) {
     renderError(error)
