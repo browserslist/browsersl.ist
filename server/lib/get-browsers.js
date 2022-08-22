@@ -1,6 +1,7 @@
 import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
 import { readFileSync } from 'node:fs'
 import browserslist from 'browserslist'
+import { lint } from 'browserslist-lint'
 import { URL } from 'node:url'
 
 let { version: bv } = importJSON('../node_modules/browserslist/package.json')
@@ -76,6 +77,7 @@ export default async function getBrowsers(query, region) {
 
   return {
     query,
+    lint: lint(query).message,
     region,
     coverage,
     versions: {
