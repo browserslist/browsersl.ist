@@ -15,6 +15,7 @@ let regionCoverageSelect = document.querySelector(
   '[data-id=region_coverage_select]'
 )
 let errorMessage = document.querySelector('[data-id=error_message]')
+let warningMessage = document.querySelector('[data-id=warning_message]')
 
 form.addEventListener('submit', handleFormSubmit)
 
@@ -63,6 +64,7 @@ export function setFormValues({ query, region }) {
   if (query) {
     textarea.value = query
     form.classList.remove('Form--serverError')
+    form.classList.remove('Form--serverWarning')
   }
 
   let isRegionExists = regionList.includes(region)
@@ -125,6 +127,19 @@ function renderError(message) {
   )
 }
 
+function renderWarning(message) {
+  warningMessage.innerHTML = message
+  form.classList.add('Form--serverWarning')
+  textarea.addEventListener(
+    'input',
+    () => {
+      warningMessage.innerHTML = ''
+      form.classList.remove('Form--serverWarning')
+    },
+    { once: true }
+  )
+}
+
 async function updateStatsView(query, region) {
   if (query.length === 0) {
     toggleShowStats(false)
@@ -153,7 +168,12 @@ async function updateStatsView(query, region) {
     return
   }
 
-  let { browsers, coverage, versions } = data
+  let { lint, browsers, coverage, versions } = data
+
+  if (lint.length > 0) {
+    let linterWarning = lint.map(({ message }) => message).join('.<br />')
+    renderWarning(linterWarning)
+  }
 
   toggleShowStats(true)
   updateBrowsersStats(browsers)

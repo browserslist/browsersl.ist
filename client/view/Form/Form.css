@@ -49,6 +49,11 @@
   transition: opacity 0.2s linear;
 }
 
+.Form__hint a {
+  color: inherit;
+  pointer-events: initial;
+}
+
 .Form__loader {
   pointer-events: none;
 }
@@ -82,12 +87,15 @@
   color: var(--error);
 }
 
-.Form__hint--error a {
-  color: inherit;
-  pointer-events: initial;
+.Form--serverError:not(.Form--loading) .Form__hint--error {
+  opacity: 100%;
 }
 
-.Form.Form--serverError:not(.Form--loading) .Form__hint--error {
+.Form__hint--warning {
+  color: var(--warning);
+}
+
+.Form--serverWarning:not(.Form--loading) .Form__hint--warning {
   opacity: 100%;
 }
 
