@@ -27,21 +27,27 @@ https://browsersl.ist/api/browsers?q=defaults&region=alt-ww
 ### Response example
 
 ```js
-// https://browsersl.ist/api/browsers?q=>0.3%&region=alt-as
+// https://browsersl.ist/api/browsers?q=>defaults+and+supports+es6-module&region=alt-as
 
 {
   "query": ">0.3%",
+  "lint": [
+    {
+      "id": "countryWasIgnored",
+      "message": "Less than 80% coverage in `China`, `Nigeria`, `Tanzania`, `Ghana`, and `Uganda` regions"
+    }
+  ],
   "region": "alt-as",
-  "coverage": 92.64,
+  "coverage": 88.44,
   "versions": {
     "browserslist": "4.21.3",
-    "caniuse": "1.0.30001377"
+    "caniuse": "1.0.30001381"
   },
   "browsers": [
     {
       "id": "chrome",
       "name": "Chrome",
-      "coverage": 17.04,
+      "coverage": 17.06,
       "versions": {
         "102": 0.72,
         "103": 16.32
