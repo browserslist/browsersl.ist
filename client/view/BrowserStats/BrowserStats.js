@@ -10,8 +10,7 @@ let regionCoverageCounter = document.querySelector(
 let palceholder = document.querySelector('[data-id=browsers_stats_placeholder]')
 
 function formatPercent(percent) {
-  let rounded = percent >= 0.1 ? percent.toFixed(1) : 0
-
+  let rounded = percent >= 1 ? percent.toFixed(1) : percent
   return rounded + '&thinsp;%'
 }
 
