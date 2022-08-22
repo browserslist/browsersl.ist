@@ -73,9 +73,11 @@ importers:
   server:
     specifiers:
       browserslist: ^4.21.3
+      browserslist-lint: ^0.1.0
       caniuse-lite: ^1.0.30001381
     dependencies:
       browserslist: 4.21.3
+      browserslist-lint: 0.1.0
       caniuse-lite: 1.0.30001381
 
 packages:
@@ -581,6 +583,14 @@ packages:
     dependencies:
       fill-range: 7.0.1
     dev: true
+
+  /browserslist-lint/0.1.0:
+    resolution: {integrity: sha512-WtEu1yKfpqirMLqib+6fNzPxm2Wj7LlPBhaBD6rRjI+lL8KPTsbqMXXIzOlQOpTHkGTVUe+oYQFzwssYIis96w==}
+    hasBin: true
+    dependencies:
+      browserslist: 4.21.3
+      picocolors: 1.0.0
+    dev: false
 
   /browserslist/4.21.3:
     resolution: {integrity: sha512-898rgRXLAyRkM1GryrrBHGkqA5hlpkV5MhtZwg9QXeiyLUYs2k00Un05aX5l2/yJIOObYKOpS2JNo8nJDE7fWQ==}
