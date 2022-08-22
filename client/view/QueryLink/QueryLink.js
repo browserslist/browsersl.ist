@@ -5,7 +5,7 @@ let links = document.querySelectorAll('a.QueryLink')
 
 links.forEach(item => {
   let queryAttr = item.getAttribute('data-query')
-  let query = queryAttr || item.innerText.trim()
+  let query = queryAttr || item.textContent.trim()
 
   item.setAttribute('href', `?q=${query}`)
 
