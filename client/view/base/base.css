@@ -8,7 +8,18 @@
 
 body {
   margin: 0;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,10 +36,20 @@ p {
 }
 
 code {
-  font-family: 'Martian Mono', monospace;
+  font-family: "Martian Mono", monospace;
   font-size: 13px;
-  line-height: 22px;
   font-weight: 600;
+  line-height: 22px;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+a:active,
+button:active {
+  transform: scale(95%);
 }
 
 [hidden] {
