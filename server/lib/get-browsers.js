@@ -77,7 +77,7 @@ export default async function getBrowsers(query, region) {
 
   return {
     query,
-    lint: lint(query).message,
+    lint: lint(query),
     region,
     coverage,
     versions: {
