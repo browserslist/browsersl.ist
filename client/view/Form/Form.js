@@ -171,7 +171,11 @@ async function updateStatsView(query, region) {
   let { lint, browsers, coverage, versions } = data
 
   if (lint.length > 0) {
-    let linterWarning = lint.map(({ message }) => message).join('.<br />')
+    let linterWarning = lint
+      .map(({ message }) =>
+        message.replace(/`([^`]+)`/g, '<strong>$1</strong>')
+      )
+      .join('.<br />')
     renderWarning(linterWarning)
   }
 
