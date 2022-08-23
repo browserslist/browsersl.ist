@@ -1,6 +1,6 @@
 .QueryLink {
+  display: inline-block;
   text-decoration: none;
-  cursor: pointer;
 }
 
 @media (hover) {
@@ -11,11 +11,10 @@
 }
 
 .QueryLink > code {
-  padding: 0 4px;
-  color: var(--accent);
-  background-color: var(--text-highlited);
-  border-radius: 4px;
   display: inline-block;
   padding: 0 4px;
   font-weight: 300;
+  color: var(--accent);
+  background-color: var(--text-highlited);
+  border-radius: 4px;
 }

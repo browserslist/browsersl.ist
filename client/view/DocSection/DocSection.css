@@ -38,6 +38,11 @@ summary .DocSection__subHeader {
 .DocSection details summary {
   width: fit-content;
   cursor: pointer;
+  user-select: none;
+}
+
+.DocSection details summary:active {
+  transform: scale(95%);
 }
 
 .DocSection details[open] summary {
