@@ -3,7 +3,6 @@
   align-items: center;
   margin: 0;
   padding: 12px 32px 24px;
-  color: var(--text-secondary);
 }
 
 .Footer__link {
@@ -12,12 +11,18 @@
   gap: 6px;
   font-size: 14px;
   line-height: 20px;
-  color: currentColor;
+  color: var(--text-primary);
   text-underline-offset: 2px;
 }
 
 @media (max-width: 460px) {
   .Footer {
     padding: 16px 24px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .Footer__link img {
+    filter: invert(1);
   }
 }
