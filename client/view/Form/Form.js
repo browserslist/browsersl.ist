@@ -43,8 +43,6 @@ function handleFormSubmit(e) {
   let region = formData.get('region')
 
   changeUrl(query, region)
-
-  e.preventDefault()
   updateStatsView(query, region)
 }
 
