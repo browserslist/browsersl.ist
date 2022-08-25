@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   column-gap: 12px;
   padding-top: 24px;
+  padding-bottom: 4px;
   margin-top: auto;
   color: var(--text-secondary);
 }
