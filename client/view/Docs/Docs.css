@@ -8,6 +8,7 @@
 
 .Docs section {
   padding: 16px;
+  margin: 0 -16px;
   background-color: var(--bg-highlited);
   border-radius: 8px;
 }
