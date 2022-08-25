@@ -1,13 +1,19 @@
 .Footer {
+  display: flex;
+  align-items: center;
   margin: 0;
-  font-size: 14px;
-  line-height: 20px;
   padding: 12px 32px 24px;
   color: var(--text-secondary);
 }
 
-.Footer a {
+.Footer__link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 20px;
   color: currentColor;
+  text-underline-offset: 2px;
 }
 
 @media (max-width: 460px) {

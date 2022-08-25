@@ -179,4 +179,5 @@
 
 .BrowsersStat__toolLink {
   color: currentcolor;
+  text-underline-offset: 2px;
 }
