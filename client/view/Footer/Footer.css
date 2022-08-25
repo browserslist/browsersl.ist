@@ -1,6 +1,5 @@
 .Footer {
-  display: flex;
-  align-items: center;
+  box-sizing: border-box;
   width: var(--block-width);
   padding: var(--block-padding);
   margin: 0;
