@@ -67,7 +67,7 @@ export function submitForm() {
 function renderRegionSelectOptions() {
   let renderOptgroups = ({ continents, countries }) => {
     let renderOption = (id, name) => {
-      let option = document.createElement('option')
+      let option = createTag('option', [], name)
       option.value = id
       option.innerText = name
       return option
