@@ -1,20 +1,17 @@
 import { DEFAULT_REGION, regionList, regionGroups } from '../../data/regions.js'
-import {
-  updateBrowsersStats,
-  toggleShowStats,
-  formatPercent
-} from '../Browsers/Browsers.js'
+import { updateBrowsersStats, toggleBrowsers } from '../Browsers/Browsers.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import transformQuery from './transformQuery.js'
 import loadBrowsersData from './loadBrowsersData.js'
 import { updateBar } from '../Bar/Bar.js'
 import { updateVersions } from '../Versions/Versions.js'
+import { debounce, formatPercent } from '../../lib/utils.js'
 
 let form = document.querySelector('[data-id=form]')
 let total = document.querySelector('[data-id=form_total]')
 let formCoverage = document.querySelector('[data-id=form_coverage')
 let textarea = document.querySelector('[data-id=form_textarea]')
-let regionCoverageSelect = document.querySelector('[data-id=form_region]')
+let regionSelect = document.querySelector('[data-id=form_region]')
 let errorMessage = document.querySelector('[data-id=form_error]')
 let warningMessage = document.querySelector('[data-id=form_warning]')
 
@@ -28,7 +25,7 @@ textarea.addEventListener('input', () => {
 
 renderRegionSelectOptions()
 
-regionCoverageSelect.addEventListener('change', () => {
+regionSelect.addEventListener('change', () => {
   submitForm()
 })
 
@@ -61,7 +58,7 @@ export function setFormValues({ query, region }) {
   let isRegionExists = regionList.includes(region)
 
   if (region && isRegionExists) {
-    regionCoverageSelect.value = region
+    regionSelect.value = region
   }
 }
 
@@ -95,8 +92,8 @@ function renderRegionSelectOptions() {
   }
 
   let { continentsOptgroup, countriesOptgroup } = renderOptgroups(regionGroups)
-  regionCoverageSelect.appendChild(continentsOptgroup)
-  regionCoverageSelect.appendChild(countriesOptgroup)
+  regionSelect.appendChild(continentsOptgroup)
+  regionSelect.appendChild(countriesOptgroup)
 }
 
 function renderError(message) {
@@ -134,7 +131,7 @@ function renderWarning(message) {
 async function updateStatsView(query, region) {
   if (query.length === 0) {
     formCoverage.hidden = true
-    toggleShowStats(false)
+    toggleBrowsers(false)
     toggleHedgehog(true)
     return
   }
@@ -173,7 +170,7 @@ async function updateStatsView(query, region) {
   }
 
   formCoverage.hidden = false
-  toggleShowStats(true)
+  toggleBrowsers(true)
   toggleHedgehog(false)
   updateBrowsersStats(browsers)
   total.innerText = formatPercent(coverage)
@@ -204,14 +201,6 @@ function submitFormWithUrlParams() {
 
   setFormValues({ query, region })
   submitForm()
-}
-
-function debounce(callback, delay) {
-  let timeout
-  return function () {
-    clearTimeout(timeout)
-    timeout = setTimeout(callback, delay)
-  }
 }
 
 export function focusForm() {
