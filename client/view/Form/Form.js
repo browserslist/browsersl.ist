@@ -1,21 +1,22 @@
 import { DEFAULT_REGION, regionList, regionGroups } from '../../data/regions.js'
 import {
-  updateRegionCoverageCounter,
   updateBrowsersStats,
-  toggleShowStats
+  toggleShowStats,
+  formatPercent
 } from '../Browsers/Browsers.js'
+import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import transformQuery from './transformQuery.js'
 import loadBrowsersData from './loadBrowsersData.js'
 import { updateBar } from '../Bar/Bar.js'
 import { updateVersions } from '../Versions/Versions.js'
 
-let form = document.querySelector('[data-id=query_form]')
-let textarea = document.querySelector('[data-id=query_text_area]')
-let regionCoverageSelect = document.querySelector(
-  '[data-id=region_coverage_select]'
-)
-let errorMessage = document.querySelector('[data-id=error_message]')
-let warningMessage = document.querySelector('[data-id=warning_message]')
+let form = document.querySelector('[data-id=form]')
+let total = document.querySelector('[data-id=form_total]')
+let formCoverage = document.querySelector('[data-id=form_coverage')
+let textarea = document.querySelector('[data-id=form_textarea]')
+let regionCoverageSelect = document.querySelector('[data-id=form_region]')
+let errorMessage = document.querySelector('[data-id=form_error]')
+let warningMessage = document.querySelector('[data-id=form_warning]')
 
 form.addEventListener('submit', handleFormSubmit)
 
@@ -73,7 +74,7 @@ function renderRegionSelectOptions() {
     let renderOption = (id, name) => {
       let option = document.createElement('option')
       option.value = id
-      option.innerHTML = name
+      option.innerText = name
       return option
     }
 
@@ -132,7 +133,9 @@ function renderWarning(message) {
 
 async function updateStatsView(query, region) {
   if (query.length === 0) {
+    formCoverage.hidden = true
     toggleShowStats(false)
+    toggleHedgehog(true)
     return
   }
 
@@ -169,11 +172,13 @@ async function updateStatsView(query, region) {
     renderWarning(linterWarning)
   }
 
+  formCoverage.hidden = false
   toggleShowStats(true)
+  toggleHedgehog(false)
   updateBrowsersStats(browsers)
-  updateRegionCoverageCounter(coverage)
+  total.innerText = formatPercent(coverage)
   updateBar(browsers)
-  updateVersions(versions)
+  updateVersions(versions.browserslist, versions.caniuse)
 }
 
 function changeUrl(query, region) {
@@ -207,4 +212,8 @@ function debounce(callback, delay) {
     clearTimeout(timeout)
     timeout = setTimeout(callback, delay)
   }
+}
+
+export function focusForm() {
+  textarea.focus()
 }

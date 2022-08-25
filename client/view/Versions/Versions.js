@@ -1,9 +1,7 @@
-export function updateVersions({ browserslist, caniuse }) {
-  let canIUseElement = document.querySelector('[data-id=can_i_use_version]')
-  canIUseElement.innerHTML = caniuse
+let browserslist = document.querySelector('[data-id=versions_browserslist]')
+let caniuse = document.querySelector('[data-id=versions_caniuse]')
 
-  let browsersListElement = document.querySelector(
-    '[data-id=browsers_list_version]'
-  )
-  browsersListElement.innerHTML = browserslist
+export function updateVersions(browserslistVersion, caniuseVersion) {
+  browserslist.innerText = browserslistVersion
+  caniuse.innerText = caniuseVersion
 }

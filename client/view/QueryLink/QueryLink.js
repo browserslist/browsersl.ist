@@ -1,6 +1,6 @@
 import { setFormValues, submitForm } from '../Form/Form.js'
+import { scrollToInteractive } from '../Interactive/Interactive.js'
 
-let queryContainer = document.querySelector('[data-id=query_container]')
 let links = document.querySelectorAll('a.QueryLink')
 
 links.forEach(item => {
@@ -15,8 +15,6 @@ links.forEach(item => {
     setFormValues({ query })
 
     submitForm()
-
-    queryContainer.scrollTo({ top: 0 })
-    queryContainer.scrollIntoView()
+    scrollToInteractive()
   })
 })
