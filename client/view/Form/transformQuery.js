@@ -1,6 +1,6 @@
 const JSON_FRAGMENT_REQUIRED_SYMBOLS = [':', '[', ']']
 
-export default function transformQuery(rawQuery) {
+export function transformQuery(rawQuery) {
   let query = rawQuery.trim()
 
   if (hasJSONSymbols(query)) {

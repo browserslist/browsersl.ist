@@ -1,11 +1,11 @@
 import { DEFAULT_REGION, regionList, regionGroups } from '../../data/regions.js'
 import { updateBrowsersStats, toggleBrowsers } from '../Browsers/Browsers.js'
-import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
-import transformQuery from './transformQuery.js'
-import loadBrowsersData from './loadBrowsersData.js'
-import { updateBar } from '../Bar/Bar.js'
-import { updateVersions } from '../Versions/Versions.js'
 import { debounce, formatPercent } from '../../lib/utils.js'
+import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
+import { updateVersions } from '../Versions/Versions.js'
+import { transformQuery } from './transformQuery.js'
+import { loadBrowsers } from './loadBrowsers.js'
+import { updateBar } from '../Bar/Bar.js'
 
 let form = document.querySelector('[data-id=form]')
 let total = document.querySelector('[data-id=form_total]')
@@ -142,7 +142,7 @@ async function updateStatsView(query, region) {
   form.classList.add('is-loading')
 
   try {
-    data = await loadBrowsersData(query, region)
+    data = await loadBrowsers(query, region)
   } catch (e) {
     error = e
   }
