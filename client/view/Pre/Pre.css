@@ -1,15 +1,15 @@
 .Pre {
   display: flex;
   flex-direction: column;
+  padding: 12px;
   font-size: 13px;
   line-height: 20px;
   color: var(--accent);
   background-color: var(--text-highlited);
   border-radius: 8px;
-  padding: 12px;
 }
 
-.Pre code {
+.Pre > code {
   overflow: hidden;
   font-size: inherit;
   font-weight: 300;

@@ -1,0 +1,33 @@
+.Bar {
+  display: flex;
+  gap: 1px;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 24px;
+  overflow: hidden;
+  counter-reset: alpha 0;
+  background-color: var(--main-bg);
+  border-radius: 6px;
+}
+
+.Bar_item {
+  box-sizing: border-box;
+  width: calc(var(--proportion, 0) * 1%);
+  overflow: hidden;
+  line-height: 32px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  list-style: none;
+  counter-increment: alpha -1;
+  background-color: var(--accent-alternave);
+  opacity: var(--alpha, 0%);
+
+  /* TODO types for this variables */
+  --proportion: 0;
+  --alpha: 0;
+}
+
+.Bar_item.is-texted {
+  padding-left: 8px;
+}

@@ -1,13 +1,13 @@
 import { DEFAULT_REGION, regionList, regionGroups } from '../../data/regions.js'
 import {
-  updateBrowsersStats,
   updateRegionCoverageCounter,
-  updateRegionCoverageBar,
-  updateToolsVersions,
+  updateBrowsersStats,
   toggleShowStats
-} from '../BrowserStats/BrowserStats.js'
+} from '../Browsers/Browsers.js'
 import transformQuery from './transformQuery.js'
 import loadBrowsersData from './loadBrowsersData.js'
+import { updateBar } from '../Bar/Bar.js'
+import { updateVersions } from '../Versions/Versions.js'
 
 let form = document.querySelector('[data-id=query_form]')
 let textarea = document.querySelector('[data-id=query_text_area]')
@@ -47,24 +47,14 @@ function handleFormSubmit(e) {
   changeUrl(query, region)
 
   e.preventDefault()
-  form.classList.add('Form--justSend')
-  textarea.addEventListener(
-    'input',
-    () => {
-      form.classList.remove('Form--justSend')
-    },
-    {
-      once: true
-    }
-  )
   updateStatsView(query, region)
 }
 
 export function setFormValues({ query, region }) {
   if (query) {
     textarea.value = query
-    form.classList.remove('Form--serverError')
-    form.classList.remove('Form--serverWarning')
+    form.classList.remove('is-error')
+    form.classList.remove('is-warning')
   }
 
   let isRegionExists = regionList.includes(region)
@@ -110,7 +100,7 @@ function renderRegionSelectOptions() {
 
 function renderError(message) {
   errorMessage.innerHTML = message
-  form.classList.add('Form--serverError')
+  form.classList.add('is-error')
   textarea.setAttribute('aria-errormessage', 'form_error')
   textarea.setAttribute('aria-invalid', 'true')
   textarea.addEventListener(
@@ -119,7 +109,7 @@ function renderError(message) {
       textarea.removeAttribute('aria-errormessage')
       textarea.removeAttribute('aria-invalid')
       errorMessage.innerHTML = ''
-      form.classList.remove('Form--serverError')
+      form.classList.remove('is-error')
     },
     {
       once: true
@@ -129,12 +119,12 @@ function renderError(message) {
 
 function renderWarning(message) {
   warningMessage.innerHTML = message
-  form.classList.add('Form--serverWarning')
+  form.classList.add('is-warning')
   textarea.addEventListener(
     'input',
     () => {
       warningMessage.innerHTML = ''
-      form.classList.remove('Form--serverWarning')
+      form.classList.remove('is-warning')
     },
     { once: true }
   )
@@ -149,7 +139,7 @@ async function updateStatsView(query, region) {
   let data
   let error
 
-  form.classList.add('Form--loading')
+  form.classList.add('is-loading')
 
   try {
     data = await loadBrowsersData(query, region)
@@ -157,7 +147,7 @@ async function updateStatsView(query, region) {
     error = e
   }
 
-  form.classList.remove('Form--loading')
+  form.classList.remove('is-loading')
 
   if (error) {
     renderError(error.message)
@@ -182,8 +172,8 @@ async function updateStatsView(query, region) {
   toggleShowStats(true)
   updateBrowsersStats(browsers)
   updateRegionCoverageCounter(coverage)
-  updateRegionCoverageBar(browsers)
-  updateToolsVersions(versions)
+  updateBar(browsers)
+  updateVersions(versions)
 }
 
 function changeUrl(query, region) {

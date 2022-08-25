@@ -1,26 +1,44 @@
-.DocSection {
+.Docs {
+  box-sizing: border-box;
+  flex-basis: 0;
+  flex-grow: 1;
+  width: var(--block-width);
+  padding: var(--block-padding);
+}
+
+.Docs section {
   padding: 16px;
   background-color: var(--bg-highlited);
   border-radius: 8px;
 }
 
-.DocSection + .DocSection {
+.Docs section + section {
   margin-top: 24px;
 }
 
-.DocSection__header {
+.Docs h2 {
+  margin-top: 32px;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.Docs h2:first-child {
+  margin-top: 0;
+}
+
+.Docs h3 {
   margin: 0;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
 }
 
-.DocSection p {
+.Docs p {
   font-size: 16px;
   line-height: 22px;
 }
 
-.DocSection__subHeader {
+.Docs h4 {
   margin-top: 24px;
   margin-bottom: 10px;
   font-size: 12px;
@@ -30,31 +48,31 @@
   letter-spacing: 0.02em;
 }
 
-summary .DocSection__subHeader {
+.Docs summary h4 {
   display: inline-block;
   margin-bottom: 0;
 }
 
-.DocSection details summary {
+.Docs details summary {
   width: fit-content;
   cursor: pointer;
   user-select: none;
 }
 
-.DocSection details summary:active {
+.Docs details summary:active {
   transform: scale(95%);
 }
 
-.DocSection details[open] summary {
+.Docs details[open] summary {
   margin-bottom: 8px;
 }
 
-.DocSection__list {
+.Docs ul {
   padding: 0;
   margin: 0;
 }
 
-.DocSection__list li {
+.Docs li {
   margin: 0;
   font-size: 16px;
   font-weight: 400;
@@ -62,6 +80,6 @@ summary .DocSection__subHeader {
   list-style: none;
 }
 
-.DocSection__list li + li {
+.Docs li + li {
   margin-top: 5px;
 }

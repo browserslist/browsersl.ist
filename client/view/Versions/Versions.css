@@ -1,0 +1,18 @@
+.Versions {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  padding-top: 24px;
+  margin-top: auto;
+  color: var(--text-secondary);
+}
+
+.Versions_item {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.Versions_link {
+  color: currentcolor;
+}
