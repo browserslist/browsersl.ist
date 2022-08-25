@@ -155,7 +155,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   background-color: var(--main-bg);
-  background-image: url(./select-arrow-light.svg);
+  background-image: url(./arrow-light.svg);
   background-repeat: no-repeat;
   background-position: 96% 54%;
   border: none;
@@ -165,6 +165,6 @@
 
 @media (prefers-color-scheme: dark) {
   .Form_select {
-    background-image: url(./select-arrow-dark.svg);
+    background-image: url(./arrow-dark.svg);
   }
 }
