@@ -2,5 +2,5 @@
   box-sizing: border-box;
   width: var(--block-width);
   padding: var(--block-padding);
-  margin: 0;
+  padding-top: 0;
 }

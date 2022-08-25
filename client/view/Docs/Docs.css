@@ -4,6 +4,7 @@
   flex-grow: 1;
   width: var(--block-width);
   padding: var(--block-padding);
+  padding-top: 0;
 }
 
 .Docs section {
