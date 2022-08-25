@@ -12,13 +12,13 @@
   border-radius: 4px;
 }
 
-.Badge__logo {
+.Badge_logo {
   width: 20px;
   height: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
-  .Badge__logo--github {
+  .Badge.is-github .Badge_logo {
     filter: invert(1);
   }
 }

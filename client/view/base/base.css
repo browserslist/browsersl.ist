@@ -1,11 +1,5 @@
 @import "./colors.css";
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-  }
-}
-
 body {
   margin: 0;
   font-family:
@@ -54,4 +48,27 @@ button:active {
 
 [hidden] {
   display: none !important;
+}
+
+:root {
+  --block-padding: 24px 32px;
+  --block-width: 50%;
+}
+
+@media (width <= 740px) {
+  :root {
+    --block-width: initial;
+  }
+}
+
+@media (width <= 460px) {
+  :root {
+    --block-padding: 16px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }

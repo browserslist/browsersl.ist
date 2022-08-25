@@ -7,7 +7,7 @@ let regionCoverage = document.querySelector('[data-id=region_coverage]')
 let regionCoverageCounter = document.querySelector(
   '[data-id=region_coverage_counter]'
 )
-let palceholder = document.querySelector('[data-id=browsers_stats_placeholder]')
+let placeholder = document.querySelector('[data-id=browsers_stats_placeholder]')
 
 function formatPercent(percent) {
   let rounded = percent < 1 ? percent.toFixed(2) : percent.toFixed(1)
@@ -18,28 +18,10 @@ export function updateRegionCoverageCounter(coverage) {
   regionCoverageCounter.innerHTML = formatPercent(coverage)
 }
 
-export function updateRegionCoverageBar(data) {
-  let element = document.querySelector('[data-id=region_coverage_bar]')
-  element.innerHTML = ''
-  data.forEach(item => {
-    let itemElem = document.createElement('li')
-    itemElem.classList.add('BrowsersStat__regionCoverageBarItem')
-    itemElem.style.setProperty('--proportion', item.coverage)
-    itemElem.style.setProperty('--alpha', 1 - 1 / item.coverage)
-    if (item.coverage > 10) {
-      itemElem.innerHTML = item.name
-      itemElem.classList.add('BrowsersStat__regionCoverageBarItem--texted')
-    } else {
-      itemElem.title = item.name
-    }
-    element.appendChild(itemElem)
-  })
-}
-
 export function toggleShowStats(isShown) {
   regionCoverage.hidden = !isShown
   browserStats.hidden = !isShown
-  palceholder.hidden = isShown
+  placeholder.hidden = isShown
 }
 
 function createCoverageCell(coverage) {
@@ -56,9 +38,9 @@ function createCoverageCell(coverage) {
   }
 
   let coverageCell = document.createElement('td')
-  coverageCell.classList.add('BrowsersStat__td')
+  coverageCell.classList.add('Browsers_cell')
   coverageCell.innerHTML = coveragePercentageHtmlString(coverage)
-  coverageCell.classList.add('BrowsersStat__td--coverage')
+  coverageCell.classList.add('is-coverage')
 
   coverageCell.style.setProperty(
     '--coverage',
@@ -69,7 +51,7 @@ function createCoverageCell(coverage) {
 
 function createVersionCell(version) {
   let versionCell = document.createElement('td')
-  versionCell.classList.add('BrowsersStat__td')
+  versionCell.classList.add('Browsers_cell')
   versionCell.innerHTML = version
   return versionCell
 }
@@ -78,7 +60,7 @@ export function updateBrowsersStats(data) {
   let element = document.querySelector('[data-id=browsers_stats_results]')
 
   let table = document.createElement('table')
-  table.classList.add('BrowsersStat__table')
+  table.classList.add('Browsers_table')
 
   data.forEach(({ id, name, versions: versionsInput }) => {
     let versions = Object.entries(versionsInput)
@@ -91,24 +73,25 @@ export function updateBrowsersStats(data) {
       })
 
     let tBody = document.createElement('tbody')
+    tBody.classList.add('Browsers_body')
     let tr = document.createElement('tr')
-    tr.classList.add('BrowsersStat_tr')
+    tr.classList.add('Browsers_line')
 
     let iconCell = document.createElement('td')
-    iconCell.classList.add('BrowsersStat__td')
+    iconCell.classList.add('Browsers_cell')
     iconCell.setAttribute('rowspan', versions.length)
     tr.appendChild(iconCell)
 
     if (id in browsersIcons) {
       let iconElem = document.createElement('img')
-      iconElem.classList.add('BrowsersStat__icon')
+      iconElem.classList.add('Browsers_icon')
       iconElem.src = browsersIcons[id]
       iconElem.setAttribute('alt', '')
       iconCell.appendChild(iconElem)
     }
 
     let nameCell = document.createElement('td')
-    nameCell.classList.add('BrowsersStat__td')
+    nameCell.classList.add('Browsers_cell')
     let nameLink = document.createElement('a')
     nameLink.classList.add('Link')
     // TODO Need to take care of the case when we do not have link for some browser. Can I Use sometimes adds browsers
@@ -129,6 +112,7 @@ export function updateBrowsersStats(data) {
     versions.slice(1).forEach(item => {
       let { version, coverage } = item
       let versionTr = document.createElement('tr')
+      versionTr.classList.add('Browsers_line')
 
       versionTr.appendChild(createVersionCell(version))
 
@@ -141,14 +125,4 @@ export function updateBrowsersStats(data) {
 
   element.innerHTML = ''
   element.appendChild(table)
-}
-
-export function updateToolsVersions({ browserslist, caniuse }) {
-  let canIUseElement = document.querySelector('[data-id=can_i_use_version]')
-  canIUseElement.innerHTML = caniuse
-
-  let browsersListElement = document.querySelector(
-    '[data-id=browsers_list_version]'
-  )
-  browsersListElement.innerHTML = browserslist
 }
