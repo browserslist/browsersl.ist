@@ -1,12 +1,7 @@
 .Footer {
   display: flex;
   align-items: center;
-  padding: 12px 32px 24px;
+  width: var(--block-width);
+  padding: var(--block-padding);
   margin: 0;
-}
-
-@media (max-width: 460px) {
-  .Footer {
-    padding: 16px 24px;
-  }
 }
