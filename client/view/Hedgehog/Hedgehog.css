@@ -7,6 +7,11 @@
   justify-content: center;
   height: 100%;
   color: var(--text-secondary);
+
+  @media (width <= 740px) {
+    gap: 16px;
+    padding: 32px 0;
+  }
 }
 
 .Hedgehog_image {
@@ -14,23 +19,16 @@
   max-width: 380px;
   aspect-ratio: 380 / 316;
   object-fit: contain;
+
+  @media (width <= 740px) {
+    max-width: 100%;
+    height: initial;
+    max-height: 300px;
+  }
 }
 
 .Hedgehog_text {
   width: 80%;
   margin: 0;
   text-align: center;
-}
-
-@media (width <= 740px) {
-  .Hedgehog {
-    gap: 16px;
-    padding: 32px 0;
-  }
-
-  .Hedgehog_image {
-    max-width: 100%;
-    height: initial;
-    max-height: 300px;
-  }
 }

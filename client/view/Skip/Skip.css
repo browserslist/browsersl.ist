@@ -9,10 +9,10 @@
   background: var(--bg-highlited-hover);
   border: none;
   border-radius: 4px;
-}
 
-.Skip:not(:focus) {
-  width: 0;
-  height: 0;
-  opacity: 0%;
+  &:not(:focus) {
+    width: 0;
+    height: 0;
+    opacity: 0%;
+  }
 }

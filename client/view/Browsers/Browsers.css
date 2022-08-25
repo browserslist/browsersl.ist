@@ -11,16 +11,12 @@
 .Browsers_results {
   columns: 2;
   column-fill: balance;
-}
 
-@media (width >= 740px) and (width <= 1200px) {
-  .Browsers_results {
+  @media (width >= 740px) and (width <= 1200px) {
     columns: 1;
   }
-}
 
-@media (width <= 600px) {
-  .Browsers_results {
+  @media (width <= 600px) {
     columns: 1;
   }
 }
@@ -37,37 +33,37 @@
   white-space: nowrap;
   vertical-align: top;
   break-inside: avoid;
-}
 
-.Browsers_cell:last-child {
-  width: 6ch;
-  text-align: left;
-}
+  &:last-child {
+    width: 6ch;
+    text-align: left;
+  }
 
-.Browsers_cell.is-coverage {
-  --coverage: 20%;
+  &.is-coverage {
+    --coverage: 20%;
 
-  background-image:
-    linear-gradient(
-      to right,
-      var(--accent-alternave) var(--coverage),
-      transparent var(--coverage),
-      transparent
-    );
-}
+    background-image:
+      linear-gradient(
+        to right,
+        var(--accent-alternave) var(--coverage),
+        transparent var(--coverage),
+        transparent
+      );
+  }
 
-.Browsers_line:first-child .Browsers_cell:first-child {
-  width: 20px;
-}
+  @nest .Browsers_line:first-child &:first-child {
+    width: 20px;
+  }
 
-.Browsers_line:first-child .Browsers_cell:nth-child(2) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+  @nest .Browsers_line:first-child &:nth-child(2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-.Browsers_line:first-child .Browsers_cell:nth-child(3) {
-  width: 7ch;
+  @nest .Browsers_line:first-child &:nth-child(3) {
+    width: 7ch;
+  }
 }
 
 .Browsers_body {

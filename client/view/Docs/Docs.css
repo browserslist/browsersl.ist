@@ -10,14 +10,12 @@
   padding: 16px;
   background-color: var(--bg-highlited);
   border-radius: 8px;
-}
 
-.Docs section + section {
-  margin-top: 24px;
-}
+  & + & {
+    margin-top: 24px;
+  }
 
-@media (width <= 740px) {
-  .Docs section {
+  @media (width <= 740px) {
     margin: 0 -16px;
   }
 }
@@ -26,10 +24,10 @@
   margin-top: 32px;
   font-size: 22px;
   line-height: 26px;
-}
 
-.Docs h2:first-child {
-  margin-top: 0;
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .Docs h3 {
@@ -84,8 +82,8 @@
   font-weight: 400;
   line-height: 22px;
   list-style: none;
-}
 
-.Docs li + li {
-  margin-top: 5px;
+  & + & {
+    margin-top: 5px;
+  }
 }

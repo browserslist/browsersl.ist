@@ -6,11 +6,11 @@
   text-decoration-style: solid;
   text-decoration-color: var(--text-underline);
   text-underline-offset: 2px;
-}
 
-@media (hover) {
-  .Link:hover {
-    background-position: 0 1.1em;
-    text-decoration-color: var(--text-underline-hover);
+  @media (hover) {
+    &:hover {
+      text-decoration-color: var(--text-underline-hover);
+      background-position: 0 1.1em;
+    }
   }
 }

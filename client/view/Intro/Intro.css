@@ -31,6 +31,11 @@
   font-size: 25px;
   line-height: 32px;
   letter-spacing: 0.01em;
+
+  @media (width <= 460px) {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }
 
 .Intro_supported {
@@ -53,11 +58,4 @@
 
 .Intro_cube {
   width: 17px;
-}
-
-@media (width <= 460px) {
-  .Intro_about {
-    font-size: 16px;
-    line-height: 22px;
-  }
 }

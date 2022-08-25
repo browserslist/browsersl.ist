@@ -16,6 +16,13 @@
   padding: var(--block-padding);
   overflow-y: scroll;
   background-color: var(--bg-highlited);
+
+  @media (width <= 740px) {
+    position: initial;
+    height: initial;
+    max-height: initial;
+    overflow: visible;
+  }
 }
 
 .Interactive_title {
@@ -23,13 +30,4 @@
   font-size: 22px;
   font-weight: 700;
   line-height: 26px;
-}
-
-@media (width <= 740px) {
-  .Interactive {
-    position: initial;
-    height: initial;
-    max-height: initial;
-    overflow: visible;
-  }
 }

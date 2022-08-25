@@ -1,5 +1,22 @@
 @import "./colors.css";
 
+:root {
+  --block-padding: 24px 32px;
+  --block-width: 50%;
+}
+
+@media (width <= 740px) {
+  :root {
+    --block-width: initial;
+  }
+}
+
+@media (width <= 460px) {
+  :root {
+    --block-padding: 16px 24px;
+  }
+}
+
 body {
   margin: 0;
   font-family:
@@ -39,32 +56,14 @@ code {
 a,
 button {
   cursor: pointer;
-}
 
-a:active,
-button:active {
-  transform: scale(95%);
+  &:active {
+    transform: scale(95%);
+  }
 }
 
 [hidden] {
   display: none !important;
-}
-
-:root {
-  --block-padding: 24px 32px;
-  --block-width: 50%;
-}
-
-@media (width <= 740px) {
-  :root {
-    --block-width: initial;
-  }
-}
-
-@media (width <= 460px) {
-  :root {
-    --block-padding: 16px 24px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

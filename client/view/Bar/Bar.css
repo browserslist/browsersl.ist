@@ -12,6 +12,9 @@
 }
 
 .Bar_item {
+  --proportion: 0;
+  --alpha: 0;
+
   box-sizing: border-box;
   width: calc(var(--proportion, 0) * 1%);
   overflow: hidden;
@@ -23,11 +26,7 @@
   background-color: var(--accent-alternave);
   opacity: var(--alpha, 0%);
 
-  /* TODO types for this variables */
-  --proportion: 0;
-  --alpha: 0;
-}
-
-.Bar_item.is-texted {
-  padding-left: 8px;
+  &.is-texted {
+    padding-left: 8px;
+  }
 }
