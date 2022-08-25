@@ -1,6 +1,6 @@
-import wikipediaLinks from '../../data/wikipedia-links.js'
-import * as browsersIcons from '../../data/browsers-logos.js'
 import { formatPercent, createTag } from '../../lib/utils.js'
+import * as browsersIcons from '../../data/browsers-logos.js'
+import wikipediaLinks from '../../data/wikipedia-links.js'
 
 let container = document.querySelector('[data-id=browsers]')
 let table = document.querySelector('[data-id=browsers_table]')

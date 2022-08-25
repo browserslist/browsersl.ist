@@ -1,6 +1,6 @@
 let lastRequest = 0
 
-export default async function loadBrowsersData(query, region) {
+export async function loadBrowsers(query, region) {
   lastRequest += 1
   let request = lastRequest
   let response
