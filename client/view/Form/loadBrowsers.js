@@ -1,6 +1,14 @@
 let lastRequest = 0
 
+class ServerError extends Error {
+  constructor(message) {
+    super(message)
+    this.name = 'ServerError'
+  }
+}
+
 export async function loadBrowsers(query, region) {
+  if (!region) region = ''
   lastRequest += 1
   let request = lastRequest
   let response
@@ -13,23 +21,27 @@ export async function loadBrowsers(query, region) {
       return false
     }
   } catch (error) {
-    throw new Error('Network error. Check that you are online.')
+    throw new ServerError('Network error. Check that you are online.')
   }
 
   let data = await response.json()
 
   if (!response.ok) {
     if (data.message === 'Custom usage statistics was not provided') {
-      throw new Error(`This website does not support in my stats queries yet. Run Browserslist
- <a href="https://github.com/browserslist/browserslist#custom-usage-data" class="Link">locally</a>.`)
+      throw new ServerError(
+        `This website does not support in my stats queries yet. Run Browserslist
+ <a href="https://github.com/browserslist/browserslist#custom-usage-data" class="Link">locally</a>.`
+      )
     }
 
     if (response.status === 500) {
-      throw new Error(`Server error. <a href="https://github.com/browserslist/browserl.ist" class="Link">
-  Report an issue</a> to our repository.`)
+      throw new ServerError(
+        `Server error. a class="Link" href="https://github.com/browserslist/browserl.ist">
+  Report an issue</a> to our repository.`
+      )
     }
 
-    throw new Error(data.message)
+    throw new ServerError(data.message)
   }
 
   return data
