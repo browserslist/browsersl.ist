@@ -1,27 +1,16 @@
 import wikipediaLinks from '../../data/wikipedia-links.js'
 import * as browsersIcons from '../../data/browsers-logos.js'
 
-let browserStats = document.querySelector('[data-id=browsers_stats]')
+let container = document.querySelector('[data-id=browsers]')
+let results = document.querySelector('[data-id=browsers_results]')
 
-let regionCoverage = document.querySelector('[data-id=region_coverage]')
-let regionCoverageCounter = document.querySelector(
-  '[data-id=region_coverage_counter]'
-)
-let placeholder = document.querySelector('[data-id=browsers_stats_placeholder]')
-
-function formatPercent(percent) {
+export function formatPercent(percent) {
   let rounded = percent < 1 ? percent.toFixed(2) : percent.toFixed(1)
-  return rounded + '&thinsp;%'
-}
-
-export function updateRegionCoverageCounter(coverage) {
-  regionCoverageCounter.innerHTML = formatPercent(coverage)
+  return rounded + ' %'
 }
 
 export function toggleShowStats(isShown) {
-  regionCoverage.hidden = !isShown
-  browserStats.hidden = !isShown
-  placeholder.hidden = isShown
+  container.hidden = !isShown
 }
 
 function createCoverageCell(coverage) {
@@ -39,7 +28,7 @@ function createCoverageCell(coverage) {
 
   let coverageCell = document.createElement('td')
   coverageCell.classList.add('Browsers_cell')
-  coverageCell.innerHTML = coveragePercentageHtmlString(coverage)
+  coverageCell.innerText = coveragePercentageHtmlString(coverage)
   coverageCell.classList.add('is-coverage')
 
   coverageCell.style.setProperty(
@@ -52,13 +41,11 @@ function createCoverageCell(coverage) {
 function createVersionCell(version) {
   let versionCell = document.createElement('td')
   versionCell.classList.add('Browsers_cell')
-  versionCell.innerHTML = version
+  versionCell.innerText = version
   return versionCell
 }
 
 export function updateBrowsersStats(data) {
-  let element = document.querySelector('[data-id=browsers_stats_results]')
-
   let table = document.createElement('table')
   table.classList.add('Browsers_table')
 
@@ -99,7 +86,7 @@ export function updateBrowsersStats(data) {
     nameLink.rel = 'noreferrer noopener'
     nameLink.target = '_blank'
     nameCell.setAttribute('rowspan', versions.length)
-    nameLink.innerHTML = name
+    nameLink.innerText = name
     nameCell.appendChild(nameLink)
     tr.appendChild(nameCell)
 
@@ -123,6 +110,5 @@ export function updateBrowsersStats(data) {
     table.appendChild(tBody)
   })
 
-  element.innerHTML = ''
-  element.appendChild(table)
+  results.replaceChildren(table)
 }

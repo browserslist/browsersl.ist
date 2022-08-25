@@ -42,30 +42,30 @@
     </p>
   </header>
 
-  <main class="Interactive" data-id="query_container">
+  <main class="Interactive" data-id="interactive">
     <h2 class="Interactive_title">Check compatible browsers</h2>
-    <form data-id="query_form" class="Form">
+    <form data-id="form" class="Form">
       <div class="Form_query">
-        <textarea id="form_query" name="query" cols="30" rows="5" required class="Form_textarea" data-id="query_text_area" placeholder="Write the Browserslist config here…"></textarea>
+        <textarea id="form_query" name="query" cols="30" rows="5" required class="Form_textarea" data-id="form_textarea" placeholder="Write the Browserslist config here…"></textarea>
         <label for="form_query" class="Form_placeholder">Write the Browserslist config here…<br>
           For example
           <a class="QueryLink"><code>defaults</code></a>,
           <a class="QueryLink"><code>> 0.2% and not dead</code></a>
         </label>
         <p class="Form_loader">Loading…</p>
-        <div id="form_error" class="Form_hint is-error" data-id="error_message" role="alert"></div>
-        <div id="form_warning" class="Form_hint is-warning" data-id="warning_message" role="alert"></div>
+        <div id="form_error" class="Form_hint is-error" data-id="form_error" role="alert"></div>
+        <div id="form_warning" class="Form_hint is-warning" data-id="form_warning" role="alert"></div>
       </div>
-      <div class="Form_coverage" data-id="region_coverage" hidden>
-        <h2 class="Interactive_title">Audience coverage: <span data-id="region_coverage_counter"></span></h2>
+      <div class="Form_coverage" data-id="form_coverage" hidden>
+        <h2 class="Interactive_title">Audience coverage: <span data-id="form_total"></span></h2>
         <label class="Form_region">
           Region
-          <select name="region" data-id="region_coverage_select" class="Form_select"></select>
+          <select name="region" data-id="form_region" class="Form_select"></select>
         </label>
       </div>
     </form>
 
-    <div class="Hedgehog" data-id="browsers_stats_placeholder">
+    <div class="Hedgehog" data-id="hedgehog">
       <img
         srcset="./view/Hedgehog/hedgehog.svg"
         alt="A hedgehog with a wheelbarrow full of browser logos. He brings them to you!"
@@ -76,17 +76,17 @@
       <p class="Hedgehog_text">Add the Browserslist config to display compatible browsers.</p>
     </div>
 
-    <div class="Browsers" data-id="browsers_stats" hidden>
+    <div class="Browsers" data-id="browsers" hidden>
       <div class="Browsers_scroll">
-        <ul class="Bar" data-id="region_coverage_bar"></ul>
-        <div class="Browsers_results" data-id="browsers_stats_results"></div>
+        <ul class="Bar" data-id="bar"></ul>
+        <div class="Browsers_results" data-id="browsers_results"></div>
 
         <div class="Versions">
           <p class="Versions_item">
-            Browserslist version <a class="Versions_link" target="_blank" href="https://www.npmjs.com/package/browserslist" data-id="browsers_list_version"></a>
+            Browserslist version <a class="Versions_link" target="_blank" href="https://www.npmjs.com/package/browserslist" data-id="versions_browserslist"></a>
           </p>
           <p class="Versions_item">
-            Data provided by caniuse-db <a class="Versions_link" target="_blank" href="https://www.npmjs.com/package/caniuse-lite" data-id="can_i_use_version"></a>
+            Data provided by caniuse-db <a class="Versions_link" target="_blank" href="https://www.npmjs.com/package/caniuse-lite" data-id="versions_caniuse"></a>
           </p>
         </div>
       </div>
