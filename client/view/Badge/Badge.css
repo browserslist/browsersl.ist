@@ -1,5 +1,5 @@
 .Badge {
-  display: flex;
+  display: inline-flex;
   gap: 4px;
   align-items: center;
   padding: 4px 6px;
