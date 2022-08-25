@@ -1,6 +1,6 @@
 import { DEFAULT_REGION, regionList, regionGroups } from '../../data/regions.js'
 import { updateBrowsersStats, toggleBrowsers } from '../Browsers/Browsers.js'
-import { debounce, formatPercent } from '../../lib/utils.js'
+import { debounce, formatPercent, createTag } from '../../lib/utils.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { transformQuery } from './transformQuery.js'
@@ -23,14 +23,26 @@ textarea.addEventListener('input', () => {
   submitFormDebounced()
 })
 
-renderRegionSelectOptions()
+function createOptgroup(groupName, regionsGroup) {
+  let optgroup = createTag('optgroup')
+  optgroup.label = groupName
+  optgroup.replaceChildren(
+    ...regionsGroup.map(({ id, name }) => {
+      let option = createTag('option', [], name)
+      option.value = id
+      return option
+    })
+  )
+  return optgroup
+}
+regionSelect.appendChild(createOptgroup('Continents', regionGroups.continents))
+regionSelect.appendChild(createOptgroup('Countries', regionGroups.countries))
 
 regionSelect.addEventListener('change', () => {
   submitForm()
 })
 
 submitFormWithUrlParams()
-
 window.addEventListener('popstate', () => {
   submitFormWithUrlParams()
 })
@@ -53,8 +65,8 @@ export function setFormValues({ query, region }) {
     form.classList.remove('is-warning')
   }
 
+  if (!region) region = 'alt-ww'
   let isRegionExists = regionList.includes(region)
-
   if (region && isRegionExists) {
     regionSelect.value = region
   }
@@ -64,34 +76,8 @@ export function submitForm() {
   form.dispatchEvent(new Event('submit', { cancelable: true }))
 }
 
-function renderRegionSelectOptions() {
-  let renderOptgroups = ({ continents, countries }) => {
-    let renderOption = (id, name) => {
-      let option = createTag('option', [], name)
-      option.value = id
-      option.innerText = name
-      return option
-    }
-
-    let renderOptgroup = (groupName, regionsGroup) => {
-      let optgroup = document.createElement('optgroup')
-      optgroup.label = groupName
-      for (let { id, name } of regionsGroup) {
-        let option = renderOption(id, name)
-        optgroup.appendChild(option)
-      }
-      return optgroup
-    }
-
-    return {
-      continentsOptgroup: renderOptgroup('Continents', continents),
-      countriesOptgroup: renderOptgroup('Countries', countries)
-    }
-  }
-
-  let { continentsOptgroup, countriesOptgroup } = renderOptgroups(regionGroups)
-  regionSelect.appendChild(continentsOptgroup)
-  regionSelect.appendChild(countriesOptgroup)
+function onNextChange(cb) {
+  textarea.addEventListener('input', cb, { once: true })
 }
 
 function renderError(message) {
@@ -99,31 +85,21 @@ function renderError(message) {
   form.classList.add('is-error')
   textarea.setAttribute('aria-errormessage', 'form_error')
   textarea.setAttribute('aria-invalid', 'true')
-  textarea.addEventListener(
-    'input',
-    () => {
-      textarea.removeAttribute('aria-errormessage')
-      textarea.removeAttribute('aria-invalid')
-      errorMessage.innerHTML = ''
-      form.classList.remove('is-error')
-    },
-    {
-      once: true
-    }
-  )
+  onNextChange(() => {
+    textarea.removeAttribute('aria-errormessage')
+    textarea.removeAttribute('aria-invalid')
+    errorMessage.innerHTML = ''
+    form.classList.remove('is-error')
+  })
 }
 
 function renderWarning(message) {
   warningMessage.innerHTML = message
   form.classList.add('is-warning')
-  textarea.addEventListener(
-    'input',
-    () => {
-      warningMessage.innerHTML = ''
-      form.classList.remove('is-warning')
-    },
-    { once: true }
-  )
+  onNextChange(() => {
+    warningMessage.innerHTML = ''
+    form.classList.remove('is-warning')
+  })
 }
 
 async function updateStatsView(query, region) {
@@ -134,22 +110,18 @@ async function updateStatsView(query, region) {
     return
   }
 
-  let data
-  let error
-
   form.classList.add('is-loading')
-
+  let data
   try {
     data = await loadBrowsers(query, region)
   } catch (e) {
-    error = e
-  }
-
-  form.classList.remove('is-loading')
-
-  if (error) {
-    renderError(error.message)
-    return
+    if (e.name === 'ServerError') {
+      renderError(e.message)
+    } else {
+      throw e
+    }
+  } finally {
+    form.classList.remove('is-loading')
   }
 
   if (!data) {
@@ -186,11 +158,11 @@ function changeUrl(query, region) {
     urlParams.set('region', region)
   }
 
-  window.history.pushState({}, query, '?' + urlParams)
+  history.pushState({}, query, '?' + urlParams)
 }
 
 function submitFormWithUrlParams() {
-  let urlParams = new URLSearchParams(window.location.search)
+  let urlParams = new URLSearchParams(location.search)
 
   let query = urlParams.get('q')
   let region = urlParams.get('region')
