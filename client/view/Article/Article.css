@@ -3,7 +3,7 @@
   flex-basis: 0;
   flex-grow: 1;
   width: 50%;
-  padding: 0 32px 24px 32px;
+  padding: 24px 32px;
 }
 
 .Article--stats {
