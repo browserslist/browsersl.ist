@@ -1,0 +1,40 @@
+.Footer {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 12px 32px 24px;
+}
+
+.Footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+  color: var(--text-primary);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: var(--text-underline);
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 460px) {
+  .Footer {
+    padding: 16px 24px;
+  }
+}
+
+@media (hover) {
+  .Footer__link:hover {
+    background-position: 0 1.1em;
+    text-decoration-color: var(--text-underline-hover);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .Footer__link img {
+    filter: invert(1);
+  }
+}
