@@ -5,10 +5,10 @@ export default function transformQuery(rawQuery) {
 
   if (hasJSONSymbols(query)) {
     try {
-      return transfromJSONToQuery(query)
+      return transformJSONToQuery(query)
     } catch {}
     try {
-      return transfromJSONFragmentToQuery(query)
+      return transformJSONFragmentToQuery(query)
     } catch {}
   }
 
@@ -19,13 +19,13 @@ export default function transformQuery(rawQuery) {
   return query
 }
 
-function transfromJSONToQuery(query) {
+function transformJSONToQuery(query) {
   let data = JSON.parse(query).browserslist
   return data.join(',')
 }
 
-function transfromJSONFragmentToQuery(query) {
-  return transfromJSONToQuery('{' + query + '}')
+function transformJSONFragmentToQuery(query) {
+  return transformJSONToQuery('{' + query + '}')
 }
 
 // TODO Use a parser from the browserslist API
