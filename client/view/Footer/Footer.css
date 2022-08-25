@@ -11,13 +11,25 @@
   gap: 6px;
   font-size: 14px;
   line-height: 20px;
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
   color: var(--text-primary);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: var(--text-underline);
   text-underline-offset: 2px;
 }
 
 @media (max-width: 460px) {
   .Footer {
     padding: 16px 24px;
+  }
+}
+
+@media (hover) {
+  .Footer__link:hover {
+    background-position: 0 1.1em;
+    text-decoration-color: var(--text-underline-hover);
   }
 }
 
