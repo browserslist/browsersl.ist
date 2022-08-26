@@ -6,13 +6,11 @@
   right: calc(-1 * (100vw - 100%));
   box-sizing: border-box;
   display: flex;
-  flex-basis: 0;
   flex-direction: column;
   flex-grow: 1;
   gap: 16px;
   width: var(--block-width);
   height: 100vh;
-  max-height: 100vh;
   padding: var(--block-padding);
   overflow-y: scroll;
   background-color: var(--bg-highlited);
