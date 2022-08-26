@@ -9,14 +9,12 @@
 }
 
 .Browsers_results {
-  columns: 2;
-  column-fill: balance;
-
-  @media (width >= 740px) and (width <= 1200px) {
-    columns: 1;
+  @media (width > 600px) {
+    columns: 2;
+    column-fill: balance;
   }
 
-  @media (width <= 600px) {
+  @media (width > 740px) and (width <= 1200px) {
     columns: 1;
   }
 }

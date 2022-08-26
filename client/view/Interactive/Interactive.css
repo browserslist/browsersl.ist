@@ -1,5 +1,4 @@
 .Interactive {
-  position: fixed;
   top: 0;
 
   /* Hide scrollbar */
@@ -10,16 +9,13 @@
   flex-grow: 1;
   gap: 16px;
   width: var(--block-width);
-  height: 100vh;
   padding: var(--block-padding);
-  overflow-y: scroll;
   background-color: var(--bg-highlited);
 
-  @media (width <= 740px) {
-    position: initial;
-    height: initial;
-    max-height: initial;
-    overflow: visible;
+  @media (width > 740px) {
+    position: fixed;
+    height: 100vh;
+    overflow-y: scroll;
   }
 }
 

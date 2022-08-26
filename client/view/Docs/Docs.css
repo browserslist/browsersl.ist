@@ -9,6 +9,7 @@
 
 .Docs section {
   padding: 16px;
+  margin: 0 -16px;
   background-color: var(--bg-highlited);
   border-radius: 8px;
 
@@ -16,8 +17,8 @@
     margin-top: 24px;
   }
 
-  @media (width <= 740px) {
-    margin: 0 -16px;
+  @media (width > 740px) {
+    margin: 0;
   }
 }
 

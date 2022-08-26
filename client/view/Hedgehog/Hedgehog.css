@@ -2,28 +2,29 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
+  padding: 32px 0;
   align-items: center;
   justify-content: center;
   height: 100%;
   color: var(--text-secondary);
 
-  @media (width <= 740px) {
-    gap: 16px;
-    padding: 32px 0;
+  @media (width > 740px) {
+    gap: 32px;
+    padding: 0;
   }
 }
 
 .Hedgehog_image {
-  width: 100%;
-  max-width: 380px;
+  max-width: 100%;
+  max-height: 300px;
   aspect-ratio: 380 / 316;
   object-fit: contain;
 
-  @media (width <= 740px) {
-    max-width: 100%;
-    height: initial;
-    max-height: 300px;
+  @media (width > 740px) {
+    width: 100%;
+    max-width: 380px;
+    max-height: auto;
   }
 }
 
