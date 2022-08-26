@@ -1,16 +1,25 @@
 .Link {
+  display: inline-block;
   padding-bottom: 0.2em;
   margin-bottom: -0.2em;
   color: var(--text-primary);
+
+  &.is-image {
+    text-decoration: none;
+  }
+
+  @media (hover) {
+    &:hover,
+    &:hover .Link_text {
+      text-decoration-color: var(--text-underline-hover);
+    }
+  }
+}
+
+.Link:not(.is-image),
+.Link_text {
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-color: var(--text-underline);
   text-underline-offset: 2px;
-
-  @media (hover) {
-    &:hover {
-      text-decoration-color: var(--text-underline-hover);
-      background-position: 0 1.1em;
-    }
-  }
 }
