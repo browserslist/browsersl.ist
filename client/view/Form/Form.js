@@ -1,21 +1,19 @@
 import { DEFAULT_REGION, regionList, regionGroups } from '../../data/regions.js'
-import {
-  updateBrowsersStats,
-  updateRegionCoverageCounter,
-  updateRegionCoverageBar,
-  updateToolsVersions,
-  toggleShowStats
-} from '../BrowserStats/BrowserStats.js'
-import transformQuery from './transformQuery.js'
-import loadBrowsersData from './loadBrowsersData.js'
+import { updateBrowsersStats, toggleBrowsers } from '../Browsers/Browsers.js'
+import { debounce, formatPercent, createTag } from '../../lib/utils.js'
+import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
+import { updateVersions } from '../Versions/Versions.js'
+import { transformQuery } from './transformQuery.js'
+import { loadBrowsers } from './loadBrowsers.js'
+import { updateBar } from '../Bar/Bar.js'
 
-let form = document.querySelector('[data-id=query_form]')
-let textarea = document.querySelector('[data-id=query_text_area]')
-let regionCoverageSelect = document.querySelector(
-  '[data-id=region_coverage_select]'
-)
-let errorMessage = document.querySelector('[data-id=error_message]')
-let warningMessage = document.querySelector('[data-id=warning_message]')
+let form = document.querySelector('[data-id=form]')
+let total = document.querySelector('[data-id=form_total]')
+let formCoverage = document.querySelector('[data-id=form_coverage')
+let textarea = document.querySelector('[data-id=form_textarea]')
+let regionSelect = document.querySelector('[data-id=form_region]')
+let errorMessage = document.querySelector('[data-id=form_error]')
+let warningMessage = document.querySelector('[data-id=form_warning]')
 
 form.addEventListener('submit', handleFormSubmit)
 
@@ -25,14 +23,26 @@ textarea.addEventListener('input', () => {
   submitFormDebounced()
 })
 
-renderRegionSelectOptions()
+function createOptgroup(groupName, regionsGroup) {
+  let optgroup = createTag('optgroup')
+  optgroup.label = groupName
+  optgroup.replaceChildren(
+    ...regionsGroup.map(({ id, name }) => {
+      let option = createTag('option', [], name)
+      option.value = id
+      return option
+    })
+  )
+  return optgroup
+}
+regionSelect.appendChild(createOptgroup('Continents', regionGroups.continents))
+regionSelect.appendChild(createOptgroup('Countries', regionGroups.countries))
 
-regionCoverageSelect.addEventListener('change', () => {
+regionSelect.addEventListener('change', () => {
   submitForm()
 })
 
 submitFormWithUrlParams()
-
 window.addEventListener('popstate', () => {
   submitFormWithUrlParams()
 })
@@ -45,32 +55,20 @@ function handleFormSubmit(e) {
   let region = formData.get('region')
 
   changeUrl(query, region)
-
-  e.preventDefault()
-  form.classList.add('Form--justSend')
-  textarea.addEventListener(
-    'input',
-    () => {
-      form.classList.remove('Form--justSend')
-    },
-    {
-      once: true
-    }
-  )
   updateStatsView(query, region)
 }
 
 export function setFormValues({ query, region }) {
   if (query) {
     textarea.value = query
-    form.classList.remove('Form--serverError')
-    form.classList.remove('Form--serverWarning')
+    form.classList.remove('is-error')
+    form.classList.remove('is-warning')
   }
 
+  if (!region) region = 'alt-ww'
   let isRegionExists = regionList.includes(region)
-
   if (region && isRegionExists) {
-    regionCoverageSelect.value = region
+    regionSelect.value = region
   }
 }
 
@@ -78,90 +76,52 @@ export function submitForm() {
   form.dispatchEvent(new Event('submit', { cancelable: true }))
 }
 
-function renderRegionSelectOptions() {
-  let renderOptgroups = ({ continents, countries }) => {
-    let renderOption = (id, name) => {
-      let option = document.createElement('option')
-      option.value = id
-      option.innerHTML = name
-      return option
-    }
-
-    let renderOptgroup = (groupName, regionsGroup) => {
-      let optgroup = document.createElement('optgroup')
-      optgroup.label = groupName
-      for (let { id, name } of regionsGroup) {
-        let option = renderOption(id, name)
-        optgroup.appendChild(option)
-      }
-      return optgroup
-    }
-
-    return {
-      continentsOptgroup: renderOptgroup('Continents', continents),
-      countriesOptgroup: renderOptgroup('Countries', countries)
-    }
-  }
-
-  let { continentsOptgroup, countriesOptgroup } = renderOptgroups(regionGroups)
-  regionCoverageSelect.appendChild(continentsOptgroup)
-  regionCoverageSelect.appendChild(countriesOptgroup)
+function onNextChange(cb) {
+  textarea.addEventListener('input', cb, { once: true })
 }
 
 function renderError(message) {
   errorMessage.innerHTML = message
-  form.classList.add('Form--serverError')
+  form.classList.add('is-error')
   textarea.setAttribute('aria-errormessage', 'form_error')
   textarea.setAttribute('aria-invalid', 'true')
-  textarea.addEventListener(
-    'input',
-    () => {
-      textarea.removeAttribute('aria-errormessage')
-      textarea.removeAttribute('aria-invalid')
-      errorMessage.innerHTML = ''
-      form.classList.remove('Form--serverError')
-    },
-    {
-      once: true
-    }
-  )
+  onNextChange(() => {
+    textarea.removeAttribute('aria-errormessage')
+    textarea.removeAttribute('aria-invalid')
+    errorMessage.innerHTML = ''
+    form.classList.remove('is-error')
+  })
 }
 
 function renderWarning(message) {
   warningMessage.innerHTML = message
-  form.classList.add('Form--serverWarning')
-  textarea.addEventListener(
-    'input',
-    () => {
-      warningMessage.innerHTML = ''
-      form.classList.remove('Form--serverWarning')
-    },
-    { once: true }
-  )
+  form.classList.add('is-warning')
+  onNextChange(() => {
+    warningMessage.innerHTML = ''
+    form.classList.remove('is-warning')
+  })
 }
 
 async function updateStatsView(query, region) {
   if (query.length === 0) {
-    toggleShowStats(false)
+    formCoverage.hidden = true
+    toggleBrowsers(false)
+    toggleHedgehog(true)
     return
   }
 
+  form.classList.add('is-loading')
   let data
-  let error
-
-  form.classList.add('Form--loading')
-
   try {
-    data = await loadBrowsersData(query, region)
+    data = await loadBrowsers(query, region)
   } catch (e) {
-    error = e
-  }
-
-  form.classList.remove('Form--loading')
-
-  if (error) {
-    renderError(error.message)
-    return
+    if (e.name === 'ServerError') {
+      renderError(e.message)
+    } else {
+      throw e
+    }
+  } finally {
+    form.classList.remove('is-loading')
   }
 
   if (!data) {
@@ -179,11 +139,13 @@ async function updateStatsView(query, region) {
     renderWarning(linterWarning)
   }
 
-  toggleShowStats(true)
+  formCoverage.hidden = false
+  toggleBrowsers(true)
+  toggleHedgehog(false)
   updateBrowsersStats(browsers)
-  updateRegionCoverageCounter(coverage)
-  updateRegionCoverageBar(browsers)
-  updateToolsVersions(versions)
+  total.innerText = formatPercent(coverage)
+  updateBar(browsers)
+  updateVersions(versions.browserslist, versions.caniuse)
 }
 
 function changeUrl(query, region) {
@@ -196,11 +158,11 @@ function changeUrl(query, region) {
     urlParams.set('region', region)
   }
 
-  window.history.pushState({}, query, '?' + urlParams)
+  history.pushState({}, query, '?' + urlParams)
 }
 
 function submitFormWithUrlParams() {
-  let urlParams = new URLSearchParams(window.location.search)
+  let urlParams = new URLSearchParams(location.search)
 
   let query = urlParams.get('q')
   let region = urlParams.get('region')
@@ -211,10 +173,6 @@ function submitFormWithUrlParams() {
   submitForm()
 }
 
-function debounce(callback, delay) {
-  let timeout
-  return function () {
-    clearTimeout(timeout)
-    timeout = setTimeout(callback, delay)
-  }
+export function focusForm() {
+  textarea.focus()
 }

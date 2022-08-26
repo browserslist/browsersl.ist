@@ -4,11 +4,11 @@
   gap: 24px;
 }
 
-.Form__queryTextAreaContainer {
+.Form_query {
   position: relative;
 }
 
-.Form__queryTextArea {
+.Form_textarea {
   box-sizing: border-box;
   width: 100%;
   min-height: 134px;
@@ -24,16 +24,16 @@
   border-radius: 8px;
 }
 
-.Form__queryTextArea::placeholder {
+.Form_textarea::placeholder {
   opacity: 0%;
 }
 
-.Form__queryTextArea:focus-visible {
+.Form_textarea:focus-visible {
   outline-color: var(--accent);
 }
 
-.Form__hint,
-.Form__loader {
+.Form_hint,
+.Form_loader {
   position: absolute;
   bottom: 16px;
   left: 16px;
@@ -49,28 +49,24 @@
   transition: opacity 0.2s linear;
 }
 
-.Form__hint a {
+.Form_loader {
+  pointer-events: none;
+}
+
+.Form_hint.is-error {
+  color: var(--error);
+}
+
+.Form_hint.is-warning {
+  color: var(--warning);
+}
+
+.Form_hint a {
   color: inherit;
   pointer-events: initial;
 }
 
-.Form__loader {
-  pointer-events: none;
-}
-
-.Form__enterIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  margin: calc((20px - 1em) / -2) 0;
-  vertical-align: middle;
-  background-color: var(--bg-highlited);
-  border-radius: 2px;
-}
-
-.Form__interactivePlaceholder {
+.Form_placeholder {
   position: absolute;
   top: 12px;
   left: 12px;
@@ -83,36 +79,28 @@
   opacity: 0%;
 }
 
-.Form__hint--error {
-  color: var(--error);
-}
-
-.Form--serverError:not(.Form--loading) .Form__hint--error {
+.Form.is-error:not(.is-loading) .Form_hint.is-error {
   opacity: 100%;
 }
 
-.Form__hint--warning {
-  color: var(--warning);
-}
-
-.Form--serverWarning:not(.Form--loading) .Form__hint--warning {
+.Form.is-warning:not(.is-loading) .Form_hint.is-warning {
   opacity: 100%;
 }
 
-.Form__queryTextArea:placeholder-shown ~ .Form__interactivePlaceholder {
+.Form_textarea:placeholder-shown ~ .Form_placeholder {
   pointer-events: none;
   opacity: 100%;
 }
 
-.Form__queryTextArea:placeholder-shown ~ .Form__interactivePlaceholder a {
+.Form_textarea:placeholder-shown ~ .Form_placeholder a {
   pointer-events: initial;
 }
 
-.Form--loading .Form__loader {
+.Form.is-loading .Form_loader {
   opacity: 100%;
 }
 
-.Form__loader::after {
+.Form_loader::after {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -138,7 +126,7 @@
   }
 }
 
-.Form__coverage {
+.Form_coverage {
   display: flex;
   flex-wrap: wrap;
   gap: 16px 24px;
@@ -146,7 +134,14 @@
   justify-content: space-between;
 }
 
-.Form__coverageSelect {
+.Form_region {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.Form_select {
   display: inline-block;
   width: fit-content;
   max-width: 200px;
@@ -160,23 +155,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   background-color: var(--main-bg);
-  background-image: url(./select-arrow-light.svg);
+  background-image: url(./arrow-light.svg);
   background-repeat: no-repeat;
   background-position: 96% 54%;
   border: none;
   border-radius: 4px;
   appearance: none;
-}
 
-.Form__coverageSelectLabel {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-
-@media (prefers-color-scheme: dark) {
-  .Form__coverageSelect {
-    background-image: url(./select-arrow-dark.svg);
+  @media (prefers-color-scheme: dark) {
+    background-image: url(./arrow-dark.svg);
   }
 }

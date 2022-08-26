@@ -1,0 +1,61 @@
+.Intro {
+  box-sizing: border-box;
+  flex-basis: 0;
+  flex-grow: 1;
+  width: var(--block-width);
+  padding: var(--block-padding);
+}
+
+.Intro_header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.Intro_logo {
+  width: 32px;
+  height: 32px;
+}
+
+.Intro_title {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0 8px 0 0;
+  font-size: 22px;
+}
+
+.Intro_about {
+  margin: 16px 0;
+  font-size: 25px;
+  line-height: 32px;
+  letter-spacing: 0.01em;
+
+  @media (width <= 460px) {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.Intro_supported {
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.Intro_martians,
+.Intro_cube {
+  height: 16px;
+  vertical-align: middle;
+}
+
+.Intro_martians {
+  width: 23px;
+}
+
+.Intro_cube {
+  width: 17px;
+}

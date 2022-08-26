@@ -1,0 +1,33 @@
+.Interactive {
+  position: fixed;
+  top: 0;
+
+  /* Hide scrollbar */
+  right: calc(-1 * (100vw - 100%));
+  box-sizing: border-box;
+  display: flex;
+  flex-basis: 0;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 16px;
+  width: var(--block-width);
+  height: 100vh;
+  max-height: 100vh;
+  padding: var(--block-padding);
+  overflow-y: scroll;
+  background-color: var(--bg-highlited);
+
+  @media (width <= 740px) {
+    position: initial;
+    height: initial;
+    max-height: initial;
+    overflow: visible;
+  }
+}
+
+.Interactive_title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 26px;
+}

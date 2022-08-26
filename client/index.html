@@ -9,102 +9,103 @@
   <meta name="description" content="Display target browsers from a Browserslist config">
   <meta property="og:image" content="./og.png">
   <link rel="icon" href="./favicon.ico" sizes="any">
-  <link rel="icon" href="./view/base/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="./view/base/apple-touch-icon.png">
+  <link rel="icon" href="./view/Base/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./view/Base/apple-touch-icon.png">
   <link rel="manifest" href="./browserslist.webmanifest">
   <link rel="stylesheet" href="./index.css">
   <script type="module" src="./index.js" defer></script>
 </head>
 
 <body>
-  <header class="Article Article--intro">
+  <header class="Intro">
     <button class="Skip" data-id="skip">Skip to form</button>
-    <div class="Article--intro__header">
-      <h1 class="Article__h1">
-        <img class="Article__logo" src="./view/Article/browserlist_logo.svg" alt="">
+    <div class="Intro_header">
+      <h1 class="Intro_title">
+        <img class="Intro_logo" src="./view/Intro/browserlist.svg" alt="">
         Browserslist
       </h1>
-      <a class="Badge" href="https://github.com/browserslist/browserslist" target="_blank">
-        <img src="./view/Badge/github_logo.svg" alt="Count of GitHub stars" class="Badge__logo Badge__logo--github"> 11K
+      <a class="Badge is-github" href="https://github.com/browserslist/browserslist" target="_blank">
+        <img src="./view/Badge/github.svg" alt="Count of GitHub stars" class="Badge_logo"> 11K
       </a>
-      <a class="Badge" href="https://twitter.com/Browserslist" target="_blank">
-        <img src="./view/Badge/twitter_logo.svg" alt="Count of Twitter followers" class="Badge__logo"> 1728
+      <a class="Badge" href="https://twitter.com/Browserslist"  target="_blank">
+        <img src="./view/Badge/twitter.svg" alt="Count of Twitter followers" class="Badge_logo"> 1728
       </a>
     </div>
-    <p class="Article--intro__about">Shared browser compatibility config for popular JavaScript tools
+    <p class="Intro_about">Shared browser compatibility config for popular JavaScript tools
       like Autoprefixer, Babel, ESLint, PostCSS, and Webpack</p>
-    <p class="Article--intro__supported">
+    <p class="Intro_supported">
       Supported by
-      <img class="Article--intro__martians" src="./view/Article/evil_maritians_logo.svg" alt="">
+      <img class="Intro_martians" src="./view/Intro/evil_maritians.svg" alt="">
       <a href="https://evilmartians.com/" class="Link" target="_blank">Evil Martians</a> and
-      <img class="Article--intro__cube" src="./view/Article/cube_logo.svg" alt="">
+      <img class="Intro_cube" src="./view/Intro/cube.svg" alt="">
       <a href="https://cube.dev/?ref=eco-browserslist" class="Link" target="_blank">Cube</a>
     </p>
   </header>
 
-  <main class="Article Article--stats" data-id="query_container">
-    <h2>Check compatible browsers</h2>
-    <form data-id="query_form" class="Form">
-      <div class="Form__queryTextAreaContainer">
-        <textarea id="form_query" name="query" cols="30" rows="5" required class="Form__queryTextArea" data-id="query_text_area" placeholder="Write the Browserslist config here…"></textarea>
-        <label for="form_query" class="Form__interactivePlaceholder">Write the Browserslist config here…<br>
+  <main class="Interactive" data-id="interactive">
+    <h2 class="Interactive_title">Check compatible browsers</h2>
+    <form data-id="form" class="Form">
+      <div class="Form_query">
+        <textarea id="form_query" name="query" cols="30" rows="5" required class="Form_textarea" data-id="form_textarea" placeholder="Write the Browserslist config here…"></textarea>
+        <label for="form_query" class="Form_placeholder">Write the Browserslist config here…<br>
           For example
           <a class="QueryLink"><code>defaults</code></a>,
           <a class="QueryLink"><code>> 0.2% and not dead</code></a>
         </label>
-        <p class="Form__loader">Loading…</p>
-        <div id="form_error" class="Form__hint Form__hint--error" data-id="error_message" role="alert"></div>
-        <div id="form_warning" class="Form__hint Form__hint--warning" data-id="warning_message" role="alert"></div>
+        <p class="Form_loader">Loading…</p>
+        <div id="form_error" class="Form_hint is-error" data-id="form_error" role="alert"></div>
+        <div id="form_warning" class="Form_hint is-warning" data-id="form_warning" role="alert"></div>
       </div>
-      <div class="Form__coverage" data-id="region_coverage" hidden>
-        <h2>Audience coverage: <span data-id="region_coverage_counter"></span></h2>
-        <label class="Form__coverageSelectLabel">
+      <div class="Form_coverage" data-id="form_coverage" hidden>
+        <h2 class="Interactive_title">Audience coverage: <span data-id="form_total"></span></h2>
+        <label class="Form_region">
           Region
-          <select name="region" data-id="region_coverage_select" class="Form__coverageSelect"></select>
+          <select name="region" data-id="form_region" class="Form_select"></select>
         </label>
       </div>
     </form>
 
-    <div class="BrowsersStat">
-      <div class="BrowsersStat__placeholder" data-id="browsers_stats_placeholder">
-        <img
-          srcset="./view/BrowserStats/hedgehog.svg"
-          alt="A hedgehog with a wheelbarrow full of browser logos. He brings them to you!"
-          class="BrowsersStat__placeholderImage"
-          height="316px"
-          width="380px"
-        >
-        <p class="BrowsersStat__placeholderText">Add the Browserslist config to display compatible browsers.</p>
-      </div>
+    <div class="Hedgehog" data-id="hedgehog">
+      <img
+        srcset="./view/Hedgehog/hedgehog.svg"
+        alt="A hedgehog with a wheelbarrow full of browser logos. He brings them to you!"
+        class="Hedgehog_image"
+        height="316px"
+        width="380px"
+      >
+      <p class="Hedgehog_text">Add the Browserslist config to display compatible browsers.</p>
+    </div>
 
-      <div class="BrowsersStat__stat" data-id="browsers_stats" hidden>
-        <ul class="BrowsersStat__regionCoverageBar" data-id="region_coverage_bar"></ul>
-        <div class="BrowsersStat__tableContainer" data-id="browsers_stats_results"></div>
+    <div class="Browsers" data-id="browsers" hidden>
+      <div class="Browsers_scroll">
+        <ul class="Bar" data-id="bar"></ul>
+        <div class="Browsers_results">
+          <table class="Browsers_table" data-id="browsers_table">
+          </table>
+        </div>
 
-        <div class="BrowsersStat__toolsVersions">
-          <p class="BrowsersStat__toolsVersionsItem">
-            Browserslist version <a class="BrowsersStat__toolLink" target="_blank" href="https://www.npmjs.com/package/browserslist" data-id="browsers_list_version"></a>
+        <div class="Versions">
+          <p class="Versions_item">
+            Browserslist version <a class="Versions_link" target="_blank" href="https://www.npmjs.com/package/browserslist" data-id="versions_browserslist"></a>
           </p>
-          <p class="BrowsersStat__toolsVersionsItem">
-            Data provided by caniuse-db <a class="BrowsersStat__toolLink" target="_blank" href="https://www.npmjs.com/package/caniuse-lite" data-id="can_i_use_version"></a>
+          <p class="Versions_item">
+            Data provided by caniuse-db <a class="Versions_link" target="_blank" href="https://www.npmjs.com/package/caniuse-lite" data-id="versions_caniuse"></a>
           </p>
         </div>
       </div>
     </div>
   </main>
 
-  <article class="Article Article--docs">
-    <h2 class="Article__h2">How to get started</h2>
-    <ul class="Article__list">
-      <li>
-        Use <a class="QueryLink"><code>defaults</code></a> if you're building a web application for
-        the global audience.
-      </li>
-      <li>
-        Use <a class="QueryLink"><code>node 18</code></a> if you're building a Node.js application,
-        e.g., for server-side rendering.
-      </li>
-    </ul>
+  <article class="Docs">
+    <h2>How to get started</h2>
+    <p>
+      Use <a class="QueryLink"><code>defaults</code></a> if you're building a web application for
+      the global audience.
+    </p>
+    <p>
+      Use <a class="QueryLink"><code>node 18</code></a> if you're building a Node.js application,
+      e.g., for server-side rendering.
+    </p>
     <p>
       <a href="https://www.npmjs.com/package/autoprefixer" class="Link" target="_blank">Autoprefixer</a>,
       <a href="https://babeljs.io/" class="Link" target="_blank">Babel</a> and
@@ -118,9 +119,9 @@
       <code>]</code>
     </pre>
     </a>
-    <h2 class="Article__h2">Query syntax</h2>
-    <section class="DocSection">
-      <h3 class="DocSection__header">Start with the default configuration</h3>
+    <h2>Query syntax</h2>
+    <section>
+      <h3>Start with the default configuration</h3>
 
       <p>You can pick a sound set of versions with the <a class="QueryLink"><code>defaults</code></a> query which is
         a shortcut for <code>> 0.5%, last 2 versions, Firefox ESR, not dead</code>.
@@ -134,15 +135,15 @@
       </p>
     </section>
 
-    <section class="DocSection">
-      <h3 class="DocSection__header">Select browser versions with certain usage</h3>
+    <section>
+      <h3>Select browser versions with certain usage</h3>
 
       <p>You can pick versions that have more than or less than a certain size of the
         audience worldwide, in a region, or in a country. You can also use the visitor
         data of your own website.</p>
 
-      <h4 class="DocSection__subHeader">Examples</h4>
-      <ul class="DocSection__list">
+      <h4>Examples</h4>
+      <ul>
         <li><a class="QueryLink"><code>> 5%</code></a> all versions with > 5% of the audience
           worldwide.
         </li>
@@ -152,8 +153,8 @@
         </li>
       </ul>
 
-      <h4 class="DocSection__subHeader">Beware</h4>
-      <ul class="DocSection__list">
+      <h4>Beware</h4>
+      <ul>
         <li> You may exclude the most recent versions of all browsers that have been just
           released. Please always add <a class="QueryLink" data-query="last 2 versions"><code>last …
             versions</code></a> to include them back.
@@ -166,8 +167,8 @@
       </ul>
 
       <details>
-        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
-        <ul class="DocSection__list">
+        <summary><h4>Advanced</h4></summary>
+        <ul>
           <li><a class="QueryLink"><code>> 5% in my stats</code></a> versions with >
             5%
             of usage
@@ -191,13 +192,13 @@
       </details>
     </section>
 
-    <section class="DocSection">
-      <h3 class="DocSection__header">Select recent browser versions</h3>
+    <section>
+      <h3>Select recent browser versions</h3>
 
       <p>You can pick a few recent browser versions.</p>
 
-      <h4 class="DocSection__subHeader">Examples</h4>
-      <ul class="DocSection__list">
+      <h4>Examples</h4>
+      <ul>
         <li><a class="QueryLink"><code>last 2 versions</code></a> last 2 versions of each
           browser.
         </li>
@@ -206,8 +207,8 @@
         </li>
       </ul>
 
-      <h4 class="DocSection__subHeader">Beware</h4>
-      <ul class="DocSection__list">
+      <h4>Beware</h4>
+      <ul>
         <li>You might exclude older versions still used by a substantial audience.
           Please always add <a class="QueryLink" data-query="> 5%"><code>> …</code></a> to include them back.
         </li>
@@ -218,8 +219,8 @@
       </ul>
 
       <details>
-        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
-        <ul class="DocSection__list">
+        <summary><h4>Advanced</h4></summary>
+        <ul>
           <li><a class="QueryLink"><code>last 2 major versions</code></a> all
             minor
             and patch releases of the last 2 major versions.
@@ -250,13 +251,13 @@
       </details>
     </section>
 
-    <section class="DocSection">
-      <h3 class="DocSection__header">Select specific browser versions</h3>
+    <section>
+      <h3>Select specific browser versions</h3>
 
       <p>You can pick browser versions or a version range of your choice.</p>
 
-      <h4 class="DocSection__subHeader">Examples</h4>
-      <ul class="DocSection__list">
+      <h4>Examples</h4>
+      <ul>
         <li><a class="QueryLink"><code>ChromeAndroid 103</code></a> mobile Chrome
           version 103.
         </li>
@@ -272,8 +273,8 @@
         </li>
       </ul>
 
-      <h4 class="DocSection__subHeader">Beware</h4>
-      <ul class="DocSection__list">
+      <h4>Beware</h4>
+      <ul>
         <li> Make sure that your audience uses specific versions (e.g., in a corporate
           setting) or that your application is not built to work with specific
           versions (e.g., it's a bleeding-edge demo project). Please consider using
@@ -283,8 +284,8 @@
       </ul>
 
       <details>
-        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
-        <ul class="DocSection__list">
+        <summary><h4>Advanced</h4></summary>
+        <ul>
           <li><a class="QueryLink"><code>ie 6-8</code></a> an inclusive range of Internet
             Explorer
             versions.
@@ -296,14 +297,14 @@
       </details>
     </section>
 
-    <section class="DocSection">
-      <h3 class="DocSection__header">Select specific Node.js versions</h3>
+    <section>
+      <h3>Select specific Node.js versions</h3>
 
       <p>You can pick Node.js versions or a version range of your choice. Useful if you
         know for sure the runtime configuration of your server-side code.</p>
 
-      <h4 class="DocSection__subHeader">Examples</h4>
-      <ul class="DocSection__list">
+      <h4>Examples</h4>
+      <ul>
         <li><a class="QueryLink"><code>node 10</code></a> latest
           <a class="QueryLink" data-query="node 10.0.0"><code>10.x.x</code></a> Node.js version.
         </li>
@@ -320,8 +321,8 @@
       </ul>
 
       <details>
-        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
-        <ul class="DocSection__list">
+        <summary><h4>Advanced</h4></summary>
+        <ul>
           <li><a class="QueryLink"><code>maintained node versions</code></a>
             all Node.js versions currently maintained by Node.js Foundation.
           </li>
@@ -332,37 +333,37 @@
       </details>
     </section>
 
-    <section class="DocSection">
-      <h3 class="DocSection__header">Select browser versions that support a certain feature</h3>
+    <section>
+      <h3>Select browser versions that support a certain feature</h3>
 
       <p>You can pick browser versions that fully support features from the Can I Use database. See the
         <a href="https://github.com/browserslist/caniuse-lite/tree/main/data/features" class="Link" target="_blank">
           caniuse-lite repository</a> for the full list of features.</p>
 
-      <h4 class="DocSection__subHeader">Examples</h4>
-      <ul class="DocSection__list">
+      <h4>Examples</h4>
+      <ul>
         <li><a class="QueryLink"><code>supports es6-module</code></a> versions that support
           JavaScript modules via script tag.
         </li>
         <li><a class="QueryLink"><code>supports css-grid</code></a> versions that support CSS Grid Layout.</li>
       </ul>
 
-      <h4 class="DocSection__subHeader">Beware</h4>
-      <ul class="DocSection__list">
+      <h4>Beware</h4>
+      <ul>
         <li> This query rarely works well on its own. Please consider combining it with other queries.
         </li>
       </ul>
     </section>
 
-    <section class="DocSection">
-      <h3 class="DocSection__header">Combine multiple queries into one</h3>
+    <section>
+      <h3>Combine multiple queries into one</h3>
 
       <p>You can combine versions matched by multiple queries with <code>or</code> or <code>,</code>; you can
         intersect them with <code>and</code>. You can also negate any query with <code>not</code> if it's
         not the first one in your list.</p>
 
-      <h4 class="DocSection__subHeader">Examples</h4>
-      <ul class="DocSection__list">
+      <h4>Examples</h4>
+      <ul>
         <li>
           <a class="QueryLink"><code>> 0.5%, last 2 versions</code></a>
           combines <a class="QueryLink"><code>> 0.5%</code></a>
@@ -381,8 +382,8 @@
         </li>
       </ul>
 
-      <h4 class="DocSection__subHeader">Beware</h4>
-      <ul class="DocSection__list">
+      <h4>Beware</h4>
+      <ul>
         <li> A query with <a class="QueryLink" data-query="defaults, not last 2 versions"><code>not</code></a>
           can't be the left-hand one in the list.</li>
         <li> A query with <code>not</code> is always joined to the left-hand one with
@@ -392,8 +393,8 @@
       </ul>
 
       <details>
-        <summary><h4 class="DocSection__subHeader">Advanced</h4></summary>
-        <ul class="DocSection__list">
+        <summary><h4>Advanced</h4></summary>
+        <ul>
           <li>
             The following queries yield the same result:
             <a class="QueryLink"> <code>> 0.5% and not last 2 versions</code></a>,
@@ -404,8 +405,8 @@
       </details>
     </section>
 
-    <section class="DocSection">
-      <h3 class="DocSection__header">Exclude unmaintained browser versions</h3>
+    <section>
+      <h3>Exclude unmaintained browser versions</h3>
 
       <p>You can combine your queries with
         <a class="QueryLink" data-query="defaults, not dead"><code>not dead</code></a>
@@ -414,8 +415,8 @@
         Right now these include IE 11, IE Mobile 11, BlackBerry 10, BlackBerry 7,
         Samsung 4, Opera Mobile 12.1, and all versions of Baidu.</p>
 
-      <h4 class="DocSection__subHeader">Examples</h4>
-      <ul class="DocSection__list">
+      <h4>Examples</h4>
+      <ul>
         <li><a class="QueryLink"><code>> 0.2% and not dead</code></a>
           excludes <a class="QueryLink"><code>dead</code></a> versions
           from versions matched by <a class="QueryLink"><code>> 0.2%</code></a>.
@@ -423,14 +424,14 @@
       </ul>
     </section>
 
-    <h2 class="Article__h2">Why Browserslist</h2>
+    <h2>Why Browserslist</h2>
     <p>Browserslist helps you keep the right balance between browser compatibility and bundle size.
       With Browserslist, you will cover wider audience and have smaller bundle size. </p>
   </article>
 
   <footer class="Footer">
-    <a class="Badge" href="https://github.com/browserslist/browsersl.ist" target="_blank">
-      <img src="./view/Badge/github_logo.svg" alt="" class="Badge__logo Badge__logo--github"> Website source code
+    <a class="Badge is-github" href="https://github.com/browserslist/browsersl.ist" target="_blank">
+      <img src="./view/Badge/github.svg" alt="" class="Badge_logo"> Website source code
     </a>
   </footer>
 </body>

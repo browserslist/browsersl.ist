@@ -1,0 +1,83 @@
+.Browsers {
+  flex-grow: 1;
+}
+
+.Browsers_scroll {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.Browsers_results {
+  columns: 2;
+  column-fill: balance;
+
+  @media (width >= 740px) and (width <= 1200px) {
+    columns: 1;
+  }
+
+  @media (width <= 600px) {
+    columns: 1;
+  }
+}
+
+.Browsers_table {
+  display: block;
+  border-spacing: 8px 0;
+}
+
+.Browsers_cell {
+  box-sizing: border-box;
+  height: 28px;
+  line-height: 28px;
+  white-space: nowrap;
+  vertical-align: top;
+  break-inside: avoid;
+
+  &:last-child {
+    width: 6ch;
+    text-align: left;
+  }
+
+  &.is-coverage {
+    --coverage: 20%;
+
+    background-image:
+      linear-gradient(
+        to right,
+        var(--accent-alternave) var(--coverage),
+        transparent var(--coverage),
+        transparent
+      );
+  }
+
+  @nest .Browsers_line:first-child &:first-child {
+    width: 20px;
+  }
+
+  @nest .Browsers_line:first-child &:nth-child(2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @nest .Browsers_line:first-child &:nth-child(3) {
+    width: 7ch;
+  }
+}
+
+.Browsers_body {
+  display: inline-table;
+  width: 100%;
+  margin-bottom: -1px;
+  table-layout: fixed;
+  border-top: 1px solid var(--separator);
+}
+
+.Browsers_icon {
+  display: inline;
+  width: 20px;
+  height: 20px;
+  line-height: 32px;
+  vertical-align: middle;
+}
