@@ -4,7 +4,10 @@
   flex-grow: 1;
   width: var(--block-width);
   padding: var(--block-padding);
-  padding-top: 0;
+
+  @media (width > 740px) {
+    padding-top: 0;
+  }
 }
 
 .Docs section {

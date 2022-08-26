@@ -1,19 +1,15 @@
 @import "./colors.css";
 
 :root {
-  --block-padding: 24px 32px;
-  --block-width: 50%;
-}
+  --block-padding: 16px 24px;
+  --block-width: initial;
 
-@media (width <= 740px) {
-  :root {
-    --block-width: initial;
+  @media (width > 460px) {
+    --block-padding: 24px 32px;
   }
-}
 
-@media (width <= 460px) {
-  :root {
-    --block-padding: 16px 24px;
+  @media (width > 740px) {
+    --block-width: 50%;
   }
 }
 
