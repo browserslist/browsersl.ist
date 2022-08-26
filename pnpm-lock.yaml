@@ -11,7 +11,7 @@ importers:
       eslint-plugin-import: ^2.26.0
       eslint-plugin-n: ^15.2.5
       eslint-plugin-prefer-let: ^3.0.1
-      eslint-plugin-promise: ^6.0.0
+      eslint-plugin-promise: ^6.0.1
       nano-staged: ^0.8.0
       prettier: ^2.7.1
       simple-git-hooks: ^2.8.0
@@ -21,14 +21,14 @@ importers:
     dependencies:
       ssdeploy: 0.9.2
     devDependencies:
-      '@logux/eslint-config': 47.2.0_3hkaelpnrfeekbbmf2fwrl6hce
+      '@logux/eslint-config': 47.2.0_dtajt5vwj6zgdbycel5yvnfusa
       '@logux/stylelint-config': 0.11.0_stylelint@14.11.0
       eslint: 8.22.0
-      eslint-config-standard: 17.0.0_eajzxmi3zels7cxxzs557zaf3u
+      eslint-config-standard: 17.0.0_e2brn7tkp6qxostmvf2l67odqm
       eslint-plugin-import: 2.26.0_eslint@8.22.0
       eslint-plugin-n: 15.2.5_eslint@8.22.0
       eslint-plugin-prefer-let: 3.0.1
-      eslint-plugin-promise: 6.0.0_eslint@8.22.0
+      eslint-plugin-promise: 6.0.1_eslint@8.22.0
       nano-staged: 0.8.0
       prettier: 2.7.1
       simple-git-hooks: 2.8.0
@@ -194,7 +194,7 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@logux/eslint-config/47.2.0_3hkaelpnrfeekbbmf2fwrl6hce:
+  /@logux/eslint-config/47.2.0_dtajt5vwj6zgdbycel5yvnfusa:
     resolution: {integrity: sha512-nNPPkw+kfA2bLyhkxaqGzd3MWSN4S2dUf69xo2syskBd5ZfFk2WT9ssO+yDDUd26yNgN3AmweKztEwyUim9wOQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -206,11 +206,11 @@ packages:
       eslint-plugin-promise: ^6.0.0
     dependencies:
       eslint: 8.22.0
-      eslint-config-standard: 17.0.0_eajzxmi3zels7cxxzs557zaf3u
+      eslint-config-standard: 17.0.0_e2brn7tkp6qxostmvf2l67odqm
       eslint-plugin-import: 2.26.0_eslint@8.22.0
       eslint-plugin-n: 15.2.5_eslint@8.22.0
       eslint-plugin-prefer-let: 3.0.1
-      eslint-plugin-promise: 6.0.0_eslint@8.22.0
+      eslint-plugin-promise: 6.0.1_eslint@8.22.0
     dev: true
 
   /@logux/stylelint-config/0.11.0_stylelint@14.11.0:
@@ -221,7 +221,7 @@ packages:
       stylelint: 14.11.0
       stylelint-config-recess-order: 3.0.0_stylelint@14.11.0
       stylelint-config-standard: 27.0.0_stylelint@14.11.0
-      stylelint-gamut: 1.2.6_stylelint@14.11.0
+      stylelint-gamut: 1.2.8_stylelint@14.11.0
       stylelint-order: 5.0.0_stylelint@14.11.0
     dev: true
 
@@ -462,7 +462,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001383
-      electron-to-chromium: 1.4.225
+      electron-to-chromium: 1.4.230
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
     dev: false
@@ -779,8 +779,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /electron-to-chromium/1.4.225:
-    resolution: {integrity: sha512-ICHvGaCIQR3P88uK8aRtx8gmejbVJyC6bB4LEC3anzBrIzdzC7aiZHY4iFfXhN4st6I7lMO0x4sgBHf/7kBvRw==}
+  /electron-to-chromium/1.4.230:
+    resolution: {integrity: sha512-3pwjAK0qHSDN9+YAF4fJknsSruP7mpjdWzUSruIJD/JCH77pEh0SorEyb3xVaKkfwk2tzjOt2D8scJ0KAdfXLA==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -1070,7 +1070,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-standard/17.0.0_eajzxmi3zels7cxxzs557zaf3u:
+  /eslint-config-standard/17.0.0_e2brn7tkp6qxostmvf2l67odqm:
     resolution: {integrity: sha512-/2ks1GKyqSOkH7JFvXJicu0iMpoojkwB+f5Du/1SC0PtBL+s8v30k9njRZ21pm2drKYm2342jFnGWzttxPmZVg==}
     peerDependencies:
       eslint: ^8.0.1
@@ -1081,7 +1081,7 @@ packages:
       eslint: 8.22.0
       eslint-plugin-import: 2.26.0_eslint@8.22.0
       eslint-plugin-n: 15.2.5_eslint@8.22.0
-      eslint-plugin-promise: 6.0.0_eslint@8.22.0
+      eslint-plugin-promise: 6.0.1_eslint@8.22.0
     dev: true
 
   /eslint-import-resolver-node/0.3.6:
@@ -1186,8 +1186,8 @@ packages:
       requireindex: 1.2.0
     dev: true
 
-  /eslint-plugin-promise/6.0.0_eslint@8.22.0:
-    resolution: {integrity: sha512-7GPezalm5Bfi/E22PnQxDWH2iW9GTvAlUNTztemeHb6c1BniSyoeTrM87JkC0wYdi6aQrZX9p2qEiAno8aTcbw==}
+  /eslint-plugin-promise/6.0.1_eslint@8.22.0:
+    resolution: {integrity: sha512-uM4Tgo5u3UWQiroOyDEsYcVMOo7re3zmno0IZmB5auxoaQNIceAbXEkSt8RNrKtaYehARHG06pYK6K1JhtP0Zw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
@@ -2718,8 +2718,8 @@ packages:
       stylelint-config-recommended: 9.0.0_stylelint@14.11.0
     dev: true
 
-  /stylelint-gamut/1.2.6_stylelint@14.11.0:
-    resolution: {integrity: sha512-XRIW6oUdx7RZNoh7UZpoYrYVWl1UlAjFyBnwBOf+r2yZtea5pthMeMb18WJfe5TdRn/d3lWWwItrba4jQVH+tg==}
+  /stylelint-gamut/1.2.8_stylelint@14.11.0:
+    resolution: {integrity: sha512-2HdcU5ggasoKQZTzL9F0PbbQp6TDJlCcRH1gyFdbXDyCQ+ZwEhvbFEhBnvF/WmZ2b4+qbqru3TEP4hUUToYjKw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       stylelint: ^14.0.0
