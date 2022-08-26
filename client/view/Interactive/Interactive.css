@@ -1,8 +1,4 @@
 .Interactive {
-  top: 0;
-
-  /* Hide scrollbar */
-  right: calc(-1 * (100vw - 100%));
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -14,6 +10,9 @@
 
   @media (width > 740px) {
     position: fixed;
+    top: 0;
+    /* Hide scrollbar */
+    right: calc(-1 * (100vw - 100%));
     height: 100vh;
     overflow-y: scroll;
   }
