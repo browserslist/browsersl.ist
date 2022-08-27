@@ -6,6 +6,7 @@ import { updateVersions } from '../Versions/Versions.js'
 import { transformQuery } from './transformQuery.js'
 import { loadBrowsers } from './loadBrowsers.js'
 import { updateBar } from '../Bar/Bar.js'
+import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 
 let form = document.querySelector('[data-id=form]')
 let total = document.querySelector('[data-id=form_total]')
@@ -56,6 +57,7 @@ function handleFormSubmit(e) {
 
   changeUrl(query, region)
   updateStatsView(query, region)
+  updateQueryLinksRegion(region)
 }
 
 export function setFormValues({ query, region }) {
