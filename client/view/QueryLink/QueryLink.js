@@ -6,9 +6,9 @@ let links = document.querySelectorAll('a.QueryLink')
 
 for (let link of links) {
   let queryAttr = link.getAttribute('data-query')
-  let query =  queryAttr || link.textContent.trim()
+  let query = queryAttr || link.textContent.trim()
 
-  link.setAttribute('href', `?q=${query}`)
+  link.href = '?' + new URLSearchParams({ q: query })
 
   link.addEventListener('click', e => {
     e.preventDefault()
