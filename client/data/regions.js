@@ -5,27 +5,19 @@ export const DEFAULT_REGION = 'alt-ww'
 
 export const regionList = [...Object.keys(continents), ...countryCodes]
 
-export const regionGroups = {
-  continents: Object.entries(continents).map(([id, name]) => {
-    return {
-      id,
-      name
-    }
-  }),
-  countries: countryCodes.map(id => {
-    return {
-      id,
-      name: getCountryName(id)
-    }
-  })
+let comparer = new Intl.Collator('en-US')
+
+let getCountryName
+if ('Intl' in window && 'DisplayNames' in window.Intl) {
+  let namer = new Intl.DisplayNames('en-US', { type: 'region' })
+  getCountryName = id => namer.of(id)
+} else {
+  getCountryName = id => id
 }
 
-function getCountryName(id) {
-  let isIntlDisplayNameSupports =
-    'Intl' in window && 'DisplayNames' in window.Intl
-
-  // Show country `id` instead country fullname for old browsers
-  return isIntlDisplayNameSupports
-    ? new Intl.DisplayNames('en-US', { type: 'region' }).of(id)
-    : id
+export const regionGroups = {
+  continents: Object.entries(continents).map(([id, name]) => ({ id, name })),
+  countries: countryCodes
+    .map(id => ({ id, name: getCountryName(id) }))
+    .sort((a, b) => comparer.compare(a.name, b.name))
 }
