@@ -9,7 +9,6 @@ const REGIONS_LIST_PATH = join(ROOT, 'node_modules/caniuse-lite/data/regions')
 
 function getCaniuseCountries() {
   let regionCodes = readdirSync(REGIONS_LIST_PATH).map(f => f.split('.js')[0])
-
   return regionCodes
     .filter(regionCode => {
       let isContinentCode = regionCode.includes('alt-')
