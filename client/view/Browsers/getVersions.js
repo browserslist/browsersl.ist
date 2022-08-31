@@ -15,8 +15,8 @@ function groupZeroCoverageVersions(acc, currentItem, i, arr) {
   let isNumericVersion = !isNaN(version)
 
   if (
-    coverage === MIN_COVERAGE_GROUP &&
-    prevItem.coverage === MIN_COVERAGE_GROUP &&
+    coverage <= MIN_COVERAGE_GROUP &&
+    prevItem.coverage <= MIN_COVERAGE_GROUP &&
     isNumericVersion
   ) {
     prevItem.coverage += coverage
