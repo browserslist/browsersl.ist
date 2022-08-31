@@ -47,10 +47,10 @@ let getVersion = version => {
   if (version.includes('-')) {
     let minorVersionRange = version.split('-')
     let lastMinorVersion = minorVersionRange[minorVersionRange.length - 1]
-    return parseInt(lastMinorVersion, 10)
+    return Number(lastMinorVersion)
   }
 
-  return parseInt(version, 10)
+  return Number(version)
 }
 
 export function updateBrowsersStats(data) {
