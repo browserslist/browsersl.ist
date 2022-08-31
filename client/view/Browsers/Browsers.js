@@ -1,6 +1,7 @@
 import { formatPercent, createTag } from '../../lib/utils.js'
 import * as browsersIcons from '../../data/browsers-logos.js'
 import wikipediaLinks from '../../data/wikipedia-links.js'
+import getVersions from './getVersions.js'
 
 let container = document.querySelector('[data-id=browsers]')
 let table = document.querySelector('[data-id=browsers_table]')
@@ -42,14 +43,7 @@ function createLine(...items) {
 export function updateBrowsersStats(data) {
   table.replaceChildren(
     ...data.map(({ id, name, versions: versionsInput }) => {
-      let versions = Object.entries(versionsInput)
-        .sort(([versionA], [versionB]) => versionB - versionA)
-        .map(([version, coverage]) => {
-          return {
-            version,
-            coverage
-          }
-        })
+      let versions = getVersions(versionsInput)
 
       let iconCell = createTag('td', ['Browsers_cell'])
       iconCell.setAttribute('rowspan', versions.length)
