@@ -19,7 +19,8 @@ function groupZeroCoverageVersions(acc, currentItem, i, arr) {
     prevItem.coverage <= MIN_COVERAGE_GROUP &&
     isNumericVersion
   ) {
-    prevItem.coverage += coverage
+    // BUG fix for preview
+    prevItem.coverage = coverage > MIN_COVERAGE_GROUP ? coverage : MIN_COVERAGE_GROUP
     prevItem.version.push(version)
 
     if (prevItem.version?.length > 1 && arr.length === i + 1) {
