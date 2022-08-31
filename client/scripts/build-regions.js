@@ -18,21 +18,22 @@ function getCaniuseCountries() {
     .sort((a, b) => b - a)
 }
 
-let regions = {
-  continents: {
-    'alt-ww': 'Global',
-    'alt-af': 'Africa',
-    'alt-an': 'Antarctica',
-    'alt-as': 'Asia',
-    'alt-eu': 'Europe',
-    'alt-na': 'North America',
-    'alt-oc': 'Oceania',
-    'alt-sa': 'South America'
-  },
-  countryCodes: getCaniuseCountries()
-}
-
-writeFileSync(DATA_REGION_FILE, JSON.stringify(regions))
+writeFileSync(
+  DATA_REGION_FILE,
+  JSON.stringify({
+    continents: {
+      'alt-ww': 'Global',
+      'alt-af': 'Africa',
+      'alt-an': 'Antarctica',
+      'alt-as': 'Asia',
+      'alt-eu': 'Europe',
+      'alt-na': 'North America',
+      'alt-oc': 'Oceania',
+      'alt-sa': 'South America'
+    },
+    countryCodes: getCaniuseCountries()
+  })
+)
 process.stdout.write(
   `A file "client/${DATA_REGION_FILE}" with regions has been created\n`
 )
