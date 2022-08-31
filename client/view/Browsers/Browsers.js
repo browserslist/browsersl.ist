@@ -39,11 +39,27 @@ function createLine(...items) {
   return tr
 }
 
+let getVersion = version => {
+  // Show Safari Technology Preview at the top of the list
+  if (version === 'TP') {
+    return Infinity
+  }
+  if (version.includes('-')) {
+    let minorVersionRange = version.split('-')
+    let lastMinorVersion = minorVersionRange[minorVersionRange.length - 1]
+    return parseInt(lastMinorVersion, 10)
+  }
+
+  return parseInt(version, 10)
+}
+
 export function updateBrowsersStats(data) {
   table.replaceChildren(
     ...data.map(({ id, name, versions: versionsInput }) => {
       let versions = Object.entries(versionsInput)
-        .sort(([versionA], [versionB]) => versionB - versionA)
+        .sort(([versionA], [versionB]) => {
+          return getVersion(versionB) - getVersion(versionA)
+        })
         .map(([version, coverage]) => {
           return {
             version,
