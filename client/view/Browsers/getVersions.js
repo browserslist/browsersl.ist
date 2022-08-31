@@ -1,4 +1,4 @@
-const MIN_COVERAGE_GROUP = 0
+const MIN_COVERAGE_GROUP = 0.05
 
 export default function getVersions(versionsInput) {
   let versions = Object.entries(versionsInput)
