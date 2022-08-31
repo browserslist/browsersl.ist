@@ -1,12 +1,12 @@
 import { DEFAULT_REGION, regionList, regionGroups } from '../../data/regions.js'
 import { updateBrowsersStats, toggleBrowsers } from '../Browsers/Browsers.js'
 import { debounce, formatPercent, createTag } from '../../lib/utils.js'
+import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { transformQuery } from './transformQuery.js'
 import { loadBrowsers } from './loadBrowsers.js'
 import { updateBar } from '../Bar/Bar.js'
-import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 
 let form = document.querySelector('[data-id=form]')
 let total = document.querySelector('[data-id=form_total]')
