@@ -44,7 +44,7 @@ regionSelect.addEventListener('change', () => {
 })
 
 submitFormWithUrlParams()
-window.addEventListener('popstate', () => {
+window.addEventListener('hashchange', () => {
   submitFormWithUrlParams()
 })
 
@@ -158,7 +158,7 @@ function changeUrl(query, region) {
     urlParams.set('region', region)
   }
 
-  history.pushState({}, null, '#' + urlParams)
+  location.hash = '#' + urlParams
 }
 
 function submitFormWithUrlParams() {
