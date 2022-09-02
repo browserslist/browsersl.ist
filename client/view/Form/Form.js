@@ -43,6 +43,13 @@ regionSelect.addEventListener('change', () => {
   submitForm()
 })
 
+if (location.search) {
+  let prev = new URLSearchParams(location.search)
+  if (prev.get('q')) {
+    location.href = '/#' + prev.toString()
+  }
+}
+
 submitFormWithUrlParams()
 window.addEventListener('popstate', () => {
   submitFormWithUrlParams()
