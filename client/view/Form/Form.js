@@ -160,11 +160,13 @@ function changeUrl(query, region) {
     urlParams.set('region', region)
   }
 
-  history.pushState({}, query, '?' + urlParams)
+  if (location.hash !== urlParams) {
+    history.pushState({}, query, '#' + urlParams)
+  }
 }
 
 function submitFormWithUrlParams() {
-  let urlParams = new URLSearchParams(location.search)
+  let urlParams = new URLSearchParams(location.hash.slice(1))
 
   let query = urlParams.get('q')
   let region = urlParams.get('region')
