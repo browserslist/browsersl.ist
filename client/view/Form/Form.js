@@ -68,11 +68,9 @@ function handleFormSubmit(e) {
 }
 
 export function setFormValues({ query, region }) {
-  if (query) {
-    textarea.value = query
-    form.classList.remove('is-error')
-    form.classList.remove('is-warning')
-  }
+  textarea.value = query
+  form.classList.remove('is-error')
+  form.classList.remove('is-warning')
 
   if (!region) region = 'alt-ww'
   let isRegionExists = regionList.includes(region)
@@ -177,8 +175,6 @@ function submitFormWithUrlParams() {
 
   let query = urlParams.get('q')
   let region = urlParams.get('region')
-
-  if (!query) return
 
   setFormValues({ query, region })
   submitForm()
