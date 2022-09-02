@@ -52,17 +52,11 @@ test('Integration tests', async t => {
     match(html, /<body/)
   })
 
-  await t.test('loads static `/favicon.ico` with correct type', async () => {
+  await t.test('loads static `/favicon.ico`', async () => {
     let url = new URL('/favicon.ico', base)
     let response = await fetch(url)
     equal(response.status, 200)
     equal(response.headers.get('Content-Type'), 'image/x-icon')
-  })
-
-  await t.test('loads static `/favicon.ico` with 1 hour cache', async () => {
-    let url = new URL('/favicon.ico', base)
-    let response = await fetch(url)
-    equal(response.status, 200)
     equal(response.headers.get('Cache-Control'), 'max-age=3600')
   })
 
@@ -72,7 +66,7 @@ test('Integration tests', async t => {
     equal(response.status, 301)
     equal(
       response.headers.get('Location'),
-      'http://localhost:3000/?utm=1#q=defaults%2C%20ie%2011'
+      'http://localhost:3000/?utm=1#q=defaults%2C+ie+11'
     )
   })
 
