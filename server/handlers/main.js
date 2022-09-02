@@ -17,7 +17,15 @@ const HEADERS = {
 }
 const INDEX = new URL('../../client/dist/index.html', import.meta.url)
 
-export async function handleMain(req, res) {
+export async function handleMain(req, res, url) {
+  if (url.searchParams.get('q')) {
+    url.hash = '#q=' + encodeURIComponent(url.searchParams.get('q'))
+    url.searchParams.delete('q')
+    res.writeHead(301, { Location: url.toString() })
+    res.end()
+    return
+  }
+
   try {
     let { data } = await getFileData(INDEX, true)
     let headers = HEADERS

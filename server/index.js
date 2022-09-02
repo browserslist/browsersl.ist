@@ -15,18 +15,19 @@ const App = http.createServer(async (req, res) => {
     return
   }
 
-  let { pathname } = new URL(req.url, `http://${req.headers.host}/`)
-  switch (pathname) {
+  let url = new URL(req.url, `http://${req.headers.host}/`)
+
+  switch (url.pathname) {
     case '/':
-      handleMain(req, res)
+      handleMain(req, res, url)
       break
 
     case '/api/browsers':
-      handleAPIBrowsers(req, res)
+      handleAPIBrowsers(req, res, url)
       break
 
     default:
-      handleStatic(req, res)
+      handleStatic(req, res, url)
       break
   }
 })
