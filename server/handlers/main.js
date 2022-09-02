@@ -1,6 +1,6 @@
 import { URL } from 'node:url'
 
-import { sendResponse, sendResponseError } from '../lib/send-response.js'
+import { sendResponse, sendError } from '../lib/send-response.js'
 import { getFileData } from '../lib/get-file-data.js'
 
 const HEADERS = {
@@ -36,9 +36,9 @@ export async function handleMain(req, res, url) {
     sendResponse(res, 200, headers, data)
   } catch (error) {
     if (error.httpStatus) {
-      sendResponseError(res, error.httpStatus, error.message)
+      sendError(res, error.httpStatus, error.message)
     } else {
-      sendResponseError(res, 500, 'Internal Server Error')
+      sendError(res, 500, 'Internal Server Error')
     }
   }
 }

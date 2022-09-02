@@ -16,7 +16,7 @@ export function sendResponseAPI(res, status, data) {
   res.end()
 }
 
-export function sendResponseError(res, status, message) {
+export function sendError(res, status, message) {
   res.writeHead(status, {
     'Content-Type': 'text/plain'
   })
