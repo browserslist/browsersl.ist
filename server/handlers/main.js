@@ -1,4 +1,4 @@
-import { URL } from 'node:url'
+import { URL, URLSearchParams } from 'node:url'
 
 import { sendResponse, sendError } from '../lib/send-response.js'
 import { getFileData } from '../lib/get-file-data.js'
@@ -18,9 +18,15 @@ const HEADERS = {
 const INDEX = new URL('../../client/dist/index.html', import.meta.url)
 
 export async function handleMain(req, res, url) {
-  if (url.searchParams.get('q')) {
-    url.hash = '#q=' + encodeURIComponent(url.searchParams.get('q'))
-    url.searchParams.delete('q')
+  if (url.searchParams.has('q')) {
+    let cleaned = new URLSearchParams()
+    for (let param of ['q', 'region']) {
+      if (url.searchParams.has(param)) {
+        cleaned.set(param, url.searchParams.get(param))
+        url.searchParams.delete(param)
+      }
+    }
+    url.hash = '#' + cleaned.toString()
     res.writeHead(301, { Location: url.toString() })
     res.end()
     return
