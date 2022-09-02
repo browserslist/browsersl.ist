@@ -7,10 +7,7 @@ import { URL } from 'node:url'
 let { version: bv } = importJSON('../node_modules/browserslist/package.json')
 let { version: cv } = importJSON('../node_modules/caniuse-lite/package.json')
 
-export const QUERY_DEFAULTS = 'defaults'
-export const REGION_GLOBAL = 'alt-ww'
-
-export default async function getBrowsers(query, region) {
+export async function getBrowsers(query, region) {
   let browsersByQuery = []
 
   try {
@@ -32,7 +29,7 @@ export default async function getBrowsers(query, region) {
       versionCoverage = null
     } else {
       versionCoverage = roundNumber(
-        region === REGION_GLOBAL
+        region === 'alt-ww'
           ? getGlobalCoverage(id, version)
           : await getRegionCoverage(id, version, region)
       )

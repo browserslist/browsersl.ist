@@ -1,9 +1,9 @@
 import http from 'node:http'
 import { URL } from 'node:url'
 
-import handleMain from './handlers/main.js'
-import handleAPIBrowsers from './handlers/api-browsers.js'
-import handleStatic from './handlers/static.js'
+import { handleAPIBrowsers } from './handlers/api-browsers.js'
+import { handleStatic } from './handlers/static.js'
+import { handleMain } from './handlers/main.js'
 
 const PORT = process.env.PORT || 3000
 
@@ -15,18 +15,19 @@ const App = http.createServer(async (req, res) => {
     return
   }
 
-  let { pathname } = new URL(req.url, `http://${req.headers.host}/`)
-  switch (pathname) {
+  let url = new URL(req.url, `http://${req.headers.host}/`)
+
+  switch (url.pathname) {
     case '/':
-      handleMain(req, res)
+      handleMain(req, res, url)
       break
 
     case '/api/browsers':
-      handleAPIBrowsers(req, res)
+      handleAPIBrowsers(req, res, url)
       break
 
     default:
-      handleStatic(req, res)
+      handleStatic(req, res, url)
       break
   }
 })

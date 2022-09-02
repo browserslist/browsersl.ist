@@ -4,15 +4,19 @@ import { scrollToInteractive } from '../Interactive/Interactive.js'
 
 let links = document.querySelectorAll('a.QueryLink')
 
+function parse(href) {
+  return new URLSearchParams(new URL(href).hash.slice(1))
+}
+
 for (let link of links) {
   let queryAttr = link.getAttribute('data-query')
   let query = queryAttr || link.textContent.trim()
 
-  link.href = '?' + new URLSearchParams({ q: query })
+  link.href = '#' + new URLSearchParams({ q: query })
 
   link.addEventListener('click', e => {
     e.preventDefault()
-    let region = new URL(link.href).searchParams.get('region')
+    let region = parse(link.href).get('region')
 
     setFormValues({ query, region })
     submitForm()
@@ -22,7 +26,7 @@ for (let link of links) {
 
 export function updateQueryLinksRegion(region) {
   for (let link of links) {
-    let linkParams = new URL(link.href).searchParams
+    let linkParams = parse(link.href)
     let prevRegion = linkParams.get('region')
 
     if (region === prevRegion) {
@@ -35,6 +39,6 @@ export function updateQueryLinksRegion(region) {
       linkParams.delete('region')
     }
 
-    link.setAttribute('href', '?' + linkParams)
+    link.setAttribute('href', '#' + linkParams)
   }
 }

@@ -1,7 +1,7 @@
 import { URL } from 'node:url'
 
-import { sendResponse, sendResponseError } from '../lib/send-response.js'
-import getFileData from '../lib/get-file-data.js'
+import { sendResponse, sendError } from '../lib/send-response.js'
+import { getFileData } from '../lib/get-file-data.js'
 
 const CLIENT_DIR = '../../client'
 const DIST_DIR = '/dist'
@@ -17,7 +17,7 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2'
 }
 
-export default async function handleStatic(req, res) {
+export async function handleStatic(req, res) {
   let filePath = new URL(`${CLIENT_DIR}${DIST_DIR}${req.url}`, import.meta.url)
 
   try {
@@ -31,9 +31,9 @@ export default async function handleStatic(req, res) {
     sendResponse(res, 200, resHeaders, data)
   } catch (error) {
     if (error.httpStatus) {
-      sendResponseError(res, error.httpStatus, error.message)
+      sendError(res, error.httpStatus, error.message)
     } else {
-      sendResponseError(res, 500, 'Internal Server Error')
+      sendError(res, 500, 'Internal Server Error')
     }
   }
 }

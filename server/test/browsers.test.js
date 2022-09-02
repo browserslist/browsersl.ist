@@ -1,7 +1,7 @@
-import test from 'node:test'
 import { equal, notEqual, ok, match } from 'node:assert'
+import test from 'node:test'
 
-import getBrowsers from '../lib/get-browsers.js'
+import { getBrowsers } from '../lib/get-browsers.js'
 
 test('Throws error for wrong browserslist `query`', async () => {
   let error
@@ -41,14 +41,14 @@ test('Returns Node.js versions without coverage`', async () => {
   equal(data.browsers[0].coverage, null)
 })
 
-test('Сoverage of all browsers should differ in different regions', async () => {
+test('Coverage of all browsers should differ in regions', async () => {
   let continentData = await getBrowsers('>1%', 'alt-ww')
   let countryData = await getBrowsers('>1%', 'IT')
 
   notEqual(continentData.coverage, countryData.coverage)
 })
 
-test('Сoverage for browser should differ in different regions', async () => {
+test('Coverage for browser should differ in different regions', async () => {
   let continentData = await getBrowsers('last 2 Chrome versions', 'alt-eu')
   let countryData = await getBrowsers('last 2 Chrome versions', 'NP')
 

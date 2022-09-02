@@ -1,11 +1,11 @@
 import { URL } from 'node:url'
 
-import getFileData from '../lib/get-file-data.js'
-import { sendResponse, sendResponseError } from '../lib/send-response.js'
+import { sendResponse, sendError } from '../lib/send-response.js'
+import { getFileData } from '../lib/get-file-data.js'
 
-const responseHeaders = {
+const HEADERS = {
   'Content-Type': 'text/html; charset=utf-8',
-  'Cache-Control': 'public, max-age=300',
+  'Cache-Control': 'public, max-age=604800',
   'Content-Security-Policy':
     `object-src 'none'; ` +
     `frame-ancestors 'none'; ` +
@@ -15,18 +15,30 @@ const responseHeaders = {
   'X-XSS-Protection': '1; mode=block',
   'X-Content-Type-Options': 'nosniff'
 }
+const INDEX = new URL('../../client/dist/index.html', import.meta.url)
 
-export default async function handleMain(req, res) {
-  let filePath = new URL('../../client/dist/index.html', import.meta.url)
+export async function handleMain(req, res, url) {
+  if (url.searchParams.get('q')) {
+    url.hash = '#q=' + encodeURIComponent(url.searchParams.get('q'))
+    url.searchParams.delete('q')
+    res.writeHead(301, { Location: url.toString() })
+    res.end()
+    return
+  }
 
   try {
-    let { data } = await getFileData(filePath, true)
-    sendResponse(res, 200, responseHeaders, data)
+    let { data } = await getFileData(INDEX, true)
+    let headers = HEADERS
+    if (!req.headers['X-Forwarded-For']) {
+      headers = { ...HEADERS }
+      delete headers['Cache-Control']
+    }
+    sendResponse(res, 200, headers, data)
   } catch (error) {
     if (error.httpStatus) {
-      sendResponseError(res, error.httpStatus, error.message)
+      sendError(res, error.httpStatus, error.message)
     } else {
-      sendResponseError(res, 500, 'Internal Server Error')
+      sendError(res, 500, 'Internal Server Error')
     }
   }
 }

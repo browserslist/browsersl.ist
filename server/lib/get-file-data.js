@@ -5,7 +5,7 @@ import { parse } from 'node:path'
 const IS_PRODUCTION = process.env.NODE_ENV === 'production'
 const CACHE = {}
 
-export default async function getFileData(filePath, shouldBeCached = false) {
+export async function getFileData(filePath, shouldBeCached = false) {
   shouldBeCached = shouldBeCached && IS_PRODUCTION
 
   if (shouldBeCached && filePath in CACHE) {

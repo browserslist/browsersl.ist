@@ -1,17 +1,9 @@
-import { URL } from 'node:url'
-
-import getBrowsers, {
-  QUERY_DEFAULTS,
-  REGION_GLOBAL
-} from '../lib/get-browsers.js'
 import { sendResponseAPI } from '../lib/send-response.js'
+import { getBrowsers } from '../lib/get-browsers.js'
 
-export default async function handleAPIBrowsers(req, res) {
-  let { searchParams: params } = new URL(req.url, `http://${req.headers.host}/`)
-
-  let query = params.get('q') || QUERY_DEFAULTS
-  let region = params.get('region') || REGION_GLOBAL
-
+export async function handleAPIBrowsers(req, res, url) {
+  let query = url.searchParams.get('q') || 'defaults'
+  let region = url.searchParams.get('region') || 'alt-ww'
   try {
     sendResponseAPI(res, 200, await getBrowsers(query, region))
   } catch (error) {

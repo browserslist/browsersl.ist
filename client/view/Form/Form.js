@@ -44,7 +44,7 @@ regionSelect.addEventListener('change', () => {
 })
 
 submitFormWithUrlParams()
-window.addEventListener('popstate', () => {
+window.addEventListener('hashchange', () => {
   submitFormWithUrlParams()
 })
 
@@ -61,11 +61,9 @@ function handleFormSubmit(e) {
 }
 
 export function setFormValues({ query, region }) {
-  if (query) {
-    textarea.value = query
-    form.classList.remove('is-error')
-    form.classList.remove('is-warning')
-  }
+  textarea.value = query
+  form.classList.remove('is-error')
+  form.classList.remove('is-warning')
 
   if (!region) region = 'alt-ww'
   let isRegionExists = regionList.includes(region)
@@ -160,16 +158,14 @@ function changeUrl(query, region) {
     urlParams.set('region', region)
   }
 
-  history.pushState({}, query, '?' + urlParams)
+  location.hash = '#' + urlParams
 }
 
 function submitFormWithUrlParams() {
-  let urlParams = new URLSearchParams(location.search)
+  let urlParams = new URLSearchParams(location.hash.slice(1))
 
   let query = urlParams.get('q')
   let region = urlParams.get('region')
-
-  if (!query) return
 
   setFormValues({ query, region })
   submitForm()

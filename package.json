@@ -13,7 +13,7 @@
     "build": "pnpm -r build",
     "lint": "eslint . && stylelint **/*.css",
     "test:run": "node scripts/check-versions.js && pnpm audit --prod && pnpm lint",
-    "test": "pnpm -r --include-workspace-root test:run"
+    "test": "pnpm prebuild && pnpm build && pnpm -r --include-workspace-root test:run"
   },
   "dependencies": {
     "ssdeploy": "^0.9.2"
