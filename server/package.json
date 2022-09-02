@@ -7,6 +7,9 @@
     "test:run": "pnpm -r build && node --test test/*.test.js",
     "test": "pnpm test:run"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "browserslist": "^4.21.3",
     "browserslist-lint": "^0.1.1",

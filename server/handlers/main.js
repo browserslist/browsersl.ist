@@ -5,7 +5,7 @@ import { sendResponse, sendResponseError } from '../lib/send-response.js'
 
 const responseHeaders = {
   'Content-Type': 'text/html; charset=utf-8',
-  'Cache-Control': 'public, max-age=300',
+  'Cache-Control': 'public, max-age=604800',
   'Content-Security-Policy':
     `object-src 'none'; ` +
     `frame-ancestors 'none'; ` +
@@ -21,7 +21,14 @@ export default async function handleMain(req, res) {
 
   try {
     let { data } = await getFileData(filePath, true)
-    sendResponse(res, 200, responseHeaders, data)
+    let headers = responseHeaders
+    if (!req.headers['X-Forwarded-For']) {
+      headers = {
+        ...responseHeaders,
+        'Cache-Control': 'public, max-age=300'
+      }
+    }
+    sendResponse(res, 200, headers, data)
   } catch (error) {
     if (error.httpStatus) {
       sendResponseError(res, error.httpStatus, error.message)
