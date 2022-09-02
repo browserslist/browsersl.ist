@@ -1,7 +1,7 @@
 import { URL } from 'node:url'
 
 import { sendResponse, sendResponseError } from '../lib/send-response.js'
-import getFileData from '../lib/get-file-data.js'
+import { getFileData } from '../lib/get-file-data.js'
 
 const CLIENT_DIR = '../../client'
 const DIST_DIR = '/dist'
@@ -17,7 +17,7 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2'
 }
 
-export default async function handleStatic(req, res) {
+export async function handleStatic(req, res) {
   let filePath = new URL(`${CLIENT_DIR}${DIST_DIR}${req.url}`, import.meta.url)
 
   try {

@@ -1,12 +1,13 @@
 import { URL } from 'node:url'
 
-import getBrowsers, {
+import {
   QUERY_DEFAULTS,
-  REGION_GLOBAL
+  REGION_GLOBAL,
+  getBrowsers
 } from '../lib/get-browsers.js'
 import { sendResponseAPI } from '../lib/send-response.js'
 
-export default async function handleAPIBrowsers(req, res) {
+export async function handleAPIBrowsers(req, res) {
   let { searchParams: params } = new URL(req.url, `http://${req.headers.host}/`)
 
   let query = params.get('q') || QUERY_DEFAULTS

@@ -1,9 +1,9 @@
 import http from 'node:http'
 import { URL } from 'node:url'
 
-import handleMain from './handlers/main.js'
-import handleAPIBrowsers from './handlers/api-browsers.js'
-import handleStatic from './handlers/static.js'
+import { handleAPIBrowsers } from './handlers/api-browsers.js'
+import { handleStatic } from './handlers/static.js'
+import { handleMain } from './handlers/main.js'
 
 const PORT = process.env.PORT || 3000
 

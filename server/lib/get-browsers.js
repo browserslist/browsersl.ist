@@ -10,7 +10,7 @@ let { version: cv } = importJSON('../node_modules/caniuse-lite/package.json')
 export const QUERY_DEFAULTS = 'defaults'
 export const REGION_GLOBAL = 'alt-ww'
 
-export default async function getBrowsers(query, region) {
+export async function getBrowsers(query, region) {
   let browsersByQuery = []
 
   try {

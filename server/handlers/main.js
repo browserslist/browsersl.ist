@@ -1,9 +1,9 @@
 import { URL } from 'node:url'
 
-import getFileData from '../lib/get-file-data.js'
 import { sendResponse, sendResponseError } from '../lib/send-response.js'
+import { getFileData } from '../lib/get-file-data.js'
 
-const responseHeaders = {
+const HEADERS = {
   'Content-Type': 'text/html; charset=utf-8',
   'Cache-Control': 'public, max-age=604800',
   'Content-Security-Policy':
@@ -15,18 +15,15 @@ const responseHeaders = {
   'X-XSS-Protection': '1; mode=block',
   'X-Content-Type-Options': 'nosniff'
 }
+const INDEX = new URL('../../client/dist/index.html', import.meta.url)
 
-export default async function handleMain(req, res) {
-  let filePath = new URL('../../client/dist/index.html', import.meta.url)
-
+export async function handleMain(req, res) {
   try {
-    let { data } = await getFileData(filePath, true)
-    let headers = responseHeaders
+    let { data } = await getFileData(INDEX, true)
+    let headers = HEADERS
     if (!req.headers['X-Forwarded-For']) {
-      headers = {
-        ...responseHeaders,
-        'Cache-Control': 'public, max-age=300'
-      }
+      headers = { ...HEADERS }
+      delete headers['Cache-Control']
     }
     sendResponse(res, 200, headers, data)
   } catch (error) {
