@@ -1,10 +1,10 @@
 name: Preview
 on:
   pull_request:
-env:
-  FORCE_COLOR: 2
+permissions:
+  contents: read
+  deployments: write
 jobs:
-
   preview:
     name: Deploy
     runs-on: ubuntu-latest
