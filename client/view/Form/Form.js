@@ -158,7 +158,7 @@ function changeUrl(query, region) {
     urlParams.set('region', region)
   }
 
-  history.pushState({}, query, '#' + urlParams)
+  history.pushState({}, '', '#' + urlParams)
 }
 
 function submitFormWithUrlParams() {
