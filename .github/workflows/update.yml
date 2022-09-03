@@ -2,8 +2,7 @@ name: Update
 on:
   schedule:
     - cron: "20 12 * * *"
-env:
-  FORCE_COLOR: 2
+permissions:
 jobs:
   update:
     name: Check
