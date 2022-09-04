@@ -16,14 +16,6 @@ let regionSelect = document.querySelector('[data-id=form_region]')
 let errorMessage = document.querySelector('[data-id=form_error]')
 let warningMessage = document.querySelector('[data-id=form_warning]')
 
-form.addEventListener('submit', handleFormSubmit)
-
-let submitFormDebounced = debounce(submitForm, 300)
-
-textarea.addEventListener('input', () => {
-  submitFormDebounced()
-})
-
 function createOptgroup(groupName, regionsGroup) {
   let optgroup = createTag('optgroup')
   optgroup.label = groupName
@@ -35,29 +27,6 @@ function createOptgroup(groupName, regionsGroup) {
     })
   )
   return optgroup
-}
-regionSelect.appendChild(createOptgroup('Continents', regionGroups.continents))
-regionSelect.appendChild(createOptgroup('Countries', regionGroups.countries))
-
-regionSelect.addEventListener('change', () => {
-  submitForm()
-})
-
-submitFormWithUrlParams()
-window.addEventListener('hashchange', () => {
-  submitFormWithUrlParams()
-})
-
-function handleFormSubmit(e) {
-  e.preventDefault()
-
-  let formData = new FormData(form)
-  let query = transformQuery(formData.get('query'))
-  let region = formData.get('region')
-
-  changeUrl(query, region)
-  updateStatsView(query, region)
-  updateQueryLinksRegion(region)
 }
 
 export function setFormValues({ query, region }) {
@@ -102,6 +71,7 @@ function renderWarning(message) {
   })
 }
 
+let prev = ''
 async function updateStatsView(query, region) {
   if (query.length === 0) {
     formCoverage.hidden = true
@@ -109,6 +79,9 @@ async function updateStatsView(query, region) {
     toggleHedgehog(true)
     return
   }
+
+  if (prev === query + region) return
+  prev = query + region
 
   form.classList.add('is-loading')
   let data
@@ -174,3 +147,33 @@ function submitFormWithUrlParams() {
 export function focusForm() {
   textarea.focus()
 }
+
+regionSelect.appendChild(createOptgroup('Continents', regionGroups.continents))
+regionSelect.appendChild(createOptgroup('Countries', regionGroups.countries))
+
+regionSelect.addEventListener('change', () => {
+  submitForm()
+})
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+
+  let formData = new FormData(form)
+  let query = transformQuery(formData.get('query'))
+  let region = formData.get('region')
+
+  changeUrl(query, region)
+  updateStatsView(query, region)
+  updateQueryLinksRegion(region)
+})
+
+let submitFormDebounced = debounce(submitForm, 300)
+
+textarea.addEventListener('input', () => {
+  submitFormDebounced()
+})
+
+submitFormWithUrlParams()
+window.addEventListener('hashchange', () => {
+  submitFormWithUrlParams()
+})
