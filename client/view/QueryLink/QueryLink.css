@@ -8,11 +8,10 @@
   }
 }
 
-@media (hover) {
-  .QueryLink:hover > code,
-  .QueryLink:hover > pre {
-    background-color: var(--text-highlited-hover);
-  }
+.QueryLink code {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--accent);
 }
 
 .QueryLink > code {
@@ -20,7 +19,6 @@
   padding: 0 4px;
   font-weight: 300;
   color: var(--accent);
-  background-color: var(--text-highlited);
   border-radius: 4px;
 }
 
@@ -29,17 +27,25 @@
   flex-direction: column;
   padding: 12px;
   margin: 0;
-  font-size: 13px;
   line-height: 20px;
-  color: var(--accent);
-  background-color: var(--text-highlited);
   border-radius: 8px;
+}
+
+.QueryLink > code,
+.QueryLink > pre {
+  background-color: var(--text-highlited);
+}
+
+@media (hover) {
+  .QueryLink:hover > code,
+  .QueryLink:hover > pre {
+    background-color: var(--text-highlited-hover);
+  }
 }
 
 .QueryLink > pre > code {
   overflow: hidden;
   font-size: inherit;
-  font-weight: 300;
   white-space: pre-wrap;
   background-color: initial;
 }
