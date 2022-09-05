@@ -45,7 +45,6 @@
 
 .QueryLink > pre > code {
   overflow: hidden;
-  font-size: inherit;
   white-space: pre-wrap;
   background-color: initial;
 }
