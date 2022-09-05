@@ -1,6 +1,39 @@
 .QueryLink {
   display: inline-block;
   text-decoration: none;
+  border-radius: 4px;
+
+  &.is-pre {
+    border-radius: 8px;
+  }
+}
+
+.QueryLink code {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.QueryLink > code {
+  display: inline-block;
+  padding: 0 4px;
+  font-weight: 300;
+  color: var(--accent);
+  border-radius: 4px;
+}
+
+.QueryLink > pre {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  margin: 0;
+  line-height: 20px;
+  border-radius: 8px;
+}
+
+.QueryLink > code,
+.QueryLink > pre {
+  background-color: var(--text-highlited);
 }
 
 @media (hover) {
@@ -10,11 +43,8 @@
   }
 }
 
-.QueryLink > code {
-  display: inline-block;
-  padding: 0 4px;
-  font-weight: 300;
-  color: var(--accent);
-  background-color: var(--text-highlited);
-  border-radius: 4px;
+.QueryLink > pre > code {
+  overflow: hidden;
+  white-space: pre-wrap;
+  background-color: initial;
 }

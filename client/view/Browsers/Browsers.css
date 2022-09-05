@@ -21,7 +21,7 @@
 
 .Browsers_table {
   display: block;
-  border-spacing: 8px 0;
+  border-spacing: 6px 0;
 }
 
 .Browsers_cell {
@@ -54,6 +54,7 @@
   }
 
   @nest .Browsers_line:first-child &:nth-child(2) {
+    padding-left: 3px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
