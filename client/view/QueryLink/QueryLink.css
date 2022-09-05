@@ -1,6 +1,11 @@
 .QueryLink {
   display: inline-block;
   text-decoration: none;
+  border-radius: 4px;
+
+  &.is-pre {
+    border-radius: 8px;
+  }
 }
 
 @media (hover) {
@@ -17,4 +22,24 @@
   color: var(--accent);
   background-color: var(--text-highlited);
   border-radius: 4px;
+}
+
+.QueryLink > pre {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--accent);
+  background-color: var(--text-highlited);
+  border-radius: 8px;
+}
+
+.QueryLink > pre > code {
+  overflow: hidden;
+  font-size: inherit;
+  font-weight: 300;
+  white-space: pre-wrap;
+  background-color: initial;
 }
