@@ -1,7 +1,7 @@
 name: Update
 on:
   schedule:
-    - cron: "20 12 * * *"
+    - cron: "0 0,12 * * *"
 permissions:
   contents: none
 jobs:
