@@ -31,8 +31,6 @@ function createOptgroup(groupName, regionsGroup) {
 
 export function setFormValues({ query, region }) {
   textarea.value = query
-  form.classList.remove('is-error')
-  form.classList.remove('is-warning')
 
   if (!region) region = 'alt-ww'
   let isRegionExists = regionList.includes(region)
@@ -51,25 +49,28 @@ function onNextChange(cb) {
 
 function renderError(message) {
   errorMessage.innerHTML = message
-  form.classList.add('is-error')
+  errorMessage.hidden = false
   textarea.setAttribute('aria-errormessage', 'form_error')
   textarea.setAttribute('aria-invalid', 'true')
   onNextChange(() => {
     textarea.removeAttribute('aria-errormessage')
     textarea.removeAttribute('aria-invalid')
     errorMessage.innerHTML = ''
-    form.classList.remove('is-error')
+    errorMessage.hidden = true
   })
 }
 
 function renderWarning(message) {
   warningMessage.innerHTML = message
-  form.classList.add('is-warning')
+  warningMessage.hidden = false
   onNextChange(() => {
     warningMessage.innerHTML = ''
-    form.classList.remove('is-warning')
+    warningMessage.hidden = true
   })
 }
+
+let formatHintText = text =>
+  `<p>${text.replace(/`([^`]+)`/g, '<strong>$1</strong>')}</p>`
 
 let prev = ''
 async function updateStatsView(query, region) {
@@ -89,7 +90,7 @@ async function updateStatsView(query, region) {
     data = await loadBrowsers(query, region)
   } catch (e) {
     if (e.name === 'ServerError') {
-      renderError(e.message)
+      renderError(formatHintText(e.message))
     } else {
       throw e
     }
@@ -105,10 +106,8 @@ async function updateStatsView(query, region) {
 
   if (lint.length > 0) {
     let linterWarning = lint
-      .map(({ message }) =>
-        message.replace(/`([^`]+)`/g, '<strong>$1</strong>')
-      )
-      .join('.<br />')
+      .map(({ message }) => formatHintText(message + '.'))
+      .join('')
     renderWarning(linterWarning)
   }
 
