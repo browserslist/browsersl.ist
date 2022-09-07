@@ -13,24 +13,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
-      - name: Install asdf
-        uses: asdf-vm/actions/setup@v1
-      - name: Cache asdf
-        id: asdf-cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.asdf
-          key: asdf-${{ hashFiles('**/.tool-versions') }}
-      - name: Install asdf tools
-        if: steps.asdf-cache.outputs.cache-hit != 'true'
-        uses: asdf-vm/actions/install@v1
-      - name: Cache pnpm modules
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-pnpm-modules
-        with:
-          path: ~/.local/share/pnpm/
-          key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install tools from asdf config
+        uses: ai/asdf-cache-action@v1
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Update dependencies
