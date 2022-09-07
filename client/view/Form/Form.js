@@ -44,7 +44,7 @@ export function submitForm() {
 }
 
 function onNextChange(cb) {
-  textarea.addEventListener('input', cb, { once: true })
+  form.addEventListener('submit', cb, { once: true })
 }
 
 function renderError(message) {
