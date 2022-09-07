@@ -18,7 +18,7 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
       - name: Install tools from asdf config
-        uses: ai/asdf-cache-action@main
+        uses: ai/asdf-cache-action@v1
         with:
           dependencies-cache: production
       - name: Install dependencies

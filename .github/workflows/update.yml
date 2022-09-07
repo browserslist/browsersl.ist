@@ -14,7 +14,7 @@ jobs:
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
       - name: Install tools from asdf config
-        uses: ai/asdf-cache-action@main
+        uses: ai/asdf-cache-action@v1
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Update dependencies
