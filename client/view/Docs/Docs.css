@@ -47,7 +47,6 @@
 }
 
 .Docs h4 {
-  margin-top: 24px;
   margin-bottom: 10px;
   font-size: 12px;
   font-weight: 700;
@@ -58,13 +57,15 @@
 
 .Docs summary h4 {
   display: inline-block;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .Docs details summary {
   width: fit-content;
+  margin-top: 24px;
   cursor: pointer;
   user-select: none;
+  border-radius: 4px;
 }
 
 .Docs details summary:active {
