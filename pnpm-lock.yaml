@@ -38,7 +38,7 @@ importers:
   client:
     specifiers:
       '@csstools/postcss-oklab-function': ^1.1.1
-      '@size-limit/file': ^8.0.1
+      '@size-limit/file': ^8.1.0
       autoprefixer: ^10.4.8
       caniuse-lite: ^1.0.30001390
       jstransformer-markdown-it: ^3.0.0
@@ -46,7 +46,7 @@ importers:
       postcss-media-minmax: ^5.0.0
       postcss-nesting: ^10.1.10
       postcss-opacity-percentage: ^1.1.2
-      size-limit: ^8.0.1
+      size-limit: ^8.1.0
       vite: ^3.1.0
       vite-plugin-pug-transformer: ^1.0.2
     dependencies:
@@ -61,8 +61,8 @@ importers:
       vite: 3.1.0
       vite-plugin-pug-transformer: 1.0.2_vite@3.1.0
     devDependencies:
-      '@size-limit/file': 8.0.1_size-limit@8.0.1
-      size-limit: 8.0.1
+      '@size-limit/file': 8.1.0_size-limit@8.1.0
+      size-limit: 8.1.0
 
   server:
     specifiers:
@@ -251,14 +251,14 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@size-limit/file/8.0.1_size-limit@8.0.1:
-    resolution: {integrity: sha512-kwgc5UJQIz5qbRow3atSiW2K7vEIIw4DelT4WLn09cOwcJgWs82Imgz2UqVivHJmCisn/ltPjT4qmxaDfjFflw==}
+  /@size-limit/file/8.1.0_size-limit@8.1.0:
+    resolution: {integrity: sha512-Ur+NgJSRHBnbQBrD8X2doxXYdBcVJsMxe2KfWrUmnZ6wYz09YKhQ1iYLqNztjf2yf/JEp00zp1vyhmimUQfUHQ==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 8.0.1
+      size-limit: 8.1.0
     dependencies:
       semver: 7.3.7
-      size-limit: 8.0.1
+      size-limit: 8.1.0
     dev: true
 
   /@trysound/sax/0.2.0:
@@ -467,7 +467,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001390
-      electron-to-chromium: 1.4.242
+      electron-to-chromium: 1.4.243
       node-releases: 2.0.6
       update-browserslist-db: 1.0.7_browserslist@4.21.3
     dev: false
@@ -784,8 +784,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /electron-to-chromium/1.4.242:
-    resolution: {integrity: sha512-nPdgMWtjjWGCtreW/2adkrB2jyHjClo9PtVhR6rW+oxa4E4Wom642Tn+5LslHP3XPL5MCpkn5/UEY60EXylNeQ==}
+  /electron-to-chromium/1.4.243:
+    resolution: {integrity: sha512-BgLD2gBX43OSXwlT01oYRRD5NIB4n3okTRxkzEAC6G0SZG4TTlyrWMjbOo0fajCwqwpRtMHXQNMjtRN6qpNtfw==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -2564,8 +2564,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /size-limit/8.0.1:
-    resolution: {integrity: sha512-VHrozqkQTYfcv1OlZIRIL0x6f+xhZ3TT+RTXC5AvKn/yA+3PIWERrKWqHMJPD7G/Vi0SuBtWAn3IvCGx2/UB1g==}
+  /size-limit/8.1.0:
+    resolution: {integrity: sha512-bUL+Uyyt/G+a1XzKlI2WKHVDepmXtqMDhF65pdtjccheiQTNjExWW4nFefgbRL2QgNTzRfK6ayFKjO3o4ER4gg==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     dependencies:
