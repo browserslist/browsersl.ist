@@ -1,32 +1,20 @@
 import { createTag } from '../../lib/utils'
-import { onFormSubmit } from '../Form/Form'
 
-let alertMessages = document.querySelector('[data-id=alert_messages]')
+function formatText(text) {
+  return `${text.replace(/`([^`]+)`/g, '<strong>$1</strong>')}`
+}
 
-let formatText = text => `${text.replace(/`([^`]+)`/g, '<strong>$1</strong>')}`
-
-export function showError(message, textarea) {
+export function buildError(root, message) {
   let error = createTag('div', ['Alert', 'is-error'])
   error.innerHTML = formatText(message)
   error.role = 'alert'
-  alertMessages.appendChild(error)
-
-  textarea.setAttribute('aria-errormessage', 'form_error')
-  textarea.setAttribute('aria-invalid', 'true')
-
-  onFormSubmit(() => {
-    textarea.removeAttribute('aria-errormessage')
-    textarea.removeAttribute('aria-invalid')
-    error.remove()
-  })
+  root.appendChild(error)
+  return error
 }
 
-export function showWarning(message) {
+export function buildWarning(root, message) {
   let warning = createTag('div', ['Alert', 'is-warning'])
   warning.innerHTML = formatText(message)
-  alertMessages.appendChild(warning)
-
-  onFormSubmit(() => {
-    warning.remove()
-  })
+  root.appendChild(warning)
+  return warning
 }
