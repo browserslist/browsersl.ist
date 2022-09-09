@@ -6,6 +6,7 @@ import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { transformQuery } from './transformQuery.js'
 import { loadBrowsers } from './loadBrowsers.js'
+import { showError, showWarning } from '../Alert/Alert.js'
 import { updateBar } from '../Bar/Bar.js'
 
 let form = document.querySelector('[data-id=form]')
@@ -13,8 +14,6 @@ let total = document.querySelector('[data-id=form_total]')
 let formCoverage = document.querySelector('[data-id=form_coverage')
 let textarea = document.querySelector('[data-id=form_textarea]')
 let regionSelect = document.querySelector('[data-id=form_region]')
-let errorMessage = document.querySelector('[data-id=form_error]')
-let warningMessage = document.querySelector('[data-id=form_warning]')
 
 function createOptgroup(groupName, regionsGroup) {
   let optgroup = createTag('optgroup')
@@ -43,34 +42,9 @@ export function submitForm() {
   form.dispatchEvent(new Event('submit', { cancelable: true }))
 }
 
-function onNextChange(cb) {
+export function onFormSubmit(cb) {
   form.addEventListener('submit', cb, { once: true })
 }
-
-function renderError(message) {
-  errorMessage.innerHTML = message
-  errorMessage.hidden = false
-  textarea.setAttribute('aria-errormessage', 'form_error')
-  textarea.setAttribute('aria-invalid', 'true')
-  onNextChange(() => {
-    textarea.removeAttribute('aria-errormessage')
-    textarea.removeAttribute('aria-invalid')
-    errorMessage.innerHTML = ''
-    errorMessage.hidden = true
-  })
-}
-
-function renderWarning(message) {
-  warningMessage.innerHTML = message
-  warningMessage.hidden = false
-  onNextChange(() => {
-    warningMessage.innerHTML = ''
-    warningMessage.hidden = true
-  })
-}
-
-let formatHintText = text =>
-  `<p>${text.replace(/`([^`]+)`/g, '<strong>$1</strong>')}</p>`
 
 let prev = ''
 async function updateStatsView(query, region) {
@@ -90,7 +64,7 @@ async function updateStatsView(query, region) {
     data = await loadBrowsers(query, region)
   } catch (e) {
     if (e.name === 'ServerError') {
-      renderError(formatHintText(e.message))
+      showError(e.message, textarea)
     } else {
       throw e
     }
@@ -104,11 +78,8 @@ async function updateStatsView(query, region) {
 
   let { lint, browsers, coverage, versions } = data
 
-  if (lint.length > 0) {
-    let linterWarning = lint
-      .map(({ message }) => formatHintText(message + '.'))
-      .join('')
-    renderWarning(linterWarning)
+  for (let { message } of lint) {
+    showWarning(message)
   }
 
   formCoverage.hidden = false

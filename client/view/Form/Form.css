@@ -49,36 +49,12 @@
   pointer-events: none;
 }
 
-.Form_hint {
-  padding: 12px 14px;
-  margin: -16px 0 8px;
-  border-radius: 8px;
-  font-weight: 400;
-  color: var(--text-primary);
+.Form_messages {
+  margin-top: -16px;
 
-  &.is-error {
-    background: var(--error);
+  &:empty {
+    display: none;
   }
-
-  &.is-warning {
-    background: var(--warning);
-  }
-}
-
-.Form_hint p {
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: initial;
-  margin-top: 0;
-  margin-bottom: 8px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.Form_hint a {
-  color: inherit;
 }
 
 .Form_placeholder {
