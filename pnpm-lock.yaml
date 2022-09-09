@@ -67,11 +67,11 @@ importers:
   server:
     specifiers:
       browserslist: ^4.21.3
-      browserslist-lint: ^0.1.1
+      browserslist-lint: ^0.2.0
       caniuse-lite: ^1.0.30001393
     dependencies:
       browserslist: 4.21.3
-      browserslist-lint: 0.1.1
+      browserslist-lint: 0.2.0
       caniuse-lite: 1.0.30001393
 
 packages:
@@ -453,8 +453,8 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /browserslist-lint/0.1.1:
-    resolution: {integrity: sha512-JnPl0CwekPRYWG+TjdtFhJ+JaPnqx0aM9tX3lUJx9mUVYTfeWGEzyJcUakhsVb0uWhc4nwUrIwUYB7Bsf7KAxw==}
+  /browserslist-lint/0.2.0:
+    resolution: {integrity: sha512-j26GmuFEZ/z+Z2ZzOyWm+l2xNNVCOUElwcX9H/uCj/7nlub/sL6Y3cZvaYqUqQSgMBBcHI+PAD6KXkiih7fkcA==}
     hasBin: true
     dependencies:
       browserslist: 4.21.3
@@ -467,7 +467,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001393
-      electron-to-chromium: 1.4.243
+      electron-to-chromium: 1.4.246
       node-releases: 2.0.6
       update-browserslist-db: 1.0.7_browserslist@4.21.3
     dev: false
@@ -784,8 +784,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /electron-to-chromium/1.4.243:
-    resolution: {integrity: sha512-BgLD2gBX43OSXwlT01oYRRD5NIB4n3okTRxkzEAC6G0SZG4TTlyrWMjbOo0fajCwqwpRtMHXQNMjtRN6qpNtfw==}
+  /electron-to-chromium/1.4.246:
+    resolution: {integrity: sha512-/wFCHUE+Hocqr/LlVGsuKLIw4P2lBWwFIDcNMDpJGzyIysQV4aycpoOitAs32FT94EHKnNqDR/CVZJFbXEufJA==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -1325,8 +1325,8 @@ packages:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
     dev: true
 
-  /fast-glob/3.2.11:
-    resolution: {integrity: sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==}
+  /fast-glob/3.2.12:
+    resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
     engines: {node: '>=8.6.0'}
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -1514,7 +1514,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 3.0.0
@@ -2754,7 +2754,7 @@ packages:
       cosmiconfig: 7.0.1
       css-functions-list: 3.1.0
       debug: 4.3.4
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       fastest-levenshtein: 1.0.16
       file-entry-cache: 6.0.1
       global-modules: 2.0.0
