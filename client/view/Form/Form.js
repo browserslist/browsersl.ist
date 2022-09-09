@@ -2,11 +2,11 @@ import { DEFAULT_REGION, regionList, regionGroups } from '../../data/regions.js'
 import { updateBrowsersStats, toggleBrowsers } from '../Browsers/Browsers.js'
 import { debounce, formatPercent, createTag } from '../../lib/utils.js'
 import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
+import { buildError, buildWarning } from '../Alert/Alert.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { transformQuery } from './transformQuery.js'
 import { loadBrowsers } from './loadBrowsers.js'
-import { showError, showWarning } from '../Alert/Alert.js'
 import { updateBar } from '../Bar/Bar.js'
 
 let form = document.querySelector('[data-id=form]')
@@ -14,6 +14,7 @@ let total = document.querySelector('[data-id=form_total]')
 let formCoverage = document.querySelector('[data-id=form_coverage')
 let textarea = document.querySelector('[data-id=form_textarea]')
 let regionSelect = document.querySelector('[data-id=form_region]')
+let messages = document.querySelector('[data-id=form_messages]')
 
 function createOptgroup(groupName, regionsGroup) {
   let optgroup = createTag('optgroup')
@@ -40,10 +41,6 @@ export function setFormValues({ query, region }) {
 
 export function submitForm() {
   form.dispatchEvent(new Event('submit', { cancelable: true }))
-}
-
-export function onFormSubmit(cb) {
-  form.addEventListener('submit', cb, { once: true })
 }
 
 let prev = ''
@@ -116,6 +113,32 @@ function submitFormWithUrlParams() {
 
 export function focusForm() {
   textarea.focus()
+}
+
+export function showError(message) {
+  let error = buildError(messages, message)
+  textarea.setAttribute('aria-errormessage', 'form_error')
+  textarea.setAttribute('aria-invalid', 'true')
+  form.addEventListener(
+    'submit',
+    () => {
+      textarea.removeAttribute('aria-errormessage')
+      textarea.removeAttribute('aria-invalid')
+      error.remove()
+    },
+    { once: true }
+  )
+}
+
+export function showWarning(message) {
+  let warning = buildWarning(messages, message)
+  form.addEventListener(
+    'submit',
+    () => {
+      warning.remove()
+    },
+    { once: true }
+  )
 }
 
 regionSelect.appendChild(createOptgroup('Continents', regionGroups.continents))
