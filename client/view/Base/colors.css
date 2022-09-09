@@ -12,8 +12,8 @@
   --text-underline-hover: oklch(23% 0 0);
   --accent-alternave: oklch(88% 0.16 92);
   --separator: oklch(23% 0 0 / 12%);
-  --warning: oklch(73% 0.16 66 / 80%);
-  --error: oklch(66% 0.1 30);
+  --warning: oklch(93.97% 0.094 94.62);
+  --error: oklch(70.31% 0.182 51.51 / 14%);
   --twitter: oklch(70% 0.12 235);
 }
 
@@ -32,6 +32,7 @@
     --text-underline-hover: oklch(100% 0 0 / 85%);
     --accent-alternave: oklch(63% 0.13 79);
     --separator: oklch(100% 0 0 / 20%);
-    --warning: oklch(48% 0.1 66);
+    --warning: oklch(75.99% 0.147 83.09 / 20%);
+    --error: oklch(66.29% 0.227 35.97 / 20%);
   }
 }

@@ -6,6 +6,7 @@ import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { transformQuery } from './transformQuery.js'
 import { loadBrowsers } from './loadBrowsers.js'
+import { showError, showWarning } from '../Alert/Alert.js'
 import { updateBar } from '../Bar/Bar.js'
 
 let form = document.querySelector('[data-id=form]')
@@ -13,8 +14,6 @@ let total = document.querySelector('[data-id=form_total]')
 let formCoverage = document.querySelector('[data-id=form_coverage')
 let textarea = document.querySelector('[data-id=form_textarea]')
 let regionSelect = document.querySelector('[data-id=form_region]')
-let errorMessage = document.querySelector('[data-id=form_error]')
-let warningMessage = document.querySelector('[data-id=form_warning]')
 
 function createOptgroup(groupName, regionsGroup) {
   let optgroup = createTag('optgroup')
@@ -31,8 +30,6 @@ function createOptgroup(groupName, regionsGroup) {
 
 export function setFormValues({ query, region }) {
   textarea.value = query
-  form.classList.remove('is-error')
-  form.classList.remove('is-warning')
 
   if (!region) region = 'alt-ww'
   let isRegionExists = regionList.includes(region)
@@ -45,30 +42,8 @@ export function submitForm() {
   form.dispatchEvent(new Event('submit', { cancelable: true }))
 }
 
-function onNextChange(cb) {
-  textarea.addEventListener('input', cb, { once: true })
-}
-
-function renderError(message) {
-  errorMessage.innerHTML = message
-  form.classList.add('is-error')
-  textarea.setAttribute('aria-errormessage', 'form_error')
-  textarea.setAttribute('aria-invalid', 'true')
-  onNextChange(() => {
-    textarea.removeAttribute('aria-errormessage')
-    textarea.removeAttribute('aria-invalid')
-    errorMessage.innerHTML = ''
-    form.classList.remove('is-error')
-  })
-}
-
-function renderWarning(message) {
-  warningMessage.innerHTML = message
-  form.classList.add('is-warning')
-  onNextChange(() => {
-    warningMessage.innerHTML = ''
-    form.classList.remove('is-warning')
-  })
+export function onFormSubmit(cb) {
+  form.addEventListener('submit', cb, { once: true })
 }
 
 let prev = ''
@@ -89,7 +64,7 @@ async function updateStatsView(query, region) {
     data = await loadBrowsers(query, region)
   } catch (e) {
     if (e.name === 'ServerError') {
-      renderError(e.message)
+      showError(e.message, textarea)
     } else {
       throw e
     }
@@ -103,13 +78,8 @@ async function updateStatsView(query, region) {
 
   let { lint, browsers, coverage, versions } = data
 
-  if (lint.length > 0) {
-    let linterWarning = lint
-      .map(({ message }) =>
-        message.replace(/`([^`]+)`/g, '<strong>$1</strong>')
-      )
-      .join('.<br />')
-    renderWarning(linterWarning)
+  for (let { message } of lint) {
+    showWarning(message)
   }
 
   formCoverage.hidden = false

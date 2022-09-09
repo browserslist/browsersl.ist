@@ -32,7 +32,6 @@
   outline-color: var(--accent);
 }
 
-.Form_hint,
 .Form_loader {
   position: absolute;
   bottom: 16px;
@@ -47,23 +46,15 @@
   background-color: var(--main-bg);
   opacity: 0%;
   transition: opacity 0.2s linear;
-}
-
-.Form_loader {
   pointer-events: none;
 }
 
-.Form_hint.is-error {
-  color: var(--error);
-}
+.Form_messages {
+  margin-top: -16px;
 
-.Form_hint.is-warning {
-  color: var(--warning);
-}
-
-.Form_hint a {
-  color: inherit;
-  pointer-events: initial;
+  &:empty {
+    display: none;
+  }
 }
 
 .Form_placeholder {
@@ -77,14 +68,6 @@
   color: var(--text-secondary);
   pointer-events: none;
   opacity: 0%;
-}
-
-.Form.is-error:not(.is-loading) .Form_hint.is-error {
-  opacity: 100%;
-}
-
-.Form.is-warning:not(.is-loading) .Form_hint.is-warning {
-  opacity: 100%;
 }
 
 .Form_textarea:placeholder-shown ~ .Form_placeholder {
