@@ -67,11 +67,11 @@ importers:
   server:
     specifiers:
       browserslist: ^4.21.3
-      browserslist-lint: ^0.2.1
+      browserslist-lint: github:evgenygorchakov/lint
       caniuse-lite: ^1.0.30001399
     dependencies:
       browserslist: 4.21.3
-      browserslist-lint: 0.2.1
+      browserslist-lint: github.com/evgenygorchakov/lint/9ddb0ff2e07c6392af7fcf070b5e094d4897cd0d
       caniuse-lite: 1.0.30001399
 
 packages:
@@ -452,14 +452,6 @@ packages:
     dependencies:
       fill-range: 7.0.1
     dev: true
-
-  /browserslist-lint/0.2.1:
-    resolution: {integrity: sha512-o3RYPFu5II9sZahXFI03yTqRsOhpm6zgDh17ZiKFoQzfWraLjak3m7N7gMyDNfyPG9J1faWsU29JrRW3XqSHCw==}
-    hasBin: true
-    dependencies:
-      browserslist: 4.21.3
-      picocolors: 1.0.0
-    dev: false
 
   /browserslist/4.21.3:
     resolution: {integrity: sha512-898rgRXLAyRkM1GryrrBHGkqA5hlpkV5MhtZwg9QXeiyLUYs2k00Un05aX5l2/yJIOObYKOpS2JNo8nJDE7fWQ==}
@@ -3062,3 +3054,13 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  github.com/evgenygorchakov/lint/9ddb0ff2e07c6392af7fcf070b5e094d4897cd0d:
+    resolution: {tarball: https://codeload.github.com/evgenygorchakov/lint/tar.gz/9ddb0ff2e07c6392af7fcf070b5e094d4897cd0d}
+    name: browserslist-lint
+    version: 0.2.1
+    hasBin: true
+    dependencies:
+      browserslist: 4.21.3
+      picocolors: 1.0.0
+    dev: false

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "browserslist": "^4.21.3",
-    "browserslist-lint": "^0.2.1",
+    "browserslist-lint": "github:evgenygorchakov/lint",
     "caniuse-lite": "^1.0.30001399"
   }
 }
