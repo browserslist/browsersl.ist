@@ -4,9 +4,11 @@ export function updateBar(data) {
   bar.replaceChildren(
     ...data.map(item => {
       let el = document.createElement('li')
+      let alpha = (100 - 100 / item.coverage) / 100
+      if (alpha < 0.3) alpha = 0.3
       el.classList.add('Bar_item')
       el.style.setProperty('--proportion', item.coverage)
-      el.style.setProperty('--alpha', 1 - 1 / item.coverage)
+      el.style.setProperty('--alpha', alpha)
       if (item.coverage > 10) {
         el.innerText = item.name
         el.classList.add('is-texted')
