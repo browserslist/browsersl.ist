@@ -1,12 +1,13 @@
+import { createTag } from '../../lib/utils.js'
+
 let bar = document.querySelector('[data-id=bar]')
 
 export function updateBar(data) {
   bar.replaceChildren(
     ...data.map(item => {
-      let el = document.createElement('li')
       let alpha = (100 - 100 / item.coverage) / 100
       if (alpha < 0.3) alpha = 0.3
-      el.classList.add('Bar_item')
+      let el = createTag('li', ['Bar_item'])
       el.style.setProperty('--proportion', item.coverage)
       el.style.setProperty('--alpha', alpha)
       if (item.coverage > 10) {
