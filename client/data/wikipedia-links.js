@@ -3,7 +3,7 @@ const WIKIPEDIA_URL = 'https://en.wikipedia.org/wiki/'
 const WIKIPEDIA_LINKS = {
   and_chr: 'Google_Chrome#Android',
   and_ff: 'Firefox_for_Android',
-  and_qq: 'Tencent_QQ',
+  and_qq: 'QQ_browser',
   and_uc: 'UC_Browser',
   android: 'List_of_features_in_Android#AndroidBrowser',
   baidu: 'Baidu_Browser',
