@@ -1,0 +1,8 @@
+.Button {
+  min-width: 100px;
+  padding: 6px 8px;
+  margin: 0;
+  background-color: var(--accent-alternave);
+  border: none;
+  border-radius: 8px;
+}

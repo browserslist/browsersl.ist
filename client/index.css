@@ -3,6 +3,7 @@
 @import "./view/Browsers/Browsers.css";
 @import "./view/Hedgehog/Hedgehog.css";
 @import "./view/Alert/Alert.css";
+@import "./view/Button/Button.css";
 @import "./view/Bar/Bar.css";
 @import "./view/Versions/Versions.css";
 @import "./view/Intro/Intro.css";
