@@ -3,6 +3,7 @@ import { updateBrowsersStats, toggleBrowsers } from '../Browsers/Browsers.js'
 import { debounce, formatPercent, createTag } from '../../lib/utils.js'
 import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 import { buildError, buildWarning } from '../Alert/Alert.js'
+import { buildButton } from '../Button/Button.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { transformQuery } from './transformQuery.js'
@@ -15,6 +16,7 @@ let formCoverage = document.querySelector('[data-id=form_coverage')
 let textarea = document.querySelector('[data-id=form_textarea]')
 let regionSelect = document.querySelector('[data-id=form_region]')
 let messages = document.querySelector('[data-id=form_messages]')
+let fixButtonContainer = document.querySelector('[data-id=form_fix]')
 
 function createOptgroup(groupName, regionsGroup) {
   let optgroup = createTag('optgroup')
@@ -79,6 +81,10 @@ async function updateStatsView(query, region) {
     showWarning(message)
   }
 
+  if (lint.length > 0) {
+    showFixQueryButton()
+  }
+
   formCoverage.hidden = false
   toggleBrowsers(true)
   toggleHedgehog(false)
@@ -136,6 +142,21 @@ export function showWarning(message) {
     'submit',
     () => {
       warning.remove()
+    },
+    { once: true }
+  )
+}
+
+export function showFixQueryButton() {
+  let button = buildButton(fixButtonContainer)
+  button.addEventListener('click', () => {
+    button.remove()
+  })
+
+  form.addEventListener(
+    'submit',
+    () => {
+      button.remove()
     },
     { once: true }
   )
