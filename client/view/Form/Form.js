@@ -82,8 +82,7 @@ async function updateStatsView(query, region) {
   }
 
   if (lint.length > 0) {
-    let fixed = lint.map(l => l.fixed)
-    showFixQueryButton(fixed)
+    showFixQueryButton(lint.at(0).fixed)
   }
 
   formCoverage.hidden = false
@@ -153,7 +152,14 @@ export function showFixQueryButton(fixed) {
   button.addEventListener(
     'click',
     () => {
-      console.log(fixed)
+      let urlParams = new URLSearchParams(location.hash.slice(1))
+      urlParams.set('q', fixed)
+      let query = urlParams.get('q')
+      let region = urlParams.get('region')
+
+      setFormValues({ query, region })
+      submitForm()
+
       button.remove()
     },
     { once: true }
