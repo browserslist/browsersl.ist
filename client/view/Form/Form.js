@@ -148,7 +148,7 @@ export function showWarning(message) {
 }
 
 export function showFixQueryButton(fixed) {
-  let button = buildButton(fixButtonContainer)
+  let button = buildButton(fixButtonContainer, 'Fix 1 problem')
   button.addEventListener(
     'click',
     () => {
