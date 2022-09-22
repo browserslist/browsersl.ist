@@ -6,14 +6,14 @@
 
 .Form_query {
   position: relative;
+  display: flex;
 }
 
 .Form_textarea {
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
   min-height: 134px;
-  padding: 12px;
+  padding: 12px 12px 40px;
   font-family: "Martian Mono", monospace;
   font-size: 14px;
   font-weight: 300;
@@ -31,6 +31,12 @@
 
 .Form_textarea:focus-visible {
   outline-color: var(--accent);
+}
+
+.Form_fix {
+  position: absolute;
+  bottom: 6px;
+  left: 12px;
 }
 
 .Form_loader {
@@ -149,10 +155,4 @@
   @media (prefers-color-scheme: dark) {
     background-image: url(./arrow-dark.svg);
   }
-}
-
-.Form_fix {
-  position: absolute;
-  bottom: 4px;
-  left: 4px;
 }
