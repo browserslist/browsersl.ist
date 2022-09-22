@@ -75,8 +75,8 @@ async function updateStatsView(query, region) {
 
   let { lint, browsers, coverage, versions } = data
 
-  for (let { message } of lint) {
-    showWarning(message)
+  for (let { message, fixed } of lint) {
+    showWarning(message, fixed)
   }
 
   formCoverage.hidden = false
@@ -130,12 +130,13 @@ export function showError(message) {
   )
 }
 
-export function showWarning(message) {
-  let warning = buildWarning(messages, message)
+export function showWarning(message, fixed) {
+  let { warning, fix } = buildWarning(messages, message, fixed)
   form.addEventListener(
     'submit',
     () => {
       warning.remove()
+      fix.remove()
     },
     { once: true }
   )

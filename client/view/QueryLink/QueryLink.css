@@ -6,6 +6,11 @@
   &.is-pre {
     border-radius: 8px;
   }
+
+  &.fix {
+    display: block;
+    padding-top: 4px;
+  }
 }
 
 .QueryLink code {

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "browserslist": "^4.21.4",
-    "browserslist-lint": "^0.2.1",
+    "browserslist-lint": "github:SergeyVinogorov/lint#autofix-checks-lint",
     "caniuse-lite": "^1.0.30001402"
   }
 }
