@@ -14,7 +14,7 @@ export function buildError(root, message) {
 
 export function buildWarning(root, message, fixed) {
   let warning = createTag('div', ['Alert', 'is-warning'])
-  let fix = createTag('a', ['QueryLink', 'fix'])
+  let fix = createTag('a', ['QueryLink', 'is-fix'])
   fix.setAttribute('data-query', fixed)
   warning.innerHTML = formatText(message)
   fix.innerHTML = '<code>Fix</code>'

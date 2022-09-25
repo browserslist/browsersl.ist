@@ -7,7 +7,7 @@
     border-radius: 8px;
   }
 
-  &.fix {
+  &.is-fix {
     display: block;
     padding-top: 4px;
   }
