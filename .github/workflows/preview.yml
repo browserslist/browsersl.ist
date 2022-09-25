@@ -12,6 +12,7 @@ jobs:
       - name: Notify about new deployment
         uses: bobheadxi/deployments@v1
         id: deployment
+        continue-on-error: true
         with:
           step: start
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -47,6 +48,7 @@ jobs:
       - name: Update deployment status
         uses: bobheadxi/deployments@v1
         if: always()
+        continue-on-error: true
         with:
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
