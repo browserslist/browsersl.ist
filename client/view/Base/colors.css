@@ -10,6 +10,7 @@
   --text-secondary: oklch(23% 0 0 / 65%);
   --text-underline: oklch(23% 0 0 / 40%);
   --text-underline-hover: oklch(23% 0 0);
+  --text-fix: oklch(72.5% 0.16 53.055);
   --accent-alternave: oklch(88% 0.16 92);
   --separator: oklch(23% 0 0 / 12%);
   --warning: oklch(94% 0.09 95);

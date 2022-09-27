@@ -8,8 +8,8 @@
   }
 
   &.is-fix {
-    display: block;
     padding-top: 4px;
+    padding-left: 4px;
   }
 }
 
@@ -41,15 +41,24 @@
   background-color: var(--text-highlited);
 }
 
+.QueryLink > pre > code {
+  overflow: hidden;
+  white-space: pre-wrap;
+  background-color: initial;
+}
+
+.QueryLink.is-fix code {
+  color: var(--text-fix);
+  background-color: transparent;
+}
+
 @media (hover) {
   .QueryLink:hover > code,
   .QueryLink:hover > pre {
     background-color: var(--text-highlited-hover);
   }
-}
 
-.QueryLink > pre > code {
-  overflow: hidden;
-  white-space: pre-wrap;
-  background-color: initial;
+  .QueryLink.is-fix code {
+    background-color: transparent;
+  }
 }
