@@ -6,11 +6,6 @@
   &.is-pre {
     border-radius: 8px;
   }
-
-  &.is-fix {
-    padding-top: 4px;
-    padding-left: 4px;
-  }
 }
 
 .QueryLink code {
@@ -48,7 +43,7 @@
 }
 
 .QueryLink.is-fix code {
-  color: var(--text-dark-orange);
+  color: var(--text-warning);
   background-color: transparent;
 }
 

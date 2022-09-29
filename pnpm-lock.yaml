@@ -67,11 +67,11 @@ importers:
   server:
     specifiers:
       browserslist: ^4.21.4
-      browserslist-lint: github:SergeyVinogorov/lint#autofix-checks-lint
+      browserslist-lint: ^0.3.0
       caniuse-lite: ^1.0.30001412
     dependencies:
       browserslist: 4.21.4
-      browserslist-lint: github.com/SergeyVinogorov/lint/778b3a2eb2319df139cd0b988b92716de208b33c
+      browserslist-lint: 0.3.0
       caniuse-lite: 1.0.30001412
 
 packages:
@@ -461,6 +461,14 @@ packages:
     dependencies:
       fill-range: 7.0.1
     dev: true
+
+  /browserslist-lint/0.3.0:
+    resolution: {integrity: sha512-LLwcuHn3tQ7kgFHCPQ5IthTn8X2xs5k/6OrObiyYX2BcXUEpAvPA/7+LtkGgjIz5W7+CZBKM1RrkRo9q0gT2Eg==}
+    hasBin: true
+    dependencies:
+      browserslist: 4.21.4
+      picocolors: 1.0.0
+    dev: false
 
   /browserslist/4.21.4:
     resolution: {integrity: sha512-CBHJJdDmgjl3daYjN5Cp5kbTf1mUhZoS+beLklHIvkOWscs83YAhLlF3Wsh/lciQYAcbBJgTOD44VtG31ZM4Hw==}
@@ -3073,13 +3081,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-  github.com/SergeyVinogorov/lint/778b3a2eb2319df139cd0b988b92716de208b33c:
-    resolution: {tarball: https://codeload.github.com/SergeyVinogorov/lint/tar.gz/778b3a2eb2319df139cd0b988b92716de208b33c}
-    name: browserslist-lint
-    version: 0.2.1
-    hasBin: true
-    dependencies:
-      browserslist: 4.21.4
-      picocolors: 1.0.0
-    dev: false

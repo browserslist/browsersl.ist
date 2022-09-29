@@ -14,11 +14,13 @@ export function buildError(root, message) {
 
 export function buildWarning(root, message, fixed) {
   let warning = createTag('div', ['Alert', 'is-warning'])
-  let fix = createTag('a', ['QueryLink', 'is-fix'])
-  fix.setAttribute('data-query', fixed)
+  let fix = createTag('div', ['Alert_action'])
+  let link = createTag('a', ['QueryLink', 'is-fix'])
+  link.setAttribute('data-query', fixed)
   warning.innerHTML = formatText(message)
-  fix.innerHTML = '<code>Fix</code>'
-  fix.href = '#' + new URLSearchParams({ q: fixed })
+  link.innerHTML = '<code>Fix</code>'
+  link.href = '#' + new URLSearchParams({ q: fixed })
+  fix.appendChild(link)
   warning.appendChild(fix)
   root.appendChild(warning)
   return { warning, fix }

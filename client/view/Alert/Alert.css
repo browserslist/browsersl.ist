@@ -22,3 +22,6 @@
 .Alert a {
   color: inherit;
 }
+.Alert_action {
+   text-align: right;
+ }
