@@ -48,7 +48,7 @@
 }
 
 .QueryLink.is-fix code {
-  color: var(--text-fix);
+  color: var(--text-dark-orange);
   background-color: transparent;
 }
 
