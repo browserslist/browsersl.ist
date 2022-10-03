@@ -10,7 +10,7 @@
   --text-secondary: oklch(23% 0 0 / 65%);
   --text-underline: oklch(23% 0 0 / 40%);
   --text-underline-hover: oklch(23% 0 0);
-  --text-warning: oklch(72.5% 0.16 53);
+  --text-warning: oklch(70% 0.16 53);
   --accent-alternave: oklch(88% 0.16 92);
   --separator: oklch(23% 0 0 / 12%);
   --warning: oklch(94% 0.09 95);
@@ -31,6 +31,7 @@
     --text-secondary: oklch(100% 0 0 / 50%);
     --text-underline: oklch(100% 0 0 / 40%);
     --text-underline-hover: oklch(100% 0 0 / 85%);
+    --text-warning: oklch(74% 0.16 53);
     --accent-alternave: oklch(63% 0.13 79);
     --separator: oklch(100% 0 0 / 20%);
     --warning: oklch(76% 0.15 83 / 20%);

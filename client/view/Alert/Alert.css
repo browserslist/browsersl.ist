@@ -16,6 +16,8 @@
 
   &.is-warning {
     background: var(--warning);
+    display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -23,5 +25,5 @@
   color: inherit;
 }
 .Alert_action {
-   text-align: right;
+   align-self: flex-start;
  }
