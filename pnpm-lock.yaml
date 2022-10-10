@@ -47,7 +47,7 @@ importers:
       postcss-nesting: ^10.2.0
       postcss-opacity-percentage: ^1.1.2
       size-limit: ^8.1.0
-      vite: ^3.1.6
+      vite: ^3.1.7
       vite-plugin-pug-transformer: ^1.0.2
     dependencies:
       '@csstools/postcss-oklab-function': 1.1.1_postcss@8.4.17
@@ -58,8 +58,8 @@ importers:
       postcss-media-minmax: 5.0.0_postcss@8.4.17
       postcss-nesting: 10.2.0_postcss@8.4.17
       postcss-opacity-percentage: 1.1.2
-      vite: 3.1.6
-      vite-plugin-pug-transformer: 1.0.2_vite@3.1.6
+      vite: 3.1.7
+      vite-plugin-pug-transformer: 1.0.2_vite@3.1.7
     devDependencies:
       '@size-limit/file': 8.1.0_size-limit@8.1.0
       size-limit: 8.1.0
@@ -83,8 +83,8 @@ packages:
       '@babel/highlight': 7.18.6
     dev: true
 
-  /@babel/helper-string-parser/7.18.10:
-    resolution: {integrity: sha512-XtIfWmeNY3i4t7t4D2t02q50HvqHybPqW2ki1kosnvWCwuCMeo81Jf0gwr85jy/neUdg5XDdeFE/80DXiO+njw==}
+  /@babel/helper-string-parser/7.19.4:
+    resolution: {integrity: sha512-nHtDoQcuqFmwYNYPz3Rah5ph2p8PFeFCsZk9A/48dPc/rGocJ5J3hAAZ7pb76VWX3fZKu+uEr/FhH5jLx7umrw==}
     engines: {node: '>=6.9.0'}
     dev: false
 
@@ -101,19 +101,19 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@babel/parser/7.19.3:
-    resolution: {integrity: sha512-pJ9xOlNWHiy9+FuFP09DEAFbAn4JskgRsVcc169w2xRBC3FRGuQEwjeIMMND9L2zc0iEhO/tGv4Zq+km+hxNpQ==}
+  /@babel/parser/7.19.4:
+    resolution: {integrity: sha512-qpVT7gtuOLjWeDTKLkJ6sryqLliBaFpAtGeqw5cs5giLldvh+Ch0plqnUMKoVAUS6ZEueQQiZV+p5pxtPitEsA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.19.3
+      '@babel/types': 7.19.4
     dev: false
 
-  /@babel/types/7.19.3:
-    resolution: {integrity: sha512-hGCaQzIY22DJlDh9CH7NOxgKkFjBk0Cw9xDO1Xmh2151ti7wiGfQ3LauXzL4HP1fmFlTX6XjpRETTpUcv7wQLw==}
+  /@babel/types/7.19.4:
+    resolution: {integrity: sha512-M5LK7nAeS6+9j7hAq+b3fQs+pNfUtTGq+yFFfHnauFA8zQtLRfmuipmsKDKKLuyG+wC8ABW43A153YNawNTEtw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/helper-string-parser': 7.18.10
+      '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
     dev: false
@@ -419,7 +419,7 @@ packages:
     resolution: {integrity: sha512-GAwkz0AihzY5bkwIY5QDR+LvsRQgB/B+1foMPvi0FZPMl5fjD7ICiznUiBdLYMH1QYe6vqu4gWYytZOccLouFw==}
     engines: {node: '>= 10.0.0'}
     dependencies:
-      '@babel/types': 7.19.3
+      '@babel/types': 7.19.4
     dev: false
 
   /balanced-match/1.0.2:
@@ -605,8 +605,8 @@ packages:
   /constantinople/4.0.1:
     resolution: {integrity: sha512-vCrqcSIq4//Gx74TXXCGnHpulY1dskqLTFGDmhrGxzeXL8lF8kvXv6mpNWlJj1uD4DW23D4ljAqbY4RRaaUZIw==}
     dependencies:
-      '@babel/parser': 7.19.3
-      '@babel/types': 7.19.3
+      '@babel/parser': 7.19.4
+      '@babel/types': 7.19.4
     dev: false
 
   /cosmiconfig/7.0.1:
@@ -2971,7 +2971,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-pug-transformer/1.0.2_vite@3.1.6:
+  /vite-plugin-pug-transformer/1.0.2_vite@3.1.7:
     resolution: {integrity: sha512-RtXEYaEgQoy5ttNjuuNMWRzZwfJz+cjePSdQzmNJTteIzUamVb8xvAlwNouMt189V2mk6HxyfTGfAGKUQ6KGig==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
@@ -2979,11 +2979,11 @@ packages:
     dependencies:
       picocolors: 1.0.0
       pug: 3.0.2
-      vite: 3.1.6
+      vite: 3.1.7
     dev: false
 
-  /vite/3.1.6:
-    resolution: {integrity: sha512-qMXIwnehvvcK5XfJiXQUiTxoYAEMKhM+jqCY6ZSTKFBKu1hJnAKEzP3AOcnTerI0cMZYAaJ4wpW1wiXLMDt4mA==}
+  /vite/3.1.7:
+    resolution: {integrity: sha512-5vCAmU4S8lyVdFCInu9M54f/g8qbOMakVw5xJ4pjoaDy5wgy9sLLZkGdSLN52dlsBqh0tBqxjaqqa8LgPqwRAA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -3043,8 +3043,8 @@ packages:
     resolution: {integrity: sha512-RNGKj82nUPg3g5ygxkQl0R937xLyho1J24ItRCBTr/m1YnZkzJy1hUiHUJrc/VlsDQzsCnInEGSg3bci0Lmd4w==}
     engines: {node: '>= 10.0.0'}
     dependencies:
-      '@babel/parser': 7.19.3
-      '@babel/types': 7.19.3
+      '@babel/parser': 7.19.4
+      '@babel/types': 7.19.4
       assert-never: 1.2.1
       babel-walk: 3.0.0-canary-5
     dev: false
