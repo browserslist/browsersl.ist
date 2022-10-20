@@ -44,11 +44,15 @@
 
 .QueryLink.is-fix code {
   color: var(--text-warning);
+  background-color: var(--text-highlited-warning);
 }
 
 @media (hover) {
   .QueryLink:hover > code,
   .QueryLink:hover > pre {
     background-color: var(--text-highlited-hover);
+  }
+  .QueryLink.is-fix:hover > code {
+    background-color: var(--text-highlited-warning-hover);
   }
 }
