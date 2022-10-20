@@ -36,15 +36,23 @@
   background-color: var(--text-highlited);
 }
 
+.QueryLink > pre > code {
+  overflow: hidden;
+  white-space: pre-wrap;
+  background-color: initial;
+}
+
+.QueryLink.is-fix code {
+  color: var(--text-warning);
+  background-color: var(--text-highlited-warning);
+}
+
 @media (hover) {
   .QueryLink:hover > code,
   .QueryLink:hover > pre {
     background-color: var(--text-highlited-hover);
   }
-}
-
-.QueryLink > pre > code {
-  overflow: hidden;
-  white-space: pre-wrap;
-  background-color: initial;
+  .QueryLink.is-fix:hover > code {
+    background-color: var(--text-highlited-warning-hover);
+  }
 }

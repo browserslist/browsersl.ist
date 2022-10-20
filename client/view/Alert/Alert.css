@@ -16,9 +16,14 @@
 
   &.is-warning {
     background: var(--warning);
+    display: flex;
+    justify-content: space-between;
   }
 }
 
 .Alert a {
   color: inherit;
 }
+.Alert_action {
+   align-self: flex-start;
+ }
