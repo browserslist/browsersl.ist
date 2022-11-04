@@ -40,7 +40,7 @@ importers:
       '@csstools/postcss-oklab-function': ^1.1.1
       '@size-limit/file': ^8.1.0
       autoprefixer: ^10.4.13
-      caniuse-lite: ^1.0.30001429
+      caniuse-lite: ^1.0.30001430
       jstransformer-markdown-it: ^3.0.0
       postcss: ^8.4.18
       postcss-media-minmax: ^5.0.0
@@ -52,7 +52,7 @@ importers:
     dependencies:
       '@csstools/postcss-oklab-function': 1.1.1_postcss@8.4.18
       autoprefixer: 10.4.13_postcss@8.4.18
-      caniuse-lite: 1.0.30001429
+      caniuse-lite: 1.0.30001430
       jstransformer-markdown-it: 3.0.0
       postcss: 8.4.18
       postcss-media-minmax: 5.0.0_postcss@8.4.18
@@ -68,11 +68,11 @@ importers:
     specifiers:
       browserslist: ^4.21.4
       browserslist-lint: ^0.3.0
-      caniuse-lite: ^1.0.30001429
+      caniuse-lite: ^1.0.30001430
     dependencies:
       browserslist: 4.21.4
       browserslist-lint: 0.3.0
-      caniuse-lite: 1.0.30001429
+      caniuse-lite: 1.0.30001430
 
 packages:
 
@@ -407,7 +407,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001429
+      caniuse-lite: 1.0.30001430
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -471,7 +471,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001429
+      caniuse-lite: 1.0.30001430
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -518,8 +518,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001429:
-    resolution: {integrity: sha512-511ThLu1hF+5RRRt0zYCf2U2yRr9GPF6m5y90SBCWsvSoYoW7yAGlv/elyPaNfvGCkp6kj/KFZWU0BMA69Prsg==}
+  /caniuse-lite/1.0.30001430:
+    resolution: {integrity: sha512-IB1BXTZKPDVPM7cnV4iaKaHxckvdr/3xtctB3f7Hmenx3qYBhGtTZ//7EllK66aKXW98Lx0+7Yr0kxBtIt3tzg==}
     dev: false
 
   /chalk/2.4.2:
