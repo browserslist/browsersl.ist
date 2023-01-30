@@ -66,11 +66,11 @@ importers:
 
   server:
     specifiers:
-      browserslist: ^4.21.4
+      browserslist: ^4.21.5
       browserslist-lint: ^0.3.1
       caniuse-lite: ^1.0.30001449
     dependencies:
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       browserslist-lint: 0.3.1
       caniuse-lite: 1.0.30001449
 
@@ -586,7 +586,7 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       caniuse-lite: 1.0.30001449
       fraction.js: 4.2.0
       normalize-range: 0.1.2
@@ -642,19 +642,19 @@ packages:
     resolution: {integrity: sha512-uK60Ncwk2U++ILSCmlJkBNA89I3MJVfhfKR0tuak8BY1OLvYFf+SEE1upPTQoVR4Ab7W0O7rMCFb/Ne9RcfhQw==}
     hasBin: true
     dependencies:
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       picocolors: 1.0.0
     dev: false
 
-  /browserslist/4.21.4:
-    resolution: {integrity: sha512-CBHJJdDmgjl3daYjN5Cp5kbTf1mUhZoS+beLklHIvkOWscs83YAhLlF3Wsh/lciQYAcbBJgTOD44VtG31ZM4Hw==}
+  /browserslist/4.21.5:
+    resolution: {integrity: sha512-tUkiguQGW7S3IhB7N+c2MV/HZPSCPAAiYBZXLsBhFB/PCy6ZKKsZrmBayHV9fdGV/ARIfJ14NkxKzRDjvp7L6w==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001449
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
-      update-browserslist-db: 1.0.10_browserslist@4.21.4
+      update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: false
 
   /builtins/5.0.1:
@@ -2959,13 +2959,13 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /update-browserslist-db/1.0.10_browserslist@4.21.4:
+  /update-browserslist-db/1.0.10_browserslist@4.21.5:
     resolution: {integrity: sha512-OztqDenkfFkbSG+tRxBeAnCVPckDBcvibKd35yDONx6OU8N7sqgwc7rCbkJ/WcYtVRZ4ba68d6byhC21GFh7sQ==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       escalade: 3.1.1
       picocolors: 1.0.0
     dev: false
