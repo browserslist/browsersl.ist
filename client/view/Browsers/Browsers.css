@@ -65,6 +65,18 @@
   }
 }
 
+.Browsers_link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: var(--text-underline-hover);
+    text-underline-offset: 2px;
+  }
+}
+
 .Browsers_body {
   display: inline-table;
   width: 100%;

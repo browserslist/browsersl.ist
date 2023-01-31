@@ -78,7 +78,7 @@ export function updateBrowsersStats(data) {
       }
 
       let nameCell = createTag('td', ['Browsers_cell'])
-      let nameLink = createTag('a', ['Link'])
+      let nameLink = createTag('a', ['Browsers_link'])
       // TODO Need to take care of the case when we do not have link for some browser. Can I Use sometimes adds browsers
       nameLink.href = wikipediaLinks[id]
       nameLink.rel = 'noreferrer noopener'
