@@ -1,10 +1,10 @@
 .Alert {
-  padding: 12px 14px;
+  padding: 14px;
   margin-bottom: 8px;
-  border-radius: 8px;
   font-size: 14px;
   font-weight: 400;
   color: var(--text-primary);
+  border-radius: 8px;
 
   &:last-child {
     margin-bottom: 0;
@@ -15,15 +15,17 @@
   }
 
   &.is-warning {
-    background: var(--warning);
     display: flex;
     justify-content: space-between;
+    background: var(--warning);
   }
 }
 
 .Alert a {
   color: inherit;
 }
+
 .Alert_action {
-   align-self: flex-start;
- }
+  align-self: flex-start;
+  margin: -7px -7px -7px 10px;
+}

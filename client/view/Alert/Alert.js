@@ -1,7 +1,9 @@
 import { createTag } from '../../lib/utils'
 
 function formatText(text) {
-  return `${text.replace(/`([^`]+)`/g, '<strong>$1</strong>')}`
+  return text
+    .replace(/`([^`]+)`/g, '<strong>$1</strong>')
+    .replace('and ', 'and ')
 }
 
 export function buildError(root, message) {
@@ -20,7 +22,7 @@ export function buildWarning(root, message, fixed) {
   link.setAttribute('data-query', fixed)
   description.innerHTML = formatText(message)
   warning.appendChild(description)
-  link.innerHTML = '<code>Fix</code>'
+  link.innerHTML = 'Fix'
   link.href = '#' + new URLSearchParams({ q: fixed })
   fix.appendChild(link)
   warning.appendChild(fix)
