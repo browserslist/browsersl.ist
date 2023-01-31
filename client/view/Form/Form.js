@@ -73,7 +73,7 @@ async function updateStatsView(query, region) {
     return
   }
 
-  let { lint, browsers, coverage, versions } = data
+  let { lint, browsers, coverage, versions, updated } = data
 
   for (let { message, fixed } of lint) {
     showWarning(message, fixed)
@@ -85,7 +85,7 @@ async function updateStatsView(query, region) {
   updateBrowsersStats(browsers)
   total.innerText = formatPercent(coverage)
   updateBar(browsers)
-  updateVersions(versions.browserslist, versions.caniuse)
+  updateVersions(versions.browserslist, versions.caniuse, updated)
 }
 
 function changeUrl(query, region) {

@@ -43,6 +43,7 @@ https://browsersl.ist/api/browsers?q=defaults&region=alt-ww
     "browserslist": "4.21.3",
     "caniuse": "1.0.30001381"
   },
+  "updated": 1675156330646,
   "browsers": [
     {
       "id": "chrome",

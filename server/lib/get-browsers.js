@@ -1,11 +1,15 @@
 import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
-import { readFileSync } from 'node:fs'
+import { readFileSync, statSync } from 'node:fs'
+import { URL, fileURLToPath } from 'node:url'
 import browserslist from 'browserslist'
 import { lint } from 'browserslist-lint'
-import { URL } from 'node:url'
+import { join } from 'node:path'
 
-let { version: bv } = importJSON('../node_modules/browserslist/package.json')
-let { version: cv } = importJSON('../node_modules/caniuse-lite/package.json')
+const ROOT = fileURLToPath(import.meta.url)
+
+let bv = importJSON('../node_modules/browserslist/package.json').version
+let cv = importJSON('../node_modules/caniuse-lite/package.json').version
+let updated = statSync(join(ROOT, '../../../pnpm-lock.yaml')).mtime
 
 export async function getBrowsers(query, region) {
   let browsersByQuery = []
@@ -77,6 +81,7 @@ export async function getBrowsers(query, region) {
     lint: lint(query),
     region,
     coverage,
+    updated: updated.getTime(),
     versions: {
       browserslist: bv,
       caniuse: cv

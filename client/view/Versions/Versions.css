@@ -22,3 +22,8 @@
     outline-offset: 1px;
   }
 }
+
+.Versions_date {
+  font-weight: normal;
+  color: var(--text-primary);
+}
