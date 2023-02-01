@@ -12,20 +12,20 @@
     "test": "pnpm test:run"
   },
   "dependencies": {
-    "@csstools/postcss-oklab-function": "^1.1.1",
+    "@csstools/postcss-oklab-function": "^2.0.1",
     "autoprefixer": "^10.4.13",
-    "caniuse-lite": "^1.0.30001449",
+    "caniuse-lite": "^1.0.30001450",
     "jstransformer-markdown-it": "^3.0.0",
-    "postcss": "^8.4.20",
+    "postcss": "^8.4.21",
     "postcss-media-minmax": "^5.0.0",
-    "postcss-nesting": "^10.2.0",
-    "postcss-opacity-percentage": "^1.1.3",
-    "vite": "^4.0.3",
+    "postcss-nesting": "^11.1.0",
+    "postcss-opacity-percentage": "^2.0.0",
+    "vite": "^4.0.4",
     "vite-plugin-pug-transformer": "^1.0.3"
   },
   "devDependencies": {
-    "@size-limit/file": "^8.1.0",
-    "size-limit": "^8.1.0"
+    "@size-limit/file": "^8.1.2",
+    "size-limit": "^8.1.2"
   },
   "engines": {
     "node": ">=18"
