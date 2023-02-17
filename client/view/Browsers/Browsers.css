@@ -49,18 +49,18 @@
       );
   }
 
-  @nest .Browsers_line:first-child &:first-child {
+  .Browsers_line:first-child &:first-child {
     width: 20px;
   }
 
-  @nest .Browsers_line:first-child &:nth-child(2) {
+  .Browsers_line:first-child &:nth-child(2) {
     padding-left: 3px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  @nest .Browsers_line:first-child &:nth-child(3) {
+  .Browsers_line:first-child &:nth-child(3) {
     width: 7ch;
   }
 }

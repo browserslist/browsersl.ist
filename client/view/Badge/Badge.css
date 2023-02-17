@@ -23,7 +23,7 @@
   height: 20px;
 
   @media (prefers-color-scheme: dark) {
-    @nest .Badge.is-github & {
+    .Badge.is-github & {
       filter: invert(1);
     }
   }
