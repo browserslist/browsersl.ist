@@ -29,7 +29,6 @@
 .QueryLink > code {
   display: inline-block;
   padding: 0 4px;
-  font-weight: 300;
   color: var(--accent);
   border-radius: 4px;
 }
