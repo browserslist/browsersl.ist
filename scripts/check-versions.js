@@ -12,7 +12,7 @@ let pnpmVersion = tools.match(/pnpm ([.\d]+)/)[1]
 let nodeVersion = tools.match(/nodejs ([.\d]+)/)[1]
 let nodeMajor = nodeVersion.match(/^(\d+)\./)[1]
 
-if (!dockerfile.includes(`pnpm@${pnpmVersion}`)) {
+if (!dockerfile.includes(` pnpm@${pnpmVersion} `)) {
   process.stderr.write(
     'Dockerfile and .tool-versions have different pnpm version\n'
   )
