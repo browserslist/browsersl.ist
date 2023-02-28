@@ -17,6 +17,11 @@
 .Versions_link {
   color: currentcolor;
 
+  &:hover,
+  &:focus {
+    color: var(--text-primary);
+  }
+
   &:focus {
     border-radius: 4px;
     outline-offset: 1px;
