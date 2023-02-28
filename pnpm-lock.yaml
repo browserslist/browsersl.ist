@@ -4,7 +4,7 @@ importers:
 
   .:
     specifiers:
-      '@logux/eslint-config': ^48.0.0
+      '@logux/eslint-config': ^49.0.0
       '@logux/stylelint-config': ^0.14.0
       eslint: ^8.35.0
       eslint-config-standard: ^17.0.0
@@ -21,7 +21,7 @@ importers:
     dependencies:
       ssdeploy: 0.9.2
     devDependencies:
-      '@logux/eslint-config': 48.0.0_444x2rvuomcugfh45frpv7ku2e
+      '@logux/eslint-config': 49.0.0_444x2rvuomcugfh45frpv7ku2e
       '@logux/stylelint-config': 0.14.0_stylelint@15.2.0
       eslint: 8.35.0
       eslint-config-standard: 17.0.0_hwjsujmtoc7k47rjh5qfu7woty
@@ -420,14 +420,14 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@logux/eslint-config/48.0.0_444x2rvuomcugfh45frpv7ku2e:
-    resolution: {integrity: sha512-4Lwgy14TmEbrp0Xsm7YjiptitLkigOAdqrnkYaNIgeMEe54hO6I99KueeS0348CFWqVAaV9g0eJQaPF6vCJGJg==}
+  /@logux/eslint-config/49.0.0_444x2rvuomcugfh45frpv7ku2e:
+    resolution: {integrity: sha512-5Aj1wytb+1oej3wLH8G7D35Glx88Iuj07JcVL3YruRhl4v7WZnF3w3RR3IVSQAvllQch4eemvHnLenrZ3PimFg==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
-      eslint: ^8.27.0
+      eslint: ^8.35.0
       eslint-config-standard: ^17.0.0
-      eslint-plugin-import: ^2.26.0
-      eslint-plugin-n: ^15.5.0
+      eslint-plugin-import: ^2.27.5
+      eslint-plugin-n: ^15.6.1
       eslint-plugin-prefer-let: ^3.0.1
       eslint-plugin-promise: ^6.1.1
     dependencies:
@@ -699,7 +699,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001458
-      electron-to-chromium: 1.4.311
+      electron-to-chromium: 1.4.314
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: false
@@ -1008,8 +1008,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /electron-to-chromium/1.4.311:
-    resolution: {integrity: sha512-RoDlZufvrtr2Nx3Yx5MB8jX3aHIxm8nRWPJm3yVvyHmyKaRvn90RjzB6hNnt0AkhS3IInJdyRfQb4mWhPvUjVw==}
+  /electron-to-chromium/1.4.314:
+    resolution: {integrity: sha512-+3RmNVx9hZLlc0gW//4yep0K5SYKmIvB5DXg1Yg6varsuAHlHwTeqeygfS8DWwLCsNOWrgj+p9qgM5WYjw1lXQ==}
     dev: false
 
   /emoji-regex/8.0.0:

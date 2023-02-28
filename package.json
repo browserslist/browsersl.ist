@@ -19,7 +19,7 @@
     "ssdeploy": "^0.9.2"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^48.0.0",
+    "@logux/eslint-config": "^49.0.0",
     "@logux/stylelint-config": "^0.14.0",
     "eslint": "^8.35.0",
     "eslint-config-standard": "^17.0.0",
