@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@csstools/postcss-oklab-function": "^2.1.0",
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.14",
     "caniuse-lite": "^1.0.30001466",
     "jstransformer-markdown-it": "^3.0.0",
     "postcss": "^8.4.21",
