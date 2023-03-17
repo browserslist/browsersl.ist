@@ -29,13 +29,6 @@ jobs:
     needs:
       - test
     steps:
-      - name: Notify about new deployment
-        uses: bobheadxi/deployments@v1
-        id: deployment
-        with:
-          step: start
-          token: ${{ secrets.DEPLOYMENTS_TOKEN }}
-          env: production
       - name: Checkout the repository
         uses: actions/checkout@v3
       - name: Install tools from asdf config
@@ -62,14 +55,3 @@ jobs:
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-      - name: Update deployment status
-        uses: bobheadxi/deployments@v1
-        if: always()
-        with:
-          step: finish
-          token: ${{ secrets.DEPLOYMENTS_TOKEN }}
-          status: ${{ job.status }}
-          env: ${{ steps.deployment.outputs.env }}
-          env_url: ${{ steps.deploy.outputs.url }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-
