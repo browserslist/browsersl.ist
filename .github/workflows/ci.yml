@@ -72,4 +72,4 @@ jobs:
           env: ${{ steps.deployment.outputs.env }}
           env_url: ${{ steps.deploy.outputs.url }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          override: false
+
