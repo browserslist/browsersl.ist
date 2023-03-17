@@ -2,10 +2,6 @@ name: Clean Preview
 on:
   pull_request:
     types: [ closed ]
-permissions:
-  contents: read
-  deployments: write
-  environments: write
 jobs:
   close:
     runs-on: ubuntu-latest
