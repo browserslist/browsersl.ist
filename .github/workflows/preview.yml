@@ -15,7 +15,7 @@ jobs:
         continue-on-error: true
         with:
           step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEPLOYMENTS_TOKEN }}
           ref: ${{ github.head_ref }}
           env: preview-${{ github.event.number }}
       - name: Checkout the repository
@@ -51,7 +51,7 @@ jobs:
         continue-on-error: true
         with:
           step: finish
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEPLOYMENTS_TOKEN }}
           status: ${{ job.status }}
           env: ${{ steps.deployment.outputs.env }}
           env_url: ${{ steps.deploy.outputs.url }}

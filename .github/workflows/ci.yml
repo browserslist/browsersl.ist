@@ -34,7 +34,7 @@ jobs:
         id: deployment
         with:
           step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEPLOYMENTS_TOKEN }}
           env: production
       - name: Checkout the repository
         uses: actions/checkout@v3
@@ -67,7 +67,7 @@ jobs:
         if: always()
         with:
           step: finish
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEPLOYMENTS_TOKEN }}
           status: ${{ job.status }}
           env: ${{ steps.deployment.outputs.env }}
           env_url: ${{ steps.deploy.outputs.url }}

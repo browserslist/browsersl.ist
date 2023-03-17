@@ -13,7 +13,7 @@ jobs:
         uses: bobheadxi/deployments@v1
         with:
           step: delete-env
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEPLOYMENTS_TOKEN }}
           env: preview-${{ github.event.number }}
       - name: Checkout the repository
         uses: actions/checkout@v3
