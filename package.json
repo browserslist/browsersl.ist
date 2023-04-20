@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^49.0.0",
-    "@logux/stylelint-config": "^0.14.0",
+    "@logux/stylelint-config": "^0.15.1",
     "eslint": "^8.38.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
