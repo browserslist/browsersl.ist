@@ -8,13 +8,9 @@ function parse(href) {
   return new URLSearchParams(new URL(href).hash.slice(1))
 }
 
-function formatQuery(text) {
-  return text.trim().replace(/\s+/g, ' ')
-}
-
 for (let link of links) {
   let queryAttr = link.getAttribute('data-query')
-  let query = queryAttr || formatQuery(link.textContent)
+  let query = queryAttr || link.textContent.trim().replace(/\s+/g, ' ')
 
   link.href = '#' + new URLSearchParams({ q: query })
 
