@@ -57,8 +57,8 @@ importers:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.23)
       caniuse-lite:
-        specifier: ^1.0.30001481
-        version: 1.0.30001481
+        specifier: ^1.0.30001482
+        version: 1.0.30001482
       jstransformer-markdown-it:
         specifier: ^3.0.0
         version: 3.0.0
@@ -97,8 +97,8 @@ importers:
         specifier: ^0.3.2
         version: 0.3.2
       caniuse-lite:
-        specifier: ^1.0.30001481
-        version: 1.0.30001481
+        specifier: ^1.0.30001482
+        version: 1.0.30001482
 
 packages:
 
@@ -698,7 +698,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001481
+      caniuse-lite: 1.0.30001482
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -767,7 +767,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001481
+      caniuse-lite: 1.0.30001482
       electron-to-chromium: 1.4.369
       node-releases: 2.0.10
       update-browserslist-db: 1.0.11(browserslist@4.21.5)
@@ -814,8 +814,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite@1.0.30001481:
-    resolution: {integrity: sha512-KCqHwRnaa1InZBtqXzP98LPg0ajCVujMKjqKDhZEthIpAsJl/YEIa3YvXjGXPVqzZVguccuu7ga9KOE1J9rKPQ==}
+  /caniuse-lite@1.0.30001482:
+    resolution: {integrity: sha512-F1ZInsg53cegyjroxLNW9DmrEQ1SuGRTO1QlpA0o2/6OpQ0gFeDRoq1yFmnr8Sakn9qwwt9DmbxHB6w167OSuQ==}
     dev: false
 
   /chalk@2.4.2:
