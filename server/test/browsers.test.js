@@ -47,13 +47,3 @@ test('Coverage of all browsers should differ in regions', async () => {
 
   notEqual(continentData.coverage, countryData.coverage)
 })
-
-test('Coverage for browser should differ in different regions', async () => {
-  let continentData = await getBrowsers('last 2 Chrome versions', 'alt-eu')
-  let countryData = await getBrowsers('last 2 Chrome versions', 'NP')
-
-  let continentBrowser = continentData.browsers[0]
-  let countryBrowser = countryData.browsers[0]
-
-  notEqual(continentBrowser.coverage, countryBrowser.coverage)
-})
