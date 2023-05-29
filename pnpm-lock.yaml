@@ -91,8 +91,8 @@ importers:
   server:
     dependencies:
       browserslist:
-        specifier: ^4.21.6
-        version: 4.21.6
+        specifier: ^4.21.7
+        version: 4.21.7
       browserslist-lint:
         specifier: ^0.3.2
         version: 0.3.2
@@ -697,7 +697,7 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.21.6
+      browserslist: 4.21.7
       caniuse-lite: 1.0.30001489
       fraction.js: 4.2.0
       normalize-range: 0.1.2
@@ -758,19 +758,19 @@ packages:
     resolution: {integrity: sha512-fRGNj7TPsZLxTpzJum+5nJaF0jU7YElen0mY0SjMz0ZIaLhbaM4QrI5ieELfYcWycH1FRusyyY/KxfiS5hebtw==}
     hasBin: true
     dependencies:
-      browserslist: 4.21.6
+      browserslist: 4.21.7
       picocolors: 1.0.0
     dev: false
 
-  /browserslist@4.21.6:
-    resolution: {integrity: sha512-PF07dKGXKR+/bljJzCB6rAYtHEu21TthLxmJagtQizx+rwiqdRDBO5971Xu1N7MgcMLi4+mr4Cnl76x7O3DHtA==}
+  /browserslist@4.21.7:
+    resolution: {integrity: sha512-BauCXrQ7I2ftSqd2mvKHGo85XR0u7Ru3C/Hxsy/0TkfCtjrmAbPdzLGasmoiBxplpDXlPvdjX9u7srIMfgasNA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001489
       electron-to-chromium: 1.4.411
       node-releases: 2.0.12
-      update-browserslist-db: 1.0.11(browserslist@4.21.6)
+      update-browserslist-db: 1.0.11(browserslist@4.21.7)
     dev: false
 
   /builtins@5.0.1:
@@ -3091,13 +3091,13 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /update-browserslist-db@1.0.11(browserslist@4.21.6):
+  /update-browserslist-db@1.0.11(browserslist@4.21.7):
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
-      browserslist: 4.21.6
+      browserslist: 4.21.7
       escalade: 3.1.1
       picocolors: 1.0.0
     dev: false
