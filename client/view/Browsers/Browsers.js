@@ -1,6 +1,6 @@
-import { formatPercent, createTag } from '../../lib/utils.js'
 import * as browsersIcons from '../../data/browsers-logos.js'
 import wikipediaLinks from '../../data/wikipedia-links.js'
+import { createTag, formatPercent } from '../../lib/utils.js'
 
 let container = document.querySelector('[data-id=browsers]')
 let table = document.querySelector('[data-id=browsers_table]')
@@ -63,8 +63,8 @@ export function updateBrowsersStats(data) {
         })
         .map(([version, coverage]) => {
           return {
-            version,
-            coverage
+            coverage,
+            version
           }
         })
 
@@ -96,7 +96,7 @@ export function updateBrowsersStats(data) {
           createCoverageCell(versions[0].coverage)
         )
       )
-      versions.slice(1).forEach(({ version, coverage }) => {
+      versions.slice(1).forEach(({ coverage, version }) => {
         body.appendChild(
           createLine(createVersionCell(version), createCoverageCell(coverage))
         )

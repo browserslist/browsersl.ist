@@ -9,8 +9,8 @@ export function sendResponseAPI(res, status, data) {
 
   res.writeHead(status, {
     'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'text/json',
-    'Content-Length': new Blob([JSONData]).size
+    'Content-Length': new Blob([JSONData]).size,
+    'Content-Type': 'text/json'
   })
   res.write(JSONData)
   res.end()

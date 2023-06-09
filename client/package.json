@@ -12,7 +12,7 @@
     "test": "pnpm test:run"
   },
   "dependencies": {
-    "@csstools/postcss-oklab-function": "^2.2.2",
+    "@csstools/postcss-oklab-function": "^2.2.3",
     "autoprefixer": "^10.4.14",
     "caniuse-lite": "^1.0.30001497",
     "jstransformer-markdown-it": "^3.0.0",

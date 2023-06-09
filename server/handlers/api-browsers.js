@@ -1,5 +1,5 @@
-import { sendResponseAPI } from '../lib/send-response.js'
 import { getBrowsers } from '../lib/get-browsers.js'
+import { sendResponseAPI } from '../lib/send-response.js'
 
 export async function handleAPIBrowsers(req, res, url) {
   let query = url.searchParams.get('q') || 'defaults'

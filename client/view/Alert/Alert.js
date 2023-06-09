@@ -27,5 +27,5 @@ export function buildWarning(root, message, fixed) {
   fix.appendChild(link)
   warning.appendChild(fix)
   root.appendChild(warning)
-  return { warning, fix }
+  return { fix, warning }
 }

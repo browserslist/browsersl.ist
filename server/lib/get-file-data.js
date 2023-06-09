@@ -1,5 +1,5 @@
-import { readFile, stat } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
+import { readFile, stat } from 'node:fs/promises'
 import { parse } from 'node:path'
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production'
@@ -18,15 +18,15 @@ export async function getFileData(filePath, shouldBeCached = false) {
     throw error
   }
 
-  let { name, ext } = parse(filePath.pathname)
+  let { ext, name } = parse(filePath.pathname)
   let { size } = await stat(filePath)
   let data = await readFile(filePath)
 
   let fileData = {
-    name,
+    data,
     ext,
-    size,
-    data
+    name,
+    size
   }
 
   if (shouldBeCached) {

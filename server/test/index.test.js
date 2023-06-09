@@ -1,6 +1,6 @@
 import { equal, match } from 'node:assert'
-import { URL } from 'node:url'
 import test from 'node:test'
+import { URL } from 'node:url'
 
 import App from '../index.js'
 

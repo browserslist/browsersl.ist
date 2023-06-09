@@ -1,19 +1,19 @@
 import { URL, URLSearchParams } from 'node:url'
 
-import { sendResponse, sendError } from '../lib/send-response.js'
 import { getFileData } from '../lib/get-file-data.js'
+import { sendError, sendResponse } from '../lib/send-response.js'
 
 const HEADERS = {
-  'Content-Type': 'text/html; charset=utf-8',
   'Cache-Control': 'public, max-age=604800',
   'Content-Security-Policy':
     `object-src 'none'; ` +
     `frame-ancestors 'none'; ` +
     `style-src 'self'; ` +
     `script-src 'self'`,
+  'Content-Type': 'text/html; charset=utf-8',
+  'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
-  'X-XSS-Protection': '1; mode=block',
-  'X-Content-Type-Options': 'nosniff'
+  'X-XSS-Protection': '1; mode=block'
 }
 const INDEX = new URL('../../client/dist/index.html', import.meta.url)
 

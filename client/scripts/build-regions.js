@@ -1,6 +1,6 @@
-import { writeFileSync, readdirSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
+import { readdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const ROOT = join(fileURLToPath(import.meta.url), '..', '..')
 
@@ -21,14 +21,14 @@ writeFileSync(
   DATA_REGION_FILE,
   JSON.stringify({
     continents: {
-      'alt-ww': 'Global',
       'alt-af': 'Africa',
       'alt-an': 'Antarctica',
       'alt-as': 'Asia',
       'alt-eu': 'Europe',
       'alt-na': 'North America',
       'alt-oc': 'Oceania',
-      'alt-sa': 'South America'
+      'alt-sa': 'South America',
+      'alt-ww': 'Global'
     },
     countryCodes: getCaniuseCountries()
   })

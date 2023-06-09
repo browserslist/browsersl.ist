@@ -1,19 +1,19 @@
 import { URL } from 'node:url'
 
-import { sendResponse, sendError } from '../lib/send-response.js'
 import { getFileData } from '../lib/get-file-data.js'
+import { sendError, sendResponse } from '../lib/send-response.js'
 
 const CLIENT_DIR = '../../client'
 const DIST_DIR = '/dist'
 const MIME_TYPES = {
-  '.js': 'text/javascript',
   '.css': 'text/css',
-  '.json': 'application/json',
-  '.webmanifest': 'application/manifest+json',
-  '.png': 'image/png',
-  '.jpg': 'image/jpg',
-  '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
+  '.jpg': 'image/jpg',
+  '.js': 'text/javascript',
+  '.json': 'application/json',
+  '.png': 'image/png',
+  '.svg': 'image/svg+xml',
+  '.webmanifest': 'application/manifest+json',
   '.woff2': 'font/woff2'
 }
 
@@ -22,11 +22,11 @@ export async function handleStatic(req, res) {
 
   try {
     let shouldBeCached = req.url === '/favicon.ico'
-    let { name, ext, size, data } = await getFileData(filePath, shouldBeCached)
+    let { data, ext, name, size } = await getFileData(filePath, shouldBeCached)
     let resHeaders = {
       'Cache-Control': getCacheControl(name),
-      'Content-Type': getContentType(ext),
-      'Content-Length': size
+      'Content-Length': size,
+      'Content-Type': getContentType(ext)
     }
     sendResponse(res, 200, resHeaders, data)
   } catch (error) {

@@ -1,4 +1,4 @@
-import { equal, notEqual, ok, match } from 'node:assert'
+import { equal, match, notEqual, ok } from 'node:assert'
 import test from 'node:test'
 
 import { getBrowsers } from '../lib/get-browsers.js'

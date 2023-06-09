@@ -19,18 +19,19 @@
     "ssdeploy": "^0.9.3"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^50.0.0",
+    "@logux/eslint-config": "^51.0.0",
     "@logux/stylelint-config": "^0.15.1",
-    "eslint": "^8.41.0",
-    "eslint-config-standard": "^17.0.0",
+    "eslint": "^8.42.0",
+    "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-perfectionist": "^1.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.1.1",
     "nano-staged": "^0.8.0",
     "prettier": "^2.8.8",
     "simple-git-hooks": "^2.8.1",
-    "stylelint": "^15.6.2",
+    "stylelint": "^15.7.0",
     "svgo": "^3.0.2"
   }
 }

@@ -1,9 +1,9 @@
-import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
-import { readFileSync, statSync } from 'node:fs'
-import { URL, fileURLToPath } from 'node:url'
 import browserslist from 'browserslist'
 import { lint } from 'browserslist-lint'
+import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
+import { readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
 
 const ROOT = fileURLToPath(import.meta.url)
 
@@ -63,9 +63,9 @@ export async function getBrowsers(query, region) {
       }
 
       return {
+        coverage,
         id,
         name,
-        coverage,
         versions
       }
     })
@@ -77,16 +77,16 @@ export async function getBrowsers(query, region) {
   coverage = coverage > 100 ? 100 : coverage
 
   return {
-    query,
-    lint: lint(query),
-    region,
+    browsers,
     coverage,
+    lint: lint(query),
+    query,
+    region,
     updated: updated.getTime(),
     versions: {
       browserslist: bv,
       caniuse: cv
-    },
-    browsers
+    }
   }
 }
 
