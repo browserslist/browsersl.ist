@@ -98,8 +98,8 @@ importers:
   server:
     dependencies:
       browserslist:
-        specifier: ^4.21.7
-        version: 4.21.7
+        specifier: ^4.21.8
+        version: 4.21.8
       browserslist-lint:
         specifier: ^0.3.2
         version: 0.3.2
@@ -776,7 +776,7 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.21.7
+      browserslist: 4.21.8
       caniuse-lite: 1.0.30001502
       fraction.js: 4.2.0
       normalize-range: 0.1.2
@@ -836,19 +836,19 @@ packages:
     resolution: {integrity: sha512-fRGNj7TPsZLxTpzJum+5nJaF0jU7YElen0mY0SjMz0ZIaLhbaM4QrI5ieELfYcWycH1FRusyyY/KxfiS5hebtw==}
     hasBin: true
     dependencies:
-      browserslist: 4.21.7
+      browserslist: 4.21.8
       picocolors: 1.0.0
     dev: false
 
-  /browserslist@4.21.7:
-    resolution: {integrity: sha512-BauCXrQ7I2ftSqd2mvKHGo85XR0u7Ru3C/Hxsy/0TkfCtjrmAbPdzLGasmoiBxplpDXlPvdjX9u7srIMfgasNA==}
+  /browserslist@4.21.8:
+    resolution: {integrity: sha512-j+7xYe+v+q2Id9qbBeCI8WX5NmZSRe8es1+0xntD/+gaWXznP8tFEkv5IgSaHf5dS1YwVMbX/4W6m937mj+wQw==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001502
-      electron-to-chromium: 1.4.426
+      electron-to-chromium: 1.4.428
       node-releases: 2.0.12
-      update-browserslist-db: 1.0.11(browserslist@4.21.7)
+      update-browserslist-db: 1.0.11(browserslist@4.21.8)
     dev: false
 
   /builtins@5.0.1:
@@ -1155,8 +1155,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /electron-to-chromium@1.4.426:
-    resolution: {integrity: sha512-dWuNH+XUT9hdFHASfMpcZGW5kUyJvllumJkXaXiswuCkoaFIFI89aykBPuHEi1YUWQGRCqvIO0BUdmeFJ4W4Ww==}
+  /electron-to-chromium@1.4.428:
+    resolution: {integrity: sha512-L7uUknyY286of0AYC8CKfgWstD0Smk2DvHDi9F0GWQhSH90Bzi7iDrmCbZKz75tYJxeGSAc7TYeKpmbjMDoh1w==}
     dev: false
 
   /emoji-regex@8.0.0:
@@ -3237,13 +3237,13 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /update-browserslist-db@1.0.11(browserslist@4.21.7):
+  /update-browserslist-db@1.0.11(browserslist@4.21.8):
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
-      browserslist: 4.21.7
+      browserslist: 4.21.8
       escalade: 3.1.1
       picocolors: 1.0.0
     dev: false
