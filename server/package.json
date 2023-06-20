@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node index.js",
     "test:run": "node --test test/*.test.js",
-    "test": "test:run"
+    "test": "pnpm run test:run"
   },
   "engines": {
     "node": ">=18"
