@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node index.js",
     "test:run": "node --test test/*.test.js",
-    "test": "pnpm run --parallel --aggregate-output /^test:/"
+    "test": "pnpm run --parallel /^test:/"
   },
   "engines": {
     "node": ">=18"
