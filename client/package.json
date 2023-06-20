@@ -8,7 +8,7 @@
     "prebuild": "node ./scripts/build-regions.js",
     "postinstall": "pnpm prebuild",
     "test:run": "pnpm build && size-limit",
-    "test": "pnpm run --parallel /^test:/"
+    "test": "pnpm run test:run"
   },
   "dependencies": {
     "@csstools/postcss-oklab-function": "^2.2.3",
