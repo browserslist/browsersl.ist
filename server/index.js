@@ -7,7 +7,7 @@ import { handleStatic } from './handlers/static.js'
 
 const PORT = process.env.PORT || 3000
 
-const App = http.createServer(async (req, res) => {
+const app = http.createServer(async (req, res) => {
   if (req.headers.host.startsWith('www.')) {
     let noWww = req.headers.host.slice(4)
     res.writeHead(301, { Location: 'https://' + noWww + req.url })
@@ -32,10 +32,10 @@ const App = http.createServer(async (req, res) => {
   }
 })
 
-App.listen(PORT, () => {
+app.listen(PORT, () => {
   if (process.env.NODE_ENV !== 'production') {
     process.stdout.write(`Server listening at http://localhost:${PORT}/\n`)
   }
 })
 
-export default App
+export default app
