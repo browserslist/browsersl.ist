@@ -15,8 +15,7 @@
     "test:css": "stylelint **/*.css",
     "test:checks": "node scripts/check-versions.js",
     "test:audit": "pnpm audit --prod",
-    "test:build": "pnpm run build",
-    "test": "pnpm build && pnpm run --recursive --include-workspace-root /^test:/"
+    "test": "pnpm run --recursive --include-workspace-root /^test:/"
   },
   "dependencies": {
     "ssdeploy": "^0.9.3"
