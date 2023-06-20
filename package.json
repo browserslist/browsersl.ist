@@ -10,12 +10,12 @@
   "scripts": {
     "start": "pnpm -r start",
     "prebuild": "pnpm -r prebuild",
-    "build": "pnpm run prebuild && pnpm -r build",
+    "build": "pnpm -r build",
     "test:js": "eslint .",
     "test:css": "stylelint **/*.css",
     "test:checks": "node scripts/check-versions.js",
     "test:audit": "pnpm audit --prod",
-    "test": "pnpm build && pnpm run --recursive --include-workspace-root /^test:/"
+    "test": "pnpm run prebuild && pnpm build && pnpm run --recursive --include-workspace-root /^test:/"
   },
   "dependencies": {
     "ssdeploy": "^0.9.3"
