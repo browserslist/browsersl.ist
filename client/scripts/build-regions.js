@@ -34,5 +34,5 @@ writeFileSync(
   })
 )
 process.stdout.write(
-  `A file "client/${DATA_REGION_FILE}" with regions has been created\n`
+  `A file "${DATA_REGION_FILE}" with regions has been created\n`
 )
