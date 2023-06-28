@@ -12,10 +12,6 @@ export function transformConfig(rawConfig) {
     } catch {}
   }
 
-  if (config.includes('\n') && !config.includes('#')) {
-    return transformMultilineToQuery(config)
-  }
-
   return config
 }
 
@@ -26,12 +22,6 @@ function transformJSONToConfig(jsonConfig) {
 
 function transformJSONFragmentToConfig(jsonFragment) {
   return transformJSONToConfig('{' + jsonFragment + '}')
-}
-
-// TODO Use a parser from the browserslist API
-function transformMultilineToQuery(query) {
-  // Replace newline to browserslist `or`. Support `,` at end of line
-  return query.replace(/\n|,+\n/g, ',')
 }
 
 function hasJSONSymbols(string) {
