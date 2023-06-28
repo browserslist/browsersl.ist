@@ -11,16 +11,16 @@ let bv = importJSON('../node_modules/browserslist/package.json').version
 let cv = importJSON('../node_modules/caniuse-lite/package.json').version
 let updated = statSync(join(ROOT, '../../../pnpm-lock.yaml')).mtime
 
-export async function getBrowsers(query, region) {
+export async function getBrowsers(rawQuery, region) {
   let browsersByQuery = []
-  let preparedQuery = prepareQuery(query)
+  let preparedQuery = prepareQuery(rawQuery)
 
   try {
     browsersByQuery = browserslist(preparedQuery)
   } catch (error) {
     throw error.browserslist
       ? error
-      : new Error(`Unknown browser query \`${query}\`.`)
+      : new Error(`Unknown browser query \`${rawQuery}\`.`)
   }
 
   let browsersCoverageByQuery = {}
@@ -81,7 +81,7 @@ export async function getBrowsers(query, region) {
     browsers,
     coverage,
     lint: lint(preparedQuery),
-    query,
+    query: rawQuery,
     region,
     updated: updated.getTime(),
     versions: {
