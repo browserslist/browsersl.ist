@@ -7,7 +7,7 @@
     "build": "vite build -m production",
     "prebuild": "node ./scripts/build-regions.js",
     "postinstall": "pnpm prebuild",
-    "test:run": "size-limit",
+    "test:run": "node --test test/*.test.js && size-limit",
     "test": "pnpm run test:run"
   },
   "dependencies": {
