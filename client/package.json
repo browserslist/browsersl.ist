@@ -13,7 +13,7 @@
   "dependencies": {
     "@csstools/postcss-oklab-function": "^2.2.3",
     "autoprefixer": "^10.4.14",
-    "caniuse-lite": "^1.0.30001508",
+    "caniuse-lite": "^1.0.30001509",
     "jstransformer-markdown-it": "^3.0.0",
     "postcss": "^8.4.24",
     "postcss-media-minmax": "^5.0.0",
@@ -23,8 +23,8 @@
     "vite-plugin-pug-transformer": "^1.0.3"
   },
   "devDependencies": {
-    "@size-limit/file": "^8.2.4",
-    "size-limit": "^8.2.4"
+    "@size-limit/file": "^8.2.6",
+    "size-limit": "^8.2.6"
   },
   "engines": {
     "node": ">=18"
