@@ -36,7 +36,7 @@ export async function loadBrowsers(config, region) {
 
     if (response.status === 500) {
       throw new ServerError(
-        `Server error. a class="Link" href="https://github.com/browserslist/browserl.ist">
+        `Server error. <a class="Link" href="https://github.com/browserslist/browserl.ist">
   Report an issue</a> to our repository.`
       )
     }
