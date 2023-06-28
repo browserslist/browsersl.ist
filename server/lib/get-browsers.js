@@ -13,10 +13,9 @@ let updated = statSync(join(ROOT, '../../../pnpm-lock.yaml')).mtime
 
 export async function getBrowsers(query, region) {
   let browsersByQuery = []
-  let preparedQuery
+  let preparedQuery = prepareQuery(query)
 
   try {
-    preparedQuery = prepareQuery(query)
     browsersByQuery = browserslist(preparedQuery)
   } catch (error) {
     throw error.browserslist
