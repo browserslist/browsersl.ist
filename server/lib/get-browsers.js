@@ -13,9 +13,11 @@ let updated = statSync(join(ROOT, '../../../pnpm-lock.yaml')).mtime
 
 export async function getBrowsers(query, region) {
   let browsersByQuery = []
+  let preparedQuery
 
   try {
-    browsersByQuery = browserslist(query)
+    preparedQuery = prepareQuery(query)
+    browsersByQuery = browserslist(preparedQuery)
   } catch (error) {
     throw error.browserslist
       ? error
@@ -79,7 +81,7 @@ export async function getBrowsers(query, region) {
   return {
     browsers,
     coverage,
-    lint: lint(query),
+    lint: lint(preparedQuery),
     query,
     region,
     updated: updated.getTime(),
@@ -122,4 +124,13 @@ function roundNumber(value) {
 
 function importJSON(path) {
   return JSON.parse(readFileSync(new URL(path, import.meta.url)))
+}
+
+function prepareQuery(query) {
+  return query
+    .toString()
+    .replace(/#[^\n]*/g, '')
+    .split(/\n|,/)
+    .map(line => line.trim())
+    .filter(line => line !== '')
 }
