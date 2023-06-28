@@ -1,10 +1,11 @@
+import './set-production.js'
+
 import { equal, match } from 'node:assert'
 import test from 'node:test'
 import { URL } from 'node:url'
 
-process.env.NODE_ENV = 'production'
+import app from '../index.js'
 
-let app = (await import('../index.js')).default
 let base = `http://localhost:${app.address().port}/`
 
 test('Integration tests', async t => {
