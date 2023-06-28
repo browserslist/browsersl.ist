@@ -2,10 +2,11 @@ import { ok } from 'node:assert'
 import test from 'node:test'
 import { URL } from 'node:url'
 
-import app from '../index.js'
+process.env.NODE_ENV = 'production'
 
 const PARALLEL_REQUESTS_NUMBER = 100
 
+let app = (await import('../index.js')).default
 let base = `http://localhost:${app.address().port}/`
 
 async function getFetchExecTime(url) {

@@ -2,9 +2,10 @@ import { equal, match } from 'node:assert'
 import test from 'node:test'
 import { URL } from 'node:url'
 
-import app from '../index.js'
+process.env.NODE_ENV = 'production'
 
-const base = `http://localhost:${app.address().port}/`
+let app = (await import('../index.js')).default
+let base = `http://localhost:${app.address().port}/`
 
 test('Integration tests', async t => {
   await t.test('uses `defaults` query without `q` param', async () => {
