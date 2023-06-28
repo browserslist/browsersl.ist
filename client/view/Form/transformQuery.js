@@ -12,6 +12,10 @@ export function transformQuery(rawQuery) {
     } catch {}
   }
 
+  if (query.includes('\n') && !query.includes('#')) {
+    return transformMultilineToQuery(query)
+  }
+
   return query
 }
 
@@ -22,6 +26,12 @@ function transformJSONToQuery(query) {
 
 function transformJSONFragmentToQuery(query) {
   return transformJSONToQuery('{' + query + '}')
+}
+
+// TODO Use a parser from the browserslist API
+function transformMultilineToQuery(query) {
+  // Replace newline to browserslist `or`. Support `,` at end of line
+  return query.replace(/\n|,+\n/g, ',')
 }
 
 function hasJSONSymbols(query) {
