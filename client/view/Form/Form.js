@@ -7,7 +7,7 @@ import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { loadBrowsers } from './loadBrowsers.js'
-import { transformQuery } from './transformQuery.js'
+import { transformConfig } from './transformConfig.js'
 
 let form = document.querySelector('[data-id=form]')
 let total = document.querySelector('[data-id=form_total]')
@@ -29,8 +29,8 @@ function createOptgroup(groupName, regionsGroup) {
   return optgroup
 }
 
-export function setFormValues({ query, region }) {
-  textarea.value = query
+export function setFormValues({ config, region }) {
+  textarea.value = config
 
   if (!region) region = 'alt-ww'
   let isRegionExists = regionList.includes(region)
@@ -44,21 +44,21 @@ export function submitForm() {
 }
 
 let prev = ''
-async function updateStatsView(query, region) {
-  if (query.length === 0) {
+async function updateStatsView(config, region) {
+  if (config.length === 0) {
     formCoverage.hidden = true
     toggleBrowsers(false)
     toggleHedgehog(true)
     return
   }
 
-  if (prev === query + region) return
-  prev = query + region
+  if (prev === config + region) return
+  prev = config + region
 
   form.classList.add('is-loading')
   let data
   try {
-    data = await loadBrowsers(query, region)
+    data = await loadBrowsers(config, region)
   } catch (e) {
     if (e.name === 'ServerError') {
       showError(e.message, textarea)
@@ -88,10 +88,10 @@ async function updateStatsView(query, region) {
   updateVersions(versions.browserslist, versions.caniuse, updated)
 }
 
-function changeUrl(query, region) {
+function changeUrl(config, region) {
   let urlParams = new URLSearchParams()
-  if (query) {
-    urlParams.set('q', query)
+  if (config) {
+    urlParams.set('q', config)
   }
 
   if (region && region !== DEFAULT_REGION) {
@@ -104,10 +104,10 @@ function changeUrl(query, region) {
 function submitFormWithUrlParams() {
   let urlParams = new URLSearchParams(location.hash.slice(1))
 
-  let query = urlParams.get('q')
+  let config = urlParams.get('q')
   let region = urlParams.get('region')
 
-  setFormValues({ query, region })
+  setFormValues({ config, region })
   submitForm()
 }
 
@@ -153,11 +153,11 @@ form.addEventListener('submit', e => {
   e.preventDefault()
 
   let formData = new FormData(form)
-  let query = transformQuery(formData.get('query'))
+  let config = transformConfig(formData.get('config'))
   let region = formData.get('region')
 
-  changeUrl(query, region)
-  updateStatsView(query, region)
+  changeUrl(config, region)
+  updateStatsView(config, region)
   updateQueryLinksRegion(region)
 })
 

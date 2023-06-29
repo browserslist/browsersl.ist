@@ -7,14 +7,14 @@ class ServerError extends Error {
   }
 }
 
-export async function loadBrowsers(query, region) {
+export async function loadBrowsers(config, region) {
   if (!region) region = ''
   lastRequest += 1
   let request = lastRequest
   let response
 
   try {
-    let urlParams = new URLSearchParams({ q: query, region })
+    let urlParams = new URLSearchParams({ q: config, region })
     response = await fetch(`/api/browsers?${urlParams}`)
 
     if (request !== lastRequest) {

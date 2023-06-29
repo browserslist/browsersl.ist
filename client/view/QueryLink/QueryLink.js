@@ -10,15 +10,15 @@ function parse(href) {
 
 for (let link of links) {
   let queryAttr = link.getAttribute('data-query')
-  let query = queryAttr || link.textContent.trim().replace(/\s+/g, ' ')
+  let config = queryAttr || link.textContent.trim().replace(/\s+/g, ' ')
 
-  link.href = '#' + new URLSearchParams({ q: query })
+  link.href = '#' + new URLSearchParams({ q: config })
 
   link.addEventListener('click', e => {
     e.preventDefault()
     let region = parse(link.href).get('region')
 
-    setFormValues({ query, region })
+    setFormValues({ config, region })
     submitForm()
     scrollToInteractive()
   })

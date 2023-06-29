@@ -11,15 +11,16 @@ let bv = importJSON('../node_modules/browserslist/package.json').version
 let cv = importJSON('../node_modules/caniuse-lite/package.json').version
 let updated = statSync(join(ROOT, '../../../pnpm-lock.yaml')).mtime
 
-export async function getBrowsers(query, region) {
+export async function getBrowsers(config, region) {
   let browsersByQuery = []
+  let query = configToQuery(config)
 
   try {
     browsersByQuery = browserslist(query)
   } catch (error) {
     throw error.browserslist
       ? error
-      : new Error(`Unknown browser query \`${query}\`.`)
+      : new Error(`Unknown browser query \`${config}\`.`)
   }
 
   let browsersCoverageByQuery = {}
@@ -78,9 +79,9 @@ export async function getBrowsers(query, region) {
 
   return {
     browsers,
+    config,
     coverage,
     lint: lint(query),
-    query,
     region,
     updated: updated.getTime(),
     versions: {
@@ -122,4 +123,13 @@ function roundNumber(value) {
 
 function importJSON(path) {
   return JSON.parse(readFileSync(new URL(path, import.meta.url)))
+}
+
+function configToQuery(query) {
+  return query
+    .toString()
+    .replace(/#[^\n]*/g, '')
+    .split(/\n|,/)
+    .map(line => line.trim())
+    .filter(line => line !== '')
 }
