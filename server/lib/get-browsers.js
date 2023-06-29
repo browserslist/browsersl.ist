@@ -79,9 +79,9 @@ export async function getBrowsers(config, region) {
 
   return {
     browsers,
+    config,
     coverage,
     lint: lint(query),
-    query: config,
     region,
     updated: updated.getTime(),
     versions: {
