@@ -32,7 +32,7 @@ importers:
         version: 16.0.1(eslint@8.43.0)
       eslint-plugin-perfectionist:
         specifier: ^1.4.0
-        version: 1.4.0(eslint@8.43.0)(typescript@5.1.5)
+        version: 1.4.0(eslint@8.43.0)(typescript@5.1.6)
       eslint-plugin-prefer-let:
         specifier: ^3.0.1
         version: 3.0.1
@@ -510,7 +510,7 @@ packages:
       eslint-config-standard: 17.1.0(eslint-plugin-import@2.27.5)(eslint-plugin-n@16.0.1)(eslint-plugin-promise@6.1.1)(eslint@8.43.0)
       eslint-plugin-import: 2.27.5(eslint@8.43.0)
       eslint-plugin-n: 16.0.1(eslint@8.43.0)
-      eslint-plugin-perfectionist: 1.4.0(eslint@8.43.0)(typescript@5.1.5)
+      eslint-plugin-perfectionist: 1.4.0(eslint@8.43.0)(typescript@5.1.6)
       eslint-plugin-prefer-let: 3.0.1
       eslint-plugin-promise: 6.1.1(eslint@8.43.0)
     dev: true
@@ -596,7 +596,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@typescript-eslint/typescript-estree@5.60.1(typescript@5.1.5):
+  /@typescript-eslint/typescript-estree@5.60.1(typescript@5.1.6):
     resolution: {integrity: sha512-hkX70J9+2M2ZT6fhti5Q2FoU9zb+GeZK2SLP1WZlvUDqdMbEKhexZODD1WodNRyO8eS+4nScvT0dts8IdaBzfw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -611,13 +611,13 @@ packages:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.3
-      tsutils: 3.21.0(typescript@5.1.5)
-      typescript: 5.1.5
+      tsutils: 3.21.0(typescript@5.1.6)
+      typescript: 5.1.6
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@typescript-eslint/utils@5.60.1(eslint@8.43.0)(typescript@5.1.5):
+  /@typescript-eslint/utils@5.60.1(eslint@8.43.0)(typescript@5.1.6):
     resolution: {integrity: sha512-tiJ7FFdFQOWssFa3gqb94Ilexyw0JVxj6vBzaSpfN/8IhoKkDuSAenUKvsSHw2A/TMpJb26izIszTXaqygkvpQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -628,7 +628,7 @@ packages:
       '@types/semver': 7.5.0
       '@typescript-eslint/scope-manager': 5.60.1
       '@typescript-eslint/types': 5.60.1
-      '@typescript-eslint/typescript-estree': 5.60.1(typescript@5.1.5)
+      '@typescript-eslint/typescript-estree': 5.60.1(typescript@5.1.6)
       eslint: 8.43.0
       eslint-scope: 5.1.1
       semver: 7.5.3
@@ -1406,13 +1406,13 @@ packages:
       semver: 7.5.3
     dev: true
 
-  /eslint-plugin-perfectionist@1.4.0(eslint@8.43.0)(typescript@5.1.5):
+  /eslint-plugin-perfectionist@1.4.0(eslint@8.43.0)(typescript@5.1.6):
     resolution: {integrity: sha512-9gO+qmuU1DYzoYeN2D0PqYrI1FlqMPYGsZTWUWnWPrMQdFGFtq7eYraeQ57/8ffNBbVX6e6HvQOJ9iok9DfJvw==}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
       '@typescript-eslint/types': 5.60.1
-      '@typescript-eslint/utils': 5.60.1(eslint@8.43.0)(typescript@5.1.5)
+      '@typescript-eslint/utils': 5.60.1(eslint@8.43.0)(typescript@5.1.6)
       eslint: 8.43.0
       is-core-module: 2.12.1
       json5: 2.2.3
@@ -3170,14 +3170,14 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
-  /tsutils@3.21.0(typescript@5.1.5):
+  /tsutils@3.21.0(typescript@5.1.6):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
     peerDependencies:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
     dependencies:
       tslib: 1.14.1
-      typescript: 5.1.5
+      typescript: 5.1.6
     dev: true
 
   /type-check@0.4.0:
@@ -3214,8 +3214,8 @@ packages:
       is-typed-array: 1.1.10
     dev: true
 
-  /typescript@5.1.5:
-    resolution: {integrity: sha512-FOH+WN/DQjUvN6WgW+c4Ml3yi0PH+a/8q+kNIfRehv1wLhWONedw85iu+vQ39Wp49IzTJEsZ2lyLXpBF7mkF1g==}
+  /typescript@5.1.6:
+    resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
