@@ -7,8 +7,9 @@
     "build": "vite build -m production",
     "prebuild": "node ./scripts/build-regions.js",
     "postinstall": "pnpm prebuild",
-    "test:run": "node --test test/*.test.js && size-limit",
-    "test": "pnpm run test:run"
+    "test:run": "node --test test/*.test.js",
+    "test:size": "size-limit",
+    "test": "pnpm run --parallel --filter . /^test:/"
   },
   "dependencies": {
     "@csstools/postcss-oklab-function": "^2.2.3",
