@@ -13,7 +13,7 @@ test('Integration tests', async t => {
     let url = new URL(`api/browsers`, base)
     let response = await fetch(url)
     let data = await response.json()
-    equal(data.query, 'defaults')
+    equal(data.config, 'defaults')
   })
 
   await t.test('uses `Global` region without `region` param', async () => {
