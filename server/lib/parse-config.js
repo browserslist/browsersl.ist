@@ -5,37 +5,35 @@ export function configToQuery(config) {
     return jsonConfigToQuery(config)
   }
 
-  return rcConfigToQuery(config)
+  return textConfigToQuery(config)
 }
 
 const JSON_FRAGMENT_REQUIRED_SYMBOLS = [':', '[', ']']
 
 function jsonConfigToQuery(config) {
   try {
-    return JSONToQuery(config)
+    return jsonToQuery(config)
   } catch {}
   try {
-    return JSONFragmentToQuery(config)
+    return jsonFragmentToQuery(config)
   } catch {}
 
   return config
 }
 
-function rcConfigToQuery(config) {
-  return config
-    .toString()
+function textConfigToQuery(config) {
+  return filterComments(config.toString())
     .split(/\n|,/)
-    .map(filterComments)
     .filter(line => line.trim().length > 1)
 }
 
-function JSONToQuery(jsonConfig) {
+function jsonToQuery(jsonConfig) {
   let data = JSON.parse(jsonConfig).browserslist
   return data.join(',')
 }
 
-function JSONFragmentToQuery(jsonFragment) {
-  return JSONToQuery('{' + jsonFragment + '}')
+function jsonFragmentToQuery(jsonFragment) {
+  return jsonToQuery('{' + jsonFragment + '}')
 }
 
 function hasJSONSymbols(string) {
