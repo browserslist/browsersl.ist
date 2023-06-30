@@ -6,6 +6,7 @@ import { toggleBrowsers, updateBrowsersStats } from '../Browsers/Browsers.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 import { updateVersions } from '../Versions/Versions.js'
+import { isEmptyConfig } from './isEmptyConfig.js'
 import { loadBrowsers } from './loadBrowsers.js'
 import { transformConfig } from './transformConfig.js'
 
@@ -45,7 +46,7 @@ export function submitForm() {
 
 let prev = ''
 async function updateStatsView(config, region) {
-  if (config.length === 0) {
+  if (isEmptyConfig(config)) {
     formCoverage.hidden = true
     toggleBrowsers(false)
     toggleHedgehog(true)
