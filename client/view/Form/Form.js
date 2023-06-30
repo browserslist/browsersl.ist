@@ -1,3 +1,4 @@
+import { filterComments } from '../../../lib/filter-comments.js'
 import { DEFAULT_REGION, regionGroups, regionList } from '../../data/regions.js'
 import { createTag, debounce, formatPercent } from '../../lib/utils.js'
 import { buildError, buildWarning } from '../Alert/Alert.js'
@@ -6,9 +7,7 @@ import { toggleBrowsers, updateBrowsersStats } from '../Browsers/Browsers.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 import { updateVersions } from '../Versions/Versions.js'
-import { isEmptyConfig } from './isEmptyConfig.js'
 import { loadBrowsers } from './loadBrowsers.js'
-import { transformConfig } from './transformConfig.js'
 
 let form = document.querySelector('[data-id=form]')
 let total = document.querySelector('[data-id=form_total]')
@@ -46,7 +45,7 @@ export function submitForm() {
 
 let prev = ''
 async function updateStatsView(config, region) {
-  if (isEmptyConfig(config)) {
+  if (filterComments(config).length === 0) {
     formCoverage.hidden = true
     toggleBrowsers(false)
     toggleHedgehog(true)
@@ -154,7 +153,7 @@ form.addEventListener('submit', e => {
   e.preventDefault()
 
   let formData = new FormData(form)
-  let config = transformConfig(formData.get('config'))
+  let config = formData.get('config')
   let region = formData.get('region')
 
   changeUrl(config, region)

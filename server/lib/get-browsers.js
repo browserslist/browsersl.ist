@@ -5,6 +5,8 @@ import { readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
+import { configToQuery } from './parse-config.js'
+
 const ROOT = fileURLToPath(import.meta.url)
 
 let bv = importJSON('../node_modules/browserslist/package.json').version
@@ -123,13 +125,4 @@ function roundNumber(value) {
 
 function importJSON(path) {
   return JSON.parse(readFileSync(new URL(path, import.meta.url)))
-}
-
-function configToQuery(query) {
-  return query
-    .toString()
-    .replace(/#[^\n]*/g, '')
-    .split(/\n|,/)
-    .map(line => line.trim())
-    .filter(line => line !== '')
 }

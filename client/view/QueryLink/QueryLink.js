@@ -10,7 +10,8 @@ function parse(href) {
 
 for (let link of links) {
   let queryAttr = link.getAttribute('data-query')
-  let config = queryAttr || link.textContent.trim().replace(/\s+/g, ' ')
+  // Hack with innerText for not dealing with JSON beautify
+  let config = queryAttr || link.innerText.trim()
 
   link.href = '#' + new URLSearchParams({ q: config })
 
