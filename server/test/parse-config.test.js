@@ -1,7 +1,7 @@
 import { equal } from 'node:assert'
 import test from 'node:test'
 
-import { jsonConfigToQuery } from '../lib/parse-config.js'
+import { configToQuery } from '../lib/parse-config.js'
 
 test('Should correctly extract query from JSON fragment input', () => {
   let input = `
@@ -11,7 +11,7 @@ test('Should correctly extract query from JSON fragment input', () => {
     ]
   `
 
-  equal(jsonConfigToQuery(input), 'IE > 9,chrome > 80')
+  equal(configToQuery(input), 'IE > 9,chrome > 80')
 })
 
 test('Should correctly extract query from package.json-like input', () => {
@@ -25,5 +25,5 @@ test('Should correctly extract query from package.json-like input', () => {
   }
   `
 
-  equal(jsonConfigToQuery(input), 'IE > 9,chrome > 80')
+  equal(configToQuery(input), 'IE > 9,chrome > 80')
 })

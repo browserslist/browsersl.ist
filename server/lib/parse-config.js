@@ -10,7 +10,7 @@ export function configToQuery(config) {
 
 const JSON_FRAGMENT_REQUIRED_SYMBOLS = [':', '[', ']']
 
-export function jsonConfigToQuery(config) {
+function jsonConfigToQuery(config) {
   try {
     return JSONToQuery(config)
   } catch {}
@@ -21,7 +21,7 @@ export function jsonConfigToQuery(config) {
   return config
 }
 
-export function rcConfigToQuery(config) {
+function rcConfigToQuery(config) {
   return config
     .toString()
     .split(/\n|,/)
