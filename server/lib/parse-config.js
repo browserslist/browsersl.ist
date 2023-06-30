@@ -26,7 +26,7 @@ function rcConfigToQuery(config) {
     .toString()
     .split(/\n|,/)
     .map(filterComments)
-    .filter(line => line !== '')
+    .filter(line => line.trim().length > 1)
 }
 
 function JSONToQuery(jsonConfig) {
