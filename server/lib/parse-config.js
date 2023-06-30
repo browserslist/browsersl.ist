@@ -29,7 +29,7 @@ function textConfigToQuery(config) {
 
 function jsonToQuery(jsonConfig) {
   let data = JSON.parse(jsonConfig).browserslist
-  return data.join(',')
+  return data.join(', ')
 }
 
 function jsonFragmentToQuery(jsonFragment) {

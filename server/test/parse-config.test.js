@@ -11,7 +11,7 @@ test('Should correctly extract query from JSON fragment input', () => {
     ]
   `
 
-  equal(configToQuery(input), 'IE > 9,chrome > 80')
+  equal(configToQuery(input), 'IE > 9, chrome > 80')
 })
 
 test('Should correctly extract query from package.json-like input', () => {
@@ -25,5 +25,5 @@ test('Should correctly extract query from package.json-like input', () => {
   }
   `
 
-  equal(configToQuery(input), 'IE > 9,chrome > 80')
+  equal(configToQuery(input), 'IE > 9, chrome > 80')
 })
