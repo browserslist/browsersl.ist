@@ -1,3 +1,4 @@
+import { filterComments } from '../../../lib/filter-comments.js'
 import { DEFAULT_REGION, regionGroups, regionList } from '../../data/regions.js'
 import { createTag, debounce, formatPercent } from '../../lib/utils.js'
 import { buildError, buildWarning } from '../Alert/Alert.js'
@@ -6,7 +7,6 @@ import { toggleBrowsers, updateBrowsersStats } from '../Browsers/Browsers.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 import { updateVersions } from '../Versions/Versions.js'
-import { isEmptyConfig } from './isEmptyConfig.js'
 import { loadBrowsers } from './loadBrowsers.js'
 
 let form = document.querySelector('[data-id=form]')
@@ -45,7 +45,7 @@ export function submitForm() {
 
 let prev = ''
 async function updateStatsView(config, region) {
-  if (isEmptyConfig(config)) {
+  if (filterComments(config).length === 0) {
     formCoverage.hidden = true
     toggleBrowsers(false)
     toggleHedgehog(true)
