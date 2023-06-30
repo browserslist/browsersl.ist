@@ -5,6 +5,8 @@ import { readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
+import { configToQuery } from './parse-config.js'
+
 const ROOT = fileURLToPath(import.meta.url)
 
 let bv = importJSON('../node_modules/browserslist/package.json').version
@@ -123,52 +125,4 @@ function roundNumber(value) {
 
 function importJSON(path) {
   return JSON.parse(readFileSync(new URL(path, import.meta.url)))
-}
-
-function configToQuery(config) {
-  if (hasJSONSymbols(config)) {
-    return jsonConfigToQuery(config)
-  }
-
-  return rcConfigToQuery(config)
-}
-
-const JSON_FRAGMENT_REQUIRED_SYMBOLS = [':', '[', ']']
-
-function jsonConfigToQuery(config) {
-  try {
-    return JSONToQuery(config)
-  } catch {}
-  try {
-    return JSONFragmentToQuery(config)
-  } catch {}
-
-  return config
-}
-
-function rcConfigToQuery(config) {
-  return config
-    .toString()
-    .replace(/#[^\n]*/g, '')
-    .split(/\n|,/)
-    .map(line => line.trim())
-    .filter(line => line !== '')
-}
-
-function JSONToQuery(jsonConfig) {
-  let data = JSON.parse(jsonConfig).browserslist
-  return data.join(',')
-}
-
-function JSONFragmentToQuery(jsonFragment) {
-  return JSONToQuery('{' + jsonFragment + '}')
-}
-
-function hasJSONSymbols(string) {
-  for (let symbol of JSON_FRAGMENT_REQUIRED_SYMBOLS) {
-    if (!string.includes(symbol)) {
-      return false
-    }
-  }
-  return true
 }
