@@ -6,7 +6,6 @@ import { toggleBrowsers, updateBrowsersStats } from '../Browsers/Browsers.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 import { updateVersions } from '../Versions/Versions.js'
-import { isEmptyConfig } from './isEmptyConfig.js'
 import { loadBrowsers } from './loadBrowsers.js'
 
 let form = document.querySelector('[data-id=form]')
@@ -45,7 +44,7 @@ export function submitForm() {
 
 let prev = ''
 async function updateStatsView(config, region) {
-  if (isEmptyConfig(config)) {
+  if (config.length === 0) {
     formCoverage.hidden = true
     toggleBrowsers(false)
     toggleHedgehog(true)
