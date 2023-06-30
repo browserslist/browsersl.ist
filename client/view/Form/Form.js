@@ -7,7 +7,6 @@ import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { loadBrowsers } from './loadBrowsers.js'
-import { transformConfig } from './transformConfig.js'
 
 let form = document.querySelector('[data-id=form]')
 let total = document.querySelector('[data-id=form_total]')
@@ -153,7 +152,7 @@ form.addEventListener('submit', e => {
   e.preventDefault()
 
   let formData = new FormData(form)
-  let config = transformConfig(formData.get('config'))
+  let config = formData.get('config')
   let region = formData.get('region')
 
   changeUrl(config, region)
