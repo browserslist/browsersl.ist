@@ -1,8 +1,6 @@
 const JSON_FRAGMENT_REQUIRED_SYMBOLS = [':', '[', ']']
 
-export function transformConfig(rawConfig) {
-  let config = rawConfig.trim()
-
+export function transformConfig(config) {
   if (hasJSONSymbols(config)) {
     try {
       return transformJSONToConfig(config)
