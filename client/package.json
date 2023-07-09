@@ -9,7 +9,7 @@
     "postinstall": "pnpm prebuild",
     "test:run": "node --test test/*.test.js",
     "test:size": "size-limit",
-    "test": "pnpm run --parallel --filter . /^test:/"
+    "test": "pnpm run /^test:/"
   },
   "dependencies": {
     "@csstools/postcss-oklab-function": "^2.2.3",
