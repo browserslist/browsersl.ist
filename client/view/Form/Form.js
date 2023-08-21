@@ -1,5 +1,6 @@
 import { filterComments } from '../../../lib/filter-comments.js'
 import { DEFAULT_REGION, regionGroups, regionList } from '../../data/regions.js'
+import { trackEvent } from '../../lib/analytics.js'
 import { createTag, debounce, formatPercent } from '../../lib/utils.js'
 import { buildError, buildWarning } from '../Alert/Alert.js'
 import { updateBar } from '../Bar/Bar.js'
@@ -146,6 +147,7 @@ regionSelect.appendChild(createOptgroup('Continents', regionGroups.continents))
 regionSelect.appendChild(createOptgroup('Countries', regionGroups.countries))
 
 regionSelect.addEventListener('change', () => {
+  trackEvent('Change region', { props: { region: regionSelect.value } })
   submitForm()
 })
 

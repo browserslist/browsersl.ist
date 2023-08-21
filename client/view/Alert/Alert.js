@@ -1,3 +1,4 @@
+import { trackEvent } from '../../lib/analytics.js'
 import { createTag } from '../../lib/utils'
 
 function formatText(text) {
@@ -27,5 +28,8 @@ export function buildWarning(root, message, fixed) {
   fix.appendChild(link)
   warning.appendChild(fix)
   root.appendChild(warning)
+  link.addEventListener('click', () => {
+    trackEvent('Fix query')
+  })
   return { fix, warning }
 }
