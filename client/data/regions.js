@@ -18,7 +18,17 @@ if ('Intl' in window && 'DisplayNames' in window.Intl) {
 }
 
 export const regionGroups = {
-  continents: Object.entries(continents).map(([id, name]) => ({ id, name })),
+  continents: Object.entries(continents)
+    .map(([id, name]) => ({ id, name }))
+    .sort((a, b) => {
+      if (a.name === 'Global') {
+        return -1
+      } else if (b.name === 'Global') {
+        return 1
+      } else {
+        return sorter.compare(a.name, b.name)
+      }
+    }),
   countries: countryCodes
     .map(id => ({ id, name: getCountryName(id) }))
     .sort((a, b) => sorter.compare(a.name, b.name))
