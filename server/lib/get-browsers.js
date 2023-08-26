@@ -1,10 +1,11 @@
 import browserslist from 'browserslist'
 import { lint } from 'browserslist-lint'
-import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
+import { agents as caniuseAgents } from 'caniuse-lite'
 import { readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
+import { getBrowserVersionCoverage, getTotalCoverage } from './get-coverage.js'
 import { configToQuery } from './parse-config.js'
 
 const ROOT = fileURLToPath(import.meta.url)
@@ -35,11 +36,7 @@ export async function getBrowsers(config, region) {
     if (id === 'node') {
       versionCoverage = null
     } else {
-      versionCoverage = roundNumber(
-        region === 'alt-ww'
-          ? getGlobalCoverage(id, version)
-          : await getRegionCoverage(id, version, region)
-      )
+      versionCoverage = await getBrowserVersionCoverage(id, version, region)
     }
 
     if (!browsersCoverageByQuery[id]) {
@@ -60,9 +57,7 @@ export async function getBrowsers(config, region) {
         coverage = null
       } else {
         name = caniuseAgents[id].browser
-        coverage = roundNumber(
-          Object.values(versions).reduce((a, b) => a + b, 0)
-        )
+        coverage = Object.values(versions).reduce((a, b) => a + b, 0)
       }
 
       return {
@@ -74,15 +69,10 @@ export async function getBrowsers(config, region) {
     })
     .sort((a, b) => b.coverage - a.coverage)
 
-  let coverage = roundNumber(browserslist.coverage(browsersByQuery, region))
-
-  // BUG `caniuse-db` returns coverage >100% https://github.com/Fyrd/caniuse/issues/6426
-  coverage = coverage > 100 ? 100 : coverage
-
   return {
     browsers,
     config,
-    coverage,
+    coverage: getTotalCoverage(browsersByQuery, region),
     lint: lint(query),
     region,
     updated: updated.getTime(),
@@ -91,36 +81,6 @@ export async function getBrowsers(config, region) {
       caniuse: cv
     }
   }
-}
-
-function getGlobalCoverage(id, version) {
-  return getCoverage(caniuseAgents[id].usage_global, version)
-}
-
-async function getRegionCoverage(id, version, region) {
-  try {
-    if (region.includes('/')) {
-      throw new Error(`Invalid symbols in region name \`${region}\`.`)
-    }
-
-    let { default: regionData } = await import(
-      `caniuse-lite/data/regions/${region}.js`
-    )
-    return getCoverage(caniuseRegion(regionData)[id], version)
-  } catch (e) {
-    throw new Error(`Unknown region name \`${region}\`.`)
-  }
-}
-
-function getCoverage(data, version) {
-  let [lastVersion] = Object.keys(data).sort((a, b) => Number(b) - Number(a))
-
-  // If specific version coverage is missing, fall back to 'version zero'
-  return data[version] !== undefined ? data[version] : data[lastVersion]
-}
-
-function roundNumber(value) {
-  return Math.round(value * 100) / 100
 }
 
 function importJSON(path) {
