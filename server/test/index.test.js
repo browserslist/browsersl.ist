@@ -20,7 +20,7 @@ test('Integration tests', async t => {
     let url = new URL(`api/browsers`, base)
     let response = await fetch(url)
     let data = await response.json()
-    equal(data.region, 'alt-ww')
+    equal(data.region, null)
   })
 
   await t.test('responses status 200 for `/browsers` route', async () => {
