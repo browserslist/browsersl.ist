@@ -3,6 +3,12 @@ import test from 'node:test'
 
 import { getBrowsers } from '../lib/get-browsers.js'
 
+function approximatelyEqual(actual, expected) {
+  let tolerance = 2
+  let diff = Math.abs(actual - expected)
+  ok(diff <= tolerance)
+}
+
 test('Throws error for wrong browserslist `query`', async () => {
   let error
   try {
@@ -46,4 +52,20 @@ test('Coverage of all browsers should differ in regions', async () => {
   let countryData = await getBrowsers('>1%', 'IT')
 
   notEqual(continentData.coverage, countryData.coverage)
+})
+
+test('The sum of the coverage versions equals the total coverage in global', async () => {
+  let data = await getBrowsers('cover 80%')
+  let sumOfCoverages = data.browsers.reduce((sum, x) => sum + x.coverage, 0)
+  let totalCoverage = data.coverage
+
+  approximatelyEqual(sumOfCoverages, totalCoverage)
+})
+
+test('The sum of the coverage versions equals the total coverage in region', async () => {
+  let data = await getBrowsers('cover 45% in BR', 'BR')
+  let sumOfCoverages = data.browsers.reduce((sum, x) => sum + x.coverage, 0)
+  let totalCoverage = data.coverage
+
+  approximatelyEqual(sumOfCoverages, totalCoverage)
 })

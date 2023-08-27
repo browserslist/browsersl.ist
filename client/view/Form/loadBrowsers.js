@@ -1,3 +1,5 @@
+import { DEFAULT_REGION } from '../../data/regions'
+
 let lastRequest = 0
 
 class ServerError extends Error {
@@ -8,13 +10,15 @@ class ServerError extends Error {
 }
 
 export async function loadBrowsers(config, region) {
-  if (!region) region = ''
   lastRequest += 1
   let request = lastRequest
   let response
 
   try {
-    let urlParams = new URLSearchParams({ q: config, region })
+    let urlParams =
+      !region || region === DEFAULT_REGION
+        ? new URLSearchParams({ q: config })
+        : new URLSearchParams({ q: config, region })
     response = await fetch(`/api/browsers?${urlParams}`)
 
     if (request !== lastRequest) {

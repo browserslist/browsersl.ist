@@ -17,11 +17,11 @@ the compatible browsers for a browsers query.
 You can use the site API in your own applications.
 
 ```
-https://browsersl.ist/api/browsers?q=defaults&region=alt-ww
+https://browsersl.ist/api/browsers?q=defaults&region=alt-as
 ```
 
 - `q` — query or config. If config is provided it should be in `.browserslist` file format, not `package.json`-like. Examples are available [on the website](https://browsersl.ist) or in the [browserslist repository](https://github.com/browserslist/browserslist#full-list). `defaults` by default.
-- `region` — region code. List of all region codes can be found at [caniuse-lite/data/regions](https://github.com/browserslist/caniuse-lite/tree/main/data/regions). `alt-ww` by default.
+- `region` — region code (optional). List of all region codes can be found at [caniuse-lite/data/regions](https://github.com/browserslist/caniuse-lite/tree/main/data/regions).
 
 
 ### Response example
