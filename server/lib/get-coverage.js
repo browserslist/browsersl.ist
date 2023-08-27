@@ -10,7 +10,12 @@ export function getTotalCoverage(browsers, region) {
   // BUG `caniuse-db` returns coverage >100% https://github.com/Fyrd/caniuse/issues/6426
   coverage = coverage > 100 ? 100 : coverage
 
-  return roundNumber(coverage)
+  return round(coverage)
+}
+
+export function getTotalBrowserCoverage(versions) {
+  let browserVerStats = Object.values(versions)
+  return round(browserVerStats.reduce((sum, x) => sum + x, 0))
 }
 
 export async function getBrowserVersionCoverage(id, version, region) {
@@ -39,9 +44,9 @@ function parseBrowserVersionCoverage(stats, ver) {
 
   // If specific version coverage is missing, fall back to 'version zero'
   let coverage = stats[ver] !== undefined ? stats[ver] : stats[lastVer]
-  return roundNumber(coverage)
+  return round(coverage)
 }
 
-function roundNumber(value) {
+function round(value) {
   return Math.round(value * 100) / 100
 }

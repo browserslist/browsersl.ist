@@ -5,7 +5,11 @@ import { readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
-import { getBrowserVersionCoverage, getTotalCoverage } from './get-coverage.js'
+import {
+  getBrowserVersionCoverage,
+  getTotalBrowserCoverage,
+  getTotalCoverage
+} from './get-coverage.js'
 import { configToQuery } from './parse-config.js'
 
 const ROOT = fileURLToPath(import.meta.url)
@@ -57,7 +61,7 @@ export async function getBrowsers(config, region) {
         coverage = null
       } else {
         name = caniuseAgents[id].browser
-        coverage = Object.values(versions).reduce((a, b) => a + b, 0)
+        coverage = getTotalBrowserCoverage(versions)
       }
 
       return {
