@@ -20,7 +20,8 @@ export async function getBrowserVersionCoverage(id, version, region) {
   }
 
   try {
-    if (region.includes('/')) {
+    let isValidRegionName = /^(alt-)?[A-Za-z]{2}$/.test(region)
+    if (!isValidRegionName) {
       throw new Error(`Invalid symbols in region name \`${region}\`.`)
     }
 
