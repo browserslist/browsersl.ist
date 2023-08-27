@@ -1,6 +1,8 @@
 import browserslist from 'browserslist'
 import { agents as caniuseAgents, region as caniuseRegion } from 'caniuse-lite'
 
+const REGION_NAME = /^(alt-)?[A-Za-z]{2}$/
+
 export function getTotalCoverage(browsers, region) {
   let isGlobal = !region
   let coverage = isGlobal
@@ -25,8 +27,7 @@ export async function getBrowserVersionCoverage(id, version, region) {
   }
 
   try {
-    let isValidRegionName = /^(alt-)?[A-Za-z]{2}$/.test(region)
-    if (!isValidRegionName) {
+    if (!REGION_NAME.test(region)) {
       throw new Error(`Invalid symbols in region name \`${region}\`.`)
     }
 
