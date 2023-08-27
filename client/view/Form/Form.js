@@ -33,7 +33,7 @@ function createOptgroup(groupName, regionsGroup) {
 export function setFormValues({ config, region }) {
   textarea.value = config
 
-  if (!region) region = 'alt-ww'
+  if (!region) region = DEFAULT_REGION
   let isRegionExists = regionList.includes(region)
   if (region && isRegionExists) {
     regionSelect.value = region
