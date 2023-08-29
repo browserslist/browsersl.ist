@@ -17,6 +17,22 @@ let textarea = document.querySelector('[data-id=form_textarea]')
 let regionSelect = document.querySelector('[data-id=form_region]')
 let messages = document.querySelector('[data-id=form_messages]')
 
+function getFormData() {
+  let formData = new FormData(form)
+  return {
+    config: formData.get('config'),
+    region: formData.get('region')
+  }
+}
+
+function getUrlParams() {
+  let urlParams = new URLSearchParams(location.hash.slice(1))
+  return {
+    config: urlParams.get('q'),
+    region: urlParams.get('region')
+  }
+}
+
 function createOptgroup(groupName, regionsGroup) {
   let optgroup = createTag('optgroup')
   optgroup.label = groupName
@@ -103,12 +119,7 @@ function changeUrl(config, region) {
 }
 
 function submitFormWithUrlParams() {
-  let urlParams = new URLSearchParams(location.hash.slice(1))
-
-  let config = urlParams.get('q')
-  let region = urlParams.get('region')
-
-  setFormValues({ config, region })
+  setFormValues(getUrlParams())
   submitForm()
 }
 
@@ -153,23 +164,26 @@ regionSelect.addEventListener('change', () => {
 
 form.addEventListener('submit', e => {
   e.preventDefault()
-
-  let formData = new FormData(form)
-  let config = formData.get('config')
-  let region = formData.get('region')
+  let { config, region } = getFormData()
 
   changeUrl(config, region)
   updateStatsView(config, region)
   updateQueryLinksRegion(region)
 })
 
-let submitFormDebounced = debounce(submitForm, 300)
+let handleInputDebounced = debounce(() => {
+  let { config } = getFormData()
+  trackEvent('Enter query', { props: { query: config } })
+  submitForm()
+}, 300)
 
-textarea.addEventListener('input', () => {
-  submitFormDebounced()
-})
+textarea.addEventListener('input', () => handleInputDebounced())
 
-submitFormWithUrlParams()
+if (getUrlParams().config) {
+  trackEvent('Open query', { props: getUrlParams() })
+  submitFormWithUrlParams()
+}
+
 window.addEventListener('hashchange', () => {
   submitFormWithUrlParams()
 })
