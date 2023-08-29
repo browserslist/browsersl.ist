@@ -173,14 +173,14 @@ form.addEventListener('submit', e => {
 
 let handleInputDebounced = debounce(() => {
   let { config } = getFormData()
-  trackEvent('Enter query', { props: { query: config } })
+  trackEvent('Enter config', { props: { config } })
   submitForm()
 }, 300)
 
 textarea.addEventListener('input', () => handleInputDebounced())
 
 if (getUrlParams().config) {
-  trackEvent('Open query', { props: getUrlParams() })
+  trackEvent('Open config', { props: getUrlParams() })
   submitFormWithUrlParams()
 }
 
