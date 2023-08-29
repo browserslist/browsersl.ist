@@ -29,7 +29,7 @@ export function buildWarning(root, message, fixed) {
   warning.appendChild(fix)
   root.appendChild(warning)
   link.addEventListener('click', () => {
-    trackEvent('Fix query', { props: { query: fixed } })
+    trackEvent('Fix config', { props: { config: fixed } })
   })
   return { fix, warning }
 }

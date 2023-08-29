@@ -21,7 +21,7 @@ for (let link of links) {
     e.preventDefault()
     let region = parse(link.href).get('region')
 
-    trackEvent('Click on query', { props: { query: config } })
+    trackEvent('Click on config-link', { props: { config } })
     setFormValues({ config, region })
     submitForm()
     scrollToInteractive()
