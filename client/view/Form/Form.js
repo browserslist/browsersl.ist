@@ -17,6 +17,14 @@ let textarea = document.querySelector('[data-id=form_textarea]')
 let regionSelect = document.querySelector('[data-id=form_region]')
 let messages = document.querySelector('[data-id=form_messages]')
 
+function getUrlParams() {
+  let urlParams = new URLSearchParams(location.hash.slice(1))
+  return {
+    config: urlParams.get('q'),
+    region: urlParams.get('region')
+  }
+}
+
 function createOptgroup(groupName, regionsGroup) {
   let optgroup = createTag('optgroup')
   optgroup.label = groupName
@@ -103,12 +111,7 @@ function changeUrl(config, region) {
 }
 
 function submitFormWithUrlParams() {
-  let urlParams = new URLSearchParams(location.hash.slice(1))
-
-  let config = urlParams.get('q')
-  let region = urlParams.get('region')
-
-  setFormValues({ config, region })
+  setFormValues(getUrlParams())
   submitForm()
 }
 
@@ -169,7 +172,11 @@ textarea.addEventListener('input', () => {
   submitFormDebounced()
 })
 
-submitFormWithUrlParams()
+if (getUrlParams().config) {
+  trackEvent('Open query', { props: getUrlParams() })
+  submitFormWithUrlParams()
+}
+
 window.addEventListener('hashchange', () => {
   submitFormWithUrlParams()
 })
