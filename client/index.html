@@ -47,8 +47,8 @@
         <textarea id="form_config" name="config" cols="30" rows="5" required class="Form_textarea" data-id="form_textarea" placeholder="Write the Browserslist config here…"></textarea>
         <label for="form_config" class="Form_placeholder">Write the Browserslist config here…<br>
           For example
-          <a class="QueryLink"><code>defaults</code></a>,
-          <a class="QueryLink"><code>> 0.2% and not dead</code></a>
+          <a class="ConfigLink"><code>defaults</code></a>,
+          <a class="ConfigLink"><code>> 0.2% and not dead</code></a>
         </label>
         <p class="Form_loader">Loading…</p>
       </div>
@@ -101,11 +101,11 @@
   <article class="Docs">
     <h2>How to get started</h2>
     <p>
-      Use <a class="QueryLink"><code>defaults</code></a> if you're building a web application for
+      Use <a class="ConfigLink"><code>defaults</code></a> if you're building a web application for
       the global audience.
     </p>
     <p>
-      Use <a class="QueryLink"><code>node 18</code></a> if you're building a Node.js application,
+      Use <a class="ConfigLink"><code>node 18</code></a> if you're building a Node.js application,
       e.g., for server-side rendering.
     </p>
     <p>
@@ -114,7 +114,7 @@
       <a href="https://github.com/browserslist/browserslist#browserslist-" class="Link" target="_blank">many other tools</a>
       will find target browsers automatically if you add the following to <b>package.json</b>:
     </p>
-    <a class="QueryLink is-pre"><pre>
+    <a class="ConfigLink is-pre"><pre>
       <code>"browserslist": [</code>
       <code>  "defaults and supports es6-module",</code>
       <code>  "maintained node versions"</code>
@@ -125,13 +125,13 @@
     <section>
       <h3>Start with the default configuration</h3>
 
-      <p>You can pick a sound set of versions with the <a class="QueryLink"><code>defaults</code></a> query which is
+      <p>You can pick a sound set of versions with the <a class="ConfigLink"><code>defaults</code></a> query which is
         a shortcut for <code>> 0.5%, last 2 versions, Firefox ESR, not dead</code>.
         It matches recent versions of popular and supported browsers worldwide and includes
         Firefox Extended Support Release which is updated roughly annually.
       </p>
 
-      <p>The <a class="QueryLink"><code>defaults</code></a> query was thoroughly designed by the
+      <p>The <a class="ConfigLink"><code>defaults</code></a> query was thoroughly designed by the
         Browserslist community.
         It helps promote best practices and avoid common pitfalls.
       </p>
@@ -146,48 +146,48 @@
 
       <h4>Examples</h4>
       <ul>
-        <li><a class="QueryLink"><code>> 5%</code></a> all versions with > 5% of the audience
+        <li><a class="ConfigLink"><code>> 5%</code></a> all versions with > 5% of the audience
           worldwide.
         </li>
-        <li><a class="QueryLink"><code>>= 5% in US</code></a> same as above but in the US.
+        <li><a class="ConfigLink"><code>>= 5% in US</code></a> same as above but in the US.
         </li>
-        <li><a class="QueryLink"><code>>= 5% in alt-AS</code></a> same as above but in Asia.
+        <li><a class="ConfigLink"><code>>= 5% in alt-AS</code></a> same as above but in Asia.
         </li>
       </ul>
 
       <h4>Beware</h4>
       <ul>
         <li> You may exclude the most recent versions of all browsers that have been just
-          released. Please always add <a class="QueryLink" data-query="last 2 versions"><code>last …
+          released. Please always add <a class="ConfigLink" data-config="last 2 versions"><code>last …
             versions</code></a> to include them back.
         </li>
         <li> You can exclude your global audience. Please be careful when narrowing the audience to a region or a country.
         </li>
-        <li> You may include <a class="QueryLink"><code>dead</code></a> versions. Please consider
-          adding <a class="QueryLink" data-query="defaults, not dead"><code>not dead</code></a>.
+        <li> You may include <a class="ConfigLink"><code>dead</code></a> versions. Please consider
+          adding <a class="ConfigLink" data-config="defaults, not dead"><code>not dead</code></a>.
         </li>
       </ul>
 
       <details>
         <summary><h4>Advanced</h4></summary>
         <ul>
-          <li><a class="QueryLink"><code>> 5% in my stats</code></a> versions with >
+          <li><a class="ConfigLink"><code>> 5% in my stats</code></a> versions with >
             5%
             of usage
             within your own audience.
           </li>
-          <li><a class="QueryLink"><code>> 5% in circle-ci stats</code></a>
+          <li><a class="ConfigLink"><code>> 5% in circle-ci stats</code></a>
             versions with > 5% of usage within the audience data from shareable configuration, available as <a
               href="https://github.com/circleci/circleci-docs/blob/master/browserslist-stats.json" class="Link"
               target="_blank">custom stats</a>.
           </li>
-          <li><a class="QueryLink"><code>cover 99.5%</code></a> the smallest set of popular
+          <li><a class="ConfigLink"><code>cover 99.5%</code></a> the smallest set of popular
             versions with collective usage over 99.5% of the audience worldwide.
           </li>
-          <li><a class="QueryLink"><code>cover 99.5% in CN</code></a> same as above
+          <li><a class="ConfigLink"><code>cover 99.5% in CN</code></a> same as above
             but in China.
           </li>
-          <li><a class="QueryLink"><code>cover 99.5% in alt-EU</code></a> same
+          <li><a class="ConfigLink"><code>cover 99.5% in alt-EU</code></a> same
             as above but in Europe.
           </li>
         </ul>
@@ -201,10 +201,10 @@
 
       <h4>Examples</h4>
       <ul>
-        <li><a class="QueryLink"><code>last 2 versions</code></a> last 2 versions of each
+        <li><a class="ConfigLink"><code>last 2 versions</code></a> last 2 versions of each
           browser.
         </li>
-        <li><a class="QueryLink"><code>last 2 Chrome versions</code></a> same as above but just
+        <li><a class="ConfigLink"><code>last 2 Chrome versions</code></a> same as above but just
           Chrome.
         </li>
       </ul>
@@ -212,40 +212,40 @@
       <h4>Beware</h4>
       <ul>
         <li>You might exclude older versions still used by a substantial audience.
-          Please always add <a class="QueryLink" data-query="> 5%"><code>> …</code></a> to include them back.
+          Please always add <a class="ConfigLink" data-config="> 5%"><code>> …</code></a> to include them back.
         </li>
-        <li>You may pick <a class="QueryLink"><code>dead</code></a> browsers like Internet Explorer.
-          Always use <a class="QueryLink" data-query="last 2 versions"><code>last … versions</code></a>
-          with <a class="QueryLink" data-query="defaults, not dead"><code>not dead</code></a>.
+        <li>You may pick <a class="ConfigLink"><code>dead</code></a> browsers like Internet Explorer.
+          Always use <a class="ConfigLink" data-config="last 2 versions"><code>last … versions</code></a>
+          with <a class="ConfigLink" data-config="defaults, not dead"><code>not dead</code></a>.
         </li>
       </ul>
 
       <details>
         <summary><h4>Advanced</h4></summary>
         <ul>
-          <li><a class="QueryLink"><code>last 2 major versions</code></a> all
+          <li><a class="ConfigLink"><code>last 2 major versions</code></a> all
             minor
             and patch releases of the last 2 major versions.
           </li>
-          <li><a class="QueryLink"><code>last 2 Safari major versions</code></a>
+          <li><a class="ConfigLink"><code>last 2 Safari major versions</code></a>
             same as above but just Safari.
           </li>
-          <li><a class="QueryLink"><code>unreleased versions</code></a>
+          <li><a class="ConfigLink"><code>unreleased versions</code></a>
             alpha and beta versions.
           </li>
-          <li><a class="QueryLink"><code>unreleased Chrome versions</code></a>
+          <li><a class="ConfigLink"><code>unreleased Chrome versions</code></a>
             same as above but just Chrome.
           </li>
-          <li><a class="QueryLink"><code>since 2020-01-15</code></a>
+          <li><a class="ConfigLink"><code>since 2020-01-15</code></a>
             versions released since Jan 15, 2020.
           </li>
-          <li><a class="QueryLink"><code>since 2020-01</code></a>
+          <li><a class="ConfigLink"><code>since 2020-01</code></a>
             versions released since January 2020, inclusive.
           </li>
-          <li><a class="QueryLink"><code>since 2020</code></a>
+          <li><a class="ConfigLink"><code>since 2020</code></a>
             versions released since 2020, inclusive.
           </li>
-          <li><a class="QueryLink"><code>last 3 years</code></a>
+          <li><a class="ConfigLink"><code>last 3 years</code></a>
             same as above if you run this query in 2022.
           </li>
         </ul>
@@ -259,17 +259,17 @@
 
       <h4>Examples</h4>
       <ul>
-        <li><a class="QueryLink"><code>ChromeAndroid 103</code></a> mobile Chrome
+        <li><a class="ConfigLink"><code>ChromeAndroid 103</code></a> mobile Chrome
           version 103.
         </li>
-        <li><a class="QueryLink"><code>Firefox > 20</code></a> desktop Firefox versions
+        <li><a class="ConfigLink"><code>Firefox > 20</code></a> desktop Firefox versions
           newer than 20.
         </li>
-        <li><a class="QueryLink"><code>iOS >= 13.2</code></a> mobile Safari version 13.2
+        <li><a class="ConfigLink"><code>iOS >= 13.2</code></a> mobile Safari version 13.2
           and
           newer.
         </li>
-        <li><a class="QueryLink" data-query="defaults, not firefox esr"><code>not Firefox ESR</code></a> removes specific version.
+        <li><a class="ConfigLink" data-config="defaults, not firefox esr"><code>not Firefox ESR</code></a> removes specific version.
         </li>
       </ul>
 
@@ -278,8 +278,8 @@
         <li> Make sure that your audience uses specific versions (e.g., in a corporate
           setting) or that your application is not built to work with specific
           versions (e.g., it's a bleeding-edge demo project). Please consider using
-          <a class="QueryLink" data-query="last 2 versions"><code>last … versions</code></a>
-          or <a class="QueryLink" data-query="> 5%"><code>> …</code></a> to include more versions.
+          <a class="ConfigLink" data-config="last 2 versions"><code>last … versions</code></a>
+          or <a class="ConfigLink" data-config="> 5%"><code>> …</code></a> to include more versions.
         </li>
         <li>Note, that Opera Mini has special version <code>all</code>. <code>not op_mini all</code> is not a special query.</li>
       </ul>
@@ -287,11 +287,11 @@
       <details>
         <summary><h4>Advanced</h4></summary>
         <ul>
-          <li><a class="QueryLink"><code>ie 6-8</code></a> an inclusive range of Internet
+          <li><a class="ConfigLink"><code>ie 6-8</code></a> an inclusive range of Internet
             Explorer
             versions.
           </li>
-          <li><a class="QueryLink"><code>Firefox ESR</code></a> the latest Firefox Extended
+          <li><a class="ConfigLink"><code>Firefox ESR</code></a> the latest Firefox Extended
             Support Release.
           </li>
         </ul>
@@ -306,28 +306,28 @@
 
       <h4>Examples</h4>
       <ul>
-        <li><a class="QueryLink"><code>node 10</code></a> latest
-          <a class="QueryLink" data-query="node 10.0.0"><code>10.x.x</code></a> Node.js version.
+        <li><a class="ConfigLink"><code>node 10</code></a> latest
+          <a class="ConfigLink" data-config="node 10.0.0"><code>10.x.x</code></a> Node.js version.
         </li>
-        <li><a class="QueryLink"><code>node 10.4</code></a> latest
-          <a class="QueryLink" data-query="node 10.4.0"><code>10.4.x</code></a> Node.js version.
+        <li><a class="ConfigLink"><code>node 10.4</code></a> latest
+          <a class="ConfigLink" data-config="node 10.4.0"><code>10.4.x</code></a> Node.js version.
         </li>
-        <li><a class="QueryLink"><code>node > 16</code></a> all Node.js versions newer than
+        <li><a class="ConfigLink"><code>node > 16</code></a> all Node.js versions newer than
           <code>16.0.0</code>.
         </li>
-        <li><a class="QueryLink"><code>last 2 node versions</code></a> two latest Node.js releases.
+        <li><a class="ConfigLink"><code>last 2 node versions</code></a> two latest Node.js releases.
         </li>
-        <li><a class="QueryLink"><code>last 2 node major versions</code></a> two last major-version Node.js releases.
+        <li><a class="ConfigLink"><code>last 2 node major versions</code></a> two last major-version Node.js releases.
         </li>
       </ul>
 
       <details>
         <summary><h4>Advanced</h4></summary>
         <ul>
-          <li><a class="QueryLink"><code>maintained node versions</code></a>
+          <li><a class="ConfigLink"><code>maintained node versions</code></a>
             all Node.js versions currently maintained by Node.js Foundation.
           </li>
-          <li><a class="QueryLink"><code>current node</code></a> the Node.js version used
+          <li><a class="ConfigLink"><code>current node</code></a> the Node.js version used
             by Browserslist right now.
           </li>
         </ul>
@@ -343,10 +343,10 @@
 
       <h4>Examples</h4>
       <ul>
-        <li><a class="QueryLink"><code>supports es6-module</code></a> versions that support
+        <li><a class="ConfigLink"><code>supports es6-module</code></a> versions that support
           JavaScript modules via script tag.
         </li>
-        <li><a class="QueryLink"><code>supports css-grid</code></a> versions that support CSS Grid Layout.</li>
+        <li><a class="ConfigLink"><code>supports css-grid</code></a> versions that support CSS Grid Layout.</li>
       </ul>
 
       <h4>Beware</h4>
@@ -366,31 +366,31 @@
       <h4>Examples</h4>
       <ul>
         <li>
-          <a class="QueryLink"><code>> 0.5%, last 2 versions</code></a>
-          combines <a class="QueryLink"><code>> 0.5%</code></a>
-          with <a class="QueryLink"><code>last 2 versions</code></a>.
+          <a class="ConfigLink"><code>> 0.5%, last 2 versions</code></a>
+          combines <a class="ConfigLink"><code>> 0.5%</code></a>
+          with <a class="ConfigLink"><code>last 2 versions</code></a>.
         </li>
-        <li><a class="QueryLink"><code>> 0.5% or last 2 versions</code></a>
+        <li><a class="ConfigLink"><code>> 0.5% or last 2 versions</code></a>
           same as above.
         </li>
-        <li><a class="QueryLink"><code>> 0.5% and last 2 versions</code></a>
-          intersects <a class="QueryLink"><code>> 0.5%</code></a>
-          with <a class="QueryLink"><code>last 2 versions</code></a>.
+        <li><a class="ConfigLink"><code>> 0.5% and last 2 versions</code></a>
+          intersects <a class="ConfigLink"><code>> 0.5%</code></a>
+          with <a class="ConfigLink"><code>last 2 versions</code></a>.
         </li>
-        <li><a class="QueryLink"><code>> 0.5% and not last 2 versions</code></a> removes
-          <a class="QueryLink"><code>last 2 versions</code></a> from
-          <a class="QueryLink"><code>> 0.5%</code></a>.
+        <li><a class="ConfigLink"><code>> 0.5% and not last 2 versions</code></a> removes
+          <a class="ConfigLink"><code>last 2 versions</code></a> from
+          <a class="ConfigLink"><code>> 0.5%</code></a>.
         </li>
       </ul>
 
       <h4>Beware</h4>
       <ul>
-        <li> A query with <a class="QueryLink" data-query="defaults, not last 2 versions"><code>not</code></a>
+        <li> A query with <a class="ConfigLink" data-config="defaults, not last 2 versions"><code>not</code></a>
           can't be the left-hand one in the list.</li>
         <li> A query with <code>not</code> is always joined to the left-hand one with
-          <a class="QueryLink" data-query="defaults and not last 2 versions"><code>and</code></a>,
-          even if <a class="QueryLink" data-query="defaults or not last 2 versions"><code>or</code></a> or
-          <a class="QueryLink" data-query="defaults, not last 2 versions"><code>,</code></a> are used.</li>
+          <a class="ConfigLink" data-config="defaults and not last 2 versions"><code>and</code></a>,
+          even if <a class="ConfigLink" data-config="defaults or not last 2 versions"><code>or</code></a> or
+          <a class="ConfigLink" data-config="defaults, not last 2 versions"><code>,</code></a> are used.</li>
       </ul>
 
       <details>
@@ -398,9 +398,9 @@
         <ul>
           <li>
             The following queries yield the same result:
-            <a class="QueryLink"> <code>> 0.5% and not last 2 versions</code></a>,
-            <a class="QueryLink"><code>> 0.5% or not last 2 versions</code></a>,
-            <a class="QueryLink"><code>> 0.5%, not last 2 versions</code></a>.
+            <a class="ConfigLink"> <code>> 0.5% and not last 2 versions</code></a>,
+            <a class="ConfigLink"><code>> 0.5% or not last 2 versions</code></a>,
+            <a class="ConfigLink"><code>> 0.5%, not last 2 versions</code></a>.
           </li>
         </ul>
       </details>
@@ -410,17 +410,17 @@
       <h3>Exclude unmaintained browser versions</h3>
 
       <p>You can combine your queries with
-        <a class="QueryLink" data-query="defaults, not dead"><code>not dead</code></a>
-        to exclude <a class="QueryLink"><code>dead</code></a> browsers, i.e.,
+        <a class="ConfigLink" data-config="defaults, not dead"><code>not dead</code></a>
+        to exclude <a class="ConfigLink"><code>dead</code></a> browsers, i.e.,
         browsers without official support or updates for more than 24 months.
         Right now these include IE 11, IE Mobile 11, BlackBerry 10, BlackBerry 7,
         Samsung 4, Opera Mobile 12.1, and all versions of Baidu.</p>
 
       <h4>Examples</h4>
       <ul>
-        <li><a class="QueryLink"><code>> 0.2% and not dead</code></a>
-          excludes <a class="QueryLink"><code>dead</code></a> versions
-          from versions matched by <a class="QueryLink"><code>> 0.2%</code></a>.
+        <li><a class="ConfigLink"><code>> 0.2% and not dead</code></a>
+          excludes <a class="ConfigLink"><code>dead</code></a> versions
+          from versions matched by <a class="ConfigLink"><code>> 0.2%</code></a>.
         </li>
       </ul>
     </section>

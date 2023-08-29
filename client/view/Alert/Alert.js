@@ -19,8 +19,8 @@ export function buildWarning(root, message, fixed) {
   let warning = createTag('div', ['Alert', 'is-warning'])
   let description = createTag('div', ['Alert_description'])
   let fix = createTag('div', ['Alert_action'])
-  let link = createTag('a', ['QueryLink', 'is-fix'])
-  link.setAttribute('data-query', fixed)
+  let link = createTag('a', ['ConfigLink', 'is-fix'])
+  link.setAttribute('data-config', fixed)
   description.innerHTML = formatText(message)
   warning.appendChild(description)
   link.innerHTML = 'Fix'

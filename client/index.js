@@ -1,5 +1,5 @@
 import './view/Form/Form.js'
-import './view/QueryLink/QueryLink.js'
+import './view/ConfigLink/ConfigLink.js'
 import './view/Skip/Skip.js'
 import './view/Intro/Intro.js'
 import './lib/analytics.js'
