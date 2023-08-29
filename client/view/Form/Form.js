@@ -6,7 +6,7 @@ import { buildError, buildWarning } from '../Alert/Alert.js'
 import { updateBar } from '../Bar/Bar.js'
 import { toggleBrowsers, updateBrowsersStats } from '../Browsers/Browsers.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
-import { updateQueryLinksRegion } from '../QueryLink/QueryLink.js'
+import { updateConfigLinksRegion } from '../ConfigLink/ConfigLink.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { loadBrowsers } from './loadBrowsers.js'
 
@@ -168,7 +168,7 @@ form.addEventListener('submit', e => {
 
   changeUrl(config, region)
   updateStatsView(config, region)
-  updateQueryLinksRegion(region)
+  updateConfigLinksRegion(region)
 })
 
 let handleInputDebounced = debounce(() => {

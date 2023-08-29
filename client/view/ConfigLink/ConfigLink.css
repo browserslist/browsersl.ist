@@ -1,4 +1,4 @@
-.QueryLink {
+.ConfigLink {
   display: inline-block;
   text-decoration: none;
   border-radius: 4px;
@@ -15,25 +15,25 @@
   }
 }
 
-.QueryLink code {
+.ConfigLink code {
   font-size: 13px;
   font-weight: 300;
   color: var(--accent);
 }
 
-.QueryLink > code,
-.QueryLink > pre {
+.ConfigLink > code,
+.ConfigLink > pre {
   background-color: var(--text-highlited);
 }
 
-.QueryLink > code {
+.ConfigLink > code {
   display: inline-block;
   padding: 0 4px;
   color: var(--accent);
   border-radius: 4px;
 }
 
-.QueryLink > pre {
+.ConfigLink > pre {
   display: flex;
   flex-direction: column;
   padding: 12px;
@@ -42,19 +42,19 @@
   border-radius: 8px;
 }
 
-.QueryLink > pre > code {
+.ConfigLink > pre > code {
   overflow: hidden;
   white-space: pre-wrap;
   background-color: initial;
 }
 
 @media (hover) {
-  .QueryLink.is-fix:hover {
+  .ConfigLink.is-fix:hover {
     background-color: var(--text-highlited-warning-hover);
   }
 
-  .QueryLink:hover > code,
-  .QueryLink:hover > pre {
+  .ConfigLink:hover > code,
+  .ConfigLink:hover > pre {
     background-color: var(--text-highlited-hover);
   }
 }
