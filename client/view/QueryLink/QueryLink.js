@@ -1,4 +1,5 @@
 import { DEFAULT_REGION } from '../../data/regions.js'
+import { trackEvent } from '../../lib/analytics.js'
 import { setFormValues, submitForm } from '../Form/Form.js'
 import { scrollToInteractive } from '../Interactive/Interactive.js'
 
@@ -20,6 +21,7 @@ for (let link of links) {
     e.preventDefault()
     let region = parse(link.href).get('region')
 
+    trackEvent('Click on query', { props: { query: config } })
     setFormValues({ config, region })
     submitForm()
     scrollToInteractive()
