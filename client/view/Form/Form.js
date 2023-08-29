@@ -171,18 +171,26 @@ form.addEventListener('submit', e => {
   updateConfigLinksRegion(region)
 })
 
-let handleInputDebounced = debounce(() => {
+let trackEnterConfigDebounced = debounce(() => {
   let { config } = getFormData()
   trackEvent('Enter config', { props: { config } })
-  submitForm()
-}, 300)
+}, 1500)
 
-textarea.addEventListener('input', () => handleInputDebounced())
+let submitFormDebounced = debounce(submitForm, 300)
+
+textarea.addEventListener('input', () => {
+  trackEnterConfigDebounced()
+  submitFormDebounced()
+})
 
 if (getUrlParams().config) {
   trackEvent('Open config', { props: getUrlParams() })
   submitFormWithUrlParams()
 }
+
+textarea.addEventListener('input', () => {
+  submitFormDebounced()
+})
 
 window.addEventListener('hashchange', () => {
   submitFormWithUrlParams()
