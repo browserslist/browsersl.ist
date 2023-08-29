@@ -188,10 +188,6 @@ if (getUrlParams().config) {
   submitFormWithUrlParams()
 }
 
-textarea.addEventListener('input', () => {
-  submitFormDebounced()
-})
-
 window.addEventListener('hashchange', () => {
   submitFormWithUrlParams()
 })
