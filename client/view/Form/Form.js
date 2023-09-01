@@ -173,7 +173,9 @@ form.addEventListener('submit', e => {
 
 let trackEnterConfigDebounced = debounce(() => {
   let { config } = getFormData()
-  trackEvent('Enter config', { props: { config } })
+  if (config.trim() !== '') {
+    trackEvent('Enter config', { props: { config } })
+  }
 }, 1000)
 
 let submitFormDebounced = debounce(submitForm, 300)
