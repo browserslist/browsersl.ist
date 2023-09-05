@@ -21,7 +21,7 @@
     "ssdeploy": "^0.9.3"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^51.0.1",
+    "@logux/eslint-config": "^51.0.2",
     "@logux/stylelint-config": "^0.16.0",
     "eslint": "^8.48.0",
     "eslint-config-standard": "^17.1.0",
@@ -31,7 +31,7 @@
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.1.1",
     "nano-staged": "^0.8.0",
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.3",
     "simple-git-hooks": "^2.9.0",
     "stylelint": "^15.10.3",
     "svgo": "^3.0.2"
