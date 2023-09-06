@@ -31,7 +31,7 @@ jobs:
       - name: Build static files
         run: pnpm build
       - name: Auth Google Cloud
-        uses: google-github-actions/auth@v0
+        uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCLOUD_AUTH }}
       - name: Install Google Cloud
