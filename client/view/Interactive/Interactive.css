@@ -11,10 +11,15 @@
   @media (width > 740px) {
     position: fixed;
     top: 0;
+
     /* Hide scrollbar */
     right: calc(-1 * (100vw - 100%));
     height: 100vh;
     overflow-y: scroll;
+
+    :is(body.without-docs) & {
+      right: calc(50% - var(--block-width) / 2);
+    }
   }
 }
 

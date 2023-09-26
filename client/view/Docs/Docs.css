@@ -8,6 +8,10 @@
   @media (width > 740px) {
     padding-top: 0;
   }
+
+  :is(body.without-docs) & {
+    display: none;
+  }
 }
 
 .Docs section {

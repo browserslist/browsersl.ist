@@ -3,4 +3,8 @@
   width: var(--block-width);
   padding: var(--block-padding);
   padding-top: 0;
+
+  :is(body.without-docs) & {
+    display: none;
+  }
 }

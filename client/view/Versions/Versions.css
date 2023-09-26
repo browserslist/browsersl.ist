@@ -12,10 +12,17 @@
   margin: 0;
   font-size: 14px;
   line-height: 20px;
+
+  &.is-extra {
+    margin-left: auto;
+  }
 }
 
 .Versions_link {
   color: currentcolor;
+  text-decoration: underline;
+  background: none;
+  border: none;
 
   &:hover,
   &:focus {
