@@ -337,10 +337,9 @@
     <section>
       <h3>Select browser versions that support a certain feature</h3>
 
-      <p>You can pick browser versions that fully or partially support features
-        from the Can I Use database.
-        See the <a href="https://github.com/browserslist/caniuse-lite/tree/main/data/features" class="Link" target="_blank">
-        caniuse-lite repository</a> for the full list of features.</p>
+      <p>You can pick browser versions that support features from the Can I Use database.
+        See the <a href="https://github.com/browserslist/caniuse-lite/tree/main/data/features" class="Link" target="_blank">
+        caniuse-lite repository</a> for the full list of features.</p>
 
       <h4>Examples</h4>
       <ul>
@@ -353,9 +352,9 @@
 
       <h4>Beware</h4>
       <ul>
-        <li><a class="ConfigLink"><code data-config="supports es6-module">supports …</code></a>
+        <li><a class="ConfigLink" data-config="supports es6-module"><code>supports …</code></a>
           is an alias for
-          <a class="ConfigLink"><code data-config="partially supports es6-module">partially supports …</code></a>,
+          <a class="ConfigLink" data-config="partially supports es6-module"><code>partially supports …</code></a>,
           however as its naming is ambigious, prefer using <code>partially supports</code>
           to make your intent of including partially supported browsers clear.</li>
         <li> These queries rarely work well on their own. Please consider combining them with other queries.
