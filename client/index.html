@@ -116,7 +116,7 @@
     </p>
     <a class="ConfigLink is-pre"><pre>
       <code>"browserslist": [</code>
-      <code>  "defaults and supports es6-module",</code>
+      <code>  "defaults and fully supports es6-module",</code>
       <code>  "maintained node versions"</code>
       <code>]</code>
     </pre>
@@ -337,21 +337,28 @@
     <section>
       <h3>Select browser versions that support a certain feature</h3>
 
-      <p>You can pick browser versions that fully support features from the Can I Use database. See the
-        <a href="https://github.com/browserslist/caniuse-lite/tree/main/data/features" class="Link" target="_blank">
-          caniuse-lite repository</a> for the full list of features.</p>
+      <p>You can pick browser versions that fully or partially support features
+        from the Can I Use database.
+        See the <a href="https://github.com/browserslist/caniuse-lite/tree/main/data/features" class="Link" target="_blank">
+        caniuse-lite repository</a> for the full list of features.</p>
 
       <h4>Examples</h4>
       <ul>
-        <li><a class="ConfigLink"><code>supports es6-module</code></a> versions that support
-          JavaScript modules via script tag.
+        <li><a class="ConfigLink"><code>fully supports es6-module</code></a>
+          versions that fully support JavaScript modules via script tag.
         </li>
-        <li><a class="ConfigLink"><code>supports css-grid</code></a> versions that support CSS Grid Layout.</li>
+        <li><a class="ConfigLink"><code>partially supports css-grid</code></a>
+          versions that fully or partially supports CSS Grid Layout.</li>
       </ul>
 
       <h4>Beware</h4>
       <ul>
-        <li> This query rarely works well on its own. Please consider combining it with other queries.
+        <li><a class="ConfigLink"><code data-config="supports es6-module">supports …</code></a>
+          is an alias for
+          <a class="ConfigLink"><code data-config="partially supports es6-module">partially supports …</code></a>,
+          however as its naming is ambigious, prefer using <code>partially supports</code>
+          to make your intent of including partially supported browsers clear.</li>
+        <li> These queries rarely work well on their own. Please consider combining them with other queries.
         </li>
       </ul>
     </section>
