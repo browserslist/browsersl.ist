@@ -11,7 +11,6 @@ function parse(href) {
 
 for (let link of links) {
   let queryAttr = link.dataset.config
-  console.log(queryAttr)
   // Hack with innerText for not dealing with JSON beautify
   // but it doesn't work for hidden elements
   let config = queryAttr || link.innerText.trim() || link.textContent.trim()
