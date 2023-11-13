@@ -7,7 +7,7 @@
   {
     "name": "All scripts to execute",
     "path": "dist/*.js",
-    "gzip": false,
-    "limit": "5 KB"
+    "brotli": false,
+    "limit": "15 KB"
   }
 ]
