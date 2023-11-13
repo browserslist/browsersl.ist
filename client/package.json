@@ -25,8 +25,8 @@
     "vite-plugin-pug-transformer": "^1.0.4"
   },
   "devDependencies": {
-    "@size-limit/file": "^10.0.2",
-    "size-limit": "^10.0.2"
+    "@size-limit/file": "^11.0.0",
+    "size-limit": "^11.0.0"
   },
   "engines": {
     "node": ">=18"
