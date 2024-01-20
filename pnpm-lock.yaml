@@ -88,11 +88,11 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(postcss@8.4.32)
       vite:
-        specifier: ^5.0.5
-        version: 5.0.5
+        specifier: ^5.0.12
+        version: 5.0.12
       vite-plugin-pug-transformer:
         specifier: ^1.0.5
-        version: 1.0.5(vite@5.0.5)
+        version: 1.0.5(vite@5.0.12)
     devDependencies:
       '@size-limit/file':
         specifier: ^11.0.0
@@ -3532,7 +3532,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-pug-transformer@1.0.5(vite@5.0.5):
+  /vite-plugin-pug-transformer@1.0.5(vite@5.0.12):
     resolution: {integrity: sha512-FGtYP4kyn5ss/UnA1uikz+bX5zJVscPrBkSyrXeiZbhbh+qJCRwMHMy+mGv0I9xY0j6/iUCKk8AESUjnxQpBmw==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
@@ -3540,11 +3540,11 @@ packages:
     dependencies:
       picocolors: 1.0.0
       pug: 3.0.2
-      vite: 5.0.5
+      vite: 5.0.12
     dev: false
 
-  /vite@5.0.5:
-    resolution: {integrity: sha512-OekeWqR9Ls56f3zd4CaxzbbS11gqYkEiBtnWFFgYR2WV8oPJRRKq0mpskYy/XaoCL3L7VINDhqqOMNDiYdGvGg==}
+  /vite@5.0.12:
+    resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
