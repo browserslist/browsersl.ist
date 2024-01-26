@@ -1,11 +1,11 @@
-FROM node:20.10.0-alpine
+FROM node:20.11.0-alpine
 
 ENV NODE_ENV production
 WORKDIR /var/www
 COPY --chown=node:node . /var/www
 
 RUN corepack enable
-RUN corepack prepare pnpm@8.11.0 --activate
+RUN corepack prepare pnpm@8.14.3 --activate
 COPY ./pnpm-workspace.yaml /var/www/
 COPY ./package.json /var/www/
 COPY ./pnpm-lock.yaml /var/www/
