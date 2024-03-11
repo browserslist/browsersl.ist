@@ -21,16 +21,10 @@
     "ssdeploy": "^0.9.3"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^52.0.2",
+    "@logux/eslint-config": "^53.0.0",
     "@logux/stylelint-config": "^0.18.0",
     "eslint": "^8.57.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-node-import": "^1.0.4",
-    "eslint-plugin-perfectionist": "^2.6.0",
-    "eslint-plugin-prefer-let": "^3.0.1",
-    "eslint-plugin-promise": "^6.1.1",
+    "globals": "^14.0.0",
     "nano-staged": "^0.8.0",
     "prettier": "^3.2.5",
     "simple-git-hooks": "^2.10.0",
