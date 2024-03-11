@@ -1,7 +1,7 @@
 name: Clean Preview
 on:
   pull_request:
-    types: [ closed ]
+    types: [closed]
 permissions:
   contents: read
   deployments: write
@@ -22,7 +22,7 @@ jobs:
         with:
           dependencies-cache: production
       - name: Install dependencies
-        run: pnpm install --prod --frozen-lockfile --ignore-scripts
+        run: pnpm install --prod --ignore-scripts
       - name: Auth Google Cloud
         uses: google-github-actions/auth@v1
         with:

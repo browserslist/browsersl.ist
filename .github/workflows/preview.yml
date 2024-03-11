@@ -25,7 +25,7 @@ jobs:
         with:
           dependencies-cache: production
       - name: Install production dependencies
-        run: pnpm install --prod --frozen-lockfile --ignore-scripts
+        run: pnpm install --prod --ignore-scripts
       - name: Build regions
         run: pnpm prebuild
       - name: Build static files
