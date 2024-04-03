@@ -70,11 +70,11 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(postcss@8.4.35)
       vite:
-        specifier: ^5.1.6
-        version: 5.1.6
+        specifier: ^5.1.7
+        version: 5.1.7
       vite-plugin-pug-transformer:
         specifier: ^1.0.5
-        version: 1.0.5(vite@5.1.6)
+        version: 1.0.5(vite@5.1.7)
     devDependencies:
       '@size-limit/file':
         specifier: ^11.0.2
@@ -3638,7 +3638,7 @@ packages:
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  /vite-plugin-pug-transformer@1.0.5(vite@5.1.6):
+  /vite-plugin-pug-transformer@1.0.5(vite@5.1.7):
     resolution: {integrity: sha512-FGtYP4kyn5ss/UnA1uikz+bX5zJVscPrBkSyrXeiZbhbh+qJCRwMHMy+mGv0I9xY0j6/iUCKk8AESUjnxQpBmw==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
@@ -3646,11 +3646,11 @@ packages:
     dependencies:
       picocolors: 1.0.0
       pug: 3.0.2
-      vite: 5.1.6
+      vite: 5.1.7
     dev: false
 
-  /vite@5.1.6:
-    resolution: {integrity: sha512-yYIAZs9nVfRJ/AiOLCA91zzhjsHUgMjB+EigzFb6W2XTLO8JixBCKCjvhKZaye+NKYHCrkv3Oh50dH9EdLU2RA==}
+  /vite@5.1.7:
+    resolution: {integrity: sha512-sgnEEFTZYMui/sTlH1/XEnVNHMujOahPLGMxn1+5sIT45Xjng1Ec1K78jRP15dSmVgg5WBin9yO81j3o9OxofA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
