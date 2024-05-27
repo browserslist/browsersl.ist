@@ -14,13 +14,11 @@ jobs:
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
+        uses: pnpm/action-setup@v4
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .node-version
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --ignore-scripts
