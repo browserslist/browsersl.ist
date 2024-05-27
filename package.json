@@ -13,7 +13,6 @@
     "build": "pnpm -r build",
     "test:js": "eslint .",
     "test:css": "stylelint **/*.css",
-    "test:checks": "node scripts/check-versions.js",
     "test:audit": "pnpm audit --prod",
     "test": "pnpm run prebuild && pnpm build && pnpm run --recursive --include-workspace-root /^test:/"
   },
