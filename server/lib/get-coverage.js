@@ -35,7 +35,7 @@ export async function getBrowserVersionCoverage(id, version, region) {
       `caniuse-lite/data/regions/${region}.js`
     )
     return parseBrowserVersionCoverage(caniuseRegion(regionData)[id], version)
-  } catch (e) {
+  } catch {
     throw new Error(`Unknown region name \`${region}\`.`)
   }
 }
