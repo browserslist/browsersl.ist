@@ -9,6 +9,9 @@ export default [
     files: ['client/**/*.js'],
     languageOptions: {
       globals: globals.browser
+    },
+    rules: {
+      'n/no-unsupported-features/node-builtins': 'off'
     }
   }
 ]

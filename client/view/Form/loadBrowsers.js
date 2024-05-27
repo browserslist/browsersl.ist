@@ -24,7 +24,7 @@ export async function loadBrowsers(config, region) {
     if (request !== lastRequest) {
       return false
     }
-  } catch (error) {
+  } catch {
     throw new ServerError('Network error. Check that you are online.')
   }
 
