@@ -74,21 +74,11 @@ If you send a request with an error, you will receive error message with the sta
 
 ## Development
 
-We recommend to install Prettier and EditorConfig plugins to your text editor.
+We recommend installing Prettier and EditorConfig plugins to your text editor.
 
 To run a local copy for development:
 
-1. Install correct versions of Node.js and pnpm. There are two ways:
-	- With [`asdf`](https://github.com/asdf-vm/asdf) version manager:
-
-      ```sh
-      asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-      asdf plugin-add pnpm https://github.com/jonathanmorley/asdf-pnpm.git
-      asdf install
-      ```
-
-	- Manually by check versions in `.tool-versions`.
-
+1. Install Node.js 22 and pnpm 9.
 2. Install dependencies:
 
    ```sh
