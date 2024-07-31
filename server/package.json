@@ -13,6 +13,6 @@
   "dependencies": {
     "browserslist": "^4.23.2",
     "browserslist-lint": "^0.3.3",
-    "caniuse-lite": "^1.0.30001644"
+    "caniuse-lite": "^1.0.30001645"
   }
 }
