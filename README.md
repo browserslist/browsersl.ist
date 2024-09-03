@@ -27,7 +27,7 @@ https://browsersl.ist/api/browsers?q=defaults&region=alt-as
 ### Response example
 
 ```js
-// https://browsersl.ist/api/browsers?q=>defaults+and+supports+es6-module&region=alt-as
+// https://browsersl.ist/api/browsers?q=defaults+and+supports+es6-module&region=alt-as
 
 {
   "config": ">0.3%",
