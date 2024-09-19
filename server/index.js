@@ -5,7 +5,7 @@ import { handleAPIBrowsers } from './handlers/api-browsers.js'
 import { handleMain } from './handlers/main.js'
 import { handleStatic } from './handlers/static.js'
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
 
 const app = http.createServer(async (req, res) => {
   if (req.headers.host.startsWith('www.')) {
@@ -37,5 +37,7 @@ app.listen(PORT, () => {
     process.stdout.write(`Server listening at http://localhost:${PORT}/\n`)
   }
 })
+
+export { PORT }
 
 export default app

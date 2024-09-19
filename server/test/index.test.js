@@ -4,9 +4,9 @@ import { equal, match } from 'node:assert'
 import test from 'node:test'
 import { URL } from 'node:url'
 
-import app from '../index.js'
+import app, { PORT } from '../index.js'
 
-let base = `http://localhost:${app.address().port}/`
+let base = `http://localhost:${PORT}/`
 
 test('Integration tests', async t => {
   await t.test('uses `defaults` query without `q` param', async () => {
@@ -68,7 +68,7 @@ test('Integration tests', async t => {
     equal(response.status, 301)
     equal(
       response.headers.get('Location'),
-      'http://localhost:3000/?utm=1#q=defaults%2C+ie+11'
+      `http://localhost:${PORT}/?utm=1#q=defaults%2C+ie+11`
     )
   })
 
