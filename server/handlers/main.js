@@ -7,7 +7,6 @@ const HEADERS = {
   'Cache-Control': 'public, max-age=604800',
   'Content-Security-Policy':
     `object-src 'none'; ` +
-    `frame-ancestors 'none'; ` +
     `style-src 'self'; ` +
     `script-src 'self'`,
   'Content-Type': 'text/html; charset=utf-8',
