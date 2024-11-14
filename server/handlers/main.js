@@ -11,7 +11,6 @@ const HEADERS = {
     `script-src 'self'`,
   'Content-Type': 'text/html; charset=utf-8',
   'X-Content-Type-Options': 'nosniff',
-  'X-Frame-Options': 'DENY',
   'X-XSS-Protection': '1; mode=block'
 }
 const INDEX = new URL('../../client/dist/index.html', import.meta.url)
