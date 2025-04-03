@@ -38,6 +38,12 @@ app.listen(PORT, () => {
   }
 })
 
+process.on('SIGINT', () => {
+  app.close(() => {
+    process.exit(0)
+  })
+})
+
 export { PORT }
 
 export default app
