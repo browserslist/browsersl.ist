@@ -1,5 +1,5 @@
 {
-  "name": "browserl.ist-client",
+  "name": "client",
   "private": true,
   "type": "module",
   "scripts": {
