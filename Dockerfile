@@ -14,14 +14,12 @@ RUN strip /usr/local/bin/node
 WORKDIR /var/app
 COPY . /var/app/
 RUN pnpm install --prod --frozen-lockfile --ignore-scripts -F server
-RUN ls node_modules/
 
 FROM cgr.dev/chainguard/glibc-dynamic:latest
 WORKDIR /var/app
 ENV NODE_ENV production
 
 COPY --from=base /usr/local/bin/node /usr/local/bin/node
-COPY ./pnpm-workspace.yaml /var/app/
 COPY ./package.json /var/app/
 COPY ./pnpm-lock.yaml /var/app/
 COPY ./lib/ /var/app/lib/
