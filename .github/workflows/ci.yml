@@ -46,17 +46,45 @@ jobs:
         run: pnpm prebuild
       - name: Build static files
         run: pnpm build
+      - name: Build Docker image
+        shell: bash
+        run: docker build -t us-east1-docker.pkg.dev/browserslist-359212/production/server:latest ./
       - name: Auth Google Cloud
-        uses: google-github-actions/auth@v1
+        uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCLOUD_AUTH }}
+          workload_identity_provider: projects/599133183470/locations/global/workloadIdentityPools/github/providers/browserslist
+          service_account: github-deploy@browserslist-359212.iam.gserviceaccount.com
       - name: Install Google Cloud
-        uses: google-github-actions/setup-gcloud@v1
-      - name: Deploy files
+        uses: google-github-actions/setup-gcloud@v2
+      - name: Auth Docker
+        shell: bash
+        run: gcloud auth configure-docker us-east1-docker.pkg.dev --quiet
+      - name: Push Docker image
+        shell: bash
+        run: docker push us-east1-docker.pkg.dev/browserslist-359212/production/server:latest
+      - name: Deploy to Cloud Run
         id: deploy
-        run: ./node_modules/.bin/ssdeploy deploy --verbose
-        env:
-          GCLOUD_APP: ${{ secrets.GCLOUD_APP }}
-          GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
-          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+        uses: google-github-actions/deploy-cloudrun@v2.7.3
+        with:
+          service: browserslist
+          region: us-east1
+          image: us-east1-docker.pkg.dev/browserslist-359212/production/server:latest
+          flags: |
+            --allow-unauthenticated
+            --service-account=github-deploy@browserslist-359212.iam.gserviceaccount.com
+      - name: Move traffic to new revision
+        shell: bash
+        run: |
+          gcloud run services update-traffic browserslist \
+            --project browserslist-359212 \
+            --region us-east1 \
+            --to-latest
+      - name: Delete previous images
+        shell: bash
+        run: |
+          untagged=$(gcloud artifacts docker images list us-east1-docker.pkg.dev/browserslist-359212/production/server --include-tags --format="get(version)" --filter="NOT tags:*")
+          for digest in $untagged; do
+            image=us-east1-docker.pkg.dev/browserslist-359212/production/server@$digest
+            echo "Deleting unused image: $image"
+            gcloud artifacts docker images delete $image --quiet
+          done
