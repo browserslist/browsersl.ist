@@ -4,12 +4,12 @@ on:
     branches:
       - main
   pull_request:
-permissions:
-  contents: read
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
@@ -28,6 +28,9 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     # if: github.ref == 'refs/heads/main'
     needs:
       - test
