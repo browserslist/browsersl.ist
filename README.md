@@ -94,5 +94,5 @@ To run a local copy for development:
 To run local server in production mode:
 
 ```sh
-pnpm ssdeploy run
+./scripts/run-image.sh
 ```
