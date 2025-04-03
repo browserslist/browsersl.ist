@@ -32,6 +32,8 @@ jobs:
       contents: read
       id-token: write
     if: github.ref == 'refs/heads/main'
+    concurrency:
+      group: deploy
     needs:
       - test
     steps:
