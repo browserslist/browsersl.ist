@@ -1,11 +1,11 @@
 FROM cgr.dev/chainguard/wolfi-base:latest as base
 
-ENV NODE_VERSION 22.14.0
-ENV PNPM_VERSION 10.7.1
+ENV NODE_VERSION 24.3.0
+ENV PNPM_VERSION 10.9.0
 
 ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz /node.tar.xz
 RUN tar -xf "node.tar.xz" --strip-components=1 -C /usr/local/ \
-    "node-v${NODE_VERSION}-linux-x64/bin/node"
+  "node-v${NODE_VERSION}-linux-x64/bin/node"
 ADD https://github.com/pnpm/pnpm/releases/download/v${PNPM_VERSION}/pnpm-linux-x64 /usr/local/bin/pnpm
 RUN chmod a+rx /usr/local/bin/pnpm
 RUN apk add --no-cache binutils
@@ -31,4 +31,3 @@ USER nonroot
 
 ENTRYPOINT ["/usr/local/bin/node"]
 CMD ["server/index.js"]
-

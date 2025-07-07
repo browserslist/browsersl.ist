@@ -26,7 +26,7 @@ if (!dockerfile.includes(`NODE_VERSION ${nodeVersion}`)) {
 
 if (!packageJson.includes(`"node": ">=${nodeMajor}"`)) {
   process.stderr.write(
-    'package.json and .tool-versions have different node version\n'
+    'package.json and .node-version have different node version\n'
   )
   process.exit(1)
 }
