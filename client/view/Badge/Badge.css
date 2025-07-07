@@ -11,6 +11,12 @@
   background-image: initial;
   border-radius: 4px;
 
+  @media (((width <= 1221px) and (width > 739px)) or (width <= 612px)) {
+    &.is-secondary {
+      display: none;
+    }
+  }
+
   @media (hover) {
     &:hover {
       background-color: var(--bg-highlited-hover);
