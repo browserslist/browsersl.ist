@@ -11,7 +11,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "browserslist": "^4.25.4",
+    "browserslist": "^4.26.0",
     "browserslist-lint": "^0.3.3",
     "caniuse-lite": "^1.0.30001741"
   }
