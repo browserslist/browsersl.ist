@@ -12,11 +12,11 @@ jobs:
       contents: read
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: Install pnpm
         uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
       - name: Install Node.js
-        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: .node-version
           cache: pnpm
@@ -38,11 +38,11 @@ jobs:
       - test
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: Install pnpm
         uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
       - name: Install Node.js
-        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: .node-version
       - name: Install production dependencies
@@ -55,12 +55,12 @@ jobs:
         shell: bash
         run: docker build -t us-east1-docker.pkg.dev/browserslist-359212/production/server:latest ./
       - name: Auth Google Cloud
-        uses: google-github-actions/auth@b7593ed2efd1c1617e1b0254da33b86225adb2a5 # v2.1.12
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
           workload_identity_provider: projects/599133183470/locations/global/workloadIdentityPools/github/providers/browserslist
           service_account: github-deploy@browserslist-359212.iam.gserviceaccount.com
       - name: Install Google Cloud
-        uses: google-github-actions/setup-gcloud@cb1e50a9932213ecece00a606661ae9ca44f3397 # v2.2.0
+        uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
       - name: Auth Docker
         shell: bash
         run: gcloud auth configure-docker us-east1-docker.pkg.dev --quiet
@@ -69,7 +69,7 @@ jobs:
         run: docker push us-east1-docker.pkg.dev/browserslist-359212/production/server:latest
       - name: Deploy to Cloud Run
         id: deploy
-        uses: google-github-actions/deploy-cloudrun@147732842f8a61ce9bd3b3f8e9f6597fe991ad65 # v2.7.4
+        uses: google-github-actions/deploy-cloudrun@2028e2d7d30a78c6910e0632e48dd561b064884d # v3.0.1
         with:
           service: browserslist
           region: us-east1
