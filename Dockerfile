@@ -1,7 +1,7 @@
 FROM cgr.dev/chainguard/wolfi-base:latest as base
 
-ENV NODE_VERSION 24.5.0
-ENV PNPM_VERSION 10.9.0
+ENV NODE_VERSION 24.8.0
+ENV PNPM_VERSION 10.16.0
 
 ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz /node.tar.xz
 RUN tar -xf "node.tar.xz" --strip-components=1 -C /usr/local/ \
