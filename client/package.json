@@ -14,7 +14,7 @@
   "dependencies": {
     "@csstools/postcss-oklab-function": "^4.0.11",
     "autoprefixer": "^10.4.21",
-    "caniuse-lite": "^1.0.30001748",
+    "caniuse-lite": "^1.0.30001749",
     "jstransformer-markdown-it": "^3.0.0",
     "plausible-tracker": "^0.3.9",
     "postcss": "^8.5.6",
