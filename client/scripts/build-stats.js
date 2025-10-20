@@ -8,18 +8,19 @@ let NPM_PACKAGE = 'browserslist'
 let ROOT = join(fileURLToPath(import.meta.url), '..', '..')
 let DATA_STATS_FILE = join(ROOT, 'data/stats.json')
 
-let stats
+let githubStars
+let npmDownloads
 
 try {
-  stats = {
-    githubStars: await getGithubStars(),
-    npmDownloads: await getNpmDownloads()
-  }
+  [githubStars, npmDownloads] = await Promise.all([
+    getGithubStars(),
+    getNpmDownloads()
+  ])
 } catch (error) {
   throw new Error(`Error fetching stats: ${error.message}`)
 }
 
-writeFileSync(DATA_STATS_FILE, JSON.stringify(stats))
+writeFileSync(DATA_STATS_FILE, JSON.stringify({ githubStars, npmDownloads }))
 
 function formatCount(num) {
   return new Intl.NumberFormat('en-US', {
