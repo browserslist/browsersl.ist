@@ -3,19 +3,23 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 let GITHUB_REPO = 'browserslist/browserslist'
+let NPM_PACKAGE = 'browserslist'
 
 let ROOT = join(fileURLToPath(import.meta.url), '..', '..')
 let DATA_STATS_FILE = join(ROOT, 'data/stats.json')
 
-let githubStars
+let stats
 
 try {
-  githubStars = await getGithubStars()
+  stats = {
+    githubStars: await getGithubStars(),
+    npmDownloads: await getNpmDownloads()
+  }
 } catch (error) {
   throw new Error(`Error fetching stats: ${error.message}`)
 }
 
-writeFileSync(DATA_STATS_FILE, JSON.stringify({ githubStars }))
+writeFileSync(DATA_STATS_FILE, JSON.stringify(stats))
 
 process.stdout.write(
   `A file "${DATA_STATS_FILE}" with stats has been created\n`
@@ -41,4 +45,31 @@ async function getGithubStars() {
 
   let data = await response.json()
   return formatCount(data.stargazers_count)
+}
+
+async function getNpmDownloads() {
+  let getWeekDateRange = () => {
+    let formatDate = date =>
+      `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`
+    let now = new Date()
+    let weekAgo = new Date(now)
+    weekAgo.setDate(now.getDate() - 7)
+
+    let start = formatDate(weekAgo)
+    let end = formatDate(now)
+
+    return `${start}:${end}`
+  }
+
+  let NPM_API_URL = `https://api.npmjs.org/downloads/point/${getWeekDateRange()}/${NPM_PACKAGE}`
+  let response = await fetch(NPM_API_URL)
+
+  if (!response.ok) {
+    throw new Error(
+      `NPM API returned status ${response.status} for ${NPM_API_URL}`
+    )
+  }
+
+  let data = await response.json()
+  return formatCount(data.downloads)
 }
