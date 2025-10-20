@@ -5,7 +5,7 @@
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build -m production",
-    "prebuild": "node ./scripts/build-regions.js",
+    "prebuild": "node ./scripts/build-stats.js && node ./scripts/build-regions.js",
     "postinstall": "pnpm prebuild",
     "test:run": "node --test test/*.test.js",
     "test:size": "size-limit",
