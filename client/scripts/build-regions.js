@@ -32,7 +32,3 @@ export const regions = {
 }
 
 writeFileSync(DATA_REGION_FILE, JSON.stringify(regions))
-
-process.stdout.write(
-  `A file "${DATA_REGION_FILE}" with regions has been created\n`
-)

@@ -21,10 +21,6 @@ try {
 
 writeFileSync(DATA_STATS_FILE, JSON.stringify(stats))
 
-process.stdout.write(
-  `A file "${DATA_STATS_FILE}" with stats has been created\n`
-)
-
 function formatCount(num) {
   return new Intl.NumberFormat('en-US', {
     maximumFractionDigits: 1,
