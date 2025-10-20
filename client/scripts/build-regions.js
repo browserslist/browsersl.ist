@@ -1,8 +1,7 @@
 import { readdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { fileURLToPath } from 'node:url'
 
-const ROOT = join(fileURLToPath(import.meta.url), '..', '..')
+const ROOT = join(import.meta.dirname, '..')
 
 const DATA_REGION_FILE = join(ROOT, 'data/regions.json')
 const REGIONS_LIST_PATH = join(ROOT, 'node_modules/caniuse-lite/data/regions')
