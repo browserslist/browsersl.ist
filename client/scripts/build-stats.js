@@ -2,11 +2,11 @@ import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-let GITHUB_REPO = 'browserslist/browserslist'
-let NPM_PACKAGE = 'browserslist'
+const GITHUB_REPO = 'browserslist/browserslist'
+const NPM_PACKAGE = 'browserslist'
 
-let ROOT = join(fileURLToPath(import.meta.url), '..', '..')
-let DATA_STATS_FILE = join(ROOT, 'data/stats.json')
+const ROOT = join(fileURLToPath(import.meta.url), '..', '..')
+const DATA_STATS_FILE = join(ROOT, 'data/stats.json')
 
 let githubStars
 let npmDownloads
