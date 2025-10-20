@@ -30,8 +30,8 @@ function formatCount(num) {
 }
 
 async function getGithubStars() {
-  let GITHUB_API_URL = `https://api.github.com/repos/${GITHUB_REPO}`
-  let response = await fetch(GITHUB_API_URL)
+  let githubAPI = `https://api.github.com/repos/${GITHUB_REPO}`
+  let response = await fetch(githubAPI)
 
   if (!response.ok) {
     throw new Error(
@@ -57,8 +57,8 @@ async function getNpmDownloads() {
     return `${start}:${end}`
   }
 
-  let NPM_API_URL = `https://api.npmjs.org/downloads/point/${getWeekDateRange()}/${NPM_PACKAGE}`
-  let response = await fetch(NPM_API_URL)
+  let npmAPI = `https://api.npmjs.org/downloads/point/${getWeekDateRange()}/${NPM_PACKAGE}`
+  let response = await fetch(npmAPI)
 
   if (!response.ok) {
     throw new Error(
