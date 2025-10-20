@@ -35,7 +35,7 @@ async function getGithubStars() {
 
   if (!response.ok) {
     throw new Error(
-      `GitHub API returned status ${response.status} for ${GITHUB_API_URL}`
+      `GitHub API response error: ${response.status}`
     )
   }
 
@@ -62,7 +62,7 @@ async function getNpmDownloads() {
 
   if (!response.ok) {
     throw new Error(
-      `NPM API returned status ${response.status} for ${NPM_API_URL}`
+      `npm API response error: ${response.status}`
     )
   }
 
