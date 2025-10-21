@@ -1,4 +1,12 @@
-.Badge {
+.Badges {
+  display: flex;
+  flex-grow: 1;
+  gap: 8px;
+  align-items: center;
+  container-type: inline-size;
+}
+
+.Badges_item {
   display: inline-flex;
   gap: 4px;
   align-items: center;
@@ -11,8 +19,14 @@
   background-image: initial;
   border-radius: 4px;
 
-  @media (((width <= 1221px) and (width > 739px)) or (width <= 612px)) {
-    &.is-secondary {
+  &.is-secondary {
+    @container (width < 420px) {
+      display: none;
+    }
+  }
+
+  &.is-npm {
+    @container (420px < width < 460px) {
       display: none;
     }
   }
@@ -24,12 +38,12 @@
   }
 }
 
-.Badge_logo {
+.Badges_item_logo {
   width: 20px;
   height: 20px;
 
   @media (prefers-color-scheme: dark) {
-    .Badge.is-github & {
+    .Badges.is-github & {
       filter: invert(1);
     }
   }

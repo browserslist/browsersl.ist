@@ -24,15 +24,20 @@
         <img class="Intro_logo" src="./view/Intro/browserlist.svg" alt="">
         Browserslist
       </h1>
-      <a class="Badge is-github" href="https://github.com/browserslist/browserslist" target="_blank">
-        <img src="./view/Badge/github.svg" alt="Count of GitHub stars" class="Badge_logo"> 13K
-      </a>
-      <a class="Badge is-secondary" href="https://opencollective.com/browserslist"  target="_blank">
-        <img src="./view/Badge/opencollective.svg" alt="" class="Badge_logo"> Open Collective
-      </a>
-      <a class="Badge is-secondary" href="https://twitter.com/Browserslist"  target="_blank">
-        <img src="./view/Badge/ghsponsors.svg" alt="" class="Badge_logo"> GitHub Sponsors
-      </a>
+      <div class="Badges">
+        <a class="Badges_item is-github" href="https://github.com/browserslist/browserslist" target="_blank">
+          <img src="./view/Badges/github.svg" alt="Count of GitHub stars" class="Badges_item_logo"> <span data-id="badge-gh-stars"></span>
+        </a>
+        <a class="Badges_item is-npm" href="https://www.npmjs.com/package/browserslist" target="_blank">
+          <img src="./view/Badges/npm.svg" alt="Count of npm weekly downloads" class="Badges_item_logo"> <span data-id="badge-npm-downloads"></span>
+        </a>
+        <a class="Badges_item is-secondary" href="https://opencollective.com/browserslist" target="_blank">
+          <img src="./view/Badges/opencollective.svg" alt="" class="Badges_item_logo"> Open Collective
+        </a>
+        <a class="Badges_item is-secondary" href="https://twitter.com/Browserslist"  target="_blank">
+          <img src="./view/Badges/ghsponsors.svg" alt="" class="Badges_item_logo"> GitHub Sponsors
+        </a>
+      </div>
     </div>
     <p class="Intro_about">Shared browser compatibility config for popular JavaScript tools
       like Autoprefixer, Babel, ESLint, PostCSS, and Webpack</p>
@@ -480,8 +485,8 @@
   </article>
 
   <footer class="Footer">
-    <a class="Badge is-github" href="https://github.com/browserslist/browsersl.ist" target="_blank">
-      <img src="./view/Badge/github.svg" alt="" class="Badge_logo"> Website source code
+    <a class="Badges_item is-github" href="https://github.com/browserslist/browsersl.ist" target="_blank">
+      <img src="./view/Badges/github.svg" alt="" class="Badges_item_logo"> Website source code
     </a>
   </footer>
 </body>
