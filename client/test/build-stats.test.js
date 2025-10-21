@@ -4,13 +4,13 @@ import test from 'node:test'
 
 const stats = importJSON('../data/stats.json');
 
-const COUNTER_MASK = /^\d+(\.\d+)?[KM]?$/;
+const COUNTER_MASK = /^\d+[KM]?$/;
 
-test('Prebuilt stats has npm weekly downloads in `10.5K` / `70.4M` number format', () => {
+test('Prebuilt stats has npm weekly downloads in `10K` / `70M` number format', () => {
   match(stats.npmDownloads, COUNTER_MASK);
 })
 
-test('Prebuilt stats has Github stars in `10.5K` / `70.4M` number format', () => {
+test('Prebuilt stats has Github stars in `10K` / `70M` number format', () => {
   match(stats.githubStars, COUNTER_MASK);
 })
 

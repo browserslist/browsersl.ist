@@ -23,7 +23,6 @@ writeFileSync(DATA_STATS_FILE, JSON.stringify({ githubStars, npmDownloads }))
 
 function formatCount(num) {
   return new Intl.NumberFormat('en-US', {
-    maximumFractionDigits: 1,
     notation: 'compact',
     roundingMode: 'floor'
   }).format(num)
