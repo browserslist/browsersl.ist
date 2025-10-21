@@ -1,6 +1,6 @@
 import './view/Form/Form.js'
 import './view/ConfigLink/ConfigLink.js'
 import './view/Skip/Skip.js'
-import './view/Badge/Badge.js'
+import './view/Badges/Badges.js'
 import './view/Intro/Intro.js'
 import './lib/analytics.js'
