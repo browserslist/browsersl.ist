@@ -11,12 +11,12 @@ let githubStars
 let npmDownloads
 
 try {
-  [githubStars, npmDownloads] = await Promise.all([
+  ;[githubStars, npmDownloads] = await Promise.all([
     getGithubStars(),
     getNpmDownloads()
   ])
 } catch (error) {
-  throw new Error(`Error fetching stats: ${error.message}`)
+  throw new Error(`Error fetching stats: ${error.message}`, { cause: error })
 }
 
 writeFileSync(DATA_STATS_FILE, JSON.stringify({ githubStars, npmDownloads }))
@@ -33,9 +33,7 @@ async function getGithubStars() {
   let response = await fetch(githubAPI)
 
   if (!response.ok) {
-    throw new Error(
-      `GitHub API response error: ${response.status}`
-    )
+    throw new Error(`GitHub API response error: ${response.status}`)
   }
 
   let data = await response.json()
@@ -60,9 +58,7 @@ async function getNpmDownloads() {
   let response = await fetch(npmAPI)
 
   if (!response.ok) {
-    throw new Error(
-      `npm API response error: ${response.status}`
-    )
+    throw new Error(`npm API response error: ${response.status}`)
   }
 
   let data = await response.json()
