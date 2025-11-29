@@ -31,4 +31,4 @@ jobs:
       - name: Check Node.js version for vulnerabilities
         run: pnpm dlx is-my-node-vulnerable
       - name: Check dependencies for vulnerabilities
-        run: node --run test:online:audit
+        run: node --run test:audit
