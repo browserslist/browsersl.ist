@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --ignore-scripts
       - name: Update dependencies
-        run: pnpm update -r caniuse-lite browserslist browserslist-lint
+        run: pnpm update -r caniuse-lite browserslist browserslist-lint baseline-browser-mapping
       - name: Check dependencies
         id: changes
         run: node ./scripts/check-changes.js
