@@ -48,8 +48,8 @@ importers:
         specifier: ^10.4.22
         version: 10.4.22(postcss@8.5.6)
       caniuse-lite:
-        specifier: ^1.0.30001759
-        version: 1.0.30001759
+        specifier: ^1.0.30001760
+        version: 1.0.30001760
       jstransformer-markdown-it:
         specifier: ^3.0.0
         version: 3.0.0
@@ -91,8 +91,8 @@ importers:
         specifier: ^0.3.3
         version: 0.3.3
       caniuse-lite:
-        specifier: ^1.0.30001759
-        version: 1.0.30001759
+        specifier: ^1.0.30001760
+        version: 1.0.30001760
 
 packages:
 
@@ -876,8 +876,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001759:
-    resolution: {integrity: sha512-Pzfx9fOKoKvevQf8oCXoyNRQ5QyxJj+3O0Rqx2V5oxT61KGx8+n6hV/IUyJeifUci2clnmmKVpvtiqRzgiWjSw==}
+  caniuse-lite@1.0.30001760:
+    resolution: {integrity: sha512-7AAMPcueWELt1p3mi13HR/LHH0TJLT11cnwDJEs3xA4+CK/PLKeO9Kl1oru24htkyUKtkGCvAx4ohB0Ttry8Dw==}
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -2569,7 +2569,7 @@ snapshots:
   autoprefixer@10.4.22(postcss@8.5.6):
     dependencies:
       browserslist: 4.28.0
-      caniuse-lite: 1.0.30001759
+      caniuse-lite: 1.0.30001760
       fraction.js: 5.3.4
       normalize-range: 0.1.2
       picocolors: 1.1.1
@@ -2611,7 +2611,7 @@ snapshots:
   browserslist@4.28.0:
     dependencies:
       baseline-browser-mapping: 2.8.32
-      caniuse-lite: 1.0.30001759
+      caniuse-lite: 1.0.30001760
       electron-to-chromium: 1.5.262
       node-releases: 2.0.27
       update-browserslist-db: 1.1.4(browserslist@4.28.0)
@@ -2619,7 +2619,7 @@ snapshots:
   browserslist@4.28.1:
     dependencies:
       baseline-browser-mapping: 2.9.5
-      caniuse-lite: 1.0.30001759
+      caniuse-lite: 1.0.30001760
       electron-to-chromium: 1.5.264
       node-releases: 2.0.27
       update-browserslist-db: 1.2.1(browserslist@4.28.1)
@@ -2648,7 +2648,7 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  caniuse-lite@1.0.30001759: {}
+  caniuse-lite@1.0.30001760: {}
 
   chalk@4.1.2:
     dependencies:
