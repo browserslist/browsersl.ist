@@ -19,11 +19,11 @@
     "test": "pnpm run prebuild && pnpm build && pnpm run --recursive --include-workspace-root /^test:/"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^57.0.0",
+    "@logux/eslint-config": "^57.0.1",
     "@logux/stylelint-config": "^0.21.0",
-    "actions-up": "^1.8.0",
+    "actions-up": "^1.9.0",
     "eslint": "^9.39.2",
-    "globals": "^16.5.0",
+    "globals": "^17.0.0",
     "nano-staged": "^0.9.0",
     "prettier": "^3.7.4",
     "simple-git-hooks": "^2.13.1",
