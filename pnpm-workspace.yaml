@@ -2,12 +2,16 @@ packages:
   - client
   - server
 
-trustPolicy: no-downgrade
-trustPolicyIgnoreAfter: 10080
+allowBuilds:
+  simple-git-hooks: true
 
 blockExoticSubdeps: true
 
 minimumReleaseAge: 1440
 
-allowBuilds:
-  simple-git-hooks: true
+overrides:
+  markdown-it@>=13.0.0 <14.1.1: '>=14.1.1'
+
+trustPolicy: no-downgrade
+
+trustPolicyIgnoreAfter: 10080

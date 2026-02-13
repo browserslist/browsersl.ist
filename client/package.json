@@ -14,14 +14,14 @@
     "test": "pnpm run /^test:/"
   },
   "dependencies": {
-    "@csstools/postcss-oklab-function": "^4.0.12",
-    "autoprefixer": "^10.4.23",
+    "@csstools/postcss-oklab-function": "^5.0.1",
+    "autoprefixer": "^10.4.24",
     "caniuse-lite": "^1.0.30001769",
     "jstransformer-markdown-it": "^3.0.0",
     "plausible-tracker": "^0.3.9",
     "postcss": "^8.5.6",
     "postcss-media-minmax": "^5.0.0",
-    "postcss-nesting": "^13.0.2",
+    "postcss-nesting": "^14.0.0",
     "postcss-opacity-percentage": "^3.0.0",
     "vite": "^7.3.1",
     "vite-plugin-pug-transformer": "^1.0.8"
