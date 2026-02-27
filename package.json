@@ -27,7 +27,7 @@
     "nano-staged": "^0.9.0",
     "prettier": "^3.8.1",
     "simple-git-hooks": "^2.13.1",
-    "stylelint": "^17.3.0",
+    "stylelint": "^17.4.0",
     "svgo": "^4.0.0"
   }
 }
