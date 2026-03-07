@@ -7,7 +7,6 @@ LABEL org.opencontainers.image.licenses=MIT
 ENV NODE_VERSION 24.14.0
 ENV PNPM_VERSION 10.30.3
 
-COPY --from=ghcr.io/tarampampam/microcheck:1.3.0 /bin/httpcheck /bin/httpcheck
 ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz /node.tar.xz
 RUN tar -xf "node.tar.xz" --strip-components=1 -C /usr/local/ \
   "node-v${NODE_VERSION}-linux-x64/bin/node"
@@ -24,6 +23,7 @@ FROM cgr.dev/chainguard/glibc-dynamic:latest
 WORKDIR /var/app
 ENV NODE_ENV production
 
+COPY --from=ghcr.io/tarampampam/microcheck:1.3.0 /bin/httpcheck /bin/httpcheck
 COPY --from=base /usr/local/bin/node /usr/local/bin/node
 COPY ./package.json /var/app/
 COPY ./pnpm-lock.yaml /var/app/
