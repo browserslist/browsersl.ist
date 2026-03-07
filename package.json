@@ -28,6 +28,6 @@
     "prettier": "^3.8.1",
     "simple-git-hooks": "^2.13.1",
     "stylelint": "^17.4.0",
-    "svgo": "^4.0.0"
+    "svgo": "^4.0.1"
   }
 }
