@@ -1,8 +1,13 @@
 FROM cgr.dev/chainguard/wolfi-base:latest as base
 
+LABEL org.opencontainers.image.source=https://github.com/browserslist/browsersl.ist
+LABEL org.opencontainers.image.description="Browserslist REPL"
+LABEL org.opencontainers.image.licenses=MIT
+
 ENV NODE_VERSION 24.14.0
 ENV PNPM_VERSION 10.30.3
 
+COPY --from=ghcr.io/tarampampam/microcheck:1.3.0 /bin/httpcheck /bin/httpcheck
 ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz /node.tar.xz
 RUN tar -xf "node.tar.xz" --strip-components=1 -C /usr/local/ \
   "node-v${NODE_VERSION}-linux-x64/bin/node"
@@ -31,3 +36,6 @@ USER nonroot
 
 ENTRYPOINT ["/usr/local/bin/node"]
 CMD ["server/index.js"]
+
+HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
+  CMD ["/bin/httpcheck", "http://localhost:8080/health"]

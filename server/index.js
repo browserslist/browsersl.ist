@@ -2,10 +2,11 @@ import http from 'node:http'
 import { URL } from 'node:url'
 
 import { handleAPIBrowsers } from './handlers/api-browsers.js'
+import { handleHealth } from './handlers/health.js'
 import { handleMain } from './handlers/main.js'
 import { handleStatic } from './handlers/static.js'
 
-const PORT = process.env.PORT || 8080
+const PORT = 8080
 
 const app = http.createServer(async (req, res) => {
   if (req.headers.host.startsWith('www.')) {
@@ -24,6 +25,10 @@ const app = http.createServer(async (req, res) => {
 
     case '/api/browsers':
       handleAPIBrowsers(req, res, url)
+      break
+
+    case '/health':
+      handleHealth(req, res)
       break
 
     default:
