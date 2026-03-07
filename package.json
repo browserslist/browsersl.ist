@@ -7,7 +7,7 @@
   "engines": {
     "node": ">=24"
   },
-  "packageManager": "pnpm@10.30.2",
+  "packageManager": "pnpm@10.30.3",
   "scripts": {
     "start": "pnpm -r start",
     "prebuild": "pnpm -r prebuild",
