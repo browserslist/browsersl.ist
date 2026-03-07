@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
+      packages: write
     if: github.ref == 'refs/heads/main'
     concurrency:
       group: deploy
@@ -52,44 +52,22 @@ jobs:
       - name: Build static files
         run: pnpm build
       - name: Build Docker image
-        shell: bash
-        run: docker build -t us-east1-docker.pkg.dev/browserslist-359212/production/server:latest ./
-      - name: Auth Google Cloud
-        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
+        run: docker build -t ghcr.io/browserslist/browsersl.ist:latest .
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
-          workload_identity_provider: projects/599133183470/locations/global/workloadIdentityPools/github/providers/browserslist
-          service_account: github-deploy@browserslist-359212.iam.gserviceaccount.com
-      - name: Install Google Cloud
-        uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
-      - name: Auth Docker
-        shell: bash
-        run: gcloud auth configure-docker us-east1-docker.pkg.dev --quiet
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Push Docker image
-        shell: bash
-        run: docker push us-east1-docker.pkg.dev/browserslist-359212/production/server:latest
-      - name: Deploy to Cloud Run
-        id: deploy
-        uses: google-github-actions/deploy-cloudrun@2028e2d7d30a78c6910e0632e48dd561b064884d # v3.0.1
+        run: docker push ghcr.io/browserslist/browsersl.ist:latest
+      - name: Trigger Dokploy Deployment
+        run: |
+          curl --fail ${{ secrets.DOKPLOY_DEPLOY_URL }}
+      - name: Clean previous images
+        uses: dataaxiom/ghcr-cleanup-action@cd0cdb900b5dbf3a6f2cc869f0dbb0b8211f50c4 # v1.0.16
         with:
-          service: browserslist
-          region: us-east1
-          image: us-east1-docker.pkg.dev/browserslist-359212/production/server:latest
-          flags: |
-            --allow-unauthenticated
-            --service-account=github-deploy@browserslist-359212.iam.gserviceaccount.com
-      - name: Move traffic to new revision
-        shell: bash
-        run: |
-          gcloud run services update-traffic browserslist \
-            --project browserslist-359212 \
-            --region us-east1 \
-            --to-latest
-      - name: Delete previous images
-        shell: bash
-        run: |
-          untagged=$(gcloud artifacts docker images list us-east1-docker.pkg.dev/browserslist-359212/production/server --include-tags --format="get(version)" --filter="NOT tags:*")
-          for digest in $untagged; do
-            image=us-east1-docker.pkg.dev/browserslist-359212/production/server@$digest
-            echo "Deleting unused image: $image"
-            gcloud artifacts docker images delete $image --quiet
-          done
+          package: browsersl.ist
+          owner: browserslist
+          delete-untagged: true
+          token: ${{ secrets.GITHUB_TOKEN }}
