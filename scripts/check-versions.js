@@ -10,14 +10,14 @@ let packageJson = readFileSync(join(ROOT, 'package.json')).toString()
 let pnpmVersion = packageJson.match(/pnpm@([.\d]+)/)[1]
 let nodeMajor = nodeVersion.match(/^(\d+)\./)[1]
 
-if (!dockerfile.includes(`PNPM_VERSION ${pnpmVersion}`)) {
+if (!dockerfile.includes(`PNPM_VERSION=${pnpmVersion}`)) {
   process.stderr.write(
     'Dockerfile and package.json have different pnpm version\n'
   )
   process.exit(1)
 }
 
-if (!dockerfile.includes(`NODE_VERSION ${nodeVersion}`)) {
+if (!dockerfile.includes(`NODE_VERSION=${nodeVersion}`)) {
   process.stderr.write(
     'Dockerfile and .node-version have different node version\n'
   )
