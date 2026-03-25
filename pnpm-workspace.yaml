@@ -15,3 +15,5 @@ overrides:
 trustPolicy: no-downgrade
 
 trustPolicyIgnoreAfter: 10080
+
+dedupePeers: true
