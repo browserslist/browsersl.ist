@@ -8,7 +8,7 @@ import { handleStatic } from './handlers/static.js'
 
 const PORT = 8080
 
-const app = http.createServer(async (req, res) => {
+let app = http.createServer(async (req, res) => {
   if (req.headers.host.startsWith('www.')) {
     let noWww = req.headers.host.slice(4)
     res.writeHead(301, { Location: 'https://' + noWww + req.url })

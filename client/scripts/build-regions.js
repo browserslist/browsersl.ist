@@ -16,7 +16,7 @@ function getCaniuseCountries() {
     .sort((a, b) => b - a)
 }
 
-export const regions = {
+export let regions = {
   continents: {
     'alt-af': 'Africa',
     'alt-an': 'Antarctica',

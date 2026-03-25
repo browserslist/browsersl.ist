@@ -3,7 +3,7 @@ import { continents, countryCodes } from './regions.json'
 
 export const DEFAULT_REGION = 'alt-ww'
 
-export const regionList = [...Object.keys(continents), ...countryCodes]
+export let regionList = [...Object.keys(continents), ...countryCodes]
 
 let getCountryName, sorter
 if ('Intl' in window && 'DisplayNames' in window.Intl) {
@@ -17,7 +17,7 @@ if ('Intl' in window && 'DisplayNames' in window.Intl) {
   getCountryName = id => id
 }
 
-export const regionGroups = {
+export let regionGroups = {
   continents: Object.entries(continents)
     .map(([id, name]) => ({ id, name }))
     .sort((a, b) => {

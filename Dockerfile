@@ -4,8 +4,8 @@ LABEL org.opencontainers.image.source=https://github.com/browserslist/browsersl.
 LABEL org.opencontainers.image.description="Browserslist REPL"
 LABEL org.opencontainers.image.licenses=MIT
 
-ENV NODE_VERSION=24.14.0
-ENV PNPM_VERSION=10.32.1
+ENV NODE_VERSION=24.14.1
+ENV PNPM_VERSION=10.33.0
 
 ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz /node.tar.xz
 RUN tar -xf "node.tar.xz" --strip-components=1 -C /usr/local/ \
