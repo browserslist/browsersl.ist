@@ -31,7 +31,7 @@ jobs:
         if: steps.changes.outputs.changes
         run: |
           git config user.name "Andrey Sitnik"
-          git config user.email "andrey@sitnik.ru"
+          git config user.email "andrey@sitnik.es"
       - name: Run tests
         if: steps.changes.outputs.changes
         run: pnpm test
