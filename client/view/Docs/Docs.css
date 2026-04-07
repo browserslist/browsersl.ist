@@ -1,7 +1,7 @@
 .Docs {
   box-sizing: border-box;
-  flex-basis: 0;
   flex-grow: 1;
+  flex-basis: 0;
   width: var(--block-width);
   padding: var(--block-padding);
 

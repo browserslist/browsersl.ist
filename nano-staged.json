@@ -1,6 +1,6 @@
 {
+  "*": "oxfmt --no-error-on-unmatched-pattern",
   "*.css": "stylelint --fix",
-  "*.js": "prettier --write",
   "*.svg": "svgo",
   ".tool-versions": "node scripts/check-versions.js"
 }

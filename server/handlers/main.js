@@ -5,10 +5,7 @@ import { sendError, sendResponse } from '../lib/send-response.js'
 
 const HEADERS = {
   'Cache-Control': 'public, max-age=604800',
-  'Content-Security-Policy':
-    `object-src 'none'; ` +
-    `style-src 'self'; ` +
-    `script-src 'self'`,
+  'Content-Security-Policy': `object-src 'none'; style-src 'self'; script-src 'self'`,
   'Content-Type': 'text/html; charset=utf-8',
   'X-Content-Type-Options': 'nosniff',
   'X-XSS-Protection': '1; mode=block'

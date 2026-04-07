@@ -28,8 +28,8 @@
   box-sizing: border-box;
   height: 28px;
   line-height: 28px;
-  white-space: nowrap;
   vertical-align: top;
+  white-space: nowrap;
   break-inside: avoid;
 
   &:last-child {
@@ -40,13 +40,12 @@
   &.is-coverage {
     --coverage: 20%;
 
-    background-image:
-      linear-gradient(
-        to right,
-        var(--accent-alternave) var(--coverage),
-        transparent var(--coverage),
-        transparent
-      );
+    background-image: linear-gradient(
+      to right,
+      var(--accent-alternave) var(--coverage),
+      transparent var(--coverage),
+      transparent
+    );
   }
 
   .Browsers_line:first-child &:first-child {

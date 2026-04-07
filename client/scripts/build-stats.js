@@ -40,10 +40,12 @@ async function getGithubStars() {
   return formatCount(data.stargazers_count)
 }
 
+function formatDate(date) {
+  return `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`
+}
+
 async function getNpmDownloads() {
   let getWeekDateRange = () => {
-    let formatDate = date =>
-      `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`
     let now = new Date()
     let weekAgo = new Date(now)
     weekAgo.setDate(now.getDate() - 7)

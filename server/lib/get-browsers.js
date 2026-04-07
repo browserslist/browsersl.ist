@@ -71,7 +71,7 @@ export async function getBrowsers(config, region) {
         versions
       }
     })
-    .sort((a, b) => b.coverage - a.coverage)
+    .toSorted((a, b) => b.coverage - a.coverage)
 
   return {
     browsers,

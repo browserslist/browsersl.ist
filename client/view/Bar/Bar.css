@@ -18,8 +18,8 @@
   box-sizing: border-box;
   width: calc(var(--proportion, 0) * 1%);
   overflow: hidden;
-  line-height: 32px;
   text-overflow: ellipsis;
+  line-height: 32px;
   white-space: nowrap;
   list-style: none;
   counter-increment: alpha -1;

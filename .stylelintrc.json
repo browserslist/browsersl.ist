@@ -1,6 +1,6 @@
 {
   "extends": "@logux/stylelint-config",
-  "ignoreFiles": ["dist/**/*"],
+  "ignoreFiles": ["**/*", "!**/*.css", "!**/*.pcss", "client/dist/**/*"],
   "rules": {
     "function-disallowed-list": ["rgb", "rgba", "hsl", "hsla"],
     "alpha-value-notation": "percentage",

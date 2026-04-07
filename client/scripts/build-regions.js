@@ -13,7 +13,7 @@ function getCaniuseCountries() {
       let isContinentCode = regionCode.includes('alt-')
       return !isContinentCode
     })
-    .sort((a, b) => b - a)
+    .toSorted((a, b) => b - a)
 }
 
 export let regions = {

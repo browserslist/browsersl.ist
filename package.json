@@ -2,32 +2,33 @@
   "name": "browsersl.ist",
   "private": true,
   "homepage": "https://browsersl.ist/",
-  "type": "module",
   "license": "MIT",
-  "engines": {
-    "node": ">=24"
-  },
-  "packageManager": "pnpm@10.33.0",
+  "type": "module",
   "scripts": {
     "start": "pnpm -r start",
     "prebuild": "pnpm -r prebuild",
     "build": "pnpm -r build",
-    "test:js": "eslint .",
-    "test:css": "stylelint **/*.css",
+    "test:js": "oxlint .",
+    "test:css": "stylelint .",
     "test:checks": "node scripts/check-versions.js",
     "test:audit": "pnpm audit --prod",
     "test": "pnpm run prebuild && pnpm build && pnpm run --recursive --include-workspace-root /^test:/"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^57.1.0",
+    "@logux/oxc-configs": "^0.2.2",
     "@logux/stylelint-config": "^0.22.0",
     "actions-up": "^1.12.1",
-    "eslint": "^10.2.0",
-    "globals": "^17.4.0",
     "nano-staged": "^0.9.0",
-    "prettier": "^3.8.1",
+    "oxfmt": "^0.43.0",
+    "oxlint": "^1.58.0",
+    "oxlint-tsgolint": "^0.20.0",
     "simple-git-hooks": "^2.13.1",
     "stylelint": "^17.6.0",
-    "svgo": "^4.0.1"
-  }
+    "svgo": "^4.0.1",
+    "typescript": "^6.0.2"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@10.33.0"
 }

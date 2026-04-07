@@ -1,4 +1,4 @@
-@import "./colors.css";
+@import url('./colors.css');
 
 :root {
   --block-padding: 16px 24px;
@@ -16,24 +16,15 @@
 body {
   margin: 0;
   font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Fira Sans",
-    "Droid Sans",
-    "Helvetica Neue",
-    sans-serif;
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  color: var(--text-primary);
+  overflow-wrap: break-word;
+  accent-color: var(--accent);
+  background-color: var(--main-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--text-primary);
-  overflow-wrap: break-word;
-  background-color: var(--main-bg);
-  accent-color: var(--accent);
 }
 
 p {
@@ -43,7 +34,7 @@ p {
 }
 
 code {
-  font-family: "Martian Mono", monospace;
+  font-family: 'Martian Mono', monospace;
   font-size: 13px;
   font-weight: 600;
   line-height: 22px;

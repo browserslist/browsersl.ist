@@ -11,7 +11,6 @@ the compatible browsers for a browsers query.
 [browserslist]: https://github.com/browserslist/browserslist
 [Can I Use]: https://github.com/Fyrd/caniuse
 
-
 ## HTTP API
 
 You can use the site API in your own applications.
@@ -22,7 +21,6 @@ https://browsersl.ist/api/browsers?q=defaults&region=alt-as
 
 - `q` — query or config. If config is provided it should be in `.browserslist` file format, not `package.json`-like. Examples are available [on the website](https://browsersl.ist) or in the [browserslist repository](https://github.com/browserslist/browserslist#full-list). `defaults` by default.
 - `region` — region code (optional). List of all region codes can be found at [caniuse-lite/data/regions](https://github.com/browserslist/caniuse-lite/tree/main/data/regions).
-
 
 ### Response example
 
@@ -71,7 +69,6 @@ If you send a request with an error, you will receive error message with the sta
 }
 ```
 
-
 ## Development
 
 We recommend installing Prettier and EditorConfig plugins to your text editor.
@@ -85,7 +82,7 @@ To run a local copy for development:
    pnpm install
    ```
 
-3. Run local server  with client-side watcher.
+3. Run local server with client-side watcher.
 
    ```sh
    pnpm start

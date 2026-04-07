@@ -7,12 +7,12 @@
     "test:run": "node --test test/*.test.js",
     "test": "pnpm run /^test:/"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "dependencies": {
     "browserslist": "^4.28.2",
     "browserslist-lint": "^0.4.0",
     "caniuse-lite": "^1.0.30001786"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

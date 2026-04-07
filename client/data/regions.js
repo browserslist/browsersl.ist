@@ -20,7 +20,7 @@ if ('Intl' in window && 'DisplayNames' in window.Intl) {
 export let regionGroups = {
   continents: Object.entries(continents)
     .map(([id, name]) => ({ id, name }))
-    .sort((a, b) => {
+    .toSorted((a, b) => {
       if (a.name === 'Global') {
         return -1
       } else if (b.name === 'Global') {
@@ -31,5 +31,5 @@ export let regionGroups = {
     }),
   countries: countryCodes
     .map(id => ({ id, name: getCountryName(id) }))
-    .sort((a, b) => sorter.compare(a.name, b.name))
+    .toSorted((a, b) => sorter.compare(a.name, b.name))
 }

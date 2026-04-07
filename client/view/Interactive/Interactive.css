@@ -1,8 +1,8 @@
 .Interactive {
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
+  flex-direction: column;
   gap: 16px;
   width: var(--block-width);
   padding: var(--block-padding);

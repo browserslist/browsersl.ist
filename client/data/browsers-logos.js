@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 export { default as and_chr } from './browsers-logos/and_chr.svg'
 export { default as and_ff } from './browsers-logos/and_ff.svg'
 export { default as and_qq } from './browsers-logos/and_qq.svg'

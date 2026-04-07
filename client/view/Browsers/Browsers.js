@@ -53,7 +53,7 @@ export function updateBrowsersStats(data) {
   table.replaceChildren(
     ...data.map(({ id, name, versions: versionsInput }) => {
       let versions = Object.entries(versionsInput)
-        .sort(([versionA], [versionB]) => {
+        .toSorted(([versionA], [versionB]) => {
           // Show Safari Technology Preview at the top of the list
           if (versionA === 'TP') {
             return -1

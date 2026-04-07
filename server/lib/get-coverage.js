@@ -41,7 +41,7 @@ export async function getBrowserVersionCoverage(id, version, region) {
 }
 
 function parseBrowserVersionCoverage(stats, ver) {
-  let [lastVer] = Object.keys(stats).sort((a, b) => Number(b) - Number(a))
+  let [lastVer] = Object.keys(stats).toSorted((a, b) => Number(b) - Number(a))
 
   // If specific version coverage is missing, fall back to 'version zero'
   let coverage = stats[ver] !== undefined ? stats[ver] : stats[lastVer]

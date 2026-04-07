@@ -13,7 +13,7 @@
   width: 100%;
   min-height: 134px;
   padding: 12px;
-  font-family: "Martian Mono", monospace;
+  font-family: 'Martian Mono', monospace;
   font-size: 14px;
   font-weight: 300;
   line-height: 22px;
@@ -43,10 +43,10 @@
   line-height: 1;
   color: var(--text-secondary);
   overflow-wrap: break-word;
+  pointer-events: none;
   background-color: var(--main-bg);
   opacity: 0%;
   transition: opacity 0.2s linear;
-  pointer-events: none;
 }
 
 .Form_messages {
@@ -62,7 +62,7 @@
   top: 12px;
   left: 12px;
   margin: 0;
-  font-family: "Martian Mono", monospace;
+  font-family: 'Martian Mono', monospace;
   font-size: 14px;
   line-height: 22px;
   color: var(--text-secondary);
@@ -88,18 +88,18 @@
   width: 1em;
   height: 1em;
   margin-left: 1ch;
-  content: "";
+  content: '';
   background-image:
     radial-gradient(var(--main-bg) 60%, transparent 60%),
     conic-gradient(transparent, currentcolor);
   border-radius: 50%;
-  animation-name: form-loader;
+  animation-name: --form-loader;
   animation-duration: 1s;
   animation-timing-function: cubic-bezier(0.5, 0.2, 0.5, 0.8);
   animation-iteration-count: infinite;
 }
 
-@keyframes form-loader {
+@keyframes --form-loader {
   0% {
     transform: rotate(0);
   }
@@ -131,19 +131,19 @@
   height: 28px;
   padding: 0.2125em 1.25em 0.25em 0.5em;
   overflow: hidden;
+  text-overflow: ellipsis;
   font-family: inherit;
   font-size: 16px;
   line-height: 1.42;
   color: var(--accent);
-  text-overflow: ellipsis;
   white-space: nowrap;
+  appearance: none;
   background-color: var(--main-bg);
   background-image: url(./arrow-light.svg);
   background-repeat: no-repeat;
   background-position: 96% 54%;
   border: none;
   border-radius: 4px;
-  appearance: none;
 
   @media (prefers-color-scheme: dark) {
     background-image: url(./arrow-dark.svg);
