@@ -21,13 +21,13 @@
   "devDependencies": {
     "@logux/eslint-config": "^57.1.0",
     "@logux/stylelint-config": "^0.22.0",
-    "actions-up": "^1.12.0",
-    "eslint": "^10.1.0",
+    "actions-up": "^1.12.1",
+    "eslint": "^10.2.0",
     "globals": "^17.4.0",
     "nano-staged": "^0.9.0",
     "prettier": "^3.8.1",
     "simple-git-hooks": "^2.13.1",
-    "stylelint": "^17.5.0",
+    "stylelint": "^17.6.0",
     "svgo": "^4.0.1"
   }
 }
