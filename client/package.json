@@ -14,21 +14,21 @@
     "test": "pnpm run /^test:/"
   },
   "dependencies": {
-    "@csstools/postcss-oklab-function": "^5.0.2",
-    "autoprefixer": "^10.4.27",
+    "@csstools/postcss-oklab-function": "^5.0.3",
+    "autoprefixer": "^10.5.0",
     "caniuse-lite": "^1.0.30001790",
     "jstransformer-markdown-it": "^3.0.0",
     "plausible-tracker": "^0.3.9",
-    "postcss": "^8.5.8",
+    "postcss": "^8.5.10",
     "postcss-media-minmax": "^5.0.0",
     "postcss-nesting": "^14.0.0",
     "postcss-opacity-percentage": "^3.0.0",
-    "vite": "^8.0.5",
+    "vite": "^8.0.10",
     "vite-plugin-pug-transformer": "^1.0.8"
   },
   "devDependencies": {
-    "@size-limit/file": "^12.0.1",
-    "size-limit": "^12.0.1"
+    "@size-limit/file": "^12.1.0",
+    "size-limit": "^12.1.0"
   },
   "engines": {
     "node": ">=18"

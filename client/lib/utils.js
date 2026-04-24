@@ -11,7 +11,7 @@ export function formatPercent(percent) {
   return rounded + ' %'
 }
 
-export function createTag(tag, classes = [], text = undefined) {
+export function createTag(tag, classes = [], text) {
   let el = document.createElement(tag)
   el.classList.add(...classes)
   if (text) el.innerText = text

@@ -15,20 +15,20 @@
     "test": "pnpm run prebuild && pnpm build && pnpm run --recursive --include-workspace-root /^test:/"
   },
   "devDependencies": {
-    "@logux/oxc-configs": "^0.2.2",
-    "@logux/stylelint-config": "^0.22.0",
-    "actions-up": "^1.12.1",
-    "nano-staged": "^0.9.0",
-    "oxfmt": "^0.43.0",
-    "oxlint": "^1.58.0",
-    "oxlint-tsgolint": "^0.20.0",
+    "@logux/oxc-configs": "^0.4.0",
+    "@logux/stylelint-config": "^1.0.1",
+    "actions-up": "^1.14.1",
+    "nano-staged": "^1.0.2",
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
+    "oxlint-tsgolint": "^0.21.1",
     "simple-git-hooks": "^2.13.1",
-    "stylelint": "^17.6.0",
+    "stylelint": "^17.9.0",
     "svgo": "^4.0.1",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "engines": {
     "node": ">=24"
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@10.33.2"
 }
