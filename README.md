@@ -1,32 +1,42 @@
 # Browserslist Website
 
-<img width="120" height="120" alt="Browserslist logo by Anton Popov"
-     src="https://browsersl.ist/logo.svg" align="right">
+[![Website](https://img.shields.io/badge/site-browsersl.ist-2ea44f)](https://browsersl.ist/)
+[![License: MIT](https://img.shields.io/github/license/browserslist/browsersl.ist)](LICENSE)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D24-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![pnpm](https://img.shields.io/badge/pnpm-10.33.2-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
 
-This website uses [Browserslist] and [Can I Use] to display
-the compatible browsers for a browsers query.
+<img width="120" height="120" alt="Browserslist logo by Anton Popov" src="https://browsersl.ist/logo.svg" align="right">
 
-**[browsersl.ist](https://browsersl.ist/)**
+This repository powers [browsersl.ist](https://browsersl.ist/), a web UI and HTTP API for testing [Browserslist](https://github.com/browserslist/browserslist) queries with live compatibility coverage from [Can I Use](https://github.com/Fyrd/caniuse).
 
-[browserslist]: https://github.com/browserslist/browserslist
-[Can I Use]: https://github.com/Fyrd/caniuse
+## Table of Contents
+- [What It Does](#what-it-does)
+- [HTTP API](#http-api)
+- [Quick Start](#quick-start)
+- [Scripts](#scripts)
+- [Project Structure](#project-structure)
+- [Development Notes](#development-notes)
+- [License](#license)
+
+## What It Does
+- Parse and validate Browserslist queries in a browser-friendly interface.
+- Show regional coverage and browser versions backed by `caniuse-lite`.
+- Expose the same logic through a simple JSON API.
+- Keep client and server packaged as a pnpm workspace.
 
 ## HTTP API
+Use the API in your own tooling:
 
-You can use the site API in your own applications.
-
-```
+```text
 https://browsersl.ist/api/browsers?q=defaults&region=alt-as
 ```
 
-- `q` — query or config. If config is provided it should be in `.browserslist` file format, not `package.json`-like. Examples are available [on the website](https://browsersl.ist) or in the [browserslist repository](https://github.com/browserslist/browserslist#full-list). `defaults` by default.
-- `region` — region code (optional). List of all region codes can be found at [caniuse-lite/data/regions](https://github.com/browserslist/caniuse-lite/tree/main/data/regions).
+Parameters:
+- `q`, Browserslist query or `.browserslist` config content. Defaults to `defaults`.
+- `region`, optional region code. See [caniuse-lite/data/regions](https://github.com/browserslist/caniuse-lite/tree/main/data/regions).
 
-### Response example
-
-```js
-// https://browsersl.ist/api/browsers?q=defaults+and+supports+es6-module&region=alt-as
-
+### Example response
+```json
 {
   "config": ">0.3%",
   "lint": [
@@ -42,54 +52,67 @@ https://browsersl.ist/api/browsers?q=defaults&region=alt-as
     "caniuse": "1.0.30001381"
   },
   "updated": 1675156330646,
-  "browsers": [
-    {
-      "id": "chrome",
-      "name": "Chrome",
-      "coverage": 17.06,
-      "versions": {
-        "102": 0.72,
-        "103": 16.32
-      }
-    }
-    ...
-  ]
+  "browsers": []
 }
 ```
 
-### Errors
+### Error response
+Invalid requests return HTTP 400:
 
-If you send a request with an error, you will receive error message with the status 400.
-
-```js
-// https://browsersl.ist/api/browsers?q=>0%&region=XX
-
+```json
 {
   "message": "Unknown region name `XX`."
 }
 ```
 
-## Development
+## Quick Start
+### Prerequisites
+- Node.js 24+
+- pnpm 10.33.2+
 
-We recommend installing Prettier and EditorConfig plugins to your text editor.
+### Install
+```bash
+pnpm install
+```
 
-To run a local copy for development:
+### Run in development mode
+```bash
+pnpm start
+```
 
-1. Install Node.js 22 and pnpm 9.
-2. Install dependencies:
+This starts the local server and the client watcher via the workspace scripts.
 
-   ```sh
-   pnpm install
-   ```
+### Build and test
+```bash
+pnpm build
+pnpm test
+```
 
-3. Run local server with client-side watcher.
-
-   ```sh
-   pnpm start
-   ```
-
-To run local server in production mode:
-
-```sh
+### Run the production image locally
+```bash
 ./scripts/run-image.sh
 ```
+
+## Scripts
+- `pnpm start`, run server plus client watcher.
+- `pnpm build`, build all workspace packages.
+- `pnpm test`, run lint, build, and package-level tests.
+- `pnpm audit --prod`, audit production dependencies.
+
+## Project Structure
+```text
+.
+├── client/      # Vite frontend
+├── server/      # Browserslist API server
+├── lib/         # shared utilities
+├── scripts/     # checks and helper scripts
+└── Dockerfile   # container image build
+```
+
+## Development Notes
+The root workspace expects Node.js `>=24`, while the package-level apps declare `>=18`. If you want the smoothest local setup, use the root requirement.
+
+We also recommend EditorConfig, Prettier, and the configured lint tools for consistent formatting.
+
+## License
+Released under the [MIT License](LICENSE).
