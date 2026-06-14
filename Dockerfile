@@ -5,20 +5,10 @@ LABEL org.opencontainers.image.description="Browserslist REPL"
 LABEL org.opencontainers.image.licenses=MIT
 
 ENV NODE_VERSION=26.3.0
-ENV PNPM_VERSION=11.6.0
 
 ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz /node.tar.xz
 RUN tar -xf "node.tar.xz" --strip-components=1 -C /usr/local/ \
   "node-v${NODE_VERSION}-linux-x64/bin/node"
-ADD https://github.com/pnpm/pnpm/releases/download/v${PNPM_VERSION}/pnpm-linux-x64.tar.gz /pnpm.tar.gz
-RUN mkdir -p /usr/local/share/pnpm \
-  && tar -xz -f /pnpm.tar.gz -C /usr/local/share/pnpm \
-  && ln -s /usr/local/share/pnpm/pnpm /usr/local/bin/pnpm \
-  && rm /pnpm.tar.gz
-
-WORKDIR /var/app
-COPY . /var/app/
-RUN pnpm install --prod --frozen-lockfile --ignore-scripts -F server
 
 FROM cgr.dev/chainguard/glibc-dynamic:latest
 WORKDIR /var/app
@@ -29,9 +19,8 @@ COPY --from=base /usr/local/bin/node /usr/local/bin/node
 COPY ./package.json /var/app/
 COPY ./pnpm-lock.yaml /var/app/
 COPY ./lib/ /var/app/lib/
-COPY ./server/ /var/app/server/
 COPY ./client/dist/ /var/app/client/dist/
-COPY --from=base /var/app/node_modules/ /var/app/node_modules/
+COPY ./server/dist/ /var/app/server/
 
 USER nonroot
 

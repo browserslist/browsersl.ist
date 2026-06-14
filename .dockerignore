@@ -1,6 +1,7 @@
 node_modules/
 
 server/test/
+server/dist/test/
 client/
 !client/dist/
 

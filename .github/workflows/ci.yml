@@ -51,6 +51,8 @@ jobs:
         run: pnpm prebuild
       - name: Build static files
         run: pnpm build
+      - name: Bundle server with production dependencies
+        run: pnpm --filter=server --prod deploy --legacy server/dist
       - name: Build Docker image
         run: docker build -t ghcr.io/browserslist/browsersl.ist:latest .
       - name: Login to GitHub Container Registry
