@@ -17,18 +17,18 @@
   "devDependencies": {
     "@logux/oxc-configs": "^0.4.0",
     "@logux/stylelint-config": "^1.0.1",
-    "actions-up": "^1.14.1",
+    "actions-up": "^1.14.2",
     "nano-staged": "^1.0.2",
-    "oxfmt": "^0.46.0",
-    "oxlint": "^1.61.0",
-    "oxlint-tsgolint": "^0.21.1",
+    "oxfmt": "^0.54.0",
+    "oxlint": "^1.69.0",
+    "oxlint-tsgolint": "^0.23.0",
     "simple-git-hooks": "^2.13.1",
-    "stylelint": "^17.9.0",
+    "stylelint": "^17.13.0",
     "svgo": "^4.0.1",
     "typescript": "^6.0.3"
   },
   "engines": {
-    "node": ">=24"
+    "node": ">=26"
   },
-  "packageManager": "pnpm@10.33.2"
+  "packageManager": "pnpm@11.6.0"
 }
