@@ -1,4 +1,4 @@
-FROM cgr.dev/chainguard/wolfi-base:latest as base
+FROM cgr.dev/chainguard/wolfi-base:latest AS base
 
 LABEL org.opencontainers.image.source=https://github.com/browserslist/browsersl.ist
 LABEL org.opencontainers.image.description="Browserslist REPL"
@@ -11,7 +11,7 @@ ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar
 RUN tar -xf "node.tar.xz" --strip-components=1 -C /usr/local/ \
   "node-v${NODE_VERSION}-linux-x64/bin/node"
 ADD https://github.com/pnpm/pnpm/releases/download/v${PNPM_VERSION}/pnpm-linux-x64.tar.gz /pnpm.tar.gz
-RUN mkdir /usr/local/share/pnpm \
+RUN mkdir -p /usr/local/share/pnpm \
   && tar -xz -f /pnpm.tar.gz -C /usr/local/share/pnpm \
   && ln -s /usr/local/share/pnpm/pnpm /usr/local/bin/pnpm \
   && rm /pnpm.tar.gz
