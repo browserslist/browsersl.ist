@@ -9,7 +9,7 @@ let packageJson = readFileSync(join(ROOT, 'package.json')).toString()
 
 let nodeMajor = nodeVersion.match(/^(\d+)\./)[1]
 
-if (!dockerfile.includes(`NODE_VERSION=${nodeVersion}`)) {
+if (!dockerfile.includes(`/nodejs:${nodeVersion}`)) {
   process.stderr.write(
     'Dockerfile and .node-version have different node version\n'
   )
