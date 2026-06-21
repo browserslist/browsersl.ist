@@ -17,10 +17,10 @@
   "devDependencies": {
     "@logux/oxc-configs": "^0.4.0",
     "@logux/stylelint-config": "^1.0.1",
-    "actions-up": "^1.14.2",
+    "actions-up": "^1.14.3",
     "nano-staged": "^1.0.2",
-    "oxfmt": "^0.54.0",
-    "oxlint": "^1.69.0",
+    "oxfmt": "^0.55.0",
+    "oxlint": "^1.70.0",
     "oxlint-tsgolint": "^0.23.0",
     "simple-git-hooks": "^2.13.1",
     "stylelint": "^17.13.0",
@@ -30,5 +30,5 @@
   "engines": {
     "node": ">=26"
   },
-  "packageManager": "pnpm@11.6.0"
+  "packageManager": "pnpm@11.8.0"
 }

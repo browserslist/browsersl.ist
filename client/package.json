@@ -14,7 +14,7 @@
     "test": "pnpm run /^test:/"
   },
   "dependencies": {
-    "@csstools/postcss-oklab-function": "^5.0.4",
+    "@csstools/postcss-oklab-function": "^5.0.5",
     "autoprefixer": "^10.5.0",
     "caniuse-lite": "^1.0.30001799",
     "jstransformer-markdown-it": "^3.0.0",
