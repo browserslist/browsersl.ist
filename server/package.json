@@ -8,9 +8,9 @@
     "test": "pnpm run /^test:/"
   },
   "dependencies": {
-    "browserslist": "^4.28.5",
+    "browserslist": "^4.28.6",
     "browserslist-lint": "^0.4.0",
-    "caniuse-lite": "^1.0.30001803"
+    "caniuse-lite": "^1.0.30001805"
   },
   "engines": {
     "node": ">=18"
