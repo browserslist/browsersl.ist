@@ -57,8 +57,8 @@ importers:
         specifier: ^10.5.0
         version: 10.5.0(postcss@8.5.15)
       caniuse-lite:
-        specifier: ^1.0.30001805
-        version: 1.0.30001805
+        specifier: ^1.0.30001806
+        version: 1.0.30001806
       jstransformer-markdown-it:
         specifier: ^3.0.0
         version: 3.0.0
@@ -100,8 +100,8 @@ importers:
         specifier: ^0.4.0
         version: 0.4.0
       caniuse-lite:
-        specifier: ^1.0.30001805
-        version: 1.0.30001805
+        specifier: ^1.0.30001806
+        version: 1.0.30001806
 
 packages:
 
@@ -735,8 +735,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001805:
-    resolution: {integrity: sha512-52noaS3DubycKSXaU30TwPGIp+POyQSUVa5jBEq3vkRkY0kjyb3LQgvhU6WGyCcyXqVLWO0Cw0Q6BSdD0kUfVA==}
+  caniuse-lite@1.0.30001806:
+    resolution: {integrity: sha512-72Cuvd95zbSYPKq6Fhg8eDJRlzgWDf7/mtoZv6Qe/DYNCEBdNxoA3+rZAU2ZhGCpZlns3EssFavaZomckT5Uuw==}
 
   character-parser@2.2.0:
     resolution: {integrity: sha512-+UqJQjFEFaTAs3bNsF2j2kEN1baG/zghZbdqoYEDxGZtJo9LBzl1A+m0D4n3qKx8N2FNv8/Xp6yV9mQmBuptaw==}
@@ -2004,7 +2004,7 @@ snapshots:
   autoprefixer@10.5.0(postcss@8.5.15):
     dependencies:
       browserslist: 4.28.6
-      caniuse-lite: 1.0.30001805
+      caniuse-lite: 1.0.30001806
       fraction.js: 5.3.4
       picocolors: 1.1.1
       postcss: 8.5.15
@@ -2030,7 +2030,7 @@ snapshots:
   browserslist@4.28.6:
     dependencies:
       baseline-browser-mapping: 2.10.43
-      caniuse-lite: 1.0.30001805
+      caniuse-lite: 1.0.30001806
       electron-to-chromium: 1.5.389
       node-releases: 2.0.51
       update-browserslist-db: 1.2.3(browserslist@4.28.6)
@@ -2057,7 +2057,7 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  caniuse-lite@1.0.30001805: {}
+  caniuse-lite@1.0.30001806: {}
 
   character-parser@2.2.0:
     dependencies:
