@@ -815,8 +815,8 @@ packages:
     resolution: {integrity: sha512-GAwkz0AihzY5bkwIY5QDR+LvsRQgB/B+1foMPvi0FZPMl5fjD7ICiznUiBdLYMH1QYe6vqu4gWYytZOccLouFw==}
     engines: {node: '>= 10.0.0'}
 
-  baseline-browser-mapping@2.11.8:
-    resolution: {integrity: sha512-zAgkquC2WYF0PIc6XbNYkA2uuxxFavzgmX61R+dHDUa558V8Ejf8ozTZFR6QzM24RWu4kBcRkhJ5kpz77j9fnQ==}
+  baseline-browser-mapping@2.11.9:
+    resolution: {integrity: sha512-cp447VUsGS07+n1Dqf7YSQ8maeJrjEhaDxTm1ZefbqDtypHBC5GzGMQbklR6IPR13Y8OAJRHZWEMtZipJLCttg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -2194,7 +2194,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.7
 
-  baseline-browser-mapping@2.11.8: {}
+  baseline-browser-mapping@2.11.9: {}
 
   boolbase@1.0.0: {}
 
@@ -2209,7 +2209,7 @@ snapshots:
 
   browserslist@4.28.7:
     dependencies:
-      baseline-browser-mapping: 2.11.8
+      baseline-browser-mapping: 2.11.9
       caniuse-lite: 1.0.30001806
       electron-to-chromium: 1.5.394
       node-releases: 2.0.51
