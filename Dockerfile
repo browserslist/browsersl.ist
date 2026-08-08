@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/hi/nodejs:26.5.1
+FROM registry.access.redhat.com/hi/nodejs:26.7.0
 
 LABEL org.opencontainers.image.source=https://github.com/browserslist/browsersl.ist
 LABEL org.opencontainers.image.description="Browserslist REPL"
