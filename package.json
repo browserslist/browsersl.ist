@@ -17,10 +17,10 @@
   "devDependencies": {
     "@logux/oxc-configs": "^1.1.0",
     "@logux/stylelint-config": "^1.0.1",
-    "actions-up": "^1.16.0",
+    "actions-up": "^1.17.0",
     "nano-staged": "^1.0.2",
-    "oxfmt": "^0.62.0",
-    "oxlint": "^1.77.0",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
     "oxlint-tsgolint": "^7.0.2001",
     "simple-git-hooks": "^2.13.1",
     "stylelint": "^17.14.1",
