@@ -31,9 +31,11 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
     if: github.ref == 'refs/heads/main'
     concurrency:
       group: deploy
+      cancel-in-progress: false
     needs:
       - test
     steps:
@@ -63,9 +65,16 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Push Docker image
         run: docker push ghcr.io/browserslist/browsersl.ist:latest
-      - name: Trigger Dokploy Deployment
-        run: |
-          curl --fail ${{ secrets.DOKPLOY_DEPLOY_URL }}
+      - name: Deploy
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            let token = await core.getIDToken('https://api.cloud.hplush.dev')
+            let response = await fetch(
+              'https://api.cloud.hplush.dev/deploy/browsersl.ist',
+              { method: 'POST', headers: { authorization: `Bearer ${token}` } }
+            )
+            if (!response.ok) core.setFailed(await response.text())
       - name: Clean previous images
         uses: dataaxiom/ghcr-cleanup-action@d52806a0dc70b430571a37da1fde39733ffd640f # v1.2.2
         with:
