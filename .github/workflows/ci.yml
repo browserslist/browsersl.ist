@@ -75,6 +75,9 @@ jobs:
               { method: 'POST', headers: { authorization: `Bearer ${token}` } }
             )
             if (!response.ok) core.setFailed(await response.text())
+            let answer = await response.text()
+            if (response.ok) core.info(answer)
+            else core.setFailed(`${response.status} ${response.statusText}: ${answer}`)
       - name: Clean previous images
         uses: dataaxiom/ghcr-cleanup-action@d52806a0dc70b430571a37da1fde39733ffd640f # v1.2.2
         with:
