@@ -3,7 +3,7 @@ packages:
   - server
 
 allowBuilds:
-  esbuild: set this to true or false
+  esbuild: false
   simple-git-hooks: true
 
 blockExoticSubdeps: true
