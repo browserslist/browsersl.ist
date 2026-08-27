@@ -79,12 +79,21 @@ jobs:
             if (response.ok) core.info(answer)
             else core.setFailed(`${response.status} ${response.statusText}: ${answer}`)
       - name: Clean previous images
-        uses: dataaxiom/ghcr-cleanup-action@d52806a0dc70b430571a37da1fde39733ffd640f # v1.2.2
-        with:
-          package: browsersl.ist
-          owner: browserslist
-          delete-untagged: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSIONS="orgs/browserslist/packages/container/browsersl.ist/versions"
+          # Only the latest image is tagged, all previous ones become untagged
+          IDS=$(gh api --paginate "$VERSIONS?per_page=100" \
+            | jq -r '.[] | select(.metadata.container.tags == []) | .id')
+          if [ -n "$IDS" ]; then
+            for ID in $IDS; do
+              echo "Deleting browsersl.ist version $ID"
+              gh api -X DELETE "$VERSIONS/$ID" --silent
+            done
+          else
+            echo "No untagged images"
+          fi
       - name: Clean Cloudflare cache
         run: |
           curl --fail -X POST \
