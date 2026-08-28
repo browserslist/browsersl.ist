@@ -1,490 +1,841 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="color-scheme" content="dark light">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Browserslist</title>
-  <meta name="description" content="Display target browsers from a Browserslist config">
-  <meta property="og:image" content="https://browsersl.ist/og.png">
-  <link rel="stylesheet" href="./index.css">
-  <script type="module" src="./index.js" defer></script>
-  <link rel="preload" href="./view/MartianMono/MartianMono-1.0.0.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="./view/Base/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="./view/Base/apple-touch-icon.png">
-  <link rel="manifest" href="/browserslist.webmanifest">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Browserslist</title>
+    <meta
+      name="description"
+      content="Display target browsers from a Browserslist config"
+    />
+    <meta property="og:image" content="https://browsersl.ist/og.png" />
+    <link rel="stylesheet" href="./index.css" />
+    <script type="module" src="./index.js" defer></script>
+    <link
+      rel="preload"
+      href="./view/MartianMono/MartianMono-1.0.0.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="./view/Base/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./view/Base/apple-touch-icon.png" />
+    <link rel="manifest" href="/browserslist.webmanifest" />
+  </head>
 
-<body>
-  <header class="Intro">
-    <button class="Skip" data-id="skip">Skip to form</button>
-    <div class="Intro_header">
-      <h1 class="Intro_title">
-        <img class="Intro_logo" src="./view/Intro/browserlist.svg" alt="">
-        Browserslist
-      </h1>
-      <div class="Badges">
-        <a class="Badges_item is-github" href="https://github.com/browserslist/browserslist" target="_blank">
-          <img src="./view/Badges/github.svg" alt="Count of GitHub stars" class="Badges_item_logo"> <span data-id="badge-gh-stars"></span>
-        </a>
-        <a class="Badges_item is-npm" href="https://www.npmjs.com/package/browserslist" target="_blank">
-          <img src="./view/Badges/npm.svg" alt="Count of npm weekly downloads" class="Badges_item_logo"> <span data-id="badge-npm-downloads"></span>
-        </a>
-        <a class="Badges_item is-secondary" href="https://opencollective.com/browserslist" target="_blank">
-          <img src="./view/Badges/opencollective.svg" alt="" class="Badges_item_logo"> Open Collective
-        </a>
-        <a class="Badges_item is-secondary" href="https://github.com/sponsors/ai"  target="_blank">
-          <img src="./view/Badges/ghsponsors.svg" alt="" class="Badges_item_logo"> GitHub Sponsors
-        </a>
-      </div>
-    </div>
-    <p class="Intro_about">Shared browser compatibility config for popular JavaScript tools
-      like Autoprefixer, Babel, ESLint, PostCSS, and Webpack</p>
-    <p class="Intro_supported">
-      Supported by
-      <a href="https://evilmartians.com/" class="Link is-image" target="_blank"><img class="Intro_martians" src="./view/Intro/evil_maritians.svg" alt=""> <span class="Link_text">Evil Martians</span></a> and
-      <a href="https://cube.dev/?ref=eco-browserslist" class="Link is-image" target="_blank"><img class="Intro_cube" src="./view/Intro/cube.svg" alt=""> <span class="Link_text">Cube</span></a>
-    </p>
-    <p class="Intro_supported">
-      Sponsored by
-      <a href="https://workleap.com" class="Link" target="_blank"><span class="Link_text">Workleap</span></a> and
-      <a href="https://kinsta.com" class="Link" target="_blank"><span class="Link_text">Kinsta</span></a>. <a href="https://opencollective.com/browserslist" class="Link" target="_blank"><span class="Link_text">Help us and join</span></a> the sponsors list.
-    </p>
-  </header>
-
-  <main class="Interactive" data-id="interactive">
-    <h2 class="Interactive_title">Check compatible browsers</h2>
-    <form data-id="form" class="Form">
-      <div class="Form_config">
-        <textarea id="form_config" name="config" cols="30" rows="5" required class="Form_textarea" data-id="form_textarea" placeholder="Write the Browserslist config here…"></textarea>
-        <label for="form_config" class="Form_placeholder">Write the Browserslist config here…<br>
-          For example
-          <a class="ConfigLink"><code>defaults</code></a>,
-          <a class="ConfigLink"><code>> 0.2% and not dead</code></a>
-        </label>
-        <p class="Form_loader">Loading…</p>
-      </div>
-
-      <div class="Form_messages" data-id="form_messages"></div>
-
-      <div class="Form_coverage" data-id="form_coverage" hidden>
-        <h2 class="Interactive_title">Audience coverage: <span data-id="form_total"></span></h2>
-        <label class="Form_region">
-          Region
-          <select name="region" data-id="form_region" class="Form_select"></select>
-        </label>
-      </div>
-    </form>
-
-    <div class="Hedgehog" data-id="hedgehog">
-      <img
-        srcset="./view/Hedgehog/hedgehog.svg"
-        alt="A hedgehog with a wheelbarrow full of browser logos. He brings them to you!"
-        class="Hedgehog_image"
-        height="316px"
-        width="380px"
-      >
-      <p class="Hedgehog_text">Add the Browserslist config to display compatible browsers.</p>
-    </div>
-
-    <div class="Browsers" data-id="browsers" hidden>
-      <div class="Browsers_scroll">
-        <ul class="Bar" data-id="bar"></ul>
-        <div class="Browsers_results">
-          <table class="Browsers_table" data-id="browsers_table">
-          </table>
-        </div>
-
-        <div class="Versions">
-          <p class="Versions_item">
-            Updated on <strong class="Versions_date" data-id="versions_updated"></strong>
-          </p>
-          <p class="Versions_item">
-            Browserslist <a class="Versions_link" target="_blank" href="https://github.com/browserslist/browserslist/blob/main/CHANGELOG.md" data-id="versions_browserslist"></a>
-          </p>
-          <p class="Versions_item">
-            Can I Use <a class="Versions_link" target="_blank" href="https://www.npmjs.com/package/caniuse-lite" data-id="versions_caniuse"></a>
-          </p>
-          <p class="Versions_item is-extra">
-            <button class="Versions_link" href="?results" data-id="versions_docs">Hide docs</button>
-          </p>
+  <body>
+    <header class="Intro">
+      <button class="Skip" data-id="skip">Skip to form</button>
+      <div class="Intro_header">
+        <h1 class="Intro_title">
+          <img class="Intro_logo" src="./view/Intro/browserlist.svg" alt="" />
+          Browserslist
+        </h1>
+        <div class="Badges">
+          <a
+            class="Badges_item is-github"
+            href="https://github.com/browserslist/browserslist"
+            target="_blank"
+          >
+            <img
+              src="./view/Badges/github.svg"
+              alt="Count of GitHub stars"
+              class="Badges_item_logo"
+            />
+            <span data-id="badge-gh-stars"></span>
+          </a>
+          <a
+            class="Badges_item is-npm"
+            href="https://www.npmjs.com/package/browserslist"
+            target="_blank"
+          >
+            <img
+              src="./view/Badges/npm.svg"
+              alt="Count of npm weekly downloads"
+              class="Badges_item_logo"
+            />
+            <span data-id="badge-npm-downloads"></span>
+          </a>
+          <a
+            class="Badges_item is-secondary"
+            href="https://opencollective.com/browserslist"
+            target="_blank"
+          >
+            <img
+              src="./view/Badges/opencollective.svg"
+              alt=""
+              class="Badges_item_logo"
+            />
+            Open Collective
+          </a>
+          <a
+            class="Badges_item is-secondary"
+            href="https://github.com/sponsors/ai"
+            target="_blank"
+          >
+            <img
+              src="./view/Badges/ghsponsors.svg"
+              alt=""
+              class="Badges_item_logo"
+            />
+            GitHub Sponsors
+          </a>
         </div>
       </div>
-    </div>
-  </main>
+      <p class="Intro_about">
+        Shared browser compatibility config for popular JavaScript tools
+        like Autoprefixer, Babel, ESLint, PostCSS, and Webpack
+      </p>
+      <p class="Intro_supported">
+        Supported by
+        <a
+          href="https://evilmartians.com/"
+          class="Link is-image"
+          target="_blank"
+          ><img
+            class="Intro_martians"
+            src="./view/Intro/evil_maritians.svg"
+            alt=""
+          />
+          <span class="Link_text">Evil Martians</span></a
+        >
+        and
+        <a
+          href="https://cube.dev/?ref=eco-browserslist"
+          class="Link is-image"
+          target="_blank"
+          ><img class="Intro_cube" src="./view/Intro/cube.svg" alt="" />
+          <span class="Link_text">Cube</span></a
+        >
+      </p>
+      <p class="Intro_supported">
+        Sponsored by
+        <a href="https://workleap.com" class="Link" target="_blank"
+          ><span class="Link_text">Workleap</span></a
+        >
+        and
+        <a href="https://kinsta.com" class="Link" target="_blank"
+          ><span class="Link_text">Kinsta</span></a
+        >.
+        <a
+          href="https://opencollective.com/browserslist"
+          class="Link"
+          target="_blank"
+          ><span class="Link_text">Help us and join</span></a
+        >
+        the sponsors list.
+      </p>
+    </header>
 
-  <article class="Docs">
-    <h2>How to get started</h2>
-    <p>
-      Use <a class="ConfigLink"><code>defaults</code></a> if you’re building a web application for
-      the global audience.
-    </p>
-    <p>
-      Use <a class="ConfigLink"><code>node 18</code></a> if you’re building a Node.js application,
-      <abbr title="exempli gratia – for example">e.g.</abbr>, for server-side rendering.
-    </p>
-    <p>
-      <a href="https://www.npmjs.com/package/autoprefixer" class="Link" target="_blank">Autoprefixer</a>,
-      <a href="https://babeljs.io/" class="Link" target="_blank">Babel</a> and
-      <a href="https://github.com/browserslist/browserslist#browserslist-" class="Link" target="_blank">many other tools</a>
-      will find target browsers automatically if you add the following to <b>package.json</b>:
-    </p>
-    <a class="ConfigLink is-pre"><pre>
+    <main class="Interactive" data-id="interactive">
+      <h2 class="Interactive_title">Check compatible browsers</h2>
+      <form data-id="form" class="Form">
+        <div class="Form_config">
+          <textarea
+            id="form_config"
+            name="config"
+            cols="30"
+            rows="5"
+            required
+            class="Form_textarea"
+            data-id="form_textarea"
+            placeholder="Write the Browserslist config here…"
+          ></textarea>
+          <label for="form_config" class="Form_placeholder"
+            >Write the Browserslist config here…<br />
+            For example
+            <a class="ConfigLink"><code>defaults</code></a
+            >,
+            <a class="ConfigLink"><code>> 0.2% and not dead</code></a>
+          </label>
+          <p class="Form_loader">Loading…</p>
+        </div>
+
+        <div class="Form_messages" data-id="form_messages"></div>
+
+        <div class="Form_coverage" data-id="form_coverage" hidden>
+          <h2 class="Interactive_title">
+            Audience coverage: <span data-id="form_total"></span>
+          </h2>
+          <label class="Form_region">
+            Region
+            <select
+              name="region"
+              data-id="form_region"
+              class="Form_select"
+            ></select>
+          </label>
+        </div>
+      </form>
+
+      <div class="Hedgehog" data-id="hedgehog">
+        <img
+          srcset="./view/Hedgehog/hedgehog.svg"
+          alt="A hedgehog with a wheelbarrow full of browser logos. He brings them to you!"
+          class="Hedgehog_image"
+          height="316px"
+          width="380px"
+        />
+        <p class="Hedgehog_text">
+          Add the Browserslist config to display compatible browsers.
+        </p>
+      </div>
+
+      <div class="Browsers" data-id="browsers" hidden>
+        <div class="Browsers_scroll">
+          <ul class="Bar" data-id="bar"></ul>
+          <div class="Browsers_results">
+            <table class="Browsers_table" data-id="browsers_table"></table>
+          </div>
+
+          <div class="Versions">
+            <p class="Versions_item">
+              Updated on
+              <strong class="Versions_date" data-id="versions_updated"></strong>
+            </p>
+            <p class="Versions_item">
+              Browserslist
+              <a
+                class="Versions_link"
+                target="_blank"
+                href="https://github.com/browserslist/browserslist/blob/main/CHANGELOG.md"
+                data-id="versions_browserslist"
+              ></a>
+            </p>
+            <p class="Versions_item">
+              Can I Use
+              <a
+                class="Versions_link"
+                target="_blank"
+                href="https://www.npmjs.com/package/caniuse-lite"
+                data-id="versions_caniuse"
+              ></a>
+            </p>
+            <p class="Versions_item is-extra">
+              <button
+                class="Versions_link"
+                href="?results"
+                data-id="versions_docs"
+              >
+                Hide docs
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <article class="Docs">
+      <h2>How to get started</h2>
+      <p>
+        Use <a class="ConfigLink"><code>defaults</code></a> if you’re building
+        a web application for the global audience.
+      </p>
+      <p>
+        Use <a class="ConfigLink"><code>node 18</code></a> if you’re building
+        a Node.js application,
+        <abbr title="exempli gratia – for example">e.g.</abbr>, for server-side
+        rendering.
+      </p>
+      <p>
+        <a
+          href="https://www.npmjs.com/package/autoprefixer"
+          class="Link"
+          target="_blank"
+          >Autoprefixer</a
+        >,
+        <a href="https://babeljs.io/" class="Link" target="_blank">Babel</a> and
+        <a
+          href="https://github.com/browserslist/browserslist#browserslist-"
+          class="Link"
+          target="_blank"
+          >many other tools</a
+        >
+        will find target browsers automatically if you add the following
+        to <b>package.json</b>:
+      </p>
+      <a class="ConfigLink is-pre">
+        <pre>
       <code>"browserslist": [</code>
       <code>  "defaults and fully supports es6-module",</code>
       <code>  "maintained node versions"</code>
       <code>]</code>
     </pre>
-    </a>
-    <h2>Query syntax</h2>
-    <section>
-      <h3>Start with the default configuration</h3>
+      </a>
+      <h2>Query syntax</h2>
+      <section>
+        <h3>Start with the default configuration</h3>
 
-      <p>You can pick a sound set of versions with the <a class="ConfigLink"><code>defaults</code></a> query which is
-        a shortcut for <code>> 0.5%, last 2 versions, Firefox ESR, not dead</code>.
-        It matches recent versions of popular and supported browsers worldwide and includes
-        Firefox Extended Support Release which is updated roughly annually.
-      </p>
+        <p>
+          You can pick a sound set of versions with the <a class="ConfigLink"
+            ><code>defaults</code></a
+          >
+          query which is a shortcut for
+          <code>> 0.5%, last 2 versions, Firefox ESR, not dead</code>. It
+          matches recent versions of popular and supported browsers worldwide
+          and includes Firefox Extended Support Release which is updated roughly
+          annually.
+        </p>
 
-      <p>The <a class="ConfigLink"><code>defaults</code></a> query was thoroughly designed by the
-        Browserslist community.
-        It helps promote best practices and avoid common pitfalls.
-      </p>
-    </section>
+        <p>
+          The <a class="ConfigLink"><code>defaults</code></a> query was
+          thoroughly designed by the Browserslist community. It helps promote
+          best practices and avoid common pitfalls.
+        </p>
+      </section>
 
-    <section>
-      <h3>Select browser versions with certain usage</h3>
+      <section>
+        <h3>Select browser versions with certain usage</h3>
 
-      <p>You can pick versions that have more than or less than a certain size of the
-        audience worldwide, in a region, or in a country. You can also use the visitor
-        data of your own website.</p>
+        <p>
+          You can pick versions that have more than or less than a certain size
+          of the audience worldwide, in a region, or in a country. You can also
+          use the visitor data of your own website.
+        </p>
 
-      <h4>Examples</h4>
-      <ul>
-        <li><a class="ConfigLink"><code>> 5%</code></a> all versions with > 5% of the audience
-          worldwide.
-        </li>
-        <li><a class="ConfigLink"><code>>= 5% in US</code></a> same as above but in the US.
-        </li>
-        <li><a class="ConfigLink"><code>>= 5% in alt-AS</code></a> same as above but in Asia.
-        </li>
-      </ul>
-
-      <h4>Beware</h4>
-      <ul>
-        <li> You may exclude the most recent versions of all browsers that have been just
-          released. Please always add <a class="ConfigLink" data-config="last 2 versions"><code>last …
-            versions</code></a> to include them back.
-        </li>
-        <li> You can exclude your global audience. Please be careful when narrowing the audience to a region or a country.
-        </li>
-        <li> You may include <a class="ConfigLink"><code>dead</code></a> versions. Please consider
-          adding <a class="ConfigLink" data-config="defaults, not dead"><code>not dead</code></a>.
-        </li>
-      </ul>
-
-      <details>
-        <summary><h4>Advanced</h4></summary>
-        <ul>
-          <li><a class="ConfigLink"><code>> 5% in my stats</code></a> versions with > 5% of usage within your own audience. Use <a href="https://github.com/browserslist/browserslist/#custom-usage-data">tools</a> like <a href="https://github.com/browserslist/browserslist-plausible"><code>browserslist-plausible</code></a> to download your website statistics.
-          </li>
-          <li><a class="ConfigLink"><code>> 5% in circle-ci stats</code></a>
-            versions with > 5% of usage within the audience data from shareable configuration, available as <a
-              href="https://github.com/circleci/circleci-docs/blob/master/browserslist-stats.json" class="Link"
-              target="_blank">custom stats</a>.
-          </li>
-          <li><a class="ConfigLink"><code>cover 99.5%</code></a> the smallest set of popular
-            versions with collective usage over 99.5% of the audience worldwide.
-          </li>
-          <li><a class="ConfigLink"><code>cover 99.5% in CN</code></a> same as above
-            but in China.
-          </li>
-          <li><a class="ConfigLink"><code>cover 99.5% in alt-EU</code></a> same
-            as above but in Europe.
-          </li>
-        </ul>
-      </details>
-    </section>
-
-    <section>
-      <h3>Select browser by Baseline</h3>
-
-      <p>By <a href="https://web-platform-dx.github.io/web-features/">Baseline</a>.</p>
-
-      <h4>Examples</h4>
-      <ul>
-        <li><a class="ConfigLink"><code>baseline widely available</code></a> versions of Chrome, Edge, Firefox, and Safari supports the current <a href="https://webstatus.dev/?q=baseline_status%3Awidely">Baseline Widely available</a> set of features, which have been interoperable in those browsers for at least 30 months.
-        </li>
-        <li><a class="ConfigLink"><code>baseline newly available</code></a> recent versions of Chrome, Edge, Firefox, and Safari, which supports the current <a href="https://webstatus.dev/?q=baseline_status%3Anewly"class="Link">Baseline Newly available</a> set of features, which are interoperable in those browsers today.
-        </li>
-        <li><a class="ConfigLink"><code>baseline 2024</code></a> browser versions that are compatible with all features that were Baseline Newly available at the end of the specified year.
-        </li>
-        <li><a class="ConfigLink"><code>baseline widely available with downstream</code></a> includes browsers <a href="https://github.com/web-platform-dx/baseline-browser-mapping#downstream-browsers" class="Link">outside the core browser</a> set that support the requested Baseline feature set based on their Chromium or Gecko version.</li>
-      </ul>
-
-      <h4>Beware</h4>
-      <ul>
-        <li>Use Baseline Newly available with caution since it targets very recent browser versions.
-        </li>
-      </ul>
-
-      <details>
-        <summary><h4>Advanced</h4></summary>
-        <ul>
-          <li><a class="ConfigLink"><code>baseline widely available on 2024-06-06</code></a> Baseline query for specific date.</li>
-          <li><a class="ConfigLink"><code>baseline widely available with downstream including kaios</code></a> same output as the previous query plus <a href="https://en.wikipedia.org/wiki/KaiOS" class="Link">KaiOS</a> from feature phones. However, extra caution should be taken with KaiOS as it has a very different set of screen limitations and interaction patterns to other modern browsers.</li>
-        </ul>
-      </details>
-    </section>
-
-    <section>
-      <h3>Select recent browser versions</h3>
-
-      <p>You can pick a few recent browser versions.</p>
-
-      <h4>Examples</h4>
-      <ul>
-        <li><a class="ConfigLink"><code>last 2 versions</code></a> last 2 versions of each
-          browser.
-        </li>
-        <li><a class="ConfigLink"><code>last 2 Chrome versions</code></a> same as above but just
-          Chrome.
-        </li>
-      </ul>
-
-      <h4>Beware</h4>
-      <ul>
-        <li>You might exclude older versions still used by a substantial audience.
-          Please always add <a class="ConfigLink" data-config="> 5%"><code>> …</code></a> to include them back.
-        </li>
-        <li>You may pick <a class="ConfigLink"><code>dead</code></a> browsers like Internet Explorer.
-          Always use <a class="ConfigLink" data-config="last 2 versions"><code>last … versions</code></a>
-          with <a class="ConfigLink" data-config="defaults, not dead"><code>not dead</code></a>.
-        </li>
-      </ul>
-
-      <details>
-        <summary><h4>Advanced</h4></summary>
-        <ul>
-          <li><a class="ConfigLink"><code>last 2 major versions</code></a> all
-            minor
-            and patch releases of the last 2 major versions.
-          </li>
-          <li><a class="ConfigLink"><code>last 2 Safari major versions</code></a>
-            same as above but just Safari.
-          </li>
-          <li><a class="ConfigLink"><code>unreleased versions</code></a>
-            alpha and beta versions.
-          </li>
-          <li><a class="ConfigLink"><code>unreleased Chrome versions</code></a>
-            same as above but just Chrome.
-          </li>
-          <li><a class="ConfigLink"><code>since 2020-01-15</code></a>
-            versions released since Jan 15, 2020.
-          </li>
-          <li><a class="ConfigLink"><code>since 2020-01</code></a>
-            versions released since January 2020, inclusive.
-          </li>
-          <li><a class="ConfigLink"><code>since 2020</code></a>
-            versions released since 2020, inclusive.
-          </li>
-          <li><a class="ConfigLink"><code>last 3 years</code></a>
-            same as above if you run this query in 2022.
-          </li>
-        </ul>
-      </details>
-    </section>
-
-    <section>
-      <h3>Select specific browser versions</h3>
-
-      <p>You can pick browser versions or a version range of your choice.</p>
-
-      <h4>Examples</h4>
-      <ul>
-        <li><a class="ConfigLink"><code>ChromeAndroid 103</code></a> mobile Chrome
-          version 103.
-        </li>
-        <li><a class="ConfigLink"><code>Firefox > 20</code></a> desktop Firefox versions
-          newer than 20.
-        </li>
-        <li><a class="ConfigLink"><code>iOS >= 13.2</code></a> mobile Safari version 13.2
-          and
-          newer.
-        </li>
-        <li><a class="ConfigLink" data-config="defaults, not firefox esr"><code>not Firefox ESR</code></a> removes specific version.
-        </li>
-      </ul>
-
-      <h4>Beware</h4>
-      <ul>
-        <li> Make sure that your audience uses specific versions
-          (<abbr title="exempli gratia – for example">e.g.</abbr>, in a corporate setting) or
-          that your application is not built to work with specific versions
-          (<abbr title="exempli gratia – for example">e.g.</abbr>, it’s a bleeding-edge demo
-          project). Please consider using <a class="ConfigLink" data-config="last 2 versions"><code>last … versions</code></a>
-          or <a class="ConfigLink" data-config="> 5%"><code>> …</code></a> to include more versions.
-        </li>
-        <li>Note, that Opera Mini has special version <code>all</code>. <code>not op_mini all</code> is not a special query.</li>
-      </ul>
-
-      <details>
-        <summary><h4>Advanced</h4></summary>
-        <ul>
-          <li><a class="ConfigLink"><code>ie 6-8</code></a> an inclusive range of Internet
-            Explorer
-            versions.
-          </li>
-          <li><a class="ConfigLink"><code>Firefox ESR</code></a> the latest Firefox Extended
-            Support Release.
-          </li>
-        </ul>
-      </details>
-    </section>
-
-    <section>
-      <h3>Select specific Node.js versions</h3>
-
-      <p>You can pick Node.js versions or a version range of your choice. Useful if you
-        know for sure the runtime configuration of your server-side code.</p>
-
-      <h4>Examples</h4>
-      <ul>
-        <li><a class="ConfigLink"><code>node 10</code></a> latest
-          <a class="ConfigLink" data-config="node 10.0.0"><code>10.x.x</code></a> Node.js version.
-        </li>
-        <li><a class="ConfigLink"><code>node 10.4</code></a> latest
-          <a class="ConfigLink" data-config="node 10.4.0"><code>10.4.x</code></a> Node.js version.
-        </li>
-        <li><a class="ConfigLink"><code>node > 16</code></a> all Node.js versions newer than
-          <code>16.0.0</code>.
-        </li>
-        <li><a class="ConfigLink"><code>last 2 node versions</code></a> two latest Node.js releases.
-        </li>
-        <li><a class="ConfigLink"><code>last 2 node major versions</code></a> two last major-version Node.js releases.
-        </li>
-      </ul>
-
-      <details>
-        <summary><h4>Advanced</h4></summary>
-        <ul>
-          <li><a class="ConfigLink"><code>maintained node versions</code></a>
-            all Node.js versions currently maintained by Node.js Foundation.
-          </li>
-          <li><a class="ConfigLink"><code>current node</code></a> the Node.js version used
-            by Browserslist right now.
-          </li>
-        </ul>
-      </details>
-    </section>
-
-    <section>
-      <h3>Select browser versions that support a certain feature</h3>
-
-      <p>You can pick browser versions that support features from the Can I Use database.
-        See the <a href="https://github.com/browserslist/caniuse-lite/tree/main/data/features" class="Link" target="_blank">
-        caniuse-lite repository</a> for the full list of features.</p>
-
-      <h4>Examples</h4>
-      <ul>
-        <li><a class="ConfigLink"><code>fully supports es6-module</code></a>
-          versions that fully support JavaScript modules via script tag.
-        </li>
-        <li><a class="ConfigLink"><code>partially supports css-grid</code></a>
-          versions that fully or partially supports CSS Grid Layout.</li>
-      </ul>
-
-      <h4>Beware</h4>
-      <ul>
-        <li><a class="ConfigLink" data-config="supports es6-module"><code>supports …</code></a>
-          is an alias for
-          <a class="ConfigLink" data-config="partially supports es6-module"><code>partially supports …</code></a>,
-          however as its naming is ambigious, prefer using <code>partially supports</code>
-          to make your intent of including partially supported browsers clear.</li>
-        <li> These queries rarely work well on their own. Please consider combining them with other queries.
-        </li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Combine multiple queries into one</h3>
-
-      <p>You can combine versions matched by multiple queries with <code>or</code> or <code>,</code>; you can
-        intersect them with <code>and</code>. You can also negate any query with <code>not</code> if it’s
-        not the first one in your list.</p>
-
-      <h4>Examples</h4>
-      <ul>
-        <li>
-          <a class="ConfigLink"><code>> 0.5%, last 2 versions</code></a>
-          combines <a class="ConfigLink"><code>> 0.5%</code></a>
-          with <a class="ConfigLink"><code>last 2 versions</code></a>.
-        </li>
-        <li><a class="ConfigLink"><code>> 0.5% or last 2 versions</code></a>
-          same as above.
-        </li>
-        <li><a class="ConfigLink"><code>> 0.5% and last 2 versions</code></a>
-          intersects <a class="ConfigLink"><code>> 0.5%</code></a>
-          with <a class="ConfigLink"><code>last 2 versions</code></a>.
-        </li>
-        <li><a class="ConfigLink"><code>> 0.5% and not last 2 versions</code></a> removes
-          <a class="ConfigLink"><code>last 2 versions</code></a> from
-          <a class="ConfigLink"><code>> 0.5%</code></a>.
-        </li>
-      </ul>
-
-      <h4>Beware</h4>
-      <ul>
-        <li> A query with <a class="ConfigLink" data-config="defaults, not last 2 versions"><code>not</code></a>
-          can't be the left-hand one in the list.</li>
-        <li> A query with <code>not</code> is always joined to the left-hand one with
-          <a class="ConfigLink" data-config="defaults and not last 2 versions"><code>and</code></a>,
-          even if <a class="ConfigLink" data-config="defaults or not last 2 versions"><code>or</code></a> or
-          <a class="ConfigLink" data-config="defaults, not last 2 versions"><code>,</code></a> are used.</li>
-      </ul>
-
-      <details>
-        <summary><h4>Advanced</h4></summary>
+        <h4>Examples</h4>
         <ul>
           <li>
-            The following queries yield the same result:
-            <a class="ConfigLink"> <code>> 0.5% and not last 2 versions</code></a>,
-            <a class="ConfigLink"><code>> 0.5% or not last 2 versions</code></a>,
-            <a class="ConfigLink"><code>> 0.5%, not last 2 versions</code></a>.
+            <a class="ConfigLink"><code>> 5%</code></a> all versions with > 5%
+            of the audience worldwide.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>>= 5% in US</code></a> same as above but
+            in the US.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>>= 5% in alt-AS</code></a> same as above
+            but in Asia.
           </li>
         </ul>
-      </details>
-    </section>
 
-    <section>
-      <h3>Exclude unmaintained browser versions</h3>
+        <h4>Beware</h4>
+        <ul>
+          <li>
+            You may exclude the most recent versions of all browsers that have
+            been just released. Please always add
+            <a class="ConfigLink" data-config="last 2 versions"
+              ><code>last … versions</code></a
+            >
+            to include them back.
+          </li>
+          <li>
+            You can exclude your global audience. Please be careful when
+            narrowing the audience to a region or a country.
+          </li>
+          <li>
+            You may include
+            <a class="ConfigLink"><code>dead</code></a> versions.
+            Please consider adding
+            <a class="ConfigLink" data-config="defaults, not dead"
+              ><code>not dead</code></a
+            >.
+          </li>
+        </ul>
 
-      <p>You can combine your queries with
-        <a class="ConfigLink" data-config="defaults, not dead"><code>not dead</code></a>
-        to exclude <a class="ConfigLink"><code>dead</code></a> browsers, i.e.,
-        browsers without official support or updates for more than 24 months.
-        Right now these include IE 11, IE Mobile 11, BlackBerry 10, BlackBerry 7,
-        Samsung 4, Opera Mobile 12.1, and all versions of Baidu.</p>
+        <details>
+          <summary><h4>Advanced</h4></summary>
+          <ul>
+            <li>
+              <a class="ConfigLink"><code>> 5% in my stats</code></a> versions
+              with > 5% of usage within your own audience. Use
+              <a
+                href="https://github.com/browserslist/browserslist/#custom-usage-data"
+                >tools</a
+              >
+              like
+              <a href="https://github.com/browserslist/browserslist-plausible"
+                ><code>browserslist-plausible</code></a
+              >
+              to download your website statistics.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>> 5% in circle-ci stats</code></a>
+              versions with > 5% of usage within the audience data from
+              shareable configuration, available as
+              <a
+                href="https://github.com/circleci/circleci-docs/blob/master/browserslist-stats.json"
+                class="Link"
+                target="_blank"
+                >custom stats</a
+              >.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>cover 99.5%</code></a> the smallest
+              set of popular versions with collective usage over 99.5% of the
+              audience worldwide.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>cover 99.5% in CN</code></a> same as
+              above but in China.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>cover 99.5% in alt-EU</code></a> same
+              as above but in Europe.
+            </li>
+          </ul>
+        </details>
+      </section>
 
-      <h4>Examples</h4>
-      <ul>
-        <li><a class="ConfigLink"><code>> 0.2% and not dead</code></a>
-          excludes <a class="ConfigLink"><code>dead</code></a> versions
-          from versions matched by <a class="ConfigLink"><code>> 0.2%</code></a>.
-        </li>
-      </ul>
-    </section>
+      <section>
+        <h3>Select browser by Baseline</h3>
 
-    <h2>Why Browserslist</h2>
-    <p>Browserslist helps you keep the right balance between browser compatibility and bundle size.
-      With Browserslist, you will cover wider audience and have smaller bundle size. </p>
-  </article>
+        <p>
+          By
+          <a href="https://web-platform-dx.github.io/web-features/">Baseline</a
+          >.
+        </p>
 
-  <footer class="Footer">
-    <a class="Badges_item is-github" href="https://github.com/browserslist/browsersl.ist" target="_blank">
-      <img src="./view/Badges/github.svg" alt="" class="Badges_item_logo"> Website source code
-    </a>
-  </footer>
-</body>
+        <h4>Examples</h4>
+        <ul>
+          <li>
+            <a class="ConfigLink"><code>baseline widely available</code></a>
+            versions of Chrome, Edge, Firefox, and Safari supports the current
+            <a href="https://webstatus.dev/?q=baseline_status%3Awidely"
+              >Baseline Widely available</a
+            >
+            set of features, which have been interoperable in those browsers for
+            at least 30 months.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>baseline newly available</code></a>
+            recent versions of Chrome, Edge, Firefox, and Safari, which supports
+            the current
+            <a
+              href="https://webstatus.dev/?q=baseline_status%3Anewly"
+              class="Link"
+              >Baseline Newly available</a
+            >
+            set of features, which are interoperable in those browsers today.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>baseline 2024</code></a> browser
+            versions that are compatible with all features that were Baseline
+            Newly available at the end of the specified year.
+          </li>
+          <li>
+            <a class="ConfigLink"
+              ><code>baseline widely available with downstream</code></a
+            >
+            includes browsers
+            <a
+              href="https://github.com/web-platform-dx/baseline-browser-mapping#downstream-browsers"
+              class="Link"
+              >outside the core browser</a
+            >
+            set that support the requested Baseline feature set based on their
+            Chromium or Gecko version.
+          </li>
+        </ul>
+
+        <h4>Beware</h4>
+        <ul>
+          <li>
+            Use Baseline Newly available with caution since it targets very
+            recent browser versions.
+          </li>
+        </ul>
+
+        <details>
+          <summary><h4>Advanced</h4></summary>
+          <ul>
+            <li>
+              <a class="ConfigLink"
+                ><code>baseline widely available on 2024-06-06</code></a
+              >
+              Baseline query for specific date.
+            </li>
+            <li>
+              <a class="ConfigLink"
+                ><code
+                  >baseline widely available with downstream including
+                  kaios</code
+                ></a
+              >
+              same output as the previous query plus
+              <a href="https://en.wikipedia.org/wiki/KaiOS" class="Link"
+                >KaiOS</a
+              >
+              from feature phones. However, extra caution should be taken with
+              KaiOS as it has a very different set of screen limitations and
+              interaction patterns to other modern browsers.
+            </li>
+          </ul>
+        </details>
+      </section>
+
+      <section>
+        <h3>Select recent browser versions</h3>
+
+        <p>You can pick a few recent browser versions.</p>
+
+        <h4>Examples</h4>
+        <ul>
+          <li>
+            <a class="ConfigLink"><code>last 2 versions</code></a> last 2
+            versions of each browser.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>last 2 Chrome versions</code></a> same
+            as above but just Chrome.
+          </li>
+        </ul>
+
+        <h4>Beware</h4>
+        <ul>
+          <li>
+            You might exclude older versions still used by a substantial
+            audience. Please always add
+            <a class="ConfigLink" data-config="> 5%"><code>> …</code></a>
+            to include them back.
+          </li>
+          <li>
+            You may pick <a class="ConfigLink"><code>dead</code></a> browsers
+            like Internet Explorer. Always use
+            <a class="ConfigLink" data-config="last 2 versions"
+              ><code>last … versions</code></a
+            >
+            with
+            <a class="ConfigLink" data-config="defaults, not dead"
+              ><code>not dead</code></a
+            >.
+          </li>
+        </ul>
+
+        <details>
+          <summary><h4>Advanced</h4></summary>
+          <ul>
+            <li>
+              <a class="ConfigLink"><code>last 2 major versions</code></a> all
+              minor and patch releases of the last 2 major versions.
+            </li>
+            <li>
+              <a class="ConfigLink"
+                ><code>last 2 Safari major versions</code></a
+              >
+              same as above but just Safari.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>unreleased versions</code></a>
+              alpha and beta versions.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>unreleased Chrome versions</code></a>
+              same as above but just Chrome.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>since 2020-01-15</code></a>
+              versions released since Jan 15, 2020.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>since 2020-01</code></a>
+              versions released since January 2020, inclusive.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>since 2020</code></a>
+              versions released since 2020, inclusive.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>last 3 years</code></a>
+              same as above if you run this query in 2022.
+            </li>
+          </ul>
+        </details>
+      </section>
+
+      <section>
+        <h3>Select specific browser versions</h3>
+
+        <p>You can pick browser versions or a version range of your choice.</p>
+
+        <h4>Examples</h4>
+        <ul>
+          <li>
+            <a class="ConfigLink"><code>ChromeAndroid 103</code></a> mobile
+            Chrome version 103.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>Firefox > 20</code></a> desktop Firefox
+            versions newer than 20.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>iOS >= 13.2</code></a> mobile Safari
+            version 13.2 and newer.
+          </li>
+          <li>
+            <a class="ConfigLink" data-config="defaults, not firefox esr"
+              ><code>not Firefox ESR</code></a
+            >
+            removes specific version.
+          </li>
+        </ul>
+
+        <h4>Beware</h4>
+        <ul>
+          <li>
+            Make sure that your audience uses specific versions (<abbr
+              title="exempli gratia – for example"
+              >e.g.</abbr
+            >, in a corporate setting) or that your application is not built to
+            work with specific versions (<abbr
+              title="exempli gratia – for example"
+              >e.g.</abbr
+            >, it’s a bleeding-edge demo project). Please consider using
+            <a class="ConfigLink" data-config="last 2 versions"
+              ><code>last … versions</code></a
+            >
+            or
+            <a class="ConfigLink" data-config="> 5%"><code>> …</code></a>
+            to include more versions.
+          </li>
+          <li>
+            Note, that Opera Mini has special version <code>all</code>.
+            <code>not op_mini all</code> is not a special query.
+          </li>
+        </ul>
+
+        <details>
+          <summary><h4>Advanced</h4></summary>
+          <ul>
+            <li>
+              <a class="ConfigLink"><code>ie 6-8</code></a> an inclusive range
+              of Internet Explorer versions.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>Firefox ESR</code></a> the latest
+              Firefox Extended Support Release.
+            </li>
+          </ul>
+        </details>
+      </section>
+
+      <section>
+        <h3>Select specific Node.js versions</h3>
+
+        <p>
+          You can pick Node.js versions or a version range of your choice.
+          Useful if you know for sure the runtime configuration of your
+          server-side code.
+        </p>
+
+        <h4>Examples</h4>
+        <ul>
+          <li>
+            <a class="ConfigLink"><code>node 10</code></a> latest
+            <a class="ConfigLink" data-config="node 10.0.0"
+              ><code>10.x.x</code></a
+            >
+            Node.js version.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>node 10.4</code></a> latest
+            <a class="ConfigLink" data-config="node 10.4.0"
+              ><code>10.4.x</code></a
+            >
+            Node.js version.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>node > 16</code></a> all Node.js
+            versions newer than <code>16.0.0</code>.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>last 2 node versions</code></a> two
+            latest Node.js releases.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>last 2 node major versions</code></a>
+            two last major-version Node.js releases.
+          </li>
+        </ul>
+
+        <details>
+          <summary><h4>Advanced</h4></summary>
+          <ul>
+            <li>
+              <a class="ConfigLink"><code>maintained node versions</code></a>
+              all Node.js versions currently maintained by Node.js Foundation.
+            </li>
+            <li>
+              <a class="ConfigLink"><code>current node</code></a> the Node.js
+              version used by Browserslist right now.
+            </li>
+          </ul>
+        </details>
+      </section>
+
+      <section>
+        <h3>Select browser versions that support a certain feature</h3>
+
+        <p>
+          You can pick browser versions that support features from the Can I Use
+          database. See the <a
+            href="https://github.com/browserslist/caniuse-lite/tree/main/data/features"
+            class="Link"
+            target="_blank"
+          >
+            caniuse-lite repository</a
+          >
+          for the full list of features.
+        </p>
+
+        <h4>Examples</h4>
+        <ul>
+          <li>
+            <a class="ConfigLink"><code>fully supports es6-module</code></a>
+            versions that fully support JavaScript modules via script tag.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>partially supports css-grid</code></a>
+            versions that fully or partially supports CSS Grid Layout.
+          </li>
+        </ul>
+
+        <h4>Beware</h4>
+        <ul>
+          <li>
+            <a class="ConfigLink" data-config="supports es6-module"
+              ><code>supports …</code></a
+            >
+            is an alias for
+            <a class="ConfigLink" data-config="partially supports es6-module"
+              ><code>partially supports …</code></a
+            >, however as its naming is ambigious, prefer using
+            <code>partially supports</code> to make your intent of including
+            partially supported browsers clear.
+          </li>
+          <li>
+            These queries rarely work well on their own. Please consider
+            combining them with other queries.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Combine multiple queries into one</h3>
+
+        <p>
+          You can combine versions matched by multiple queries with
+          <code>or</code> or <code>,</code>; you can intersect them with
+          <code>and</code>. You can also negate any query with
+          <code>not</code> if it’s not the first one in your list.
+        </p>
+
+        <h4>Examples</h4>
+        <ul>
+          <li>
+            <a class="ConfigLink"><code>> 0.5%, last 2 versions</code></a>
+            combines <a class="ConfigLink"><code>> 0.5%</code></a> with
+            <a class="ConfigLink"><code>last 2 versions</code></a
+            >.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>> 0.5% or last 2 versions</code></a>
+            same as above.
+          </li>
+          <li>
+            <a class="ConfigLink"><code>> 0.5% and last 2 versions</code></a>
+            intersects <a class="ConfigLink"><code>> 0.5%</code></a> with
+            <a class="ConfigLink"><code>last 2 versions</code></a
+            >.
+          </li>
+          <li>
+            <a class="ConfigLink"
+              ><code>> 0.5% and not last 2 versions</code></a
+            >
+            removes <a class="ConfigLink"><code>last 2 versions</code></a> from
+            <a class="ConfigLink"><code>> 0.5%</code></a
+            >.
+          </li>
+        </ul>
+
+        <h4>Beware</h4>
+        <ul>
+          <li>
+            A query with
+            <a class="ConfigLink" data-config="defaults, not last 2 versions"
+              ><code>not</code></a
+            >
+            can't be the left-hand one in the list.
+          </li>
+          <li>
+            A query with <code>not</code> is always joined to the left-hand one
+            with
+            <a class="ConfigLink" data-config="defaults and not last 2 versions"
+              ><code>and</code></a
+            >, even if
+            <a class="ConfigLink" data-config="defaults or not last 2 versions"
+              ><code>or</code></a
+            >
+            or
+            <a class="ConfigLink" data-config="defaults, not last 2 versions"
+              ><code>,</code></a
+            >
+            are used.
+          </li>
+        </ul>
+
+        <details>
+          <summary><h4>Advanced</h4></summary>
+          <ul>
+            <li>
+              The following queries yield the same result:
+              <a class="ConfigLink">
+                <code>> 0.5% and not last 2 versions</code></a
+              >,
+              <a class="ConfigLink"
+                ><code>> 0.5% or not last 2 versions</code></a
+              >,
+              <a class="ConfigLink"><code>> 0.5%, not last 2 versions</code></a
+              >.
+            </li>
+          </ul>
+        </details>
+      </section>
+
+      <section>
+        <h3>Exclude unmaintained browser versions</h3>
+
+        <p>
+          You can combine your queries with
+          <a class="ConfigLink" data-config="defaults, not dead"
+            ><code>not dead</code></a
+          >
+          to exclude <a class="ConfigLink"><code>dead</code></a> browsers, i.e.,
+          browsers without official support or updates for more than 24 months.
+          Right now these include IE 11, IE Mobile 11, BlackBerry 10,
+          BlackBerry 7, Samsung 4, Opera Mobile 12.1, and all versions of Baidu.
+        </p>
+
+        <h4>Examples</h4>
+        <ul>
+          <li>
+            <a class="ConfigLink"><code>> 0.2% and not dead</code></a> excludes
+            <a class="ConfigLink"><code>dead</code></a> versions from versions
+            matched by <a class="ConfigLink"><code>> 0.2%</code></a
+            >.
+          </li>
+        </ul>
+      </section>
+
+      <h2>Why Browserslist</h2>
+      <p>
+        Browserslist helps you keep the right balance between browser
+        compatibility and bundle size. With Browserslist, you will cover wider
+        audience and have smaller bundle size.
+      </p>
+    </article>
+
+    <footer class="Footer">
+      <a
+        class="Badges_item is-github"
+        href="https://github.com/browserslist/browsersl.ist"
+        target="_blank"
+      >
+        <img src="./view/Badges/github.svg" alt="" class="Badges_item_logo" />
+        Website source code
+      </a>
+    </footer>
+  </body>
 </html>
