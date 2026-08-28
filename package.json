@@ -12,8 +12,7 @@
     "test:css": "stylelint .",
     "test:checks": "node scripts/check-versions.js",
     "test:audit": "pnpm audit --prod",
-    "test-no-build": "pnpm run --recursive --include-workspace-root /^test:/",
-    "test": "pnpm run prebuild && pnpm build && pnpm test-no-build"
+    "test": "pnpm run prebuild && pnpm build && pnpm run --recursive --include-workspace-root /^test:/"
   },
   "devDependencies": {
     "@logux/oxc-configs": "^1.1.0",
