@@ -3,22 +3,16 @@ import { join } from 'node:path'
 
 const ROOT = join(import.meta.dirname, '..')
 
-let nodeVersion = readFileSync(join(ROOT, '.node-version')).toString().trim()
 let dockerfile = readFileSync(join(ROOT, 'Dockerfile')).toString()
-let packageJson = readFileSync(join(ROOT, 'package.json')).toString()
+let packageJson = JSON.parse(
+  readFileSync(join(ROOT, 'package.json')).toString()
+)
 
-let nodeMajor = nodeVersion.match(/^(\d+)\./)[1]
+let nodeVersion = packageJson.devEngines.runtime.version
 
 if (!dockerfile.includes(`/nodejs:${nodeVersion}`)) {
   process.stderr.write(
-    'Dockerfile and .node-version have different node version\n'
-  )
-  process.exit(1)
-}
-
-if (!packageJson.includes(`"node": ">=${nodeMajor}"`)) {
-  process.stderr.write(
-    'package.json and .node-version have different node version\n'
+    'Dockerfile and package.json have different node version\n'
   )
   process.exit(1)
 }
