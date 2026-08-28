@@ -65,7 +65,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Push Docker image
         run: docker push ghcr.io/browserslist/browsersl.ist:latest
-      - name: Deploy
+      - name: Deploy image
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
@@ -82,7 +82,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSIONS="orgs/browserslist/packages/container/browsersl.ist/versions"
-          # Only the latest image is tagged, all previous ones become untagged
           IDS=$(gh api --paginate "$VERSIONS?per_page=100" \
             | jq -r '.[] | select(.metadata.container.tags == []) | .id')
           if [ -n "$IDS" ]; then
