@@ -252,8 +252,8 @@ importers:
   server:
     dependencies:
       browserslist:
-        specifier: ^4.29.2
-        version: 4.29.2
+        specifier: ^4.29.3
+        version: 4.29.3
       browserslist-lint:
         specifier: ^0.4.0
         version: 0.4.0
@@ -975,8 +975,8 @@ packages:
     resolution: {integrity: sha512-cxCb8cPLvywT4mF8tDWN0hIetR/BmQpk13Zw0+sDI0i7NfxL6cnmcdmBE9Ml6pggkWzrev1NH97LwkW0BxDgAQ==}
     hasBin: true
 
-  browserslist@4.29.2:
-    resolution: {integrity: sha512-/u9r8k8ue4ZhHCw9ovDtltpWdXeXzjhdxCGj6vm1RGLPXb8lu33EMdoCHF5Sx8oYBS+Q/FYYNmAqlHncxR3RmA==}
+  browserslist@4.29.3:
+    resolution: {integrity: sha512-1R4kiYKXGViqEN0CnoDrXc1StD9niAwu+j2dukWzrD4bJgsD4lDmEp0CRbc6E/vYJIfTHwPmwyaKtVSudICdPA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
@@ -2285,7 +2285,7 @@ snapshots:
 
   autoprefixer@10.6.1(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.2
+      browserslist: 4.29.3
       caniuse-lite: 1.0.30001813
       fraction.js: 5.3.4
       picocolors: 1.1.1
@@ -2306,16 +2306,16 @@ snapshots:
 
   browserslist-lint@0.4.0:
     dependencies:
-      browserslist: 4.29.2
+      browserslist: 4.29.3
       picocolors: 1.1.1
 
-  browserslist@4.29.2:
+  browserslist@4.29.3:
     dependencies:
       baseline-browser-mapping: 2.11.26
       caniuse-lite: 1.0.30001813
       electron-to-chromium: 1.5.440
       node-releases: 2.0.57
-      update-browserslist-db: 1.3.3(browserslist@4.29.2)
+      update-browserslist-db: 1.3.3(browserslist@4.29.3)
 
   cacheable@2.5.0:
     dependencies:
@@ -3167,9 +3167,9 @@ snapshots:
 
   unicorn-magic@0.4.1: {}
 
-  update-browserslist-db@1.3.3(browserslist@4.29.2):
+  update-browserslist-db@1.3.3(browserslist@4.29.3):
     dependencies:
-      browserslist: 4.29.2
+      browserslist: 4.29.3
       escalade: 3.2.0
       picocolors: 1.1.1
 
