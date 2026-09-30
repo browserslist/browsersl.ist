@@ -44,18 +44,18 @@ function formatDate(date) {
   return `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`
 }
 
+function getWeekDateRange() {
+  let now = new Date()
+  let weekAgo = new Date(now)
+  weekAgo.setDate(now.getDate() - 7)
+
+  let start = formatDate(weekAgo)
+  let end = formatDate(now)
+
+  return `${start}:${end}`
+}
+
 async function getNpmDownloads() {
-  let getWeekDateRange = () => {
-    let now = new Date()
-    let weekAgo = new Date(now)
-    weekAgo.setDate(now.getDate() - 7)
-
-    let start = formatDate(weekAgo)
-    let end = formatDate(now)
-
-    return `${start}:${end}`
-  }
-
   let npmAPI = `https://api.npmjs.org/downloads/point/${getWeekDateRange()}/${NPM_PACKAGE}`
   let response = await fetch(npmAPI)
 
