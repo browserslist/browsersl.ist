@@ -16,14 +16,14 @@
   },
   "devDependencies": {
     "@logux/oxc-configs": "^1.2.0",
-    "@logux/stylelint-config": "^1.0.1",
+    "@logux/stylelint-config": "^1.1.0",
     "actions-up": "^1.21.0",
     "nano-staged": "^1.0.2",
-    "oxfmt": "^0.71.0",
-    "oxlint": "^1.86.0",
+    "oxfmt": "^0.72.0",
+    "oxlint": "^1.87.0",
     "oxlint-tsgolint": "^7.0.2003",
     "simple-git-hooks": "^2.14.0",
-    "stylelint": "^17.15.0",
+    "stylelint": "^17.16.0",
     "svgo": "^4.1.0",
     "typescript": "^7.0.2"
   },
@@ -33,5 +33,5 @@
       "version": "26.10.0"
     }
   },
-  "packageManager": "pnpm@12.8.2"
+  "packageManager": "pnpm@12.10.0"
 }
