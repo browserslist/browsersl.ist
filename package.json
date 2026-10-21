@@ -30,7 +30,7 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "26.12.0"
+      "version": "26.11.1"
     }
   },
   "packageManager": "pnpm@12.14.0"
