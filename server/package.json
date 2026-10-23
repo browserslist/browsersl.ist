@@ -10,7 +10,7 @@
   "dependencies": {
     "browserslist": "^4.29.4",
     "browserslist-lint": "^0.4.0",
-    "caniuse-lite": "^1.0.30001818"
+    "caniuse-lite": "^1.0.30001819"
   },
   "engines": {
     "node": ">=18"
