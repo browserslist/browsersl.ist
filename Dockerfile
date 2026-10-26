@@ -14,7 +14,7 @@ COPY ./lib/ /var/app/lib/
 COPY ./client/dist/ /var/app/client/dist/
 COPY ./server/dist/ /var/app/server/
 
-ENTRYPOINT ["/usr/bin/node"]
+ENTRYPOINT ["/usr/bin/node", "--permission", "--allow-fs-read=/var/app/", "--allow-net"]
 CMD ["server/index.js"]
 
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
