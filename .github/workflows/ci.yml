@@ -16,7 +16,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install Node.js & pnpm
-        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
+        uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
       - name: Install dependencies
         run: pnpm ci
       - name: Run tests
@@ -36,7 +36,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install Node.js & pnpm
-        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
+        uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
       - name: Install dependencies
         run: pnpm ci
       - name: Install production dependencies
@@ -83,7 +83,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t ghcr.io/browserslist/browsersl.ist:latest .
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
