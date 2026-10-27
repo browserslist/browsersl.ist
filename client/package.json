@@ -19,7 +19,7 @@
     "caniuse-lite": "^1.0.30001819",
     "jstransformer-markdown-it": "^3.0.0",
     "plausible-tracker": "^0.3.9",
-    "postcss": "^8.5.31",
+    "postcss": "^8.5.32",
     "postcss-media-minmax": "^5.0.0",
     "postcss-nesting": "^14.0.3",
     "postcss-opacity-percentage": "^3.0.0",
