@@ -23,3 +23,8 @@ dedupePeers: true
 
 minimumReleaseAgeExclude:
   - esbuild@0.28.1
+
+auditConfig:
+  ignoreGhsas:
+    # Is coming from Vite which we do not run on the server with user data
+    - GHSA-fc5q-39xc-vjpf

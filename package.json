@@ -16,13 +16,13 @@
   },
   "devDependencies": {
     "@logux/oxc-configs": "^1.2.0",
-    "@logux/stylelint-config": "^1.1.0",
+    "@logux/stylelint-config": "^3.0.1",
     "nano-staged": "^1.0.2",
-    "oxfmt": "^0.74.0",
-    "oxlint": "^1.89.0",
-    "oxlint-tsgolint": "^7.0.2005",
+    "oxfmt": "^0.79.0",
+    "oxlint": "^1.94.0",
+    "oxlint-tsgolint": "^7.0.2007",
     "simple-git-hooks": "^2.14.0",
-    "stylelint": "^17.16.0",
+    "stylelint": "^18.0.0",
     "svgo": "^4.1.0",
     "typescript": "^7.0.2"
   },
