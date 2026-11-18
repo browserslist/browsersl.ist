@@ -15,6 +15,17 @@ export function buildError(root, message) {
   return error
 }
 
+export function buildSuggestion(root, fill) {
+  let suggestion = createTag('div', ['Alert', 'is-suggestion'])
+  let description = createTag('div', ['Alert_description'])
+  suggestion.role = 'status'
+  suggestion.dataset.id = 'form_region_banner'
+  fill(description)
+  suggestion.append(description)
+  root.append(suggestion)
+  return suggestion
+}
+
 export function buildWarning(root, message, fixed) {
   let warning = createTag('div', ['Alert', 'is-warning'])
   let description = createTag('div', ['Alert_description'])

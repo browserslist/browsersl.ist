@@ -1,7 +1,16 @@
-import { equal, match, notEqual, ok } from 'node:assert'
+import { deepEqual, equal, match, notEqual, ok } from 'node:assert'
 import test from 'node:test'
 
 import { getBrowsers } from '../lib/get-browsers.js'
+
+function browserIdentity(data) {
+  return data.browsers
+    .map(browser => {
+      let versions = Object.keys(browser.versions).toSorted()
+      return `${browser.id} ${versions.join(',')}`
+    })
+    .toSorted()
+}
 
 function approximatelyEqual(actual, expected) {
   let tolerance = 2
@@ -60,6 +69,19 @@ test('The sum of the coverage versions equals the total coverage in global', asy
   let totalCoverage = data.coverage
 
   approximatelyEqual(sumOfCoverages, totalCoverage)
+})
+
+test('`>1%` and `>= 1%` return the same browsers for every region', async () => {
+  for (let query of ['>1%', '>= 1%']) {
+    let baseline = await getBrowsers(query, null)
+    equal(baseline.config, query)
+
+    for (let region of ['alt-ww', 'alt-eu', 'US', 'FR']) {
+      let regional = await getBrowsers(query, region)
+      equal(regional.config, query)
+      deepEqual(browserIdentity(regional), browserIdentity(baseline))
+    }
+  }
 })
 
 test('The sum of the coverage versions equals the total coverage in region', async () => {

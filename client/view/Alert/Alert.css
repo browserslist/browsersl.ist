@@ -14,7 +14,8 @@
     background: var(--error);
   }
 
-  &.is-warning {
+  &.is-warning,
+  &.is-suggestion {
     display: flex;
     justify-content: space-between;
     background: var(--warning);

@@ -9,6 +9,7 @@ import { updateConfigLinksRegion } from '../ConfigLink/ConfigLink.js'
 import { toggleHedgehog } from '../Hedgehog/Hedgehog.js'
 import { updateVersions } from '../Versions/Versions.js'
 import { loadBrowsers } from './loadBrowsers.js'
+import { showRegionQueryBanner } from './region-query-banner.js'
 
 let form = document.querySelector('[data-id=form]')
 let total = document.querySelector('[data-id=form_total]')
@@ -95,6 +96,14 @@ async function updateStatsView(config, region) {
   for (let { fixed, message } of lint) {
     showWarning(message, fixed)
   }
+
+  showRegionQueryBanner({
+    messages,
+    form,
+    config,
+    region,
+    regionIds: regionList
+  })
 
   formCoverage.hidden = false
   toggleBrowsers(true)
